@@ -1,7 +1,8 @@
-# LLAMERO v33
+# LLAMERO v34
 
-Cambio principal:
-- Esta versión usa una imagen de referencia real para el fondo black topo.
-- Se dejó gris/sobrio, no blanco puro.
-- El fondo está en: assets_v17/topo_reference_gray.png
-- Para cambiarlo, reemplazá esa imagen por otra con el mismo nombre.
+El fondo topográfico está incrustado directamente dentro de `index.html`.
+
+Esto significa que GitHub Pages ya no depende de una ruta externa como
+`assets_v17/topo_reference_gray.png`.
+
+Para actualizar el juego en GitHub, podés reemplazar solamente `index.html`.
