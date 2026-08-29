@@ -1,9 +1,12 @@
-# LLAMERO v46
+# LLAMERO v47
 
-Cambios en Nueva Carrera:
-- el selector de región ahora es desplegable;
-- las opciones 1/2/3 decisiones por año son mucho más pequeñas;
-- roles más compactos;
-- botones Empezar carrera / Volver visibles en PC incluso con poca altura;
-- layout compacto especial para ventanas de escritorio bajas;
-- en móvil la configuración sigue pudiéndose desplazar normalmente.
+Cambios:
+- el HUD ya no muestra Años / PJ / Kills / Muertes / K/D; quedan PR y Earnings;
+- Palmarés ya no muestra Top 10;
+- interfaz de carrera montada: decisiones, resultados y timeline se actualizan por regiones sin borrar toda la pantalla;
+- animaciones nuevas en valores, timeline, decisiones y tarjetas;
+- vuelve una pantalla completa de GANASTE antes del resultado;
+- +320 decisiones nuevas centradas en dúos y competitivo;
+- red de hasta 360 combinaciones de dúos reales ya cargados en el juego;
+- los torneos muestran un dúo rival destacado;
+- las ofertas de teammate ahora muestran 3 opciones.

@@ -1629,6 +1629,129 @@ url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQF
   }
 }
 
+
+/* ===== v47 — mounted UI + richer motion ===== */
+.compact-core{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+}
+.palmares-three{grid-template-columns:repeat(3,1fr)!important}
+.live-mounted{animation:none!important}
+.live-panel-enter{animation:livePanelEnter .34s cubic-bezier(.2,.85,.25,1) both}
+.live-region-pulse{animation:liveRegionPulse .28s ease both}
+.live-timeline-pulse{animation:liveTimeline .32s ease both}
+.live-number-pop{animation:liveNumberPop .36s cubic-bezier(.18,.9,.3,1.2) both}
+@keyframes livePanelEnter{
+  from{transform:translateY(8px);opacity:.76}
+  to{transform:none;opacity:1}
+}
+@keyframes liveRegionPulse{
+  0%{filter:brightness(1)}
+  48%{filter:brightness(1.18)}
+  100%{filter:brightness(1)}
+}
+@keyframes liveTimeline{
+  0%{transform:translateX(0)}
+  45%{transform:translateX(2px)}
+  100%{transform:none}
+}
+@keyframes liveNumberPop{
+  0%{transform:scale(.92);opacity:.72}
+  58%{transform:scale(1.08);opacity:1}
+  100%{transform:scale(1)}
+}
+.action-card{
+  transition:transform .22s cubic-bezier(.2,.8,.2,1),border-color .22s ease,box-shadow .22s ease,opacity .22s ease!important;
+}
+.action-card:hover{transform:translateY(-3px) scale(1.008)}
+.decision-card:active,.duo-card:active,.result-card:active{transform:scale(.985)}
+.timeline .row.current{position:relative;overflow:hidden}
+.timeline .row.current:before{
+  content:"";position:absolute;left:-40%;top:0;width:30%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.09),transparent);
+  animation:currentRowSweep 2.4s ease-in-out infinite;
+}
+@keyframes currentRowSweep{0%,35%{left:-40%}70%,100%{left:120%}}
+
+.tournament-win-screen{
+  position:fixed;inset:0;z-index:1000;
+  display:grid;place-items:center;
+  background:rgba(5,5,7,.0);
+  backdrop-filter:blur(0);
+  opacity:0;
+  transition:background .32s ease,backdrop-filter .32s ease,opacity .25s ease;
+  overflow:hidden;
+}
+.tournament-win-screen.show{
+  opacity:1;background:rgba(5,5,7,.82);backdrop-filter:blur(10px);
+}
+.tournament-win-screen.closing{opacity:0}
+.win-stage{
+  position:relative;z-index:2;
+  width:min(620px,90vw);
+  text-align:center;
+  padding:34px 26px 28px;
+  border:1px solid #35363d;
+  border-radius:24px;
+  background:linear-gradient(180deg,#18191d,#0d0d10);
+  box-shadow:0 35px 120px rgba(0,0,0,.6);
+  transform:translateY(30px) scale(.88);
+  opacity:0;
+}
+.tournament-win-screen.show .win-stage{
+  animation:winStageIn .6s cubic-bezier(.16,.92,.22,1.18) .06s forwards;
+}
+.win-stage small{
+  display:block;color:#969ba7;font:900 11px Inter,system-ui,sans-serif;
+  letter-spacing:2.5px;margin-bottom:8px;
+}
+.win-stage strong{
+  display:block;font-size:clamp(54px,9vw,94px);line-height:.82;
+  letter-spacing:-5px;color:#fff;
+  text-shadow:0 0 34px rgba(255,255,255,.12);
+}
+.win-stage h3{margin:14px 0 0;font-size:20px;color:#c7cad2}
+.win-rewards{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:18px 0}
+.win-rewards span{
+  border:1px solid #34353c;background:#131419;border-radius:999px;
+  padding:8px 12px;font-size:11px;font-weight:900;
+}
+.win-stage button{
+  width:min(320px,100%);padding:13px 18px;border:0;border-radius:12px;
+  background:#f3f4f6;color:#101114;font-weight:900;cursor:pointer;
+}
+.win-confetti i{
+  position:absolute;left:var(--x);top:-18px;width:7px;height:17px;
+  background:#eee;border-radius:2px;opacity:.8;
+  animation:winConfetti 1.8s linear var(--d) infinite;
+}
+@keyframes winStageIn{to{transform:none;opacity:1}}
+@keyframes winConfetti{
+  to{transform:translateY(110vh) rotate(520deg);opacity:.2}
+}
+.result-rival{
+  margin:6px auto 0;
+  font-size:8px;font-weight:800;letter-spacing:.7px;color:#777c88;
+  text-transform:uppercase;
+}
+@media(max-width:760px){
+  .compact-core{grid-template-columns:repeat(2,1fr)!important}
+  .stat-strip.compact-core .micro:nth-child(n){display:flex!important}
+  .palmares-three{grid-template-columns:repeat(3,1fr)!important}
+  .win-stage{padding:28px 18px 22px}
+  .win-stage strong{letter-spacing:-3px}
+}
+
+
+.option-grid.duo-three{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.option-grid.duo-three .duo-card{min-width:0}
+@media(max-width:760px){
+  .bottom-panel .option-grid.duo-three{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  .option-grid.duo-three .duo-card{padding:6px!important;min-height:126px!important}
+  .option-grid.duo-three .duo-card .pick-image{height:58px!important}
+  .option-grid.duo-three .duo-card h4{font-size:11px!important}
+  .option-grid.duo-three .duo-card .subbtn{font-size:6px!important}
+}
+
 </style>
 </head>
 <body>
@@ -1869,7 +1992,7 @@ function ensurePalmares(){if(!state)return;
   if(!state.cashCups)state.cashCups={played:0,wins:0,earnings:0};
   if(!state.flags)state.flags={appreciationSeen:false};
   if(!Array.isArray(state.duoHistory))state.duoHistory=[];
-  if(!state.palmares)state.palmares={events:0,totalWins:0,top10s:0,fncsWins:state.trophies?.fncs||0,fncsPodiums:state.trophies?.fncs||0,globalWins:state.trophies?.global||0,globalPodiums:state.trophies?.global||0,cupWins:state.trophies?.cups||0,biggestPrize:0,bestFNCS:null,bestGlobal:null,recent:[]}; if(!Array.isArray(state.palmares.recent))state.palmares.recent=[];} function saveGame(){if(state){ensurePalmares();localStorage.setItem('llamero_v46_save',JSON.stringify(state));}} function hasSave(){return !!(localStorage.getItem('llamero_v46_save')||localStorage.getItem('llamero_v45_save')||localStorage.getItem('llamero_v44_save')||localStorage.getItem('llamero_v43_save')||localStorage.getItem('llamero_v42_save')||localStorage.getItem('llamero_v41_save')||localStorage.getItem('llamero_v40_save')||localStorage.getItem('llamero_v39_save')||localStorage.getItem('llamero_v38_save')||localStorage.getItem('llamero_v37_save')||localStorage.getItem('llamero_v36_save')||localStorage.getItem('llamero_v35_save')||localStorage.getItem('llamero_v34_save')||localStorage.getItem('llamero_v33_save')||localStorage.getItem('llamero_v32_save')||localStorage.getItem('llamero_v31_save')||localStorage.getItem('llamero_v30_save')||localStorage.getItem('llamero_v29_save')||localStorage.getItem('llamero_v28_save')||localStorage.getItem('llamero_v27_save')||localStorage.getItem('llamero_v18_save'));} function loadGame(){try{const raw=localStorage.getItem('llamero_v46_save')||localStorage.getItem('llamero_v45_save')||localStorage.getItem('llamero_v44_save')||localStorage.getItem('llamero_v43_save')||localStorage.getItem('llamero_v42_save')||localStorage.getItem('llamero_v41_save')||localStorage.getItem('llamero_v40_save')||localStorage.getItem('llamero_v39_save')||localStorage.getItem('llamero_v38_save')||localStorage.getItem('llamero_v37_save')||localStorage.getItem('llamero_v36_save')||localStorage.getItem('llamero_v35_save')||localStorage.getItem('llamero_v34_save')||localStorage.getItem('llamero_v33_save')||localStorage.getItem('llamero_v32_save')||localStorage.getItem('llamero_v31_save')||localStorage.getItem('llamero_v30_save')||localStorage.getItem('llamero_v29_save')||localStorage.getItem('llamero_v28_save')||localStorage.getItem('llamero_v27_save')||localStorage.getItem('llamero_v18_save');const s=JSON.parse(raw); if(s&&s.profile){state=s;ensurePalmares();saveGame(); return true;}}catch(e){} return false;}
+  if(!state.palmares)state.palmares={events:0,totalWins:0,top10s:0,fncsWins:state.trophies?.fncs||0,fncsPodiums:state.trophies?.fncs||0,globalWins:state.trophies?.global||0,globalPodiums:state.trophies?.global||0,cupWins:state.trophies?.cups||0,biggestPrize:0,bestFNCS:null,bestGlobal:null,recent:[]}; if(!Array.isArray(state.palmares.recent))state.palmares.recent=[];} function saveGame(){if(state){ensurePalmares();localStorage.setItem('llamero_v47_save',JSON.stringify(state));}} function hasSave(){return !!(localStorage.getItem('llamero_v47_save')||localStorage.getItem('llamero_v46_save')||localStorage.getItem('llamero_v45_save')||localStorage.getItem('llamero_v44_save')||localStorage.getItem('llamero_v43_save')||localStorage.getItem('llamero_v42_save')||localStorage.getItem('llamero_v41_save')||localStorage.getItem('llamero_v40_save')||localStorage.getItem('llamero_v39_save')||localStorage.getItem('llamero_v38_save')||localStorage.getItem('llamero_v37_save')||localStorage.getItem('llamero_v36_save')||localStorage.getItem('llamero_v35_save')||localStorage.getItem('llamero_v34_save')||localStorage.getItem('llamero_v33_save')||localStorage.getItem('llamero_v32_save')||localStorage.getItem('llamero_v31_save')||localStorage.getItem('llamero_v30_save')||localStorage.getItem('llamero_v29_save')||localStorage.getItem('llamero_v28_save')||localStorage.getItem('llamero_v27_save')||localStorage.getItem('llamero_v18_save'));} function loadGame(){try{const raw=localStorage.getItem('llamero_v47_save')||localStorage.getItem('llamero_v46_save')||localStorage.getItem('llamero_v45_save')||localStorage.getItem('llamero_v44_save')||localStorage.getItem('llamero_v43_save')||localStorage.getItem('llamero_v42_save')||localStorage.getItem('llamero_v41_save')||localStorage.getItem('llamero_v40_save')||localStorage.getItem('llamero_v39_save')||localStorage.getItem('llamero_v38_save')||localStorage.getItem('llamero_v37_save')||localStorage.getItem('llamero_v36_save')||localStorage.getItem('llamero_v35_save')||localStorage.getItem('llamero_v34_save')||localStorage.getItem('llamero_v33_save')||localStorage.getItem('llamero_v32_save')||localStorage.getItem('llamero_v31_save')||localStorage.getItem('llamero_v30_save')||localStorage.getItem('llamero_v29_save')||localStorage.getItem('llamero_v28_save')||localStorage.getItem('llamero_v27_save')||localStorage.getItem('llamero_v18_save');const s=JSON.parse(raw); if(s&&s.profile){state=s;ensurePalmares();saveGame(); return true;}}catch(e){} return false;}
 
 function rollCareerCeiling(){
   const r=Math.random();
@@ -1923,7 +2046,7 @@ function candidatePool(region){
 }
 function yearDecisionSet(count=3){
   count=clamp(Number(count)||3,1,3);
-  let pool=['human','life','lifeplus','team','role','creator','pressure','gear','career','careerplus','rivalry','social','strategy','fortnite','fortnite','fortnite','mega','mega','mega','mega','mega','mega'];
+  let pool=['human','life','lifeplus','team','role','creator','pressure','gear','career','careerplus','rivalry','social','strategy','fortnite','fortnite','mega','mega','mega','duomega','duomega','duomega','duomega','duomega','duomega'];
   if(Math.random()<0.30) pool.push('ovr');
   if(state.profile.region==='SA') pool.push('under');
   if(state.age<=16) pool.push('school','free');
@@ -1945,7 +2068,7 @@ function yearDecisionSet(count=3){
   }
 
   while(chosen.length<count){
-    chosen.push(pick(['mega','fortnite','human','ovr','life','team','creator','pressure','gear','career','rivalry']));
+    chosen.push(pick(['duomega','mega','fortnite','human','ovr','life','team','creator','pressure','gear','career','rivalry']));
   }
   return chosen.slice(0,count);
 }
@@ -2248,7 +2371,7 @@ function selectDecisionCard(choice,card){
 }
 function resultKey(e,fn,card){if(e.key==='Enter'||e.key===' '){e.preventDefault();selectResultCard(fn,card);}}
 function selectResultCard(fn,card){const grid=card.closest('.option-grid');card.classList.add('choice-picked');if(grid)[...grid.querySelectorAll('.result-card')].forEach(c=>{if(c!==card)c.classList.add('choice-faded');});setTimeout(fn,360);}
-function runTournament(tid){const t=TOURS[tid]; let place=simulatePlacement(t,tid); if(tid==='qual' && state.ovr>=80) place=Math.min(place,8); const earnings=prizeFor(tid,place), prGain=powerPointsFor(tid,place); state.earnings+=earnings; state.powerRanking+=prGain; state.lastResult={tourId:tid,name:t.name,place,earnings,prGain};
+function runTournament(tid){const t=TOURS[tid]; const rival=tournamentRivalDuo(); let place=simulatePlacement(t,tid); if(tid==='qual' && state.ovr>=80) place=Math.min(place,8); const earnings=prizeFor(tid,place), prGain=powerPointsFor(tid,place); state.earnings+=earnings; state.powerRanking+=prGain; state.lastResult={tourId:tid,name:t.name,place,earnings,prGain,rivalDuo:rival?{a:rival.a.name,b:rival.b.name,rank:displayRankInfo(rival.score).name}:null};
   updatePalmares(tid,t,place,earnings,prGain);
   recordCombat(tid,place);
   // Competir genera desgaste, pero de forma gradual.
@@ -2262,32 +2385,35 @@ function runTournament(tid){const t=TOURS[tid]; let place=simulatePlacement(t,ti
     else if(place<=5&&Math.random()<.85)globalQual=true;
     else if(place<=10&&state.ovr>=90&&Math.random()<.48)globalQual=true;
     if(globalQual)state.queue.push(['tour','global']);
-  } saveGame(); renderTournamentResult();}
+  } saveGame(); if(place===1)showTournamentWinScreen(); else renderTournamentResult();}
 function switchTeammate(player){state.teammate=player.id; state.chemistry=rand(28,48); if(!Array.isArray(state.duoHistory))state.duoHistory=[]; if(!state.duoHistory.includes(player.name))state.duoHistory.push(player.name); state.news.unshift('NUEVO DÚO: '+player.name.toUpperCase()+'.');}
 function abandonDuo(){if(!state||!state.teammate)return; state.news.unshift('DECIDISTE ABANDONAR A TU DÚO.'); state.teammate=null; state.chemistry=clamp(state.chemistry-15,0,100); saveGame(); chooseTeammatesScreen();}
 function chooseTeammatesScreen(){
   let pool=candidatePool(state.profile.region);
-  if(pool.length<2)pool=PLAYER_LIST.filter(p=>p.active&&p.region===state.profile.region&&p.id!==state.teammate);
+  if(pool.length<3)pool=PLAYER_LIST.filter(p=>p.active&&p.region===state.profile.region&&p.id!==state.teammate);
 
   const target=duoOfferTarget();
-
-  // Ordenamos por cercanía al nivel que corresponde a tu carrera.
-  // Cuanto más OVR tenés, más fuerte es el grupo de ofertas.
   pool=[...pool].sort((a,b)=>{
     const da=Math.abs(teammateStrength(a)-target)+(Math.random()*3.5);
     const db=Math.abs(teammateStrength(b)-target)+(Math.random()*3.5);
     return da-db;
   });
 
-  const shortlist=pool.slice(0,Math.min(10,pool.length));
-  const firstPool=shortlist.slice(0,Math.max(3,Math.ceil(shortlist.length*.65)));
-  const a=pick(firstPool);
-  const remaining=shortlist.filter(x=>x.id!==a.id);
-  const b=pick(remaining.length?remaining:pool.filter(x=>x.id!==a.id));
+  const shortlist=pool.slice(0,Math.min(16,pool.length));
+  const picks=[];
+  while(picks.length<3 && shortlist.length){
+    const p=shortlist.splice(rand(0,Math.min(shortlist.length-1,6)),1)[0];
+    if(p&&!picks.some(x=>x.id===p.id))picks.push(p);
+  }
+  while(picks.length<3){
+    const p=pick(pool.filter(x=>!picks.some(y=>y.id===x.id)));
+    if(!p)break;
+    picks.push(p);
+  }
 
-  state.pending={type:'duo',a:a.id,b:b.id};
+  state.pending={type:'duo',options:picks.map(p=>p.id),a:picks[0]?.id,b:picks[1]?.id,c:picks[2]?.id};
   saveGame();
-  renderDuoChoice(a,b);
+  renderDuoChoice(...picks);
 }
 function pickTeammate(id){const p=getPlayer(id); state.pending=null; switchTeammate(p); saveGame(); renderCareer();}
 function selectTeammate(id,card){
@@ -2644,10 +2770,357 @@ function regionEvent(){const current=state.profile.region, options=Object.keys(R
 function banEvent(){return evt('ESTÁS BANEADO ESTA TEMPORADA','No podés jugar torneos oficiales. Solo podés decidir cómo aprovechar el tiempo.',DECISION_IMAGES.settings,'ENTRENAR MECÁNICAS','DESCONECTARME UN POCO',['+1 OVR'],['- Burnout'],()=>{state.ovr=clamp(state.ovr+1,45,99);state.hidden.prep+=1;},()=>{state.hidden.burnout=clamp(state.hidden.burnout-4,0,35);},DECISION_IMAGES.practice,DECISION_IMAGES.relax);}
 function banTrainingEvent(){return evt('SCRIMS DURANTE EL BAN','Podés seguir jugando scrims privadas aunque no puedas competir oficialmente.',DECISION_IMAGES.practice,'JUGAR SCRIMS','HACER VOD REVIEW',['+2 OVR','+ Burnout'],['+1 OVR','+ Mental'],()=>{state.ovr=clamp(state.ovr+2,45,99);state.hidden.burnout+=2;},()=>{state.ovr=clamp(state.ovr+1,45,99);state.hidden.mental+=2;},DECISION_IMAGES.compete,DECISION_IMAGES.analyst);}
 function banLifeEvent(){return evt('TU IMAGEN DURANTE EL BAN','La comunidad sigue hablando del ban.',DECISION_IMAGES.interview,'DAR LA CARA','NO DECIR NADA',['+25 PR','Riesgo'],['+ Mental'],()=>{state.powerRanking+=25;if(Math.random()<.35)state.hidden.mental-=2;},()=>{state.hidden.mental+=2;},DECISION_IMAGES.interview,DECISION_IMAGES.relax);}
+
+const DUO_DECISION_SPECS=[
+{title:'NUEVA CALL DE ROTACIÓN · SEMANA 1',text:'Tu compañero propone una call distinta para entrar a moving. antes del próximo cup.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'NUEVA CALL DE ROTACIÓN · QUALIFIER',text:'Tu compañero propone una call distinta para entrar a moving. antes del qualifier.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'NUEVA CALL DE ROTACIÓN · FNCS',text:'Tu compañero propone una call distinta para entrar a moving. con FNCS cada vez más cerca.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'NUEVA CALL DE ROTACIÓN · BOOTCAMP',text:'Tu compañero propone una call distinta para entrar a moving. durante un bootcamp.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'NUEVA CALL DE ROTACIÓN · SCRIMS',text:'Tu compañero propone una call distinta para entrar a moving. después de una mala sesión de scrims.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'NUEVA CALL DE ROTACIÓN · NUEVO META',text:'Tu compañero propone una call distinta para entrar a moving. con el meta recién cambiado.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'NUEVA CALL DE ROTACIÓN · RACHA',text:'Tu compañero propone una call distinta para entrar a moving. mientras el dúo está en buena forma.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'NUEVA CALL DE ROTACIÓN · PRESIÓN',text:'Tu compañero propone una call distinta para entrar a moving. con mucha presión de la comunidad.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'NUEVA CALL DE ROTACIÓN · LAN',text:'Tu compañero propone una call distinta para entrar a moving. preparando una posible LAN.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'NUEVA CALL DE ROTACIÓN · FIN DE TEMPORADA',text:'Tu compañero propone una call distinta para entrar a moving. en el tramo final de la temporada.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'NUEVA CALL DE ROTACIÓN · HIGH ELO',text:'Tu compañero propone una call distinta para entrar a moving. contra las mejores lobbies.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'NUEVA CALL DE ROTACIÓN · NOCHE LARGA',text:'Tu compañero propone una call distinta para entrar a moving. después de varias horas jugando.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'NUEVA CALL DE ROTACIÓN · NUEVO PARCHE',text:'Tu compañero propone una call distinta para entrar a moving. tras una actualización importante.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'NUEVA CALL DE ROTACIÓN · DÍA CLAVE',text:'Tu compañero propone una call distinta para entrar a moving. el día previo al torneo.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'NUEVA CALL DE ROTACIÓN · SEMANA TRANQUILA',text:'Tu compañero propone una call distinta para entrar a moving. sin torneos grandes inmediatos.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'NUEVA CALL DE ROTACIÓN · REGIÓN NUEVA',text:'Tu compañero propone una call distinta para entrar a moving. adaptándose a nuevas lobbies.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'NUEVA CALL DE ROTACIÓN · CASH CUP',text:'Tu compañero propone una call distinta para entrar a moving. antes de una Cash Cup.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'NUEVA CALL DE ROTACIÓN · MAJOR',text:'Tu compañero propone una call distinta para entrar a moving. pensando en llegar al Major.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'NUEVA CALL DE ROTACIÓN · GLOBAL',text:'Tu compañero propone una call distinta para entrar a moving. soñando con una Global.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'NUEVA CALL DE ROTACIÓN · RESET',text:'Tu compañero propone una call distinta para entrar a moving. después de resetear su plan de juego.',a:'SEGUIR SU CALL',b:'USAR TU CALL',kind:'chem'},
+{title:'PELEA POR EL DROP · SEMANA 1',text:'Los dos quieren cambiar cómo juegan el off-spawn. antes del próximo cup.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'PELEA POR EL DROP · QUALIFIER',text:'Los dos quieren cambiar cómo juegan el off-spawn. antes del qualifier.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'PELEA POR EL DROP · FNCS',text:'Los dos quieren cambiar cómo juegan el off-spawn. con FNCS cada vez más cerca.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'PELEA POR EL DROP · BOOTCAMP',text:'Los dos quieren cambiar cómo juegan el off-spawn. durante un bootcamp.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'PELEA POR EL DROP · SCRIMS',text:'Los dos quieren cambiar cómo juegan el off-spawn. después de una mala sesión de scrims.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'PELEA POR EL DROP · NUEVO META',text:'Los dos quieren cambiar cómo juegan el off-spawn. con el meta recién cambiado.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'PELEA POR EL DROP · RACHA',text:'Los dos quieren cambiar cómo juegan el off-spawn. mientras el dúo está en buena forma.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'PELEA POR EL DROP · PRESIÓN',text:'Los dos quieren cambiar cómo juegan el off-spawn. con mucha presión de la comunidad.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'PELEA POR EL DROP · LAN',text:'Los dos quieren cambiar cómo juegan el off-spawn. preparando una posible LAN.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'PELEA POR EL DROP · FIN DE TEMPORADA',text:'Los dos quieren cambiar cómo juegan el off-spawn. en el tramo final de la temporada.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'PELEA POR EL DROP · HIGH ELO',text:'Los dos quieren cambiar cómo juegan el off-spawn. contra las mejores lobbies.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'PELEA POR EL DROP · NOCHE LARGA',text:'Los dos quieren cambiar cómo juegan el off-spawn. después de varias horas jugando.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'PELEA POR EL DROP · NUEVO PARCHE',text:'Los dos quieren cambiar cómo juegan el off-spawn. tras una actualización importante.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'PELEA POR EL DROP · DÍA CLAVE',text:'Los dos quieren cambiar cómo juegan el off-spawn. el día previo al torneo.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'PELEA POR EL DROP · SEMANA TRANQUILA',text:'Los dos quieren cambiar cómo juegan el off-spawn. sin torneos grandes inmediatos.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'PELEA POR EL DROP · REGIÓN NUEVA',text:'Los dos quieren cambiar cómo juegan el off-spawn. adaptándose a nuevas lobbies.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'PELEA POR EL DROP · CASH CUP',text:'Los dos quieren cambiar cómo juegan el off-spawn. antes de una Cash Cup.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'PELEA POR EL DROP · MAJOR',text:'Los dos quieren cambiar cómo juegan el off-spawn. pensando en llegar al Major.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'PELEA POR EL DROP · GLOBAL',text:'Los dos quieren cambiar cómo juegan el off-spawn. soñando con una Global.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'PELEA POR EL DROP · RESET',text:'Los dos quieren cambiar cómo juegan el off-spawn. después de resetear su plan de juego.',a:'JUGAR AGRESIVO',b:'JUGAR POR LOOT',kind:'prep'},
+{title:'REPARTO DE ROLES · SEMANA 1',text:'No está claro quién tarpea en los últimos círculos. antes del próximo cup.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'REPARTO DE ROLES · QUALIFIER',text:'No está claro quién tarpea en los últimos círculos. antes del qualifier.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'REPARTO DE ROLES · FNCS',text:'No está claro quién tarpea en los últimos círculos. con FNCS cada vez más cerca.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'REPARTO DE ROLES · BOOTCAMP',text:'No está claro quién tarpea en los últimos círculos. durante un bootcamp.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'REPARTO DE ROLES · SCRIMS',text:'No está claro quién tarpea en los últimos círculos. después de una mala sesión de scrims.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'REPARTO DE ROLES · NUEVO META',text:'No está claro quién tarpea en los últimos círculos. con el meta recién cambiado.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'REPARTO DE ROLES · RACHA',text:'No está claro quién tarpea en los últimos círculos. mientras el dúo está en buena forma.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'REPARTO DE ROLES · PRESIÓN',text:'No está claro quién tarpea en los últimos círculos. con mucha presión de la comunidad.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'REPARTO DE ROLES · LAN',text:'No está claro quién tarpea en los últimos círculos. preparando una posible LAN.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'REPARTO DE ROLES · FIN DE TEMPORADA',text:'No está claro quién tarpea en los últimos círculos. en el tramo final de la temporada.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'REPARTO DE ROLES · HIGH ELO',text:'No está claro quién tarpea en los últimos círculos. contra las mejores lobbies.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'REPARTO DE ROLES · NOCHE LARGA',text:'No está claro quién tarpea en los últimos círculos. después de varias horas jugando.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'REPARTO DE ROLES · NUEVO PARCHE',text:'No está claro quién tarpea en los últimos círculos. tras una actualización importante.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'REPARTO DE ROLES · DÍA CLAVE',text:'No está claro quién tarpea en los últimos círculos. el día previo al torneo.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'REPARTO DE ROLES · SEMANA TRANQUILA',text:'No está claro quién tarpea en los últimos círculos. sin torneos grandes inmediatos.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'REPARTO DE ROLES · REGIÓN NUEVA',text:'No está claro quién tarpea en los últimos círculos. adaptándose a nuevas lobbies.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'REPARTO DE ROLES · CASH CUP',text:'No está claro quién tarpea en los últimos círculos. antes de una Cash Cup.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'REPARTO DE ROLES · MAJOR',text:'No está claro quién tarpea en los últimos círculos. pensando en llegar al Major.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'REPARTO DE ROLES · GLOBAL',text:'No está claro quién tarpea en los últimos círculos. soñando con una Global.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'REPARTO DE ROLES · RESET',text:'No está claro quién tarpea en los últimos círculos. después de resetear su plan de juego.',a:'DEFINIR TARPER',b:'SEGUIR FLEX',kind:'chem'},
+{title:'CAMBIO DE IGL · SEMANA 1',text:'Tu dúo cree que deberían alternar las calls. antes del próximo cup.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'CAMBIO DE IGL · QUALIFIER',text:'Tu dúo cree que deberían alternar las calls. antes del qualifier.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'CAMBIO DE IGL · FNCS',text:'Tu dúo cree que deberían alternar las calls. con FNCS cada vez más cerca.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'CAMBIO DE IGL · BOOTCAMP',text:'Tu dúo cree que deberían alternar las calls. durante un bootcamp.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'CAMBIO DE IGL · SCRIMS',text:'Tu dúo cree que deberían alternar las calls. después de una mala sesión de scrims.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'CAMBIO DE IGL · NUEVO META',text:'Tu dúo cree que deberían alternar las calls. con el meta recién cambiado.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'CAMBIO DE IGL · RACHA',text:'Tu dúo cree que deberían alternar las calls. mientras el dúo está en buena forma.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'CAMBIO DE IGL · PRESIÓN',text:'Tu dúo cree que deberían alternar las calls. con mucha presión de la comunidad.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'CAMBIO DE IGL · LAN',text:'Tu dúo cree que deberían alternar las calls. preparando una posible LAN.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'CAMBIO DE IGL · FIN DE TEMPORADA',text:'Tu dúo cree que deberían alternar las calls. en el tramo final de la temporada.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'CAMBIO DE IGL · HIGH ELO',text:'Tu dúo cree que deberían alternar las calls. contra las mejores lobbies.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'CAMBIO DE IGL · NOCHE LARGA',text:'Tu dúo cree que deberían alternar las calls. después de varias horas jugando.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'CAMBIO DE IGL · NUEVO PARCHE',text:'Tu dúo cree que deberían alternar las calls. tras una actualización importante.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'CAMBIO DE IGL · DÍA CLAVE',text:'Tu dúo cree que deberían alternar las calls. el día previo al torneo.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'CAMBIO DE IGL · SEMANA TRANQUILA',text:'Tu dúo cree que deberían alternar las calls. sin torneos grandes inmediatos.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'CAMBIO DE IGL · REGIÓN NUEVA',text:'Tu dúo cree que deberían alternar las calls. adaptándose a nuevas lobbies.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'CAMBIO DE IGL · CASH CUP',text:'Tu dúo cree que deberían alternar las calls. antes de una Cash Cup.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'CAMBIO DE IGL · MAJOR',text:'Tu dúo cree que deberían alternar las calls. pensando en llegar al Major.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'CAMBIO DE IGL · GLOBAL',text:'Tu dúo cree que deberían alternar las calls. soñando con una Global.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'CAMBIO DE IGL · RESET',text:'Tu dúo cree que deberían alternar las calls. después de resetear su plan de juego.',a:'PROBARLO',b:'MANTENER ROLES',kind:'chem'},
+{title:'DÍA MALO DE TU DÚO · SEMANA 1',text:'Tu teammate está frustrado después de varias malas partidas. antes del próximo cup.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'DÍA MALO DE TU DÚO · QUALIFIER',text:'Tu teammate está frustrado después de varias malas partidas. antes del qualifier.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'DÍA MALO DE TU DÚO · FNCS',text:'Tu teammate está frustrado después de varias malas partidas. con FNCS cada vez más cerca.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'DÍA MALO DE TU DÚO · BOOTCAMP',text:'Tu teammate está frustrado después de varias malas partidas. durante un bootcamp.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'DÍA MALO DE TU DÚO · SCRIMS',text:'Tu teammate está frustrado después de varias malas partidas. después de una mala sesión de scrims.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'DÍA MALO DE TU DÚO · NUEVO META',text:'Tu teammate está frustrado después de varias malas partidas. con el meta recién cambiado.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'DÍA MALO DE TU DÚO · RACHA',text:'Tu teammate está frustrado después de varias malas partidas. mientras el dúo está en buena forma.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'DÍA MALO DE TU DÚO · PRESIÓN',text:'Tu teammate está frustrado después de varias malas partidas. con mucha presión de la comunidad.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'DÍA MALO DE TU DÚO · LAN',text:'Tu teammate está frustrado después de varias malas partidas. preparando una posible LAN.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'DÍA MALO DE TU DÚO · FIN DE TEMPORADA',text:'Tu teammate está frustrado después de varias malas partidas. en el tramo final de la temporada.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'DÍA MALO DE TU DÚO · HIGH ELO',text:'Tu teammate está frustrado después de varias malas partidas. contra las mejores lobbies.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'DÍA MALO DE TU DÚO · NOCHE LARGA',text:'Tu teammate está frustrado después de varias malas partidas. después de varias horas jugando.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'DÍA MALO DE TU DÚO · NUEVO PARCHE',text:'Tu teammate está frustrado después de varias malas partidas. tras una actualización importante.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'DÍA MALO DE TU DÚO · DÍA CLAVE',text:'Tu teammate está frustrado después de varias malas partidas. el día previo al torneo.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'DÍA MALO DE TU DÚO · SEMANA TRANQUILA',text:'Tu teammate está frustrado después de varias malas partidas. sin torneos grandes inmediatos.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'DÍA MALO DE TU DÚO · REGIÓN NUEVA',text:'Tu teammate está frustrado después de varias malas partidas. adaptándose a nuevas lobbies.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'DÍA MALO DE TU DÚO · CASH CUP',text:'Tu teammate está frustrado después de varias malas partidas. antes de una Cash Cup.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'DÍA MALO DE TU DÚO · MAJOR',text:'Tu teammate está frustrado después de varias malas partidas. pensando en llegar al Major.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'DÍA MALO DE TU DÚO · GLOBAL',text:'Tu teammate está frustrado después de varias malas partidas. soñando con una Global.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'DÍA MALO DE TU DÚO · RESET',text:'Tu teammate está frustrado después de varias malas partidas. después de resetear su plan de juego.',a:'BANCARLO',b:'EXIGIR MÁS',kind:'mental'},
+{title:'REVIEW ENTRE LOS DOS · SEMANA 1',text:'Tienen una noche libre para revisar VODs juntos. antes del próximo cup.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REVIEW ENTRE LOS DOS · QUALIFIER',text:'Tienen una noche libre para revisar VODs juntos. antes del qualifier.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REVIEW ENTRE LOS DOS · FNCS',text:'Tienen una noche libre para revisar VODs juntos. con FNCS cada vez más cerca.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REVIEW ENTRE LOS DOS · BOOTCAMP',text:'Tienen una noche libre para revisar VODs juntos. durante un bootcamp.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REVIEW ENTRE LOS DOS · SCRIMS',text:'Tienen una noche libre para revisar VODs juntos. después de una mala sesión de scrims.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REVIEW ENTRE LOS DOS · NUEVO META',text:'Tienen una noche libre para revisar VODs juntos. con el meta recién cambiado.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REVIEW ENTRE LOS DOS · RACHA',text:'Tienen una noche libre para revisar VODs juntos. mientras el dúo está en buena forma.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REVIEW ENTRE LOS DOS · PRESIÓN',text:'Tienen una noche libre para revisar VODs juntos. con mucha presión de la comunidad.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REVIEW ENTRE LOS DOS · LAN',text:'Tienen una noche libre para revisar VODs juntos. preparando una posible LAN.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REVIEW ENTRE LOS DOS · FIN DE TEMPORADA',text:'Tienen una noche libre para revisar VODs juntos. en el tramo final de la temporada.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REVIEW ENTRE LOS DOS · HIGH ELO',text:'Tienen una noche libre para revisar VODs juntos. contra las mejores lobbies.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REVIEW ENTRE LOS DOS · NOCHE LARGA',text:'Tienen una noche libre para revisar VODs juntos. después de varias horas jugando.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REVIEW ENTRE LOS DOS · NUEVO PARCHE',text:'Tienen una noche libre para revisar VODs juntos. tras una actualización importante.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REVIEW ENTRE LOS DOS · DÍA CLAVE',text:'Tienen una noche libre para revisar VODs juntos. el día previo al torneo.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REVIEW ENTRE LOS DOS · SEMANA TRANQUILA',text:'Tienen una noche libre para revisar VODs juntos. sin torneos grandes inmediatos.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REVIEW ENTRE LOS DOS · REGIÓN NUEVA',text:'Tienen una noche libre para revisar VODs juntos. adaptándose a nuevas lobbies.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REVIEW ENTRE LOS DOS · CASH CUP',text:'Tienen una noche libre para revisar VODs juntos. antes de una Cash Cup.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REVIEW ENTRE LOS DOS · MAJOR',text:'Tienen una noche libre para revisar VODs juntos. pensando en llegar al Major.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REVIEW ENTRE LOS DOS · GLOBAL',text:'Tienen una noche libre para revisar VODs juntos. soñando con una Global.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REVIEW ENTRE LOS DOS · RESET',text:'Tienen una noche libre para revisar VODs juntos. después de resetear su plan de juego.',a:'HACER REVIEW',b:'JUGAR RANKED',kind:'prep'},
+{title:'REFRESH PLAN · SEMANA 1',text:'Necesitan decidir quién inicia los refresh en endgame. antes del próximo cup.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'REFRESH PLAN · QUALIFIER',text:'Necesitan decidir quién inicia los refresh en endgame. antes del qualifier.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'REFRESH PLAN · FNCS',text:'Necesitan decidir quién inicia los refresh en endgame. con FNCS cada vez más cerca.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'REFRESH PLAN · BOOTCAMP',text:'Necesitan decidir quién inicia los refresh en endgame. durante un bootcamp.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'REFRESH PLAN · SCRIMS',text:'Necesitan decidir quién inicia los refresh en endgame. después de una mala sesión de scrims.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'REFRESH PLAN · NUEVO META',text:'Necesitan decidir quién inicia los refresh en endgame. con el meta recién cambiado.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'REFRESH PLAN · RACHA',text:'Necesitan decidir quién inicia los refresh en endgame. mientras el dúo está en buena forma.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'REFRESH PLAN · PRESIÓN',text:'Necesitan decidir quién inicia los refresh en endgame. con mucha presión de la comunidad.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'REFRESH PLAN · LAN',text:'Necesitan decidir quién inicia los refresh en endgame. preparando una posible LAN.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'REFRESH PLAN · FIN DE TEMPORADA',text:'Necesitan decidir quién inicia los refresh en endgame. en el tramo final de la temporada.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'REFRESH PLAN · HIGH ELO',text:'Necesitan decidir quién inicia los refresh en endgame. contra las mejores lobbies.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'REFRESH PLAN · NOCHE LARGA',text:'Necesitan decidir quién inicia los refresh en endgame. después de varias horas jugando.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'REFRESH PLAN · NUEVO PARCHE',text:'Necesitan decidir quién inicia los refresh en endgame. tras una actualización importante.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'REFRESH PLAN · DÍA CLAVE',text:'Necesitan decidir quién inicia los refresh en endgame. el día previo al torneo.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'REFRESH PLAN · SEMANA TRANQUILA',text:'Necesitan decidir quién inicia los refresh en endgame. sin torneos grandes inmediatos.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'REFRESH PLAN · REGIÓN NUEVA',text:'Necesitan decidir quién inicia los refresh en endgame. adaptándose a nuevas lobbies.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'REFRESH PLAN · CASH CUP',text:'Necesitan decidir quién inicia los refresh en endgame. antes de una Cash Cup.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'REFRESH PLAN · MAJOR',text:'Necesitan decidir quién inicia los refresh en endgame. pensando en llegar al Major.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'REFRESH PLAN · GLOBAL',text:'Necesitan decidir quién inicia los refresh en endgame. soñando con una Global.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'REFRESH PLAN · RESET',text:'Necesitan decidir quién inicia los refresh en endgame. después de resetear su plan de juego.',a:'ASIGNAR ROLES',b:'IMPROVISAR',kind:'chem'},
+{title:'DÚO EN RACHA · SEMANA 1',text:'Vienen jugando muy bien y pueden subir la intensidad. antes del próximo cup.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'DÚO EN RACHA · QUALIFIER',text:'Vienen jugando muy bien y pueden subir la intensidad. antes del qualifier.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'DÚO EN RACHA · FNCS',text:'Vienen jugando muy bien y pueden subir la intensidad. con FNCS cada vez más cerca.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'DÚO EN RACHA · BOOTCAMP',text:'Vienen jugando muy bien y pueden subir la intensidad. durante un bootcamp.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'DÚO EN RACHA · SCRIMS',text:'Vienen jugando muy bien y pueden subir la intensidad. después de una mala sesión de scrims.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'DÚO EN RACHA · NUEVO META',text:'Vienen jugando muy bien y pueden subir la intensidad. con el meta recién cambiado.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'DÚO EN RACHA · RACHA',text:'Vienen jugando muy bien y pueden subir la intensidad. mientras el dúo está en buena forma.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'DÚO EN RACHA · PRESIÓN',text:'Vienen jugando muy bien y pueden subir la intensidad. con mucha presión de la comunidad.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'DÚO EN RACHA · LAN',text:'Vienen jugando muy bien y pueden subir la intensidad. preparando una posible LAN.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'DÚO EN RACHA · FIN DE TEMPORADA',text:'Vienen jugando muy bien y pueden subir la intensidad. en el tramo final de la temporada.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'DÚO EN RACHA · HIGH ELO',text:'Vienen jugando muy bien y pueden subir la intensidad. contra las mejores lobbies.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'DÚO EN RACHA · NOCHE LARGA',text:'Vienen jugando muy bien y pueden subir la intensidad. después de varias horas jugando.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'DÚO EN RACHA · NUEVO PARCHE',text:'Vienen jugando muy bien y pueden subir la intensidad. tras una actualización importante.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'DÚO EN RACHA · DÍA CLAVE',text:'Vienen jugando muy bien y pueden subir la intensidad. el día previo al torneo.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'DÚO EN RACHA · SEMANA TRANQUILA',text:'Vienen jugando muy bien y pueden subir la intensidad. sin torneos grandes inmediatos.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'DÚO EN RACHA · REGIÓN NUEVA',text:'Vienen jugando muy bien y pueden subir la intensidad. adaptándose a nuevas lobbies.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'DÚO EN RACHA · CASH CUP',text:'Vienen jugando muy bien y pueden subir la intensidad. antes de una Cash Cup.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'DÚO EN RACHA · MAJOR',text:'Vienen jugando muy bien y pueden subir la intensidad. pensando en llegar al Major.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'DÚO EN RACHA · GLOBAL',text:'Vienen jugando muy bien y pueden subir la intensidad. soñando con una Global.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'DÚO EN RACHA · RESET',text:'Vienen jugando muy bien y pueden subir la intensidad. después de resetear su plan de juego.',a:'GRINDEAR MÁS',b:'CUIDAR LA RACHA',kind:'burn'},
+{title:'TENSIÓN EN COMMS · SEMANA 1',text:'Las calls están demasiado cargadas durante las fights. antes del próximo cup.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'TENSIÓN EN COMMS · QUALIFIER',text:'Las calls están demasiado cargadas durante las fights. antes del qualifier.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'TENSIÓN EN COMMS · FNCS',text:'Las calls están demasiado cargadas durante las fights. con FNCS cada vez más cerca.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'TENSIÓN EN COMMS · BOOTCAMP',text:'Las calls están demasiado cargadas durante las fights. durante un bootcamp.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'TENSIÓN EN COMMS · SCRIMS',text:'Las calls están demasiado cargadas durante las fights. después de una mala sesión de scrims.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'TENSIÓN EN COMMS · NUEVO META',text:'Las calls están demasiado cargadas durante las fights. con el meta recién cambiado.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'TENSIÓN EN COMMS · RACHA',text:'Las calls están demasiado cargadas durante las fights. mientras el dúo está en buena forma.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'TENSIÓN EN COMMS · PRESIÓN',text:'Las calls están demasiado cargadas durante las fights. con mucha presión de la comunidad.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'TENSIÓN EN COMMS · LAN',text:'Las calls están demasiado cargadas durante las fights. preparando una posible LAN.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'TENSIÓN EN COMMS · FIN DE TEMPORADA',text:'Las calls están demasiado cargadas durante las fights. en el tramo final de la temporada.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'TENSIÓN EN COMMS · HIGH ELO',text:'Las calls están demasiado cargadas durante las fights. contra las mejores lobbies.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'TENSIÓN EN COMMS · NOCHE LARGA',text:'Las calls están demasiado cargadas durante las fights. después de varias horas jugando.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'TENSIÓN EN COMMS · NUEVO PARCHE',text:'Las calls están demasiado cargadas durante las fights. tras una actualización importante.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'TENSIÓN EN COMMS · DÍA CLAVE',text:'Las calls están demasiado cargadas durante las fights. el día previo al torneo.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'TENSIÓN EN COMMS · SEMANA TRANQUILA',text:'Las calls están demasiado cargadas durante las fights. sin torneos grandes inmediatos.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'TENSIÓN EN COMMS · REGIÓN NUEVA',text:'Las calls están demasiado cargadas durante las fights. adaptándose a nuevas lobbies.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'TENSIÓN EN COMMS · CASH CUP',text:'Las calls están demasiado cargadas durante las fights. antes de una Cash Cup.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'TENSIÓN EN COMMS · MAJOR',text:'Las calls están demasiado cargadas durante las fights. pensando en llegar al Major.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'TENSIÓN EN COMMS · GLOBAL',text:'Las calls están demasiado cargadas durante las fights. soñando con una Global.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'TENSIÓN EN COMMS · RESET',text:'Las calls están demasiado cargadas durante las fights. después de resetear su plan de juego.',a:'SIMPLIFICAR COMMS',b:'SEGUIR IGUAL',kind:'chem'},
+{title:'NUEVO DROP SECUNDARIO · SEMANA 1',text:'Tu compañero quiere preparar un drop B para torneos difíciles. antes del próximo cup.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'NUEVO DROP SECUNDARIO · QUALIFIER',text:'Tu compañero quiere preparar un drop B para torneos difíciles. antes del qualifier.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'NUEVO DROP SECUNDARIO · FNCS',text:'Tu compañero quiere preparar un drop B para torneos difíciles. con FNCS cada vez más cerca.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'NUEVO DROP SECUNDARIO · BOOTCAMP',text:'Tu compañero quiere preparar un drop B para torneos difíciles. durante un bootcamp.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'NUEVO DROP SECUNDARIO · SCRIMS',text:'Tu compañero quiere preparar un drop B para torneos difíciles. después de una mala sesión de scrims.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'NUEVO DROP SECUNDARIO · NUEVO META',text:'Tu compañero quiere preparar un drop B para torneos difíciles. con el meta recién cambiado.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'NUEVO DROP SECUNDARIO · RACHA',text:'Tu compañero quiere preparar un drop B para torneos difíciles. mientras el dúo está en buena forma.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'NUEVO DROP SECUNDARIO · PRESIÓN',text:'Tu compañero quiere preparar un drop B para torneos difíciles. con mucha presión de la comunidad.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'NUEVO DROP SECUNDARIO · LAN',text:'Tu compañero quiere preparar un drop B para torneos difíciles. preparando una posible LAN.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'NUEVO DROP SECUNDARIO · FIN DE TEMPORADA',text:'Tu compañero quiere preparar un drop B para torneos difíciles. en el tramo final de la temporada.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'NUEVO DROP SECUNDARIO · HIGH ELO',text:'Tu compañero quiere preparar un drop B para torneos difíciles. contra las mejores lobbies.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'NUEVO DROP SECUNDARIO · NOCHE LARGA',text:'Tu compañero quiere preparar un drop B para torneos difíciles. después de varias horas jugando.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'NUEVO DROP SECUNDARIO · NUEVO PARCHE',text:'Tu compañero quiere preparar un drop B para torneos difíciles. tras una actualización importante.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'NUEVO DROP SECUNDARIO · DÍA CLAVE',text:'Tu compañero quiere preparar un drop B para torneos difíciles. el día previo al torneo.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'NUEVO DROP SECUNDARIO · SEMANA TRANQUILA',text:'Tu compañero quiere preparar un drop B para torneos difíciles. sin torneos grandes inmediatos.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'NUEVO DROP SECUNDARIO · REGIÓN NUEVA',text:'Tu compañero quiere preparar un drop B para torneos difíciles. adaptándose a nuevas lobbies.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'NUEVO DROP SECUNDARIO · CASH CUP',text:'Tu compañero quiere preparar un drop B para torneos difíciles. antes de una Cash Cup.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'NUEVO DROP SECUNDARIO · MAJOR',text:'Tu compañero quiere preparar un drop B para torneos difíciles. pensando en llegar al Major.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'NUEVO DROP SECUNDARIO · GLOBAL',text:'Tu compañero quiere preparar un drop B para torneos difíciles. soñando con una Global.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'NUEVO DROP SECUNDARIO · RESET',text:'Tu compañero quiere preparar un drop B para torneos difíciles. después de resetear su plan de juego.',a:'PRACTICAR DROP B',b:'PERFECCIONAR DROP A',kind:'prep'},
+{title:'HEALS EN ENDGAME · SEMANA 1',text:'Discuten quién debería cargar movilidad y quién heals. antes del próximo cup.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'HEALS EN ENDGAME · QUALIFIER',text:'Discuten quién debería cargar movilidad y quién heals. antes del qualifier.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'HEALS EN ENDGAME · FNCS',text:'Discuten quién debería cargar movilidad y quién heals. con FNCS cada vez más cerca.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'HEALS EN ENDGAME · BOOTCAMP',text:'Discuten quién debería cargar movilidad y quién heals. durante un bootcamp.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'HEALS EN ENDGAME · SCRIMS',text:'Discuten quién debería cargar movilidad y quién heals. después de una mala sesión de scrims.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'HEALS EN ENDGAME · NUEVO META',text:'Discuten quién debería cargar movilidad y quién heals. con el meta recién cambiado.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'HEALS EN ENDGAME · RACHA',text:'Discuten quién debería cargar movilidad y quién heals. mientras el dúo está en buena forma.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'HEALS EN ENDGAME · PRESIÓN',text:'Discuten quién debería cargar movilidad y quién heals. con mucha presión de la comunidad.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'HEALS EN ENDGAME · LAN',text:'Discuten quién debería cargar movilidad y quién heals. preparando una posible LAN.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'HEALS EN ENDGAME · FIN DE TEMPORADA',text:'Discuten quién debería cargar movilidad y quién heals. en el tramo final de la temporada.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'HEALS EN ENDGAME · HIGH ELO',text:'Discuten quién debería cargar movilidad y quién heals. contra las mejores lobbies.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'HEALS EN ENDGAME · NOCHE LARGA',text:'Discuten quién debería cargar movilidad y quién heals. después de varias horas jugando.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'HEALS EN ENDGAME · NUEVO PARCHE',text:'Discuten quién debería cargar movilidad y quién heals. tras una actualización importante.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'HEALS EN ENDGAME · DÍA CLAVE',text:'Discuten quién debería cargar movilidad y quién heals. el día previo al torneo.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'HEALS EN ENDGAME · SEMANA TRANQUILA',text:'Discuten quién debería cargar movilidad y quién heals. sin torneos grandes inmediatos.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'HEALS EN ENDGAME · REGIÓN NUEVA',text:'Discuten quién debería cargar movilidad y quién heals. adaptándose a nuevas lobbies.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'HEALS EN ENDGAME · CASH CUP',text:'Discuten quién debería cargar movilidad y quién heals. antes de una Cash Cup.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'HEALS EN ENDGAME · MAJOR',text:'Discuten quién debería cargar movilidad y quién heals. pensando en llegar al Major.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'HEALS EN ENDGAME · GLOBAL',text:'Discuten quién debería cargar movilidad y quién heals. soñando con una Global.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'HEALS EN ENDGAME · RESET',text:'Discuten quién debería cargar movilidad y quién heals. después de resetear su plan de juego.',a:'REPARTIR INVENTARIO',b:'DEJARLO LIBRE',kind:'chem'},
+{title:'COACH PARA EL DÚO · SEMANA 1',text:'Un coach ofrece una sesión centrada solo en su sinergia. antes del próximo cup.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'COACH PARA EL DÚO · QUALIFIER',text:'Un coach ofrece una sesión centrada solo en su sinergia. antes del qualifier.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'COACH PARA EL DÚO · FNCS',text:'Un coach ofrece una sesión centrada solo en su sinergia. con FNCS cada vez más cerca.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'COACH PARA EL DÚO · BOOTCAMP',text:'Un coach ofrece una sesión centrada solo en su sinergia. durante un bootcamp.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'COACH PARA EL DÚO · SCRIMS',text:'Un coach ofrece una sesión centrada solo en su sinergia. después de una mala sesión de scrims.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'COACH PARA EL DÚO · NUEVO META',text:'Un coach ofrece una sesión centrada solo en su sinergia. con el meta recién cambiado.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'COACH PARA EL DÚO · RACHA',text:'Un coach ofrece una sesión centrada solo en su sinergia. mientras el dúo está en buena forma.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'COACH PARA EL DÚO · PRESIÓN',text:'Un coach ofrece una sesión centrada solo en su sinergia. con mucha presión de la comunidad.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'COACH PARA EL DÚO · LAN',text:'Un coach ofrece una sesión centrada solo en su sinergia. preparando una posible LAN.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'COACH PARA EL DÚO · FIN DE TEMPORADA',text:'Un coach ofrece una sesión centrada solo en su sinergia. en el tramo final de la temporada.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'COACH PARA EL DÚO · HIGH ELO',text:'Un coach ofrece una sesión centrada solo en su sinergia. contra las mejores lobbies.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'COACH PARA EL DÚO · NOCHE LARGA',text:'Un coach ofrece una sesión centrada solo en su sinergia. después de varias horas jugando.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'COACH PARA EL DÚO · NUEVO PARCHE',text:'Un coach ofrece una sesión centrada solo en su sinergia. tras una actualización importante.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'COACH PARA EL DÚO · DÍA CLAVE',text:'Un coach ofrece una sesión centrada solo en su sinergia. el día previo al torneo.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'COACH PARA EL DÚO · SEMANA TRANQUILA',text:'Un coach ofrece una sesión centrada solo en su sinergia. sin torneos grandes inmediatos.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'COACH PARA EL DÚO · REGIÓN NUEVA',text:'Un coach ofrece una sesión centrada solo en su sinergia. adaptándose a nuevas lobbies.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'COACH PARA EL DÚO · CASH CUP',text:'Un coach ofrece una sesión centrada solo en su sinergia. antes de una Cash Cup.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'COACH PARA EL DÚO · MAJOR',text:'Un coach ofrece una sesión centrada solo en su sinergia. pensando en llegar al Major.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'COACH PARA EL DÚO · GLOBAL',text:'Un coach ofrece una sesión centrada solo en su sinergia. soñando con una Global.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'COACH PARA EL DÚO · RESET',text:'Un coach ofrece una sesión centrada solo en su sinergia. después de resetear su plan de juego.',a:'ACEPTAR',b:'SEGUIR SOLOS',kind:'prep'},
+{title:'SCRIMS EXTRA · SEMANA 1',text:'Tu compañero quiere meter una sesión adicional esa noche. antes del próximo cup.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'SCRIMS EXTRA · QUALIFIER',text:'Tu compañero quiere meter una sesión adicional esa noche. antes del qualifier.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'SCRIMS EXTRA · FNCS',text:'Tu compañero quiere meter una sesión adicional esa noche. con FNCS cada vez más cerca.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'SCRIMS EXTRA · BOOTCAMP',text:'Tu compañero quiere meter una sesión adicional esa noche. durante un bootcamp.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'SCRIMS EXTRA · SCRIMS',text:'Tu compañero quiere meter una sesión adicional esa noche. después de una mala sesión de scrims.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'SCRIMS EXTRA · NUEVO META',text:'Tu compañero quiere meter una sesión adicional esa noche. con el meta recién cambiado.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'SCRIMS EXTRA · RACHA',text:'Tu compañero quiere meter una sesión adicional esa noche. mientras el dúo está en buena forma.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'SCRIMS EXTRA · PRESIÓN',text:'Tu compañero quiere meter una sesión adicional esa noche. con mucha presión de la comunidad.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'SCRIMS EXTRA · LAN',text:'Tu compañero quiere meter una sesión adicional esa noche. preparando una posible LAN.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'SCRIMS EXTRA · FIN DE TEMPORADA',text:'Tu compañero quiere meter una sesión adicional esa noche. en el tramo final de la temporada.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'SCRIMS EXTRA · HIGH ELO',text:'Tu compañero quiere meter una sesión adicional esa noche. contra las mejores lobbies.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'SCRIMS EXTRA · NOCHE LARGA',text:'Tu compañero quiere meter una sesión adicional esa noche. después de varias horas jugando.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'SCRIMS EXTRA · NUEVO PARCHE',text:'Tu compañero quiere meter una sesión adicional esa noche. tras una actualización importante.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'SCRIMS EXTRA · DÍA CLAVE',text:'Tu compañero quiere meter una sesión adicional esa noche. el día previo al torneo.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'SCRIMS EXTRA · SEMANA TRANQUILA',text:'Tu compañero quiere meter una sesión adicional esa noche. sin torneos grandes inmediatos.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'SCRIMS EXTRA · REGIÓN NUEVA',text:'Tu compañero quiere meter una sesión adicional esa noche. adaptándose a nuevas lobbies.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'SCRIMS EXTRA · CASH CUP',text:'Tu compañero quiere meter una sesión adicional esa noche. antes de una Cash Cup.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'SCRIMS EXTRA · MAJOR',text:'Tu compañero quiere meter una sesión adicional esa noche. pensando en llegar al Major.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'SCRIMS EXTRA · GLOBAL',text:'Tu compañero quiere meter una sesión adicional esa noche. soñando con una Global.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'SCRIMS EXTRA · RESET',text:'Tu compañero quiere meter una sesión adicional esa noche. después de resetear su plan de juego.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CAMBIO DE HORARIO · SEMANA 1',text:'Los dos rinden mejor a horas distintas. antes del próximo cup.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'CAMBIO DE HORARIO · QUALIFIER',text:'Los dos rinden mejor a horas distintas. antes del qualifier.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'CAMBIO DE HORARIO · FNCS',text:'Los dos rinden mejor a horas distintas. con FNCS cada vez más cerca.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'CAMBIO DE HORARIO · BOOTCAMP',text:'Los dos rinden mejor a horas distintas. durante un bootcamp.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'CAMBIO DE HORARIO · SCRIMS',text:'Los dos rinden mejor a horas distintas. después de una mala sesión de scrims.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'CAMBIO DE HORARIO · NUEVO META',text:'Los dos rinden mejor a horas distintas. con el meta recién cambiado.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'CAMBIO DE HORARIO · RACHA',text:'Los dos rinden mejor a horas distintas. mientras el dúo está en buena forma.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'CAMBIO DE HORARIO · PRESIÓN',text:'Los dos rinden mejor a horas distintas. con mucha presión de la comunidad.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'CAMBIO DE HORARIO · LAN',text:'Los dos rinden mejor a horas distintas. preparando una posible LAN.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'CAMBIO DE HORARIO · FIN DE TEMPORADA',text:'Los dos rinden mejor a horas distintas. en el tramo final de la temporada.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'CAMBIO DE HORARIO · HIGH ELO',text:'Los dos rinden mejor a horas distintas. contra las mejores lobbies.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'CAMBIO DE HORARIO · NOCHE LARGA',text:'Los dos rinden mejor a horas distintas. después de varias horas jugando.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'CAMBIO DE HORARIO · NUEVO PARCHE',text:'Los dos rinden mejor a horas distintas. tras una actualización importante.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'CAMBIO DE HORARIO · DÍA CLAVE',text:'Los dos rinden mejor a horas distintas. el día previo al torneo.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'CAMBIO DE HORARIO · SEMANA TRANQUILA',text:'Los dos rinden mejor a horas distintas. sin torneos grandes inmediatos.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'CAMBIO DE HORARIO · REGIÓN NUEVA',text:'Los dos rinden mejor a horas distintas. adaptándose a nuevas lobbies.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'CAMBIO DE HORARIO · CASH CUP',text:'Los dos rinden mejor a horas distintas. antes de una Cash Cup.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'CAMBIO DE HORARIO · MAJOR',text:'Los dos rinden mejor a horas distintas. pensando en llegar al Major.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'CAMBIO DE HORARIO · GLOBAL',text:'Los dos rinden mejor a horas distintas. soñando con una Global.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'CAMBIO DE HORARIO · RESET',text:'Los dos rinden mejor a horas distintas. después de resetear su plan de juego.',a:'ADAPTARTE',b:'PEDIRLE QUE SE ADAPTE',kind:'chem'},
+{title:'PRACTICAR CLUTCHES · SEMANA 1',text:'Quieren entrenar situaciones donde uno queda solo. antes del próximo cup.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'PRACTICAR CLUTCHES · QUALIFIER',text:'Quieren entrenar situaciones donde uno queda solo. antes del qualifier.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'PRACTICAR CLUTCHES · FNCS',text:'Quieren entrenar situaciones donde uno queda solo. con FNCS cada vez más cerca.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'PRACTICAR CLUTCHES · BOOTCAMP',text:'Quieren entrenar situaciones donde uno queda solo. durante un bootcamp.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'PRACTICAR CLUTCHES · SCRIMS',text:'Quieren entrenar situaciones donde uno queda solo. después de una mala sesión de scrims.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'PRACTICAR CLUTCHES · NUEVO META',text:'Quieren entrenar situaciones donde uno queda solo. con el meta recién cambiado.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'PRACTICAR CLUTCHES · RACHA',text:'Quieren entrenar situaciones donde uno queda solo. mientras el dúo está en buena forma.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'PRACTICAR CLUTCHES · PRESIÓN',text:'Quieren entrenar situaciones donde uno queda solo. con mucha presión de la comunidad.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'PRACTICAR CLUTCHES · LAN',text:'Quieren entrenar situaciones donde uno queda solo. preparando una posible LAN.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'PRACTICAR CLUTCHES · FIN DE TEMPORADA',text:'Quieren entrenar situaciones donde uno queda solo. en el tramo final de la temporada.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'PRACTICAR CLUTCHES · HIGH ELO',text:'Quieren entrenar situaciones donde uno queda solo. contra las mejores lobbies.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'PRACTICAR CLUTCHES · NOCHE LARGA',text:'Quieren entrenar situaciones donde uno queda solo. después de varias horas jugando.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'PRACTICAR CLUTCHES · NUEVO PARCHE',text:'Quieren entrenar situaciones donde uno queda solo. tras una actualización importante.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'PRACTICAR CLUTCHES · DÍA CLAVE',text:'Quieren entrenar situaciones donde uno queda solo. el día previo al torneo.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'PRACTICAR CLUTCHES · SEMANA TRANQUILA',text:'Quieren entrenar situaciones donde uno queda solo. sin torneos grandes inmediatos.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'PRACTICAR CLUTCHES · REGIÓN NUEVA',text:'Quieren entrenar situaciones donde uno queda solo. adaptándose a nuevas lobbies.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'PRACTICAR CLUTCHES · CASH CUP',text:'Quieren entrenar situaciones donde uno queda solo. antes de una Cash Cup.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'PRACTICAR CLUTCHES · MAJOR',text:'Quieren entrenar situaciones donde uno queda solo. pensando en llegar al Major.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'PRACTICAR CLUTCHES · GLOBAL',text:'Quieren entrenar situaciones donde uno queda solo. soñando con una Global.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'PRACTICAR CLUTCHES · RESET',text:'Quieren entrenar situaciones donde uno queda solo. después de resetear su plan de juego.',a:'HACER CLUTCH MAPS',b:'PRACTICAR 2V2',kind:'prep'},
+{title:'DECIDIR HEIGHT · SEMANA 1',text:'En moving zones dudan demasiado sobre cuándo tomar altura. antes del próximo cup.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'},
+{title:'DECIDIR HEIGHT · QUALIFIER',text:'En moving zones dudan demasiado sobre cuándo tomar altura. antes del qualifier.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'},
+{title:'DECIDIR HEIGHT · FNCS',text:'En moving zones dudan demasiado sobre cuándo tomar altura. con FNCS cada vez más cerca.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'},
+{title:'DECIDIR HEIGHT · BOOTCAMP',text:'En moving zones dudan demasiado sobre cuándo tomar altura. durante un bootcamp.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'},
+{title:'DECIDIR HEIGHT · SCRIMS',text:'En moving zones dudan demasiado sobre cuándo tomar altura. después de una mala sesión de scrims.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'},
+{title:'DECIDIR HEIGHT · NUEVO META',text:'En moving zones dudan demasiado sobre cuándo tomar altura. con el meta recién cambiado.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'},
+{title:'DECIDIR HEIGHT · RACHA',text:'En moving zones dudan demasiado sobre cuándo tomar altura. mientras el dúo está en buena forma.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'},
+{title:'DECIDIR HEIGHT · PRESIÓN',text:'En moving zones dudan demasiado sobre cuándo tomar altura. con mucha presión de la comunidad.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'},
+{title:'DECIDIR HEIGHT · LAN',text:'En moving zones dudan demasiado sobre cuándo tomar altura. preparando una posible LAN.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'},
+{title:'DECIDIR HEIGHT · FIN DE TEMPORADA',text:'En moving zones dudan demasiado sobre cuándo tomar altura. en el tramo final de la temporada.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'},
+{title:'DECIDIR HEIGHT · HIGH ELO',text:'En moving zones dudan demasiado sobre cuándo tomar altura. contra las mejores lobbies.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'},
+{title:'DECIDIR HEIGHT · NOCHE LARGA',text:'En moving zones dudan demasiado sobre cuándo tomar altura. después de varias horas jugando.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'},
+{title:'DECIDIR HEIGHT · NUEVO PARCHE',text:'En moving zones dudan demasiado sobre cuándo tomar altura. tras una actualización importante.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'},
+{title:'DECIDIR HEIGHT · DÍA CLAVE',text:'En moving zones dudan demasiado sobre cuándo tomar altura. el día previo al torneo.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'},
+{title:'DECIDIR HEIGHT · SEMANA TRANQUILA',text:'En moving zones dudan demasiado sobre cuándo tomar altura. sin torneos grandes inmediatos.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'},
+{title:'DECIDIR HEIGHT · REGIÓN NUEVA',text:'En moving zones dudan demasiado sobre cuándo tomar altura. adaptándose a nuevas lobbies.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'},
+{title:'DECIDIR HEIGHT · CASH CUP',text:'En moving zones dudan demasiado sobre cuándo tomar altura. antes de una Cash Cup.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'},
+{title:'DECIDIR HEIGHT · MAJOR',text:'En moving zones dudan demasiado sobre cuándo tomar altura. pensando en llegar al Major.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'},
+{title:'DECIDIR HEIGHT · GLOBAL',text:'En moving zones dudan demasiado sobre cuándo tomar altura. soñando con una Global.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'},
+{title:'DECIDIR HEIGHT · RESET',text:'En moving zones dudan demasiado sobre cuándo tomar altura. después de resetear su plan de juego.',a:'BUSCAR HEIGHT',b:'JUGAR MIDGROUND',kind:'prep'}
+];
+function duoMegaEvent(){
+  const s=pick(DUO_DECISION_SPECS);
+  const mate=currentMate();
+  const mateName=mate?mate.name:'tu compañero';
+  let aEffects=['+ Chemistry'],bEffects=['+ Estabilidad'];
+  let fa=()=>{state.chemistry=clamp(state.chemistry+4,0,100);};
+  let fb=()=>{state.hidden.mental+=1;};
+
+  if(s.kind==='prep'){
+    aEffects=['+ Preparación','+ Chemistry'];bEffects=['+ Mental'];
+    fa=()=>{state.hidden.prep+=3;state.chemistry=clamp(state.chemistry+2,0,100);};
+    fb=()=>{state.hidden.mental+=2;};
+  }else if(s.kind==='mental'){
+    aEffects=['+ Chemistry','+ Mental'];bEffects=['- Chemistry','+ Preparación'];
+    fa=()=>{state.chemistry=clamp(state.chemistry+5,0,100);state.hidden.mental+=2;};
+    fb=()=>{state.chemistry=clamp(state.chemistry-3,0,100);state.hidden.prep+=2;};
+  }else if(s.kind==='burn'){
+    aEffects=['+ Preparación','+ Burnout'];bEffects=['- Burnout','+ Mental'];
+    fa=()=>{state.hidden.prep+=4;state.hidden.burnout+=2;};
+    fb=()=>{state.hidden.burnout-=3;state.hidden.mental+=2;};
+  }
+  return evt(s.title,s.text.replace('tu compañero',mateName),DECISION_IMAGES.teamroom,s.a,s.b,aEffects,bEffects,fa,fb,DECISION_IMAGES.teamroom,DECISION_IMAGES.practice);
+}
+
 function eventData(id){
   if(id==='xvparty') return evt('FIESTA DE XV DE UNA AMIGA','Tenés 15 años. Una amiga muy cercana te invita a su fiesta de XV el mismo fin de semana que tu dúo quiere hacer un bootcamp.',DECISION_IMAGES.party,'IR A LA FIESTA','HACER BOOTCAMP',['+ Moral','- Preparación'],['+2 OVR','+ Burnout'],()=>{state.hidden.mental+=5;state.hidden.prep-=2;},()=>{state.ovr=clamp(state.ovr+2,45,99);state.hidden.prep+=3;state.hidden.burnout+=2;},DECISION_IMAGES.party,DECISION_IMAGES.practice);
   if(id==='graduation') return evt('TU GRADUACIÓN','Tenés 18 años y es tu graduación. La ceremonia coincide con un qualifier importante.',DECISION_IMAGES.graduation,'IR A LA GRADUACIÓN','JUGAR EL QUALIFIER',['+ Moral','- Burnout'],['+ Preparación','+ Qualifier'],()=>{state.hidden.mental+=5;state.hidden.burnout-=2;},()=>{state.hidden.prep+=2;state.queue.unshift(['tour','qual']);},DECISION_IMAGES.graduation,DECISION_IMAGES.compete);
-if(id==='school')return evt('COLEGIO Y COMPETITIVO','Tenés 13 años y una semana pesada de clases coincide con tus primeras sesiones serias de práctica.',DECISION_IMAGES.school,'PRIORIZAR EL COLEGIO','ENTRENAR MÁS',['+ Moral','- Burnout'],['+ Preparación','+ Burnout'],()=>{state.hidden.mental+=2;state.hidden.burnout-=1;},()=>{state.hidden.prep+=4;state.hidden.burnout+=2;}); if(id==='free')return evt('SEMANA LIBRE','No hay torneo importante. Tu teammate quiere meter muchas scrims.',DECISION_IMAGES.coach,'DESCANSAR','JUGAR SCRIMS',['+ Moral','- Burnout'],['+ Preparación','+ Chemistry'],()=>{state.hidden.mental+=3;state.hidden.burnout-=4;},()=>{state.hidden.prep+=4;state.chemistry+=2;state.hidden.burnout+=2;}); if(id==='wedding')return evt('TU MEJOR AMIGO SE CASA','El casamiento es el mismo día de la Last Chance de FNCS. Es tu última oportunidad de llegar al Major.',DECISION_IMAGES.wedding,'CASAMIENTO','LAST CHANCE',['+ Moral','Pierdes torneo'],['+ Última chance','+ Burnout'],()=>{state.hidden.mental+=6;state.hidden.burnout-=5;state.news.unshift('TE PERDISTE LA LAST CHANCE POR EL CASAMIENTO.');},()=>{state.hidden.burnout+=2;state.queue.unshift(['tour','last']);}); if(id==='legendcoach'){const coach=regionLegend(); const coachImg=skinFor((state.profile.region+'_'+coach).toLowerCase()); return evt('UN HISTÓRICO DE TU REGIÓN TE QUIERE COACHEAR', `${coach} se ofrece a ser tu coach. Si aceptás, classificás automáticamente a la FNCS y mejorás tu juego.`, coach==='k1ng' ? 'assets_v17/k1ng.png' : coachImg, 'ACEPTAR SU COACHING', 'SEGUIR SOLO', ['Auto qual a FNCS', '+3 OVR'], ['Sin cambios', '+ independencia'], ()=>{state.ovr=clamp(state.ovr+3,45,99); state.hidden.mental+=3; autoQualifyToFNCS(coach);}, ()=>{state.hidden.mental+=1; state.news.unshift('RECHAZASTE LA OFERTA DE COACHING DE '+coach.toUpperCase()+'.');}); } if(id==='appreciation'){const mate=getPlayer(state.teammate); const e=evt('¿APRECIÁS A TU COMPAÑERO?',mate?('Pensás en todo lo que viviste compitiendo con '+mate.name+'.'):'Pensás en todo lo que viviste con tu compañero.',DECISION_IMAGES.bench,'SÍ','NO',[],[],()=>{state.flags.appreciationSeen=true;state.ovr=99;state.earnings+=1000000;},()=>{state.flags.appreciationSeen=true;},DECISION_IMAGES.bench,DECISION_IMAGES.relax,true); e.silent=true; return e;} if(id==='human')return humanEvent(); if(id==='life')return lifeEvent(); if(id==='lifeplus')return lifePlusEvent(); if(id==='careerplus')return careerPlusEvent(); if(id==='social')return socialEvent(); if(id==='strategy')return strategyEvent(); if(id==='fortnite')return fortniteEvent(); if(id==='mega')return megaDecisionEvent(); if(id==='ovr')return ovrEvent(); if(id==='role')return roleEvent(); if(id==='team')return teamEvent(); if(id==='region')return regionEvent(); if(id==='creator')return creatorEvent(); if(id==='pressure')return pressureEvent(); if(id==='gear')return gearEvent(); if(id==='under')return argUnderEvent(); if(id==='career')return careerEvent(); if(id==='rivalry')return rivalryEvent(); if(id==='legendcoach'){const coach=regionLegend(); const coachImg=coach==='k1ng' ? 'assets_v17/k1ng.png' : skinFor((state.profile.region+'_'+coach).toLowerCase()); return evt('UN HISTÓRICO DE TU REGIÓN TE QUIERE COACHEAR', coach+' se ofrece a ser tu coach. Si aceptás, clasificás automáticamente a la FNCS y mejorás tu juego.', coachImg, 'ACEPTAR SU COACHING', 'SEGUIR SOLO', ['Auto qual a FNCS', '+3 OVR'], ['Sin cambios', '+ independencia'], ()=>{state.ovr=clamp(state.ovr+3,45,99); state.hidden.mental+=3; autoQualifyToFNCS(coach);}, ()=>{state.hidden.mental+=1; state.news.unshift('RECHAZASTE LA OFERTA DE COACHING DE '+coach.toUpperCase()+'.');});} if(id==='banseason')return banEvent(); if(id==='bantraining')return banTrainingEvent(); if(id==='banlife')return banLifeEvent(); return null;}
+if(id==='school')return evt('COLEGIO Y COMPETITIVO','Tenés 13 años y una semana pesada de clases coincide con tus primeras sesiones serias de práctica.',DECISION_IMAGES.school,'PRIORIZAR EL COLEGIO','ENTRENAR MÁS',['+ Moral','- Burnout'],['+ Preparación','+ Burnout'],()=>{state.hidden.mental+=2;state.hidden.burnout-=1;},()=>{state.hidden.prep+=4;state.hidden.burnout+=2;}); if(id==='free')return evt('SEMANA LIBRE','No hay torneo importante. Tu teammate quiere meter muchas scrims.',DECISION_IMAGES.coach,'DESCANSAR','JUGAR SCRIMS',['+ Moral','- Burnout'],['+ Preparación','+ Chemistry'],()=>{state.hidden.mental+=3;state.hidden.burnout-=4;},()=>{state.hidden.prep+=4;state.chemistry+=2;state.hidden.burnout+=2;}); if(id==='wedding')return evt('TU MEJOR AMIGO SE CASA','El casamiento es el mismo día de la Last Chance de FNCS. Es tu última oportunidad de llegar al Major.',DECISION_IMAGES.wedding,'CASAMIENTO','LAST CHANCE',['+ Moral','Pierdes torneo'],['+ Última chance','+ Burnout'],()=>{state.hidden.mental+=6;state.hidden.burnout-=5;state.news.unshift('TE PERDISTE LA LAST CHANCE POR EL CASAMIENTO.');},()=>{state.hidden.burnout+=2;state.queue.unshift(['tour','last']);}); if(id==='legendcoach'){const coach=regionLegend(); const coachImg=skinFor((state.profile.region+'_'+coach).toLowerCase()); return evt('UN HISTÓRICO DE TU REGIÓN TE QUIERE COACHEAR', `${coach} se ofrece a ser tu coach. Si aceptás, classificás automáticamente a la FNCS y mejorás tu juego.`, coach==='k1ng' ? 'assets_v17/k1ng.png' : coachImg, 'ACEPTAR SU COACHING', 'SEGUIR SOLO', ['Auto qual a FNCS', '+3 OVR'], ['Sin cambios', '+ independencia'], ()=>{state.ovr=clamp(state.ovr+3,45,99); state.hidden.mental+=3; autoQualifyToFNCS(coach);}, ()=>{state.hidden.mental+=1; state.news.unshift('RECHAZASTE LA OFERTA DE COACHING DE '+coach.toUpperCase()+'.');}); } if(id==='appreciation'){const mate=getPlayer(state.teammate); const e=evt('¿APRECIÁS A TU COMPAÑERO?',mate?('Pensás en todo lo que viviste compitiendo con '+mate.name+'.'):'Pensás en todo lo que viviste con tu compañero.',DECISION_IMAGES.bench,'SÍ','NO',[],[],()=>{state.flags.appreciationSeen=true;state.ovr=99;state.earnings+=1000000;},()=>{state.flags.appreciationSeen=true;},DECISION_IMAGES.bench,DECISION_IMAGES.relax,true); e.silent=true; return e;} if(id==='human')return humanEvent(); if(id==='life')return lifeEvent(); if(id==='lifeplus')return lifePlusEvent(); if(id==='careerplus')return careerPlusEvent(); if(id==='social')return socialEvent(); if(id==='strategy')return strategyEvent(); if(id==='fortnite')return fortniteEvent(); if(id==='mega')return megaDecisionEvent(); if(id==='duomega')return duoMegaEvent(); if(id==='ovr')return ovrEvent(); if(id==='role')return roleEvent(); if(id==='team')return teamEvent(); if(id==='region')return regionEvent(); if(id==='creator')return creatorEvent(); if(id==='pressure')return pressureEvent(); if(id==='gear')return gearEvent(); if(id==='under')return argUnderEvent(); if(id==='career')return careerEvent(); if(id==='rivalry')return rivalryEvent(); if(id==='legendcoach'){const coach=regionLegend(); const coachImg=coach==='k1ng' ? 'assets_v17/k1ng.png' : skinFor((state.profile.region+'_'+coach).toLowerCase()); return evt('UN HISTÓRICO DE TU REGIÓN TE QUIERE COACHEAR', coach+' se ofrece a ser tu coach. Si aceptás, clasificás automáticamente a la FNCS y mejorás tu juego.', coachImg, 'ACEPTAR SU COACHING', 'SEGUIR SOLO', ['Auto qual a FNCS', '+3 OVR'], ['Sin cambios', '+ independencia'], ()=>{state.ovr=clamp(state.ovr+3,45,99); state.hidden.mental+=3; autoQualifyToFNCS(coach);}, ()=>{state.hidden.mental+=1; state.news.unshift('RECHAZASTE LA OFERTA DE COACHING DE '+coach.toUpperCase()+'.');});} if(id==='banseason')return banEvent(); if(id==='bantraining')return banTrainingEvent(); if(id==='banlife')return banLifeEvent(); return null;}
 function runEvent(id){
   if(!state.recentDecisionTitles) state.recentDecisionTitles=[];
   let data=eventData(id);
@@ -2815,13 +3288,13 @@ function endSeason(){
 }
 function legacyScore(){let score=35+state.trophies.fncs*7+state.trophies.global*14+state.trophies.cups*1.5+Math.min(18,Math.log10(state.earnings+10)*2.8)+Math.min(18,state.powerRanking/180); return clamp(Math.round(score),1,100);} function finishCareer(age){
   state.retired=true;state.retireAge=age;state.pending=null;ensurePalmares();
-  let hall=[];try{hall=JSON.parse(localStorage.getItem('llamero_v46_hof')||localStorage.getItem('llamero_v45_hof')||localStorage.getItem('llamero_v44_hof')||localStorage.getItem('llamero_v43_hof')||localStorage.getItem('llamero_v42_hof')||localStorage.getItem('llamero_v41_hof')||localStorage.getItem('llamero_v40_hof')||localStorage.getItem('llamero_v39_hof')||localStorage.getItem('llamero_v38_hof')||localStorage.getItem('llamero_v37_hof')||localStorage.getItem('llamero_v36_hof')||localStorage.getItem('llamero_v35_hof')||localStorage.getItem('llamero_v34_hof')||localStorage.getItem('llamero_v33_hof')||localStorage.getItem('llamero_v32_hof')||localStorage.getItem('llamero_v31_hof')||localStorage.getItem('llamero_v30_hof')||localStorage.getItem('llamero_v29_hof')||localStorage.getItem('llamero_v28_hof')||localStorage.getItem('llamero_v27_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){}
+  let hall=[];try{hall=JSON.parse(localStorage.getItem('llamero_v47_hof')||localStorage.getItem('llamero_v46_hof')||localStorage.getItem('llamero_v45_hof')||localStorage.getItem('llamero_v44_hof')||localStorage.getItem('llamero_v43_hof')||localStorage.getItem('llamero_v42_hof')||localStorage.getItem('llamero_v41_hof')||localStorage.getItem('llamero_v40_hof')||localStorage.getItem('llamero_v39_hof')||localStorage.getItem('llamero_v38_hof')||localStorage.getItem('llamero_v37_hof')||localStorage.getItem('llamero_v36_hof')||localStorage.getItem('llamero_v35_hof')||localStorage.getItem('llamero_v34_hof')||localStorage.getItem('llamero_v33_hof')||localStorage.getItem('llamero_v32_hof')||localStorage.getItem('llamero_v31_hof')||localStorage.getItem('llamero_v30_hof')||localStorage.getItem('llamero_v29_hof')||localStorage.getItem('llamero_v28_hof')||localStorage.getItem('llamero_v27_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){}
   const duos=Array.isArray(state.duoHistory)?state.duoHistory.slice():[];
   if(currentMate()&&!duos.includes(currentMate().name))duos.push(currentMate().name);
   const rank=finalCareerRankInfo();
   hall.push({name:state.profile.name,legacy:legacyScore(),careerRank:rank.name,careerScore:rank.score,earnings:state.earnings,age,peakPR:state.powerRanking,fncs:state.trophies.fncs,global:state.trophies.global,cups:state.trophies.cups,kills:state.combat.kills,deaths:state.combat.deaths,kd:careerKD(),duos});
   hall.sort((a,b)=>(b.careerScore||b.legacy||0)-(a.careerScore||a.legacy||0));hall=hall.slice(0,10);
-  localStorage.setItem('llamero_v46_hof',JSON.stringify(hall));saveGame();renderCareerRecap(true);
+  localStorage.setItem('llamero_v47_hof',JSON.stringify(hall));saveGame();renderCareerRecap(true);
 }
 function retirementContinue(){
   state.pending=null;
@@ -2915,9 +3388,58 @@ function simulateSilentCashCups(count=5){
 }
 
 function historyStats(){return {played:state.history.length, wins:state.trophies.cups+state.trophies.fncs+state.trophies.global, assists:Math.max(0,Math.floor(state.powerRanking/70))};}
-function shell(inner){document.getElementById('app').innerHTML=inner;}
+function liveRegionUpdate(current,next,kind='panel'){
+  if(!current||!next)return;
+  const oldText=current.textContent;
+  const oldScroll=current.scrollTop||0;
+  current.innerHTML=next.innerHTML;
+  if(kind==='timeline')current.scrollTop=oldScroll;
+  current.classList.remove('live-region-pulse','live-panel-enter','live-timeline-pulse');
+  void current.offsetWidth;
+  current.classList.add(kind==='panel'?'live-panel-enter':kind==='timeline'?'live-timeline-pulse':'live-region-pulse');
+  if(oldText!==current.textContent){
+    current.querySelectorAll('b,.age,.ovr-num,.pill').forEach((el,i)=>{
+      if(i<10){
+        el.style.animationDelay=(i*.025)+'s';
+        el.classList.add('live-number-pop');
+      }
+    });
+  }
+}
+function shell(inner){
+  const app=document.getElementById('app');
+  const tpl=document.createElement('template');
+  tpl.innerHTML=String(inner).trim();
+  const next=tpl.content.firstElementChild;
+  const current=app.firstElementChild;
 
+  const canLiveMorph=
+    current?.classList?.contains('shell') &&
+    next?.classList?.contains('shell') &&
+    current.querySelector('.top-panel') &&
+    next.querySelector('.top-panel') &&
+    current.querySelector('.bottom-panel') &&
+    next.querySelector('.bottom-panel') &&
+    current.querySelector('.timeline') &&
+    next.querySelector('.timeline');
 
+  if(!canLiveMorph){
+    app.replaceChildren(next);
+    return;
+  }
+
+  // Keep the same game screen mounted: only update the regions that changed.
+  current.className=next.className.replace('screen-transition','').trim()+' live-mounted';
+  liveRegionUpdate(current.querySelector('.top-panel'),next.querySelector('.top-panel'),'header');
+  liveRegionUpdate(current.querySelector('.bottom-panel'),next.querySelector('.bottom-panel'),'panel');
+
+  const cHead=current.querySelector('.timeline-head'),nHead=next.querySelector('.timeline-head');
+  if(cHead&&nHead&&cHead.innerHTML!==nHead.innerHTML)cHead.innerHTML=nHead.innerHTML;
+  liveRegionUpdate(current.querySelector('.timeline'),next.querySelector('.timeline'),'timeline');
+
+  const cFoot=current.querySelector('.right-footer'),nFoot=next.querySelector('.right-footer');
+  if(cFoot&&nFoot)liveRegionUpdate(cFoot,nFoot,'header');
+}
 function currentYearStats(){
   ensurePalmares();
   const prev=state.history.length?state.history[state.history.length-1]:null;
@@ -2976,7 +3498,7 @@ function timelineRows(){
 }
 function leftHeader(){
   ensurePalmares();
-  const mate=currentMate(),hs=historyStats(),career=careerRankInfo();
+  const mate=currentMate();
   return `<div class="header-top">
     <div class="ovr-badge"><small>OVR</small><b class="ovr-num ${ovrClass(state.ovr)}">${state.ovr}</b></div>
     <div class="id-area">
@@ -2985,17 +3507,12 @@ function leftHeader(){
       <div class="subline"><div><div class="club-line">${mate?esc(mate.name):'Libre'}</div>${mate?`<button class="duo-action" onclick="abandonDuo()">ABANDONAR DÚO</button>`:''}${state.flags?.topDuoUnlocked?`<button class="duo-action topduo-btn" onclick="openTopDuoRanking()">TOP DÚOS</button>`:''}</div><div class="meta-box"><small>Edad</small><div class="age">${state.age}</div></div></div>
     </div>
   </div>
-  <div class="stat-strip">
-    <div class="micro"><small>Años</small><b>${hs.played}</b></div>
+  <div class="stat-strip compact-core">
     <div class="micro"><small>PR</small><b>${formatPR(state.powerRanking)}</b></div>
     <div class="micro"><small>Earnings</small><b>${shortMoney(state.earnings)}</b></div>
-    <div class="micro"><small>PJ</small><b>${state.combat.matches||0}</b></div>
-    <div class="micro"><small>Kills</small><b>${state.combat.kills}</b></div>
-    <div class="micro"><small>Muertes</small><b>${state.combat.deaths}</b></div>
-    <div class="micro"><small>K/D</small><b>${careerKD()}</b></div>
   </div>
   <div class="condition-grid"><div class="condition-card"><div class="condition-head"><span>Chemistry</span><b>${state.chemistry} · ${chemistryLabel()}</b></div><div class="condition-meter chem"><i style="width:${clamp(state.chemistry,0,100)}%"></i></div><small class="condition-note">Más alta = mejor rendimiento del dúo.</small></div><div class="condition-card"><div class="condition-head"><span>Burnout</span><b>${burnoutPercent()}% · ${burnoutLabel()}</b></div><div class="condition-meter burn"><i style="width:${burnoutPercent()}%"></i></div><small class="condition-note">Mantenelo bajo para rendir mejor.</small></div></div>
-  <div class="palmares-box" role="button" tabindex="0" onclick="openPalmares()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPalmares()}"><div class="palmares-head"><strong>Palmarés</strong><span>VER TODO ›</span></div><div class="palmares-grid"><div class="palmares-tile"><b>${state.trophies.fncs}</b><small>FNCS</small></div><div class="palmares-tile"><b>${state.trophies.global}</b><small>Global</small></div><div class="palmares-tile"><b>${state.trophies.cups}</b><small>Cups</small></div><div class="palmares-tile"><b>${state.palmares.top10s||0}</b><small>Top 10</small></div></div></div>`;
+  <div class="palmares-box" role="button" tabindex="0" onclick="openPalmares()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPalmares()}"><div class="palmares-head"><strong>Palmarés</strong><span>VER TODO ›</span></div><div class="palmares-grid palmares-three"><div class="palmares-tile"><b>${state.trophies.fncs}</b><small>FNCS</small></div><div class="palmares-tile"><b>${state.trophies.global}</b><small>Global</small></div><div class="palmares-tile"><b>${state.trophies.cups}</b><small>Cups</small></div></div></div>`;
 }
 function rightPanelFooter(){return `<div class="right-footer"><div>🌎 ${REGIONS[state.profile.region].name}</div><div class="footer-stats"><span>OVR ${state.ovr}</span><span>PR ${formatPR(state.powerRanking)}</span><span>${shortMoney(state.earnings)}</span></div></div>`;}
 function renderCareer(){
@@ -3010,6 +3527,27 @@ function renderEvent(data){
   const bottom=`<div class="bottom-panel"><div class="section-title">${esc(data.title)}</div><p class="section-copy">${esc(data.text)}</p><div class="option-grid"><div class="action-card decision-card" role="button" tabindex="0" onclick="selectDecisionCard('a',this)" onkeydown="choiceKey(event,'a',this)"><div class="pick-image"><img src="${data.imgA||data.img||DECISION_IMAGES.coach}"></div><h4>${esc(data.a)}</h4><div class="effect-stack">${(data.aEffects||[]).map(e=>`<span class="effect-pill ${effectClass(e)}">${esc(e)}</span>`).join('')}</div></div><div class="action-card decision-card" role="button" tabindex="0" onclick="selectDecisionCard('b',this)" onkeydown="choiceKey(event,'b',this)"><div class="pick-image"><img src="${data.imgB||data.img||DECISION_IMAGES.coach}"></div><h4>${esc(data.b)}</h4><div class="effect-stack">${(data.bEffects||[]).map(e=>`<span class="effect-pill ${effectClass(e)}">${esc(e)}</span>`).join('')}</div></div></div></div>`;
   shell(`<div class="shell decision-screen"><div class="main"><div class="left"><div class="top-panel">${leftHeader()}</div>${bottom}</div><div class="right"><div class="timeline-head"><div>Edad</div><div>Dúo</div><div>OVR</div><div>PJ</div><div>K</div><div>D</div><div>K/D</div></div><div class="timeline">${timelineRows()}</div>${rightPanelFooter()}</div></div></div>`);
 }
+
+function continueFromTournamentWin(){
+  const overlay=document.querySelector('.tournament-win-screen');
+  if(overlay){
+    overlay.classList.add('closing');
+    setTimeout(()=>{overlay.remove();renderTournamentResult();},280);
+  }else renderTournamentResult();
+}
+function showTournamentWinScreen(){
+  const r=state.lastResult;
+  const old=document.querySelector('.tournament-win-screen');if(old)old.remove();
+  const special=r.tourId==='global'?'GLOBAL CHAMPION':r.tourId==='major'?'FNCS CHAMPION':'GANASTE';
+  const sub=r.tourId==='global'?'LLEGASTE A LA CIMA':r.tourId==='major'?'SOS CAMPEÓN DE FNCS':'VICTORIA DE TORNEO';
+  const conf=Array.from({length:r.tourId==='global'?34:24},(_,i)=>`<i style="--x:${rand(2,98)}%;--d:${(Math.random()*.8).toFixed(2)}s"></i>`).join('');
+  const overlay=document.createElement('div');
+  overlay.className='tournament-win-screen';
+  overlay.innerHTML=`<div class="win-confetti">${conf}</div><div class="win-stage"><small>${sub}</small><strong>${special}</strong><h3>${esc(r.name)}</h3><div class="win-rewards"><span>+${formatPR(r.prGain)} PR</span><span>${r.earnings?'+'+money(r.earnings):'SIN EARNINGS'}</span></div><button onclick="continueFromTournamentWin()">CONTINUAR</button></div>`;
+  document.body.appendChild(overlay);
+  requestAnimationFrame(()=>overlay.classList.add('show'));
+}
+
 function showTournamentWinMessage(name){
   const old=document.querySelector('.tournament-win-overlay');if(old)old.remove();
   const overlay=document.createElement('div');overlay.className='tournament-win-overlay';
@@ -3041,18 +3579,17 @@ function renderTournamentResult(){
   const label=r.place===1?'CAMPEÓN':r.place<=3?'PODIO':r.place<=10?'TOP 10':r.place<=25?'TOP 25':'RESULTADO';
   const cls=r.place===1?'win':r.place<=3?'podium':r.place<=10?'top10':'';
   const duoLine=mate?`${esc(state.profile.name)} + ${esc(mate.name)} · ${displayRankInfo(duoStrength()).name}`:`${esc(state.profile.name)} · SOLO`;
-  const bottom=`<div class="bottom-panel"><div class="section-title">Resultado del torneo</div><p class="section-copy">${r.place===1?'La lobby termina y tu nombre queda arriba de todos.':r.place<=10?'Terminaste entre los mejores de la lobby.':'El torneo terminó. Este fue tu resultado.'}</p><div class="option-grid single"><div class="action-card result-card result-hype ${cls}" role="button" tabindex="0" onclick="selectResultCard(()=>nextStep(),this)" onkeydown="resultKey(event,()=>nextStep(),this)"><div class="result-summary"><div class="result-kicker">${label}</div><div class="result-place-big">${ordinal(r.place)}</div><div class="result-label">${label}</div><div class="result-tournament">${esc(r.name)}</div><div class="result-duo-line">${duoLine}</div><div class="effect-stack centered"><span class="effect-pill green">+${formatPR(r.prGain)} PR</span><span class="effect-pill ${r.earnings?'green':'muted'}">${r.earnings?('+'+money(r.earnings)):'Sin earnings'}</span></div><span class="subbtn">CONTINUAR</span></div></div></div></div>`;
+  const bottom=`<div class="bottom-panel"><div class="section-title">Resultado del torneo</div><p class="section-copy">${r.place===1?'La lobby termina y tu nombre queda arriba de todos.':r.place<=10?'Terminaste entre los mejores de la lobby.':'El torneo terminó. Este fue tu resultado.'}</p><div class="option-grid single"><div class="action-card result-card result-hype ${cls}" role="button" tabindex="0" onclick="selectResultCard(()=>nextStep(),this)" onkeydown="resultKey(event,()=>nextStep(),this)"><div class="result-summary"><div class="result-kicker">${label}</div><div class="result-place-big">${ordinal(r.place)}</div><div class="result-label">${label}</div><div class="result-tournament">${esc(r.name)}</div><div class="result-duo-line">${duoLine}</div>${r.rivalDuo?`<div class="result-rival">RIVAL DESTACADO · ${esc(r.rivalDuo.a)} + ${esc(r.rivalDuo.b)} · ${esc(r.rivalDuo.rank)}</div>`:''}<div class="effect-stack centered"><span class="effect-pill green">+${formatPR(r.prGain)} PR</span><span class="effect-pill ${r.earnings?'green':'muted'}">${r.earnings?('+'+money(r.earnings)):'Sin earnings'}</span></div><span class="subbtn">CONTINUAR</span></div></div></div></div>`;
   shell(`<div class="shell screen-transition"><div class="main"><div class="left"><div class="top-panel">${leftHeader()}</div>${bottom}</div><div class="right"><div class="timeline-head"><div>Edad</div><div>Dúo</div><div>OVR</div><div>PJ</div><div>K</div><div>D</div><div>K/D</div></div><div class="timeline">${timelineRows()}</div>${rightPanelFooter()}</div></div></div>`);
-  if(r.place===1){
-    if(r.tourId==='major')setTimeout(showFNCSChampionAnimation,180);
-    else if(r.tourId==='global')setTimeout(showGlobalChampionAnimation,180);
-    else setTimeout(()=>showTournamentWinMessage(r.name),180);
-  }
 }
-function renderDuoChoice(a,b){
+function renderDuoChoice(a,b,c=null){
   teammatePickLocked=false;
-  const ar=displayRankInfo(teammateStrength(a)), br=displayRankInfo(teammateStrength(b));
-  const bottom=`<div class="bottom-panel"><div class="section-title">Oferta de dúo</div><p class="section-copy">Dos jugadores quieren jugar contigo. Su nivel influye directamente en tus torneos: cuanto más crezca tu OVR, mejores ofertas vas a recibir.</p><div class="option-grid"><div class="action-card duo-card" role="button" tabindex="0" onclick="selectTeammate('${a.id}',this)" onkeydown="teammateKey(event,'${a.id}',this)"><div class="pick-image player-skin" style="height:126px"><img src="${a.img}" onerror="this.onerror=null;this.src='https://fortnite-api.com/images/cosmetics/br/CID_397_Athena_Commando_F_TreasureHunterFashion/icon.png'"></div><h4>${esc(a.name)}</h4><div class="duo-rank">${rankShieldHtml(ar,'sm')}</div><span class="subbtn">${REGIONS[a.region].name} · IMPACTA EN TU DÚO</span></div><div class="action-card duo-card" role="button" tabindex="0" onclick="selectTeammate('${b.id}',this)" onkeydown="teammateKey(event,'${b.id}',this)"><div class="pick-image player-skin" style="height:126px"><img src="${b.img}" onerror="this.onerror=null;this.src='https://fortnite-api.com/images/cosmetics/br/CID_493_Athena_Commando_F_JurassicArchaeology/icon.png'"></div><h4>${esc(b.name)}</h4><div class="duo-rank">${rankShieldHtml(br,'sm')}</div><span class="subbtn">${REGIONS[b.region].name} · IMPACTA EN TU DÚO</span></div></div></div>`;
+  const options=[a,b,c].filter(Boolean);
+  const cards=options.map((p,idx)=>{
+    const r=displayRankInfo(teammateStrength(p));
+    return `<div class="action-card duo-card" role="button" tabindex="0" onclick="selectTeammate('${p.id}',this)" onkeydown="teammateKey(event,'${p.id}',this)"><div class="pick-image player-skin" style="height:126px"><img src="${p.img}" onerror="this.onerror=null;this.src='https://fortnite-api.com/images/cosmetics/br/CID_397_Athena_Commando_F_TreasureHunterFashion/icon.png'"></div><h4>${esc(p.name)}</h4><div class="duo-rank">${rankShieldHtml(r,'sm')}</div><span class="subbtn">${REGIONS[p.region].name} · OPCIÓN ${idx+1}</span></div>`;
+  }).join('');
+  const bottom=`<div class="bottom-panel"><div class="section-title">Oferta de dúo</div><p class="section-copy">Elegí compañero. Su rango y tu Chemistry afectan directamente los resultados.</p><div class="option-grid duo-three">${cards}</div></div>`;
   shell(`<div class="shell screen-transition"><div class="main"><div class="left"><div class="top-panel">${leftHeader()}</div>${bottom}</div><div class="right"><div class="timeline-head"><div>Edad</div><div>Dúo</div><div>OVR</div><div>PJ</div><div>K</div><div>D</div><div>K/D</div></div><div class="timeline">${timelineRows()}</div>${rightPanelFooter()}</div></div></div>`);
 }
 function renderRetirementDecision(){
@@ -3189,29 +3726,50 @@ function startCareer(){
   const role=document.querySelector('input[name="role"]:checked')?.value||'FRAGGER';
   const decisionsPerYear=Number(document.querySelector('input[name="decisionsPerYear"]:checked')?.value||3);
   state=freshState({name,region,role,decisionsPerYear:clamp(decisionsPerYear,1,3)});
-  localStorage.removeItem('llamero_v46_save');
+  localStorage.removeItem('llamero_v47_save');
   if(String(name).toLowerCase()==='topduo21')state.flags.topDuoUnlocked=true;
   startSeason();
   chooseTeammatesScreen();
   if(state.flags.topDuoUnlocked)setTimeout(openTopDuoRanking,280);
 }
-function continueCareer(){if(!loadGame()){showMenu();return;} if(!state.recentDecisionTitles)state.recentDecisionTitles=[]; if(!state.profile.decisionsPerYear)state.profile.decisionsPerYear=3; if(!state.flags)state.flags={appreciationSeen:false,topDuoUnlocked:false}; if(state.flags.topDuoUnlocked===undefined)state.flags.topDuoUnlocked=false; if(state.retired){renderCareerRecap(true);return;} if(!state.queue)state.queue=[]; if(state.queue.length===0 && !state.pending)startSeason(); if(state.pending&&state.pending.type==='event'){renderEvent(state.pending.data);return;} if(state.pending&&state.pending.type==='duo'){renderDuoChoice(getPlayer(state.pending.a),getPlayer(state.pending.b));return;} renderCareer();}
+function continueCareer(){if(!loadGame()){showMenu();return;} if(!state.recentDecisionTitles)state.recentDecisionTitles=[]; if(!state.profile.decisionsPerYear)state.profile.decisionsPerYear=3; if(!state.flags)state.flags={appreciationSeen:false,topDuoUnlocked:false}; if(state.flags.topDuoUnlocked===undefined)state.flags.topDuoUnlocked=false; if(state.retired){renderCareerRecap(true);return;} if(!state.queue)state.queue=[]; if(state.queue.length===0 && !state.pending)startSeason(); if(state.pending&&state.pending.type==='event'){renderEvent(state.pending.data);return;} if(state.pending&&state.pending.type==='duo'){const ids=state.pending.options||[state.pending.a,state.pending.b,state.pending.c].filter(Boolean);renderDuoChoice(...ids.map(getPlayer));return;} renderCareer();}
 function modal(title,inner){const bg=document.createElement('div'); bg.className='modal-bg'; bg.id='modal'; bg.innerHTML=`<div class="modal"><button class="close" onclick="document.getElementById('modal').remove()">✕</button><h2>${esc(title)}</h2>${inner}</div>`; document.body.appendChild(bg);}
 function openCareerHistory(){if(!state)return; const rows=[...state.history].reverse().map(h=>`<tr><td>${h.year}</td><td>${h.age}</td><td>${REGIONS[h.region].short}</td><td>${esc(getPlayer(h.teammate)?.name||'—')}</td><td>${h.ovr}</td><td>${h.matches??'—'}</td><td>${h.kills??'—'}</td><td>${h.deaths??'—'}</td><td>${h.kd??'—'}</td><td>${h.prGain??h.pr} PR</td><td>${money(h.earnings||0)}</td><td>${esc(h.best)}</td></tr>`).join(''); modal('Carrera',`<table><thead><tr><th>Año</th><th>Edad</th><th>Región</th><th>Dúo</th><th>OVR</th><th>PJ</th><th>K</th><th>D</th><th>K/D</th><th>PR año</th><th>Earnings año</th><th>Mejor resultado</th></tr></thead><tbody>${rows||'<tr><td colspan="12">Todavía no terminó ninguna temporada.</td></tr>'}</tbody></table>`);}
 
 
-function buildTopDuoRanking(){
-  const rows=[];
-  Object.keys(REGIONS).forEach(region=>{
-    const pros=PLAYER_LIST.filter(p=>p.active&&p.region===region)
-      .sort((a,b)=>teammateStrength(b)-teammateStrength(a));
-    for(let i=0;i+1<pros.length&&i<18;i+=2){
-      const a=pros[i],b=pros[i+1];
-      const score=clamp(Math.round((teammateStrength(a)+teammateStrength(b))/2+2),45,99);
-      rows.push({a,b,region,score});
+
+function buildDuoNetwork(region=null,limit=360){
+  const source=PLAYER_LIST.filter(p=>p.active&&(!region||p.region===region));
+  const byRegion={};
+  source.forEach(p=>(byRegion[p.region]||(byRegion[p.region]=[])).push(p));
+  const pairs=[];
+  Object.entries(byRegion).forEach(([reg,players])=>{
+    const sorted=[...players].sort((a,b)=>teammateStrength(b)-teammateStrength(a)).slice(0,42);
+    for(let i=0;i<sorted.length;i++){
+      for(let j=i+1;j<sorted.length;j++){
+        const a=sorted[i],b=sorted[j];
+        const score=Math.round((teammateStrength(a)+teammateStrength(b))/2);
+        pairs.push({a,b,region:reg,score});
+      }
     }
   });
-  return rows.sort((x,y)=>y.score-x.score).slice(0,30);
+  pairs.sort((x,y)=>y.score-x.score);
+  if(pairs.length<=limit)return pairs;
+  // Take from all strength bands instead of only the very top.
+  const out=[],step=pairs.length/limit;
+  for(let i=0;i<limit;i++)out.push(pairs[Math.floor(i*step)]);
+  return out;
+}
+function tournamentRivalDuo(){
+  const network=buildDuoNetwork(state.profile.region,360);
+  if(!network.length)return null;
+  const target=clamp(Math.round(duoStrength()+rand(-5,7)),50,99);
+  const near=[...network].sort((a,b)=>Math.abs(a.score-target)-Math.abs(b.score-target)).slice(0,24);
+  return pick(near);
+}
+
+function buildTopDuoRanking(){
+  return buildDuoNetwork(null,360).slice(0,60);
 }
 function openTopDuoRanking(){
   if(!state||!state.flags?.topDuoUnlocked)return;
@@ -3224,7 +3782,7 @@ function openTopDuoRanking(){
 
 function openPalmares(){if(!state)return;ensurePalmares();const p=state.palmares;const bestFncs=p.bestFNCS?ordinal(p.bestFNCS):'—';const bestGlobal=p.bestGlobal?ordinal(p.bestGlobal):'—';const recent=(p.recent||[]).map(x=>`<div class="honour"><strong>${esc(x.event)} · ${ordinal(x.place)}</strong><span>${x.year} · +${formatPR(x.prGain||0)} PR${x.earnings?' · '+money(x.earnings):''}</span></div>`).join('')||'<div class="honour"><strong>Todavía no hay grandes resultados.</strong><span>Seguí compitiendo</span></div>'; modal('Palmarés',`<div class="palmares-summary"><div class="palmares-stat"><b class="palmares-major">${state.trophies.fncs}</b><small>FNCS ganadas</small></div><div class="palmares-stat"><b>${state.trophies.global}</b><small>Globales</small></div><div class="palmares-stat"><b>${p.totalWins||0}</b><small>Victorias</small></div><div class="palmares-stat"><b>${p.top10s||0}</b><small>Top 10</small></div></div><table><tbody><tr><td>Mejor FNCS</td><td><b>${bestFncs}</b></td></tr><tr><td>Podios FNCS</td><td><b>${p.fncsPodiums||0}</b></td></tr><tr><td>Mejor Global</td><td><b>${bestGlobal}</b></td></tr><tr><td>Podios Global</td><td><b>${p.globalPodiums||0}</b></td></tr><tr><td>Cash/Victory Cups ganadas</td><td><b>${state.trophies.cups}</b></td></tr><tr><td>Eventos jugados</td><td><b>${p.events||0}</b></td></tr><tr><td>Mayor premio</td><td><b>${money(p.biggestPrize||0)}</b></td></tr><tr><td>Power Ranking actual</td><td><b>${formatPR(state.powerRanking)} PR</b></td></tr><tr><td>Earnings de carrera</td><td><b>${shortMoney(state.earnings)}</b></td></tr></tbody></table><div class="section-title" style="margin-top:16px">Resultados destacados</div><div class="honour-list">${recent}</div>`);}
 function openHall(){
-  let hall=[];try{hall=JSON.parse(localStorage.getItem('llamero_v46_hof')||localStorage.getItem('llamero_v45_hof')||localStorage.getItem('llamero_v44_hof')||localStorage.getItem('llamero_v43_hof')||localStorage.getItem('llamero_v42_hof')||localStorage.getItem('llamero_v41_hof')||localStorage.getItem('llamero_v40_hof')||localStorage.getItem('llamero_v39_hof')||localStorage.getItem('llamero_v38_hof')||localStorage.getItem('llamero_v37_hof')||localStorage.getItem('llamero_v36_hof')||localStorage.getItem('llamero_v35_hof')||localStorage.getItem('llamero_v34_hof')||localStorage.getItem('llamero_v33_hof')||localStorage.getItem('llamero_v32_hof')||localStorage.getItem('llamero_v31_hof')||localStorage.getItem('llamero_v30_hof')||localStorage.getItem('llamero_v29_hof')||localStorage.getItem('llamero_v28_hof')||localStorage.getItem('llamero_v27_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){}
+  let hall=[];try{hall=JSON.parse(localStorage.getItem('llamero_v47_hof')||localStorage.getItem('llamero_v46_hof')||localStorage.getItem('llamero_v45_hof')||localStorage.getItem('llamero_v44_hof')||localStorage.getItem('llamero_v43_hof')||localStorage.getItem('llamero_v42_hof')||localStorage.getItem('llamero_v41_hof')||localStorage.getItem('llamero_v40_hof')||localStorage.getItem('llamero_v39_hof')||localStorage.getItem('llamero_v38_hof')||localStorage.getItem('llamero_v37_hof')||localStorage.getItem('llamero_v36_hof')||localStorage.getItem('llamero_v35_hof')||localStorage.getItem('llamero_v34_hof')||localStorage.getItem('llamero_v33_hof')||localStorage.getItem('llamero_v32_hof')||localStorage.getItem('llamero_v31_hof')||localStorage.getItem('llamero_v30_hof')||localStorage.getItem('llamero_v29_hof')||localStorage.getItem('llamero_v28_hof')||localStorage.getItem('llamero_v27_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){}
   const rows=hall.map((h,i)=>{const duos=Array.isArray(h.duos)&&h.duos.length?h.duos.join(' · '):'—';return `<tr><td>${i+1}</td><td><b>${esc(h.name)}</b><br><small>${esc(h.careerRank||'—')}</small></td><td><b>${shortMoney(h.earnings||0)}</b></td><td class="hall-duos">${esc(duos)}</td><td>${h.kd||'—'}</td><td>${h.fncs||0}</td><td>${h.global||0}</td><td>${h.cups||0}</td><td>${h.peakPR||0} PR</td></tr>`;}).join('');
   modal('Hall of Fame',`<table><thead><tr><th>#</th><th>Jugador</th><th>Earnings</th><th>Dúos</th><th>K/D</th><th>FNCS</th><th>Global</th><th>Cups</th><th>Peak PR</th></tr></thead><tbody>${rows||'<tr><td colspan="9">Todavía no hay carreras terminadas.</td></tr>'}</tbody></table>`);
 }
