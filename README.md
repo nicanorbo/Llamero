@@ -1,9 +1,8 @@
-# LLAMERO v40
+# LLAMERO v41
 
 Cambio principal:
-- la decisión ya no se mueve al centro de la pantalla;
-- la opción elegida permanece en su lugar;
-- la otra opción se apaga y sale suavemente;
-- aparece un pequeño “motor de carrera” debajo de las decisiones;
-- la línea de carrera de la derecha recibe una animación de simulación;
-- luego avanza el juego sin un corte negro ni un modal central.
+- nueva vista móvil tipo Copero:
+  - resumen arriba,
+  - timeline en el medio con scroll interno,
+  - decisiones visibles abajo,
+  - sin tener que bajar toda la página para ver las opciones.
