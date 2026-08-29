@@ -1,9 +1,11 @@
-# LLAMERO v44
+# LLAMERO v45
 
-Cambios:
-- muchos más jugadores reales en SA, NA, EU, OCE, ASIA y ME;
-- el OVR del jugador determina la calidad de los dúos que reciben ofertas;
-- los jugadores elite aparecen sobre todo cuando tu carrera ya tiene nivel;
-- el teammate pesa más en el rendimiento del dúo;
-- el nivel del teammate ahora también aumenta las chances de ganar FNCS y Global;
-- el OVR del teammate sigue oculto y se muestra mediante rangos.
+Cambios principales:
+- eliminado el botón y sistema de compartir;
+- móvil vuelve al flujo normal y todo queda accesible con scroll;
+- corregidos los emblemas de Elite y Champion;
+- PR compacto: 63k en lugar de 63000;
+- secreto `topduo21`: desbloquea TOP DÚOS;
+- resultados de torneos con más animación y emoción;
+- más de 100 jugadores reales nuevos;
+- 120 decisiones nuevas.
