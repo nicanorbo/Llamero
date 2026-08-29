@@ -1,8 +1,16 @@
-# LLAMERO v34
+# LLAMERO v35
 
-El fondo topográfico está incrustado directamente dentro de `index.html`.
+Cambios principales:
+- versión móvil comprimida para intentar mostrar todo en una sola pantalla;
+- sistema visual de rangos en lugar de mostrar el OVR;
+- rango secreto SWEATY;
+- nueva recapitulación final de carrera;
+- stat nueva de Partidas Jugadas (PJ);
+- botón permanente para abandonar al dúo;
+- fondo embebido en el HTML para GitHub Pages.
 
-Esto significa que GitHub Pages ya no depende de una ruta externa como
-`assets_v17/topo_reference_gray.png`.
-
-Para actualizar el juego en GitHub, podés reemplazar solamente `index.html`.
+Para actualizar en GitHub:
+1. Abrí tu repositorio.
+2. Subí este `index.html` nuevo.
+3. Hacé commit.
+4. Esperá 1 o 2 minutos y recargá la página.
