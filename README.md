@@ -1,16 +1,16 @@
-# LLAMERO v35
+# LLAMERO - CARREER v36
 
-Cambios principales:
-- versión móvil comprimida para intentar mostrar todo en una sola pantalla;
-- sistema visual de rangos en lugar de mostrar el OVR;
-- rango secreto SWEATY;
-- nueva recapitulación final de carrera;
-- stat nueva de Partidas Jugadas (PJ);
-- botón permanente para abandonar al dúo;
-- fondo embebido en el HTML para GitHub Pages.
+Cambios:
+- favicon agregado
+- título actualizado a **LLAMERO - CARREER**
+- rangos con las versiones adaptadas enviadas
+- fondo topográfico más visible en teléfono
+- easter egg para `lolero123` (`NA` + `FRAGGER`) después del primer año
 
-Para actualizar en GitHub:
-1. Abrí tu repositorio.
-2. Subí este `index.html` nuevo.
-3. Hacé commit.
-4. Esperá 1 o 2 minutos y recargá la página.
+## Cómo actualizar el juego en GitHub
+1. Descargá y descomprimí `LLAMERO_GITHUB_V36_READY.zip`.
+2. Entrá a tu repositorio de GitHub.
+3. Reemplazá el archivo `index.html` por el nuevo.
+4. Hacé **Commit changes**.
+5. Esperá 1 o 2 minutos.
+6. Abrí tu GitHub Pages y recargá con **Ctrl + F5**.
