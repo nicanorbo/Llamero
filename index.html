@@ -751,6 +751,385 @@ url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQF
   .rank-xs img{width:18px;height:18px}
 }
 
+
+/* v37 — OVR gameplay + responsive non-fullscreen windows */
+.rank-badge-box,.rank-badge-main,.duo-card-meta,.tiny-rank{display:none!important}
+.ovr-badge{display:flex!important;width:72px;height:76px}
+.timeline-head{grid-template-columns:38px minmax(106px,1fr) 54px 40px 40px 40px 52px!important}
+.row{grid-template-columns:38px minmax(106px,1fr) 54px 40px 40px 40px 52px!important}
+.row .ovr-cell .pill{display:inline-block;min-width:34px;text-align:center;padding:3px 8px;border-radius:999px;background:#242428;font:800 11px/1 "Inter",system-ui,sans-serif}
+.finish-rank .rank-chip{display:flex}.finish-rank .rank-shield-img{display:inline-flex!important}
+@media(min-width:761px) and (max-height:820px){
+  #app{height:100vh;padding:4px;overflow:hidden}
+  .shell{height:calc(100vh - 8px);max-width:1180px}
+  .main{grid-template-columns:330px 1fr}
+  .left{padding:9px 10px 7px}.right{padding:8px 10px 5px}
+  .header-top{gap:8px}.ovr-badge{width:62px;height:64px}.ovr-badge b{font-size:24px}
+  .tags{margin-bottom:4px}.tag,.season-chip{padding:3px 6px;font-size:8px}
+  .player-name{font-size:32px}.club-line{font-size:12px}.meta-box .age{font-size:29px}
+  .duo-action{padding:4px 7px;font-size:8px;margin-top:4px}
+  .stat-strip{padding:6px 0;gap:5px}.micro{min-height:36px;padding:4px}.micro small{font-size:7px}.micro b{font-size:13px}
+  .condition-grid{padding:5px 0 6px;gap:5px}.condition-card{padding:5px 6px}.condition-head{margin-bottom:4px}.condition-note{display:none}
+  .palmares-box{margin-top:5px;padding:6px}.palmares-head{margin-bottom:4px}.palmares-tile{padding:4px}.palmares-tile b{font-size:16px}
+  .section-title{font-size:23px;margin:6px 0 3px}.section-copy{font-size:11px;line-height:1.2;margin:0 0 5px}
+  .option-grid{gap:7px}.action-card{min-height:108px;padding:7px;gap:5px}.duo-card{min-height:132px}.decision-card{min-height:112px}
+  .action-card .pick-image,.decision-card .pick-image,.duo-card .pick-image{height:56px!important}.action-card h4{font-size:14px}.effect-pill{font-size:8px;padding:4px 6px}
+  .timeline-head{padding:0 5px 2px;font-size:8px}.timeline{gap:1px}.row{padding:1px 5px}.row .age{font-size:13px}.row .club{font-size:10px}.row .club small{font-size:8px}.row .cell{font-size:9px}
+  .right-footer{padding-top:3px;font-size:10px}
+}
+@media(min-width:761px) and (max-height:700px){
+  .main{grid-template-columns:300px 1fr}
+  .left{padding:6px 8px 5px}.right{padding:6px 8px 4px}
+  .header-top{gap:6px}.ovr-badge{width:56px;height:58px}.player-name{font-size:27px}.meta-box .age{font-size:25px}
+  .stat-strip{padding:4px 0}.micro{min-height:31px}.micro b{font-size:11px}
+  .condition-grid{padding:4px 0}.condition-card{padding:4px 5px}.condition-head span{font-size:7px}.condition-head b{font-size:9px}
+  .palmares-box{padding:5px}.palmares-tile{padding:3px}.palmares-tile b{font-size:14px}
+  .section-title{font-size:20px;margin:4px 0 2px}.section-copy{font-size:10px}
+  .action-card{min-height:92px;padding:5px}.duo-card{min-height:112px}.decision-card{min-height:96px}.action-card .pick-image,.decision-card .pick-image,.duo-card .pick-image{height:46px!important}
+  .timeline-head{font-size:7px}.row .age{font-size:11px}.row .club{font-size:9px}.row .cell{font-size:8px}
+}
+@media(max-width:760px){
+  .timeline-head{grid-template-columns:26px minmax(74px,1fr) 42px 28px 28px 28px 36px!important}
+  .row{grid-template-columns:26px minmax(74px,1fr) 42px 28px 28px 28px 36px!important}
+  .ovr-badge{width:58px!important;height:60px!important;flex:0 0 58px}.ovr-badge b{font-size:24px}
+}
+
+
+/* v38 tournament victory + duo ranks + reliable choices */
+.duo-rank{display:flex!important;justify-content:center;align-items:center;min-height:28px}
+.duo-rank .rank-label{display:inline!important;font-size:10px!important}
+.duo-rank .rank-shield-img{display:inline-flex!important}
+.decision-card{pointer-events:auto!important;touch-action:manipulation!important;-webkit-tap-highlight-color:transparent}
+.tournament-win-overlay{position:fixed;inset:0;z-index:240;display:grid;place-items:center;pointer-events:none;background:rgba(0,0,0,.18);opacity:0;transition:opacity .18s ease}
+.tournament-win-overlay.show{opacity:1}.tournament-win-overlay.leave{opacity:0}
+.tournament-win-message{min-width:min(430px,88vw);padding:24px 30px;border:1px solid #4a4a52;border-radius:16px;background:rgba(10,10,12,.96);text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.62);transform:scale(.78) translateY(12px);animation:tourWinPop .45s cubic-bezier(.16,.9,.2,1.15) forwards}
+.tournament-win-message small{display:block;font:900 10px "Inter",system-ui,sans-serif;letter-spacing:2px;color:#8e929d;margin-bottom:5px}
+.tournament-win-message strong{display:block;font:900 48px/.9 "Inter",system-ui,sans-serif;letter-spacing:-2px;color:#fff}
+.tournament-win-message span{display:block;margin-top:8px;font:800 16px "Inter",system-ui,sans-serif;color:#c8ccd6;text-transform:uppercase}
+@keyframes tourWinPop{to{transform:scale(1) translateY(0)}}
+@media(max-width:760px){
+  .tournament-win-message{min-width:82vw;padding:18px 18px}.tournament-win-message strong{font-size:38px}.tournament-win-message span{font-size:13px}
+  .decision-card,.duo-card{position:relative;z-index:8!important}
+}
+
+
+/* ===== v39 — COPERO-LIKE DECISION FLOW ===== */
+.decision-card{
+  will-change:transform,opacity,filter;
+  transform-origin:center center;
+}
+.decision-card.decision-confirmed{
+  z-index:5;
+  animation:decisionConfirmPulse .46s cubic-bezier(.16,.86,.24,1.16) both !important;
+  border-color:rgba(255,255,255,.34)!important;
+  box-shadow:0 18px 48px rgba(0,0,0,.38),0 0 0 1px rgba(255,255,255,.08)!important;
+}
+.decision-card.decision-exit-left{animation:decisionExitLeft .38s cubic-bezier(.36,.02,.64,1) both!important}
+.decision-card.decision-exit-right{animation:decisionExitRight .38s cubic-bezier(.36,.02,.64,1) both!important}
+.copero-decision-overlay{
+  position:fixed;
+  inset:0;
+  z-index:520;
+  pointer-events:none;
+  background:rgba(4,4,6,0);
+  transition:background .22s ease;
+}
+.copero-decision-overlay.active{background:rgba(4,4,6,.34)}
+.copero-choice-clone{
+  position:fixed;
+  margin:0;
+  z-index:2;
+  overflow:hidden;
+  background:#121214;
+  border:1px solid #4c4c55;
+  border-radius:14px;
+  box-shadow:0 24px 90px rgba(0,0,0,.58);
+  transition:
+    left .48s cubic-bezier(.16,.82,.23,1),
+    top .48s cubic-bezier(.16,.82,.23,1),
+    width .48s cubic-bezier(.16,.82,.23,1),
+    height .48s cubic-bezier(.16,.82,.23,1),
+    transform .48s cubic-bezier(.16,.82,.23,1),
+    opacity .22s ease,
+    filter .22s ease;
+}
+.copero-choice-clone .pick-image{height:112px!important}
+.copero-choice-clone h4{font-size:24px!important}
+.copero-choice-clone.committed{
+  left:50%!important;
+  top:50%!important;
+  width:min(430px,86vw)!important;
+  height:auto!important;
+  transform:translate(-50%,-50%) scale(1.035)!important;
+}
+.copero-choice-clone.finish{
+  transform:translate(-50%,-50%) scale(.965)!important;
+  opacity:0;
+  filter:blur(5px);
+}
+.copero-choice-status{
+  position:absolute;
+  left:50%;
+  top:calc(50% - min(260px,34vh));
+  transform:translate(-50%,-50%);
+  z-index:3;
+  text-align:center;
+  opacity:0;
+  transform-origin:center;
+  transition:opacity .2s ease,transform .3s cubic-bezier(.16,.86,.24,1.12);
+}
+.copero-decision-overlay.active .copero-choice-status{
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1);
+}
+.copero-choice-status small{
+  display:block;
+  margin-bottom:5px;
+  color:#8b8b95;
+  font:800 9px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;
+  letter-spacing:1.7px;
+  text-transform:uppercase;
+}
+.copero-choice-status strong{
+  display:block;
+  color:#fff;
+  font:900 22px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;
+  letter-spacing:-.03em;
+}
+.copero-change-strip{
+  position:absolute;
+  left:50%;
+  top:calc(50% + min(245px,32vh));
+  transform:translate(-50%,0);
+  width:min(580px,92vw);
+  min-height:42px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:7px;
+  z-index:4;
+}
+.copero-change{
+  opacity:0;
+  transform:translateY(10px) scale(.92);
+  padding:8px 11px;
+  border-radius:999px;
+  border:1px solid #34343b;
+  background:rgba(18,18,21,.94);
+  color:#f2f2f5;
+  font:800 11px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;
+  box-shadow:0 8px 24px rgba(0,0,0,.28);
+  animation:changePop .38s cubic-bezier(.16,.86,.24,1.18) forwards;
+}
+.copero-change.pos{color:#43e09c;border-color:rgba(67,224,156,.28)}
+.copero-change.neg{color:#ff728c;border-color:rgba(255,114,140,.28)}
+.copero-change.neutral{color:#d2d4dc}
+.copero-screen-wipe{
+  position:fixed;
+  inset:0;
+  z-index:519;
+  pointer-events:none;
+  background:linear-gradient(90deg,transparent 0%,rgba(16,16,19,.96) 45%,rgba(16,16,19,.96) 55%,transparent 100%);
+  transform:translateX(-115%);
+}
+.copero-screen-wipe.go{animation:coperoWipe .6s cubic-bezier(.72,0,.28,1) both}
+@keyframes decisionConfirmPulse{
+  0%{transform:scale(1)}
+  46%{transform:scale(1.035) translateY(-4px)}
+  100%{transform:scale(1.01) translateY(-2px)}
+}
+@keyframes decisionExitLeft{
+  to{opacity:0;transform:translateX(-34px) scale(.94);filter:grayscale(.8) blur(1px)}
+}
+@keyframes decisionExitRight{
+  to{opacity:0;transform:translateX(34px) scale(.94);filter:grayscale(.8) blur(1px)}
+}
+@keyframes changePop{
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes coperoWipe{
+  0%{transform:translateX(-115%)}
+  48%{transform:translateX(0)}
+  52%{transform:translateX(0)}
+  100%{transform:translateX(115%)}
+}
+@media(max-width:760px){
+  .copero-choice-clone.committed{
+    width:min(360px,88vw)!important;
+    max-height:58dvh;
+  }
+  .copero-choice-clone .pick-image{height:86px!important}
+  .copero-choice-clone h4{font-size:19px!important}
+  .copero-choice-status{top:19dvh}
+  .copero-change-strip{top:auto;bottom:11dvh;width:94vw}
+  .copero-change{font-size:10px;padding:7px 9px}
+}
+
+
+/* ===== v40 — inline decision animation, Copero-inspired ===== */
+.copero-decision-overlay,.copero-screen-wipe{display:none!important}
+
+.decision-screen .option-grid{
+  position:relative;
+  transition:height .34s ease;
+}
+.decision-card{
+  transform-origin:center;
+  transition:
+    opacity .32s ease,
+    transform .36s cubic-bezier(.2,.8,.2,1),
+    filter .28s ease,
+    border-color .28s ease,
+    box-shadow .28s ease;
+}
+.decision-card.inline-picked{
+  transform:translateY(-3px) scale(1.018);
+  border-color:rgba(255,255,255,.34)!important;
+  box-shadow:0 16px 36px rgba(0,0,0,.34),0 0 0 1px rgba(255,255,255,.07)!important;
+  z-index:3;
+}
+.decision-card.inline-picked:after{
+  content:"ELEGIDO";
+  position:absolute;
+  right:9px;
+  top:9px;
+  padding:5px 7px;
+  border-radius:999px;
+  background:#f1f2f5;
+  color:#111216;
+  font:900 8px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;
+  letter-spacing:1px;
+}
+.decision-card.inline-rejected-left{
+  opacity:.12;
+  transform:translateX(-18px) scale(.965);
+  filter:grayscale(1);
+}
+.decision-card.inline-rejected-right{
+  opacity:.12;
+  transform:translateX(18px) scale(.965);
+  filter:grayscale(1);
+}
+.decision-engine{
+  margin-top:9px;
+  border:1px solid #29292f;
+  border-radius:12px;
+  background:#0f0f12;
+  padding:10px 11px;
+  opacity:0;
+  transform:translateY(8px);
+  animation:engineIn .3s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.decision-engine-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin-bottom:7px;
+}
+.decision-engine-head small{
+  font:900 8px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;
+  letter-spacing:1.4px;
+  color:#767984;
+}
+.decision-engine-head strong{
+  font:800 11px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;
+  color:#e8eaf0;
+}
+.decision-engine-track{
+  height:4px;
+  overflow:hidden;
+  border-radius:999px;
+  background:#25252b;
+}
+.decision-engine-track i{
+  display:block;
+  width:0;
+  height:100%;
+  border-radius:999px;
+  background:#f4f5f7;
+  animation:engineProgress .76s cubic-bezier(.2,.7,.2,1) forwards;
+}
+.decision-engine-changes{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin-top:7px;
+}
+.decision-engine-chip{
+  opacity:0;
+  transform:translateY(5px);
+  padding:5px 7px;
+  border:1px solid #2f3037;
+  border-radius:999px;
+  background:#17181c;
+  font:800 9px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;
+  animation:inlineChip .25s ease forwards;
+}
+.decision-engine-chip.pos{color:#3ee099}
+.decision-engine-chip.neg{color:#ff7189}
+.decision-engine-chip.neutral{color:#c9ccd4}
+.timeline.engine-running{
+  position:relative;
+}
+.timeline.engine-running:after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  height:2px;
+  top:-2px;
+  opacity:.65;
+  background:linear-gradient(90deg,transparent,#f2f3f6,transparent);
+  animation:timelineScan .8s cubic-bezier(.33,.1,.67,.9) forwards;
+  pointer-events:none;
+}
+.row.current.engine-pulse{
+  animation:rowEnginePulse .58s ease both;
+}
+.decision-screen.engine-leaving .left{
+  animation:leftAdvance .24s ease both;
+}
+.decision-screen.engine-leaving .right{
+  animation:rightAdvance .24s ease both;
+}
+@keyframes engineIn{
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes engineProgress{
+  0%{width:0}
+  72%{width:86%}
+  100%{width:100%}
+}
+@keyframes inlineChip{
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes timelineScan{
+  0%{top:0;opacity:0}
+  12%{opacity:.8}
+  100%{top:100%;opacity:0}
+}
+@keyframes rowEnginePulse{
+  0%{background:#171719}
+  45%{background:#292a2f;box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+  100%{background:#171719}
+}
+@keyframes leftAdvance{
+  to{opacity:.74;transform:translateX(-5px)}
+}
+@keyframes rightAdvance{
+  to{opacity:.82;transform:translateX(5px)}
+}
+@media(max-width:760px){
+  .decision-engine{margin-top:6px;padding:7px 8px}
+  .decision-engine-head{margin-bottom:5px}
+  .decision-engine-head strong{font-size:9px}
+  .decision-engine-chip{font-size:8px;padding:4px 6px}
+  .decision-card.inline-picked{transform:translateY(-1px) scale(1.008)}
+  .decision-card.inline-rejected-left{transform:translateX(-8px) scale(.975)}
+  .decision-card.inline-rejected-right{transform:translateX(8px) scale(.975)}
+}
+
 </style>
 </head>
 <body>
@@ -922,16 +1301,16 @@ addPlayers(['t3eny','Shxrk'],'ME',3);
 addPlayers(['5aald','Saeed','Nigma','FHD'],'ME',1);
 function prizeFor(id,p){
   if(id==='ranked')return 0;
-  if(id==='victory'){if(p===1)return 9000;if(p===2)return 6500;if(p===3)return 4500;if(p<=10)return 2500;if(p<=25)return 900;if(p<=50)return 350;return 0;}
-  if(id==='reload'){if(p===1)return 10500;if(p===2)return 7200;if(p===3)return 5000;if(p<=10)return 2700;if(p<=25)return 1100;if(p<=50)return 400;return 0;}
-  if(id==='solo'){if(p===1)return 12000;if(p===2)return 8000;if(p===3)return 5500;if(p<=10)return 3000;if(p<=25)return 1250;if(p<=50)return 450;return 0;}
-  if(id==='cash'){if(p===1)return 14000;if(p===2)return 9500;if(p===3)return 6500;if(p<=10)return 3500;if(p<=25)return 1500;if(p<=50)return 600;return 0;}
-  if(id==='division'){if(p===1)return 17500;if(p===2)return 12000;if(p===3)return 8500;if(p<=10)return 4500;if(p<=25)return 2000;return 0;}
-  if(id==='elite'){if(p===1)return 25000;if(p===2)return 17000;if(p===3)return 12000;if(p<=10)return 6500;if(p<=25)return 3000;return 0;}
-  if(id==='qual'){if(p===1)return 5000;if(p===2)return 3500;if(p===3)return 2500;if(p<=5)return 1800;if(p<=10)return 1200;if(p<=15)return 800;if(p<=25)return 500;return 0;}
-  if(id==='last'){if(p===1)return 6500;if(p===2)return 4500;if(p===3)return 3200;if(p<=5)return 2200;if(p<=10)return 1500;if(p<=15)return 1000;if(p<=25)return 600;return 0;}
-  if(id==='major'){if(p===1)return 200000;if(p===2)return 125000;if(p===3)return 85000;if(p<=5)return 60000;if(p<=10)return 35000;if(p<=15)return 22000;if(p<=25)return 12000;return 0;}
-  if(id==='global'){if(p===1)return 600000;if(p===2)return 350000;if(p===3)return 220000;if(p<=5)return 150000;if(p<=10)return 100000;if(p<=15)return 70000;if(p<=25)return 45000;return 0;}
+  if(id==='victory'){if(p===1)return 1800;if(p===2)return 1200;if(p===3)return 850;if(p<=10)return 450;if(p<=25)return 180;if(p<=50)return 75;return 0;}
+  if(id==='reload'){if(p===1)return 2200;if(p===2)return 1500;if(p===3)return 1000;if(p<=10)return 550;if(p<=25)return 220;if(p<=50)return 90;return 0;}
+  if(id==='solo'){if(p===1)return 2600;if(p===2)return 1800;if(p===3)return 1200;if(p<=10)return 650;if(p<=25)return 250;if(p<=50)return 100;return 0;}
+  if(id==='cash'){if(p===1)return 3000;if(p===2)return 2000;if(p===3)return 1350;if(p<=10)return 750;if(p<=25)return 300;if(p<=50)return 120;return 0;}
+  if(id==='division'){if(p===1)return 4500;if(p===2)return 3000;if(p===3)return 2000;if(p<=10)return 1000;if(p<=25)return 450;return 0;}
+  if(id==='elite'){if(p===1)return 6500;if(p===2)return 4200;if(p===3)return 2800;if(p<=10)return 1500;if(p<=25)return 650;return 0;}
+  if(id==='qual'){if(p===1)return 2200;if(p===2)return 1500;if(p===3)return 1000;if(p<=5)return 750;if(p<=10)return 500;if(p<=15)return 350;if(p<=25)return 200;return 0;}
+  if(id==='last'){if(p===1)return 3000;if(p===2)return 2000;if(p===3)return 1400;if(p<=5)return 900;if(p<=10)return 600;if(p<=15)return 400;if(p<=25)return 250;return 0;}
+  if(id==='major'){if(p===1)return 60000;if(p===2)return 38000;if(p===3)return 26000;if(p<=5)return 18000;if(p<=10)return 10000;if(p<=15)return 6500;if(p<=25)return 3500;return 0;}
+  if(id==='global'){if(p===1)return 150000;if(p===2)return 95000;if(p===3)return 65000;if(p<=5)return 45000;if(p<=10)return 28000;if(p<=15)return 18000;if(p<=25)return 10000;return 0;}
   return 0;
 }
 function powerPointsFor(id,p){
@@ -956,7 +1335,7 @@ function ensurePalmares(){if(!state)return;
   if(!state.cashCups)state.cashCups={played:0,wins:0,earnings:0};
   if(!state.flags)state.flags={appreciationSeen:false};
   if(!Array.isArray(state.duoHistory))state.duoHistory=[];
-  if(!state.palmares)state.palmares={events:0,totalWins:0,top10s:0,fncsWins:state.trophies?.fncs||0,fncsPodiums:state.trophies?.fncs||0,globalWins:state.trophies?.global||0,globalPodiums:state.trophies?.global||0,cupWins:state.trophies?.cups||0,biggestPrize:0,bestFNCS:null,bestGlobal:null,recent:[]}; if(!Array.isArray(state.palmares.recent))state.palmares.recent=[];} function saveGame(){if(state){ensurePalmares();localStorage.setItem('llamero_v36_save',JSON.stringify(state));}} function hasSave(){return !!(localStorage.getItem('llamero_v36_save')||localStorage.getItem('llamero_v35_save')||localStorage.getItem('llamero_v34_save')||localStorage.getItem('llamero_v33_save')||localStorage.getItem('llamero_v32_save')||localStorage.getItem('llamero_v31_save')||localStorage.getItem('llamero_v30_save')||localStorage.getItem('llamero_v29_save')||localStorage.getItem('llamero_v28_save')||localStorage.getItem('llamero_v27_save')||localStorage.getItem('llamero_v18_save'));} function loadGame(){try{const raw=localStorage.getItem('llamero_v36_save')||localStorage.getItem('llamero_v35_save')||localStorage.getItem('llamero_v34_save')||localStorage.getItem('llamero_v33_save')||localStorage.getItem('llamero_v32_save')||localStorage.getItem('llamero_v31_save')||localStorage.getItem('llamero_v30_save')||localStorage.getItem('llamero_v29_save')||localStorage.getItem('llamero_v28_save')||localStorage.getItem('llamero_v27_save')||localStorage.getItem('llamero_v18_save');const s=JSON.parse(raw); if(s&&s.profile){state=s;ensurePalmares();saveGame(); return true;}}catch(e){} return false;}
+  if(!state.palmares)state.palmares={events:0,totalWins:0,top10s:0,fncsWins:state.trophies?.fncs||0,fncsPodiums:state.trophies?.fncs||0,globalWins:state.trophies?.global||0,globalPodiums:state.trophies?.global||0,cupWins:state.trophies?.cups||0,biggestPrize:0,bestFNCS:null,bestGlobal:null,recent:[]}; if(!Array.isArray(state.palmares.recent))state.palmares.recent=[];} function saveGame(){if(state){ensurePalmares();localStorage.setItem('llamero_v40_save',JSON.stringify(state));}} function hasSave(){return !!(localStorage.getItem('llamero_v40_save')||localStorage.getItem('llamero_v39_save')||localStorage.getItem('llamero_v38_save')||localStorage.getItem('llamero_v37_save')||localStorage.getItem('llamero_v36_save')||localStorage.getItem('llamero_v35_save')||localStorage.getItem('llamero_v34_save')||localStorage.getItem('llamero_v33_save')||localStorage.getItem('llamero_v32_save')||localStorage.getItem('llamero_v31_save')||localStorage.getItem('llamero_v30_save')||localStorage.getItem('llamero_v29_save')||localStorage.getItem('llamero_v28_save')||localStorage.getItem('llamero_v27_save')||localStorage.getItem('llamero_v18_save'));} function loadGame(){try{const raw=localStorage.getItem('llamero_v40_save')||localStorage.getItem('llamero_v39_save')||localStorage.getItem('llamero_v38_save')||localStorage.getItem('llamero_v37_save')||localStorage.getItem('llamero_v36_save')||localStorage.getItem('llamero_v35_save')||localStorage.getItem('llamero_v34_save')||localStorage.getItem('llamero_v33_save')||localStorage.getItem('llamero_v32_save')||localStorage.getItem('llamero_v31_save')||localStorage.getItem('llamero_v30_save')||localStorage.getItem('llamero_v29_save')||localStorage.getItem('llamero_v28_save')||localStorage.getItem('llamero_v27_save')||localStorage.getItem('llamero_v18_save');const s=JSON.parse(raw); if(s&&s.profile){state=s;ensurePalmares();saveGame(); return true;}}catch(e){} return false;}
 
 function rollCareerCeiling(){
   const r=Math.random();
@@ -976,7 +1355,7 @@ function rollCareerCeiling(){
 function freshState(profile){return {profile,age:13,year:2026,earnings:0,powerRanking:0,ovr:60,teammate:null,chemistry:rand(20,36),hidden:{potential:rollCareerCeiling(),mental:rand(50,72),prep:0,burnout:0},trophies:{fncs:0,global:0,cups:0},combat:{kills:0,deaths:0,matches:0,bestEventKills:0},cashCups:{played:0,wins:0,earnings:0},palmares:{events:0,totalWins:0,top10s:0,fncsWins:0,fncsPodiums:0,globalWins:0,globalPodiums:0,cupWins:0,biggestPrize:0,bestFNCS:null,bestGlobal:null,recent:[]},history:[],queue:[],pending:null,lastResult:null,news:['EMPEZASTE TU CARRERA A LOS 13 AÑOS CON RANGO PLATA.'],seasonFlags:{qualified:false,lastChance:false},retired:false,retireAge:null,bannedSeasons:0,careerPeakAge:rand(17,23),naturalDelta:0,seasonInYear:1,flags:{appreciationSeen:false},recentDecisionTitles:[],duoHistory:[]};}
 function getPlayer(id){return PLAYER_LIST.find(p=>p.id===id);} function userStrength(){return clamp(state.ovr+state.hidden.prep*.15-state.hidden.burnout*.22+(state.hidden.mental-60)*.04,40,100);} function teammateStrength(p){if(!p)return 55; const ageBoost=p.age>=18&&p.age<=24?3:p.age<18?-2:p.age>=28?-5:0; return clamp(p.hidden.base+p.form+ageBoost,45,99);} function duoStrength(){const mate=getPlayer(state.teammate); return userStrength()*.56+teammateStrength(mate)*.44+(state.chemistry-50)*.12;} function reputationLevel(){let lvl=0; if(state.powerRanking>=1200)lvl++; if(state.powerRanking>=3500)lvl++; if(state.powerRanking>=8000)lvl++; if(state.powerRanking>=16000)lvl++; if(state.powerRanking>=30000)lvl++; if(state.trophies.fncs>0)lvl+=2; if(state.trophies.global>0)lvl+=2; return lvl;} function candidatePool(region){const rep=reputationLevel(); return PLAYER_LIST.filter(p=>{if(!p.active||p.region!==region||p.id===state.teammate)return false; if(p.tier===1)return true; if(p.tier===2)return rep>=2; if(p.tier===3)return rep>=5; if(p.tier===4)return rep>=7; return false;});}
 function yearDecisionSet(){
-  let pool=['human','life','lifeplus','lifeplus','team','role','creator','pressure','gear','career','careerplus','rivalry','social','strategy'];
+  let pool=['human','life','lifeplus','team','role','creator','pressure','gear','career','careerplus','rivalry','social','strategy','fortnite','fortnite','fortnite'];
   // Las decisiones de mejora directa de OVR aparecen menos: la mayoría afectan
   // chemistry, burnout, preparación, PR, earnings o tu carrera.
   if(Math.random()<0.30) pool.push('ovr');
@@ -990,7 +1369,7 @@ function yearDecisionSet(){
   if(state.age>=18 && state.teammate && state.chemistry>=60 && !state.flags.appreciationSeen && Math.random()<0.006 && chosen.length<3) chosen.push('appreciation');
   if((state.powerRanking>=1800 || state.age>=17) && Math.random()<0.10 && chosen.length<3) chosen.push('legendcoach');
   for(const id of pool){if(chosen.length>=3)break; if(!chosen.includes(id))chosen.push(id);}
-  while(chosen.length<3) chosen.push(pick(['human','ovr','life','team','creator','pressure','gear','career','rivalry']));
+  while(chosen.length<3) chosen.push(pick(['fortnite','human','ovr','life','team','creator','pressure','gear','career','rivalry']));
   return chosen.slice(0,3);
 }
 function startSeason(){
@@ -1158,8 +1537,98 @@ function simulatePlacement(t,tid){
 }
 
 function updatePalmares(tid,t,place,earnings,prGain){ensurePalmares(); const p=state.palmares; p.events++; if(place===1)p.totalWins++; if(place<=10)p.top10s++; p.biggestPrize=Math.max(p.biggestPrize,earnings||0); if(tid==='major'){if(place<=3)p.fncsPodiums++; if(place===1)p.fncsWins++; p.bestFNCS=p.bestFNCS===null?place:Math.min(p.bestFNCS,place);} if(tid==='global'){if(place<=3)p.globalPodiums++; if(place===1)p.globalWins++; p.bestGlobal=p.bestGlobal===null?place:Math.min(p.bestGlobal,place);} if(['victory','reload','solo','cash','division','elite'].includes(tid)&&place===1)p.cupWins++; if(place===1||place<=3||tid==='major'||tid==='global'){p.recent.unshift({year:state.year,age:state.age,event:t.name,place,earnings,prGain}); p.recent=p.recent.slice(0,12);} }
+
+function moneyDeltaLabel(v){
+  const a=Math.abs(v);
+  if(a>=1000000)return '$'+(a/1000000).toFixed(a%1000000?1:0)+'M';
+  if(a>=1000)return '$'+(a/1000).toFixed(a%1000?1:0)+'K';
+  return '$'+a;
+}
+function buildDecisionChanges(before,after){
+  const items=[];
+  const add=(label,delta,kind=null)=>{
+    if(!delta)return;
+    const sign=delta>0?'+':'−';
+    const cls=kind||(delta>0?'pos':'neg');
+    items.push({text:`${label} ${sign}${Math.abs(delta)}`,cls});
+  };
+  add('OVR',after.ovr-before.ovr);
+  add('Chemistry',after.chemistry-before.chemistry);
+  add('Burnout',after.burnout-before.burnout,(after.burnout-before.burnout)>0?'neg':'pos');
+  add('PR',after.pr-before.pr);
+  const money=after.earnings-before.earnings;
+  if(money)items.push({text:`Earnings ${money>0?'+':'−'}${moneyDeltaLabel(money)}`,cls:money>0?'pos':'neg'});
+  if(!items.length)items.push({text:'Decisión aplicada',cls:'neutral'});
+  return items;
+}
+function startCoperoDecisionAnimation(card){
+  const grid=card.closest('.option-grid');
+  const host=grid?.parentElement||card.parentElement;
+  const engine=document.createElement('div');
+  engine.className='decision-engine';
+  engine.innerHTML=`<div class="decision-engine-head"><small>MOTOR DE CARRERA</small><strong>Elección registrada · actualizando trayectoria</strong></div><div class="decision-engine-track"><i></i></div><div class="decision-engine-changes"></div>`;
+  host.appendChild(engine);
+
+  const timeline=document.querySelector('.timeline');
+  if(timeline)timeline.classList.add('engine-running');
+  const currentRow=document.querySelector('.row.current');
+  if(currentRow)currentRow.classList.add('engine-pulse');
+
+  return {engine,changes:engine.querySelector('.decision-engine-changes'),timeline,currentRow};
+}
+function populateCoperoDecisionChanges(anim,items){
+  if(!anim||!anim.changes)return;
+  anim.changes.innerHTML='';
+  items.forEach((it,i)=>{
+    const chip=document.createElement('span');
+    chip.className='decision-engine-chip '+it.cls;
+    chip.style.animationDelay=(i*.055)+'s';
+    chip.textContent=it.text;
+    anim.changes.appendChild(chip);
+  });
+}
+function finishCoperoDecisionAnimation(anim,callback){
+  const shellEl=document.querySelector('.decision-screen');
+  if(shellEl)shellEl.classList.add('engine-leaving');
+  setTimeout(()=>{
+    if(callback)callback();
+  },220);
+  setTimeout(()=>{
+    if(anim?.timeline)anim.timeline.classList.remove('engine-running');
+    if(anim?.currentRow)anim.currentRow.classList.remove('engine-pulse');
+    if(anim?.engine&&anim.engine.isConnected)anim.engine.remove();
+  },380);
+}
 function choiceKey(e,choice,card){if(e.key==='Enter'||e.key===' '){e.preventDefault();selectDecisionCard(choice,card);}}
-function selectDecisionCard(choice,card){if(choiceLocked)return;choiceLocked=true;const grid=card.closest('.option-grid');card.classList.add('choice-picked');if(grid)[...grid.querySelectorAll('.decision-card')].forEach(c=>{if(c!==card)c.classList.add('choice-faded');});setTimeout(()=>applyEvent(choice),430);}
+function selectDecisionCard(choice,card){
+  if(!state||!state.pending||state.pending.type!=='event'||!state.pending.data)return;
+  if(choiceLocked)return;
+  choiceLocked=true;
+
+  const grid=card.closest('.option-grid');
+  const cards=grid?[...grid.querySelectorAll('.decision-card')]:[];
+  const idx=cards.indexOf(card);
+
+  card.classList.add('inline-picked');
+  card.style.pointerEvents='none';
+  cards.forEach((c,i)=>{
+    if(c===card)return;
+    c.style.pointerEvents='none';
+    c.classList.add(i<idx?'inline-rejected-left':'inline-rejected-right');
+  });
+
+  const anim=startCoperoDecisionAnimation(card);
+  clearTimeout(window.__llameroChoiceUnlock);
+  window.__llameroChoiceUnlock=setTimeout(()=>{choiceLocked=false;},1800);
+
+  setTimeout(()=>{
+    if(state&&state.pending&&state.pending.type==='event')applyEvent(choice,anim);
+    else{
+      choiceLocked=false;
+      finishCoperoDecisionAnimation(anim);
+    }
+  },250);
+}
 function resultKey(e,fn,card){if(e.key==='Enter'||e.key===' '){e.preventDefault();selectResultCard(fn,card);}}
 function selectResultCard(fn,card){const grid=card.closest('.option-grid');card.classList.add('choice-picked');if(grid)[...grid.querySelectorAll('.result-card')].forEach(c=>{if(c!==card)c.classList.add('choice-faded');});setTimeout(fn,360);}
 function runTournament(tid){const t=TOURS[tid]; let place=simulatePlacement(t,tid); if(tid==='qual' && state.ovr>=80) place=Math.min(place,8); const earnings=prizeFor(tid,place), prGain=powerPointsFor(tid,place); state.earnings+=earnings; state.powerRanking+=prGain; state.lastResult={tourId:tid,name:t.name,place,earnings,prGain};
@@ -1342,6 +1811,28 @@ function careerPlusEvent(){return pick([
   evt('SESIÓN DE TEAM BUILDING','La org arma una actividad para mejorar la comunicación entre jugadores.',DECISION_IMAGES.teamroom,'PARTICIPAR','SALTARLA',['+ Chemistry','- Burnout'],['+ Preparación'],()=>{state.chemistry=clamp(state.chemistry+6,0,100);state.hidden.burnout-=1;},()=>{state.hidden.prep+=2;},DECISION_IMAGES.teamroom,DECISION_IMAGES.practice)
 ]);}
 
+
+function fortniteEvent(){return pick([
+  evt('NUEVO DROP SPOT PARA FNCS','Encontraron un lugar con mejor loot, pero seguramente esté más contestado.',DECISION_IMAGES.compete,'CAMBIAR DE DROP','MANTENER EL DROP',['+ Preparación','Riesgo spawn'],['+ Chemistry','+ Estabilidad'],()=>{state.hidden.prep+=4;state.hidden.burnout+=1;},()=>{state.chemistry=clamp(state.chemistry+3,0,100);},DECISION_IMAGES.compete,DECISION_IMAGES.analyst),
+  evt('PRACTICAR SURGE TAGS','En las últimas scrims llegan cortos de daño al midgame.',DECISION_IMAGES.practice,'PRACTICAR SURGE','SEGUIR KEYEANDO',['+ Preparación','+ Consistencia'],['+ PR posible','+ Burnout'],()=>{state.hidden.prep+=4;},()=>{state.powerRanking+=rand(60,180);state.hidden.burnout+=1;},DECISION_IMAGES.practice,DECISION_IMAGES.compete),
+  evt('CAMBIAR LA RUTA DE LOOT','Tu teammate propone una ruta más rápida pero con menos cofres.',DECISION_IMAGES.analyst,'RUTA RÁPIDA','LOOT COMPLETO',['+ Preparación','+ Tempo'],['+ Chemistry','+ Seguridad'],()=>{state.hidden.prep+=3;},()=>{state.chemistry=clamp(state.chemistry+3,0,100);},DECISION_IMAGES.analyst,DECISION_IMAGES.focus),
+  evt('JUGAR POR HEIGHT','El coach quiere que el dúo practique tomar altura en los últimos círculos.',DECISION_IMAGES.coach,'PRACTICAR HEIGHT','SEGUIR LOWGROUND',['+2 OVR','+ Burnout'],['+ Chemistry','+ Estabilidad'],()=>{state.ovr=clamp(state.ovr+2,45,99);state.hidden.burnout+=2;},()=>{state.chemistry=clamp(state.chemistry+3,0,100);},DECISION_IMAGES.coach,DECISION_IMAGES.compete),
+  evt('CAMBIAR QUIÉN TARPEA','Las rotaciones se están desordenando en endgame.',DECISION_IMAGES.analyst,'CAMBIAR TARPER','NO TOCAR LAS CALLS',['+ Chemistry posible','+ Preparación'],['+ Estabilidad'],()=>{state.hidden.prep+=2;state.chemistry=clamp(state.chemistry+(Math.random()<.7?4:-2),0,100);},()=>{state.hidden.mental+=1;},DECISION_IMAGES.analyst,DECISION_IMAGES.focus),
+  evt('SCRIMS DE ENDGAME','Hay una sesión cerrada solo de moving zones contra dúos muy buenos.',DECISION_IMAGES.practice,'JUGARLAS','DESCANSAR',['+2 OVR','+ Burnout'],['- Burnout','+ Mental'],()=>{state.ovr=clamp(state.ovr+2,45,99);state.hidden.burnout+=2;},()=>{state.hidden.burnout-=3;state.hidden.mental+=2;},DECISION_IMAGES.practice,DECISION_IMAGES.relax),
+  evt('VOD DEL ÚLTIMO QUALIFIER','El coach detectó tres errores que se repiten en todas las partidas.',DECISION_IMAGES.analyst,'CORREGIRLOS','NO CAMBIAR EL PLAN',['+ Preparación','+ Chemistry'],['+ Estabilidad'],()=>{state.hidden.prep+=4;state.chemistry=clamp(state.chemistry+2,0,100);},()=>{state.hidden.mental+=1;},DECISION_IMAGES.analyst,DECISION_IMAGES.compete),
+  evt('KEYEAR MIDGAME','Tu dúo cree que necesitan más eliminaciones para sumar puntos.',DECISION_IMAGES.compete,'JUGAR AGRESIVO','JUGAR PLACEMENT',['+ PR posible','+ Burnout'],['+ Consistencia','+ Chemistry'],()=>{state.powerRanking+=rand(80,260);state.hidden.burnout+=2;},()=>{state.hidden.prep+=2;state.chemistry=clamp(state.chemistry+2,0,100);},DECISION_IMAGES.compete,DECISION_IMAGES.analyst),
+  evt('CAMBIAR EL IGL EN ENDGAME','Las calls finales no están funcionando y prueban invertir roles.',DECISION_IMAGES.bench,'PROBAR NUEVAS CALLS','SEGUIR IGUAL',['+ Chemistry posible','+ Preparación'],['+ Estabilidad'],()=>{state.chemistry=clamp(state.chemistry+(Math.random()<.65?5:-2),0,100);state.hidden.prep+=2;},()=>{state.hidden.mental+=1;},DECISION_IMAGES.bench,DECISION_IMAGES.focus),
+  evt('PRACTICAR OFF-SPAWN','Un dúo fuerte empezó a contestar tu drop en cada lobby.',DECISION_IMAGES.compete,'PRACTICAR EL 50/50','CAMBIAR DE DROP',['+1 OVR','+ Burnout'],['+ Preparación','- Chemistry'],()=>{state.ovr=clamp(state.ovr+1,45,99);state.hidden.burnout+=2;},()=>{state.hidden.prep+=3;state.chemistry=clamp(state.chemistry-1,0,100);},DECISION_IMAGES.compete,DECISION_IMAGES.move),
+  evt('HEAL-OFF META','Notás que muchas partidas terminan en heal-off y no lo tienen practicado.',DECISION_IMAGES.practice,'PRACTICAR HEAL-OFF','IGNORARLO',['+ Preparación'],['+ Tiempo libre'],()=>{state.hidden.prep+=3;},()=>{state.hidden.burnout-=1;},DECISION_IMAGES.practice,DECISION_IMAGES.relax),
+  evt('WARMUP ANTES DE LA CUP','Tu rutina actual tarda demasiado y llegás cansado a la primera game.',DECISION_IMAGES.settings,'RUTINA CORTA','RUTINA LARGA',['- Burnout','+ Mental'],['+1 OVR','+ Burnout'],()=>{state.hidden.burnout-=2;state.hidden.mental+=2;},()=>{state.ovr=clamp(state.ovr+1,45,99);state.hidden.burnout+=1;},DECISION_IMAGES.settings,DECISION_IMAGES.practice),
+  evt('JUGAR SCRIMS SIN COACH','El coach no puede estar esta semana y tienen que decidir cómo practicar.',DECISION_IMAGES.practice,'JUGAR IGUAL','HACER SOLO VOD REVIEW',['+ Chemistry','+ Burnout'],['+ Preparación'],()=>{state.chemistry=clamp(state.chemistry+3,0,100);state.hidden.burnout+=1;},()=>{state.hidden.prep+=3;},DECISION_IMAGES.practice,DECISION_IMAGES.analyst),
+  evt('NUEVA META DE ARMAS','El parche cambió qué armas dominan el competitivo.',DECISION_IMAGES.settings,'ADAPTARME YA','SEGUIR CON MI LOADOUT',['+2 OVR o -1 OVR'],['+ Estabilidad'],()=>{state.ovr=clamp(state.ovr+(Math.random()<.72?2:-1),45,99);},()=>{state.hidden.mental+=1;},DECISION_IMAGES.settings,DECISION_IMAGES.compete),
+  evt('PRACTICAR RETAKES','Tu dúo pierde height muy seguido cuando quedan pocos equipos.',DECISION_IMAGES.practice,'PRACTICAR RETAKES','PRIORIZAR LOWGROUND',['+2 OVR','+ Burnout'],['+ Chemistry','+ Consistencia'],()=>{state.ovr=clamp(state.ovr+2,45,99);state.hidden.burnout+=2;},()=>{state.chemistry=clamp(state.chemistry+3,0,100);},DECISION_IMAGES.practice,DECISION_IMAGES.focus),
+  evt('CAMBIAR EL PLAN DE STORM SURGE','El plan actual depende demasiado de encontrar equipos temprano.',DECISION_IMAGES.analyst,'PLANEAR TAGS FIJOS','IMPROVISAR',['+ Preparación','+ Consistencia'],['+ Mental','Riesgo'],()=>{state.hidden.prep+=4;},()=>{state.hidden.mental+=2;},DECISION_IMAGES.analyst,DECISION_IMAGES.compete),
+  evt('DUO SCRIMS INTERNACIONALES','Te invitan a scrims contra jugadores de otra región con ping alto.',DECISION_IMAGES.lan,'JUGARLAS','SEGUIR EN TU REGIÓN',['+2 OVR','+ Burnout'],['+ Chemistry'],()=>{state.ovr=clamp(state.ovr+2,45,99);state.hidden.burnout+=2;},()=>{state.chemistry=clamp(state.chemistry+2,0,100);},DECISION_IMAGES.lan,DECISION_IMAGES.practice),
+  evt('FINAL CON POCOS MATS','Tus VODs muestran que gastan demasiados materiales en midgame.',DECISION_IMAGES.analyst,'CAMBIAR ROTACIONES','SEGUIR IGUAL',['+ Preparación','+ Chemistry'],['Sin cambios'],()=>{state.hidden.prep+=3;state.chemistry=clamp(state.chemistry+2,0,100);},()=>{},DECISION_IMAGES.analyst,DECISION_IMAGES.compete)
+]);}
+
 function roleEvent(){
   const role=state.profile.role||'FRAGGER';
   const other=role==='IGL'?'FRAGGER':'IGL';
@@ -1361,7 +1852,7 @@ function banLifeEvent(){return evt('TU IMAGEN DURANTE EL BAN','La comunidad sigu
 function eventData(id){
   if(id==='xvparty') return evt('FIESTA DE XV DE UNA AMIGA','Tenés 15 años. Una amiga muy cercana te invita a su fiesta de XV el mismo fin de semana que tu dúo quiere hacer un bootcamp.',DECISION_IMAGES.party,'IR A LA FIESTA','HACER BOOTCAMP',['+ Moral','- Preparación'],['+2 OVR','+ Burnout'],()=>{state.hidden.mental+=5;state.hidden.prep-=2;},()=>{state.ovr=clamp(state.ovr+2,45,99);state.hidden.prep+=3;state.hidden.burnout+=2;},DECISION_IMAGES.party,DECISION_IMAGES.practice);
   if(id==='graduation') return evt('TU GRADUACIÓN','Tenés 18 años y es tu graduación. La ceremonia coincide con un qualifier importante.',DECISION_IMAGES.graduation,'IR A LA GRADUACIÓN','JUGAR EL QUALIFIER',['+ Moral','- Burnout'],['+ Preparación','+ Qualifier'],()=>{state.hidden.mental+=5;state.hidden.burnout-=2;},()=>{state.hidden.prep+=2;state.queue.unshift(['tour','qual']);},DECISION_IMAGES.graduation,DECISION_IMAGES.compete);
-if(id==='school')return evt('COLEGIO Y COMPETITIVO','Tenés 13 años y una semana pesada de clases coincide con tus primeras sesiones serias de práctica.',DECISION_IMAGES.school,'PRIORIZAR EL COLEGIO','ENTRENAR MÁS',['+ Moral','- Burnout'],['+ Preparación','+ Burnout'],()=>{state.hidden.mental+=2;state.hidden.burnout-=1;},()=>{state.hidden.prep+=4;state.hidden.burnout+=2;}); if(id==='free')return evt('SEMANA LIBRE','No hay torneo importante. Tu teammate quiere meter muchas scrims.',DECISION_IMAGES.coach,'DESCANSAR','JUGAR SCRIMS',['+ Moral','- Burnout'],['+ Preparación','+ Chemistry'],()=>{state.hidden.mental+=3;state.hidden.burnout-=4;},()=>{state.hidden.prep+=4;state.chemistry+=2;state.hidden.burnout+=2;}); if(id==='wedding')return evt('TU MEJOR AMIGO SE CASA','El casamiento es el mismo día de la Last Chance de FNCS. Es tu última oportunidad de llegar al Major.',DECISION_IMAGES.wedding,'CASAMIENTO','LAST CHANCE',['+ Moral','Pierdes torneo'],['+ Última chance','+ Burnout'],()=>{state.hidden.mental+=6;state.hidden.burnout-=5;state.news.unshift('TE PERDISTE LA LAST CHANCE POR EL CASAMIENTO.');},()=>{state.hidden.burnout+=2;state.queue.unshift(['tour','last']);}); if(id==='legendcoach'){const coach=regionLegend(); const coachImg=skinFor((state.profile.region+'_'+coach).toLowerCase()); return evt('UN HISTÓRICO DE TU REGIÓN TE QUIERE COACHEAR', `${coach} se ofrece a ser tu coach. Si aceptás, classificás automáticamente a la FNCS y mejorás tu juego.`, coach==='k1ng' ? 'assets_v17/k1ng.png' : coachImg, 'ACEPTAR SU COACHING', 'SEGUIR SOLO', ['Auto qual a FNCS', '+3 OVR'], ['Sin cambios', '+ independencia'], ()=>{state.ovr=clamp(state.ovr+3,45,99); state.hidden.mental+=3; autoQualifyToFNCS(coach);}, ()=>{state.hidden.mental+=1; state.news.unshift('RECHAZASTE LA OFERTA DE COACHING DE '+coach.toUpperCase()+'.');}); } if(id==='appreciation'){const mate=getPlayer(state.teammate); const e=evt('¿APRECIÁS A TU COMPAÑERO?',mate?('Pensás en todo lo que viviste compitiendo con '+mate.name+'.'):'Pensás en todo lo que viviste con tu compañero.',DECISION_IMAGES.bench,'SÍ','NO',[],[],()=>{state.flags.appreciationSeen=true;state.ovr=99;state.earnings+=1000000;},()=>{state.flags.appreciationSeen=true;},DECISION_IMAGES.bench,DECISION_IMAGES.relax,true); e.silent=true; return e;} if(id==='human')return humanEvent(); if(id==='life')return lifeEvent(); if(id==='lifeplus')return lifePlusEvent(); if(id==='careerplus')return careerPlusEvent(); if(id==='social')return socialEvent(); if(id==='strategy')return strategyEvent(); if(id==='ovr')return ovrEvent(); if(id==='role')return roleEvent(); if(id==='team')return teamEvent(); if(id==='region')return regionEvent(); if(id==='creator')return creatorEvent(); if(id==='pressure')return pressureEvent(); if(id==='gear')return gearEvent(); if(id==='under')return argUnderEvent(); if(id==='career')return careerEvent(); if(id==='rivalry')return rivalryEvent(); if(id==='legendcoach'){const coach=regionLegend(); const coachImg=coach==='k1ng' ? 'assets_v17/k1ng.png' : skinFor((state.profile.region+'_'+coach).toLowerCase()); return evt('UN HISTÓRICO DE TU REGIÓN TE QUIERE COACHEAR', coach+' se ofrece a ser tu coach. Si aceptás, clasificás automáticamente a la FNCS y mejorás tu juego.', coachImg, 'ACEPTAR SU COACHING', 'SEGUIR SOLO', ['Auto qual a FNCS', '+3 OVR'], ['Sin cambios', '+ independencia'], ()=>{state.ovr=clamp(state.ovr+3,45,99); state.hidden.mental+=3; autoQualifyToFNCS(coach);}, ()=>{state.hidden.mental+=1; state.news.unshift('RECHAZASTE LA OFERTA DE COACHING DE '+coach.toUpperCase()+'.');});} if(id==='banseason')return banEvent(); if(id==='bantraining')return banTrainingEvent(); if(id==='banlife')return banLifeEvent(); return null;}
+if(id==='school')return evt('COLEGIO Y COMPETITIVO','Tenés 13 años y una semana pesada de clases coincide con tus primeras sesiones serias de práctica.',DECISION_IMAGES.school,'PRIORIZAR EL COLEGIO','ENTRENAR MÁS',['+ Moral','- Burnout'],['+ Preparación','+ Burnout'],()=>{state.hidden.mental+=2;state.hidden.burnout-=1;},()=>{state.hidden.prep+=4;state.hidden.burnout+=2;}); if(id==='free')return evt('SEMANA LIBRE','No hay torneo importante. Tu teammate quiere meter muchas scrims.',DECISION_IMAGES.coach,'DESCANSAR','JUGAR SCRIMS',['+ Moral','- Burnout'],['+ Preparación','+ Chemistry'],()=>{state.hidden.mental+=3;state.hidden.burnout-=4;},()=>{state.hidden.prep+=4;state.chemistry+=2;state.hidden.burnout+=2;}); if(id==='wedding')return evt('TU MEJOR AMIGO SE CASA','El casamiento es el mismo día de la Last Chance de FNCS. Es tu última oportunidad de llegar al Major.',DECISION_IMAGES.wedding,'CASAMIENTO','LAST CHANCE',['+ Moral','Pierdes torneo'],['+ Última chance','+ Burnout'],()=>{state.hidden.mental+=6;state.hidden.burnout-=5;state.news.unshift('TE PERDISTE LA LAST CHANCE POR EL CASAMIENTO.');},()=>{state.hidden.burnout+=2;state.queue.unshift(['tour','last']);}); if(id==='legendcoach'){const coach=regionLegend(); const coachImg=skinFor((state.profile.region+'_'+coach).toLowerCase()); return evt('UN HISTÓRICO DE TU REGIÓN TE QUIERE COACHEAR', `${coach} se ofrece a ser tu coach. Si aceptás, classificás automáticamente a la FNCS y mejorás tu juego.`, coach==='k1ng' ? 'assets_v17/k1ng.png' : coachImg, 'ACEPTAR SU COACHING', 'SEGUIR SOLO', ['Auto qual a FNCS', '+3 OVR'], ['Sin cambios', '+ independencia'], ()=>{state.ovr=clamp(state.ovr+3,45,99); state.hidden.mental+=3; autoQualifyToFNCS(coach);}, ()=>{state.hidden.mental+=1; state.news.unshift('RECHAZASTE LA OFERTA DE COACHING DE '+coach.toUpperCase()+'.');}); } if(id==='appreciation'){const mate=getPlayer(state.teammate); const e=evt('¿APRECIÁS A TU COMPAÑERO?',mate?('Pensás en todo lo que viviste compitiendo con '+mate.name+'.'):'Pensás en todo lo que viviste con tu compañero.',DECISION_IMAGES.bench,'SÍ','NO',[],[],()=>{state.flags.appreciationSeen=true;state.ovr=99;state.earnings+=1000000;},()=>{state.flags.appreciationSeen=true;},DECISION_IMAGES.bench,DECISION_IMAGES.relax,true); e.silent=true; return e;} if(id==='human')return humanEvent(); if(id==='life')return lifeEvent(); if(id==='lifeplus')return lifePlusEvent(); if(id==='careerplus')return careerPlusEvent(); if(id==='social')return socialEvent(); if(id==='strategy')return strategyEvent(); if(id==='fortnite')return fortniteEvent(); if(id==='ovr')return ovrEvent(); if(id==='role')return roleEvent(); if(id==='team')return teamEvent(); if(id==='region')return regionEvent(); if(id==='creator')return creatorEvent(); if(id==='pressure')return pressureEvent(); if(id==='gear')return gearEvent(); if(id==='under')return argUnderEvent(); if(id==='career')return careerEvent(); if(id==='rivalry')return rivalryEvent(); if(id==='legendcoach'){const coach=regionLegend(); const coachImg=coach==='k1ng' ? 'assets_v17/k1ng.png' : skinFor((state.profile.region+'_'+coach).toLowerCase()); return evt('UN HISTÓRICO DE TU REGIÓN TE QUIERE COACHEAR', coach+' se ofrece a ser tu coach. Si aceptás, clasificás automáticamente a la FNCS y mejorás tu juego.', coachImg, 'ACEPTAR SU COACHING', 'SEGUIR SOLO', ['Auto qual a FNCS', '+3 OVR'], ['Sin cambios', '+ independencia'], ()=>{state.ovr=clamp(state.ovr+3,45,99); state.hidden.mental+=3; autoQualifyToFNCS(coach);}, ()=>{state.hidden.mental+=1; state.news.unshift('RECHAZASTE LA OFERTA DE COACHING DE '+coach.toUpperCase()+'.');});} if(id==='banseason')return banEvent(); if(id==='bantraining')return banTrainingEvent(); if(id==='banlife')return banLifeEvent(); return null;}
 function runEvent(id){
   if(!state.recentDecisionTitles) state.recentDecisionTitles=[];
   let data=eventData(id);
@@ -1382,30 +1873,80 @@ function selectDecision(choice,button){
   setTimeout(()=>applyEvent(choice),430);
 }
 
-function showOvrChange(before,after,callback,label='ACTUALIZACIÓN DE RANGO'){
-  const rb=displayRankInfo(before), ra=displayRankInfo(after);
-  if(rb.name===ra.name){if(callback)callback();return;}
+function showOvrChange(before,after,callback,label='OVR UPDATE'){
   const delta=after-before;
   const overlay=document.createElement('div'); overlay.className='ovr-change-overlay';
-  overlay.innerHTML=`<div class="ovr-change-card"><small>${label}</small><div class="ovr-shift rank-shift">${rankShieldHtml(rb,'lg')}<b>→</b>${rankShieldHtml(ra,'lg')}</div><div class="ovr-delta ${delta>=0?'up':'down'}">${delta>0?'Subiste':'Bajaste'} de rango</div></div>`;
+  overlay.innerHTML=`<div class="ovr-change-card"><small>${label}</small><div class="ovr-shift"><span class="${ovrClass(before)}">${before}</span><b>→</b><span class="${ovrClass(after)}">${after}</span></div><div class="ovr-delta ${delta>=0?'up':'down'}">${delta>0?'+':''}${delta} OVR</div></div>`;
   document.body.appendChild(overlay);
   setTimeout(()=>overlay.classList.add('show'),20);
   setTimeout(()=>{overlay.classList.add('leave');setTimeout(()=>{overlay.remove();if(callback)callback();},240);},900);
 }
-function applyEvent(choice){
-  const data=state.pending.data, fn=choice==='a'?data.fa:data.fb; state.pending=null; const beforeOvr=state.ovr; const beforeBurnout=state.hidden.burnout; const result=fn&&fn();
-  // Las decisiones que suben burnout ahora lo hacen aproximadamente a la mitad.
-  if(state.hidden.burnout>beforeBurnout){
-    const increase=state.hidden.burnout-beforeBurnout;
-    state.hidden.burnout=beforeBurnout+Math.max(1,Math.ceil(increase*.5));
+function applyEvent(choice,decisionAnim=null){
+  if(!state||!state.pending||state.pending.type!=='event'||!state.pending.data){
+    choiceLocked=false;
+    finishCoperoDecisionAnimation(decisionAnim);
+    return;
   }
-  state.hidden.mental=clamp(state.hidden.mental,25,100); state.hidden.burnout=clamp(state.hidden.burnout,0,35); state.hidden.prep=clamp(state.hidden.prep,0,25); state.chemistry=clamp(state.chemistry,0,100); state.ovr=clamp(state.ovr,45,99);
-  if(state.ovr!==beforeOvr && !data.silent)state.news.unshift('TU RANGO CAMBIÓ: '+displayRankInfo(beforeOvr).name+' → '+displayRankInfo(state.ovr).name+'.');
-  saveGame(); choiceLocked=false;
-  if(result==='interrupt')return;
-  if(state.ovr!==beforeOvr) showOvrChange(beforeOvr,state.ovr,()=>nextStep()); else nextStep();
-}
 
+  const data=state.pending.data;
+  const fn=choice==='a'?data.fa:data.fb;
+  const before={
+    ovr:state.ovr,
+    burnout:state.hidden.burnout,
+    chemistry:state.chemistry,
+    pr:state.powerRanking,
+    earnings:state.earnings
+  };
+
+  state.pending=null;
+  const result=fn&&fn();
+
+  if(state.hidden.burnout>before.burnout){
+    const increase=state.hidden.burnout-before.burnout;
+    state.hidden.burnout=before.burnout+Math.max(1,Math.ceil(increase*.5));
+  }
+
+  state.hidden.mental=clamp(state.hidden.mental,25,100);
+  state.hidden.burnout=clamp(state.hidden.burnout,0,35);
+  state.hidden.prep=clamp(state.hidden.prep,0,25);
+  state.chemistry=clamp(state.chemistry,0,100);
+  state.ovr=clamp(state.ovr,45,99);
+
+  const after={
+    ovr:state.ovr,
+    burnout:state.hidden.burnout,
+    chemistry:state.chemistry,
+    pr:state.powerRanking,
+    earnings:state.earnings
+  };
+
+  if(state.ovr!==before.ovr && !data.silent){
+    state.news.unshift('TU OVR CAMBIÓ: '+before.ovr+' → '+state.ovr+'.');
+  }
+  saveGame();
+
+  if(decisionAnim){
+    populateCoperoDecisionChanges(decisionAnim,buildDecisionChanges(before,after));
+  }
+
+  const continueFlow=()=>{
+    choiceLocked=false;
+    if(result==='interrupt')return;
+    nextStep();
+  };
+
+  if(decisionAnim){
+    setTimeout(()=>finishCoperoDecisionAnimation(decisionAnim,continueFlow),640);
+  }else if(result==='interrupt'){
+    choiceLocked=false;
+    return;
+  }else if(state.ovr!==before.ovr){
+    showOvrChange(before.ovr,state.ovr,()=>{choiceLocked=false;nextStep();});
+  }else{
+    choiceLocked=false;
+    nextStep();
+  }
+}
 function naturalCareerDevelopment(){
   const peak=state.careerPeakAge||20;
   let delta=0;
@@ -1479,15 +2020,21 @@ function endSeason(){
 }
 function legacyScore(){let score=35+state.trophies.fncs*7+state.trophies.global*14+state.trophies.cups*1.5+Math.min(18,Math.log10(state.earnings+10)*2.8)+Math.min(18,state.powerRanking/180); return clamp(Math.round(score),1,100);} function finishCareer(age){
   state.retired=true;state.retireAge=age;state.pending=null;ensurePalmares();
-  let hall=[];try{hall=JSON.parse(localStorage.getItem('llamero_v36_hof')||localStorage.getItem('llamero_v35_hof')||localStorage.getItem('llamero_v34_hof')||localStorage.getItem('llamero_v33_hof')||localStorage.getItem('llamero_v32_hof')||localStorage.getItem('llamero_v31_hof')||localStorage.getItem('llamero_v30_hof')||localStorage.getItem('llamero_v29_hof')||localStorage.getItem('llamero_v28_hof')||localStorage.getItem('llamero_v27_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){}
+  let hall=[];try{hall=JSON.parse(localStorage.getItem('llamero_v40_hof')||localStorage.getItem('llamero_v39_hof')||localStorage.getItem('llamero_v38_hof')||localStorage.getItem('llamero_v37_hof')||localStorage.getItem('llamero_v36_hof')||localStorage.getItem('llamero_v35_hof')||localStorage.getItem('llamero_v34_hof')||localStorage.getItem('llamero_v33_hof')||localStorage.getItem('llamero_v32_hof')||localStorage.getItem('llamero_v31_hof')||localStorage.getItem('llamero_v30_hof')||localStorage.getItem('llamero_v29_hof')||localStorage.getItem('llamero_v28_hof')||localStorage.getItem('llamero_v27_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){}
   const duos=Array.isArray(state.duoHistory)?state.duoHistory.slice():[];
   if(currentMate()&&!duos.includes(currentMate().name))duos.push(currentMate().name);
-  const rank=careerRankInfo();
+  const rank=finalCareerRankInfo();
   hall.push({name:state.profile.name,legacy:legacyScore(),careerRank:rank.name,careerScore:rank.score,earnings:state.earnings,age,peakPR:state.powerRanking,fncs:state.trophies.fncs,global:state.trophies.global,cups:state.trophies.cups,kills:state.combat.kills,deaths:state.combat.deaths,kd:careerKD(),duos});
   hall.sort((a,b)=>(b.careerScore||b.legacy||0)-(a.careerScore||a.legacy||0));hall=hall.slice(0,10);
-  localStorage.setItem('llamero_v36_hof',JSON.stringify(hall));saveGame();renderCareerRecap(true);
+  localStorage.setItem('llamero_v40_hof',JSON.stringify(hall));saveGame();renderCareerRecap(true);
 }
-function retirementContinue(){state.pending=null;state.hidden.burnout=clamp(state.hidden.burnout+3,0,35);startSeason();saveGame();renderCareer();return 'interrupt';}
+function retirementContinue(){
+  state.pending=null;
+  state.hidden.burnout=clamp(state.hidden.burnout+3,0,35);
+  startSeason();saveGame();choiceLocked=false;
+  setTimeout(()=>{choiceLocked=false;nextStep();},60);
+  return 'interrupt';
+}
 function currentMate(){return getPlayer(state.teammate);} function valueText(){const val=Math.max(50000, state.ovr*3500 + state.powerRanking*30 + state.trophies.fncs*50000 + state.trophies.global*90000); if(val>=1000000) return '€'+(val/1000000).toFixed(1).replace(/\.0$/,'')+'M'; return '€'+Math.round(val/1000)+'K';}
 function burnoutPercent(){return clamp(Math.round((state.hidden.burnout/35)*100),0,100);}
 function burnoutLabel(){const v=state.hidden.burnout;return v<=9?'BAJO':v<=19?'CONTROLADO':v<=27?'ALTO':'CRÍTICO';}
@@ -1524,6 +2071,17 @@ function careerQualityScore(){
     Math.min(9,Number(careerKD())*2.3)+
     Math.min(5,years*.35);
   return clamp(Math.round(score),0,100);
+}
+function finalCareerRankInfo(){
+  const score=careerQualityScore();
+  if(score>=93)return {name:'UNREAL',slug:'unreal',score};
+  if(score>=83)return {name:'CHAMPION',slug:'champion',score};
+  if(score>=73)return {name:'ELITE',slug:'elite',score};
+  if(score>=60)return {name:'DIAMANTE',slug:'diamond',score};
+  if(score>=45)return {name:'PLATINO',slug:'platinum',score};
+  if(score>=30)return {name:'ORO',slug:'gold',score};
+  if(score>=15)return {name:'PLATA',slug:'silver',score};
+  return {name:'BRONCE',slug:'bronze',score};
 }
 function careerRankInfo(){
   const s=careerQualityScore();
@@ -1591,11 +2149,11 @@ function timelineRows(){
   const live=currentYearStats();
   for(let age=13; age<=30; age++){
     const past=state.history.find(h=>h.age===age);
-    let label='',rankHtml='',matches='',kills='',deaths='',kd='',cls='row';
+    let label='',ovr='',matches='',kills='',deaths='',kd='',cls='row';
     if(age===state.age){
       cls+=' current';
       label=state.pending&&state.pending.type==='event' ? 'Decisión en curso' : (currentMate()?currentMate().name:'Eligiendo dúo...');
-      rankHtml=rankShieldHtml(displayRankInfo(state.ovr),'xs');
+      ovr=state.ovr;
       matches=live.matches;
       kills=live.kills;
       deaths=live.deaths;
@@ -1603,7 +2161,7 @@ function timelineRows(){
     }else if(past){
       cls+=' active';
       label=getPlayer(past.teammate)?.name || REGIONS[past.region].short;
-      rankHtml=rankShieldHtml(displayRankInfo(past.ovr),'xs');
+      ovr=past.ovr;
       matches=past.matches??'—';
       kills=past.kills??'—';
       deaths=past.deaths??'—';
@@ -1612,7 +2170,7 @@ function timelineRows(){
     out+=`<div class="${cls}">
       <div class="age">${age}</div>
       <div class="club"><span>${esc(label||'')}</span>${past&&past.best?`<small>${esc(past.best)}</small>`:''}</div>
-      <div class="rank-cell">${rankHtml}</div>
+      <div class="ovr-cell">${ovr!==''?`<span class="pill ovr-num ${ovrClass(Number(ovr))}">${ovr}</span>`:''}</div>
       <div class="cell">${matches}</div>
       <div class="cell">${kills}</div>
       <div class="cell">${deaths}</div>
@@ -1621,30 +2179,15 @@ function timelineRows(){
   }
   return out;
 }
-
 function leftHeader(){
   ensurePalmares();
-  const mate=currentMate(),hs=historyStats(),career=careerRankInfo(),playerRank=displayRankInfo(state.ovr);
-  const mateRank=mate?displayRankInfo(teammateStrength(mate)):null;
+  const mate=currentMate(),hs=historyStats(),career=careerRankInfo();
   return `<div class="header-top">
-    <div class="ovr-badge rank-badge-box">
-      <small>Rango</small>
-      <div class="rank-badge-main">${rankShieldHtml(playerRank,'lg')}</div>
-    </div>
+    <div class="ovr-badge"><small>OVR</small><b class="ovr-num ${ovrClass(state.ovr)}">${state.ovr}</b></div>
     <div class="id-area">
-      <div class="tags">
-        <span class="tag">${state.profile.region}</span>
-        <span class="tag">${esc(state.profile.role||'FRAGGER')}</span>
-        <span class="season-chip">TEMP ${state.seasonInYear||1}/3</span>
-      </div>
+      <div class="tags"><span class="tag">${state.profile.region}</span><span class="tag">${esc(state.profile.role||'FRAGGER')}</span><span class="season-chip">TEMP ${state.seasonInYear||1}/3</span></div>
       <h1 class="player-name">${esc(state.profile.name)}</h1>
-      <div class="subline">
-        <div>
-          <div class="club-line duo-line">${mate?esc(mate.name):'Libre'} ${mateRank?`<span class="tiny-rank">${rankShieldHtml(mateRank,'xs')}</span>`:''}</div>
-          ${mate?`<button class="duo-action" onclick="abandonDuo()">ABANDONAR DÚO</button>`:''}
-        </div>
-        <div class="meta-box"><small>Edad</small><div class="age">${state.age}</div></div>
-      </div>
+      <div class="subline"><div><div class="club-line">${mate?esc(mate.name):'Libre'}</div>${mate?`<button class="duo-action" onclick="abandonDuo()">ABANDONAR DÚO</button>`:''}</div><div class="meta-box"><small>Edad</small><div class="age">${state.age}</div></div></div>
     </div>
   </div>
   <div class="stat-strip">
@@ -1656,33 +2199,30 @@ function leftHeader(){
     <div class="micro"><small>Muertes</small><b>${state.combat.deaths}</b></div>
     <div class="micro"><small>K/D</small><b>${careerKD()}</b></div>
   </div>
-  <div class="condition-grid">
-    <div class="condition-card"><div class="condition-head"><span>Chemistry</span><b>${state.chemistry} · ${chemistryLabel()}</b></div><div class="condition-meter chem"><i style="width:${clamp(state.chemistry,0,100)}%"></i></div><small class="condition-note">Más alta = mejor rendimiento del dúo.</small></div>
-    <div class="condition-card"><div class="condition-head"><span>Burnout</span><b>${burnoutPercent()}% · ${burnoutLabel()}</b></div><div class="condition-meter burn"><i style="width:${burnoutPercent()}%"></i></div><small class="condition-note">Mantenelo bajo para rendir mejor.</small></div>
-  </div>
-  <div class="career-grade">
-    <div class="career-grade-head"><small>Calidad de carrera</small><b>${career.name}</b></div>
-    <div class="career-grade-track"><i style="width:${career.score}%"></i></div>
-    <div class="career-grade-foot"><span>Bronce I</span><span>Unreal</span></div>
-  </div>
+  <div class="condition-grid"><div class="condition-card"><div class="condition-head"><span>Chemistry</span><b>${state.chemistry} · ${chemistryLabel()}</b></div><div class="condition-meter chem"><i style="width:${clamp(state.chemistry,0,100)}%"></i></div><small class="condition-note">Más alta = mejor rendimiento del dúo.</small></div><div class="condition-card"><div class="condition-head"><span>Burnout</span><b>${burnoutPercent()}% · ${burnoutLabel()}</b></div><div class="condition-meter burn"><i style="width:${burnoutPercent()}%"></i></div><small class="condition-note">Mantenelo bajo para rendir mejor.</small></div></div>
   <div class="palmares-box" role="button" tabindex="0" onclick="openPalmares()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPalmares()}"><div class="palmares-head"><strong>Palmarés</strong><span>VER TODO ›</span></div><div class="palmares-grid"><div class="palmares-tile"><b>${state.trophies.fncs}</b><small>FNCS</small></div><div class="palmares-tile"><b>${state.trophies.global}</b><small>Global</small></div><div class="palmares-tile"><b>${state.trophies.cups}</b><small>Cups</small></div><div class="palmares-tile"><b>${state.palmares.top10s||0}</b><small>Top 10</small></div></div></div>`;
 }
-
-function rightPanelFooter(){
-  const r=displayRankInfo(state.ovr);
-  return `<div class="right-footer"><div>🌎 ${REGIONS[state.profile.region].name}</div><div class="footer-stats"><span>${r.name}</span><span>PR ${state.powerRanking}</span><span>${shortMoney(state.earnings)}</span></div></div>`;
-}
-
+function rightPanelFooter(){return `<div class="right-footer"><div>🌎 ${REGIONS[state.profile.region].name}</div><div class="footer-stats"><span>OVR ${state.ovr}</span><span>PR ${state.powerRanking}</span><span>${shortMoney(state.earnings)}</span></div></div>`;}
 function renderCareer(){
   const mate=currentMate();
   if(mate){ nextStep(); return; }
   const bottomHtml=`<div class="section-title">Oferta de dúo</div><p class="section-copy">No tenés compañero. Elegí con quién querés empezar.</p><div class="option-grid single"><div class="action-card result-card" role="button" tabindex="0" onclick="selectResultCard(()=>chooseTeammatesScreen(),this)" onkeydown="resultKey(event,()=>chooseTeammatesScreen(),this)"><div class="club-line" style="font-size:15px;color:#eee">BUSCAR TEAMMATE</div><span class="subbtn">TOCÁ LA TARJETA</span></div></div>`;
-  shell(`<div class="shell screen-transition"><div class="main"><div class="left">${leftHeader()}${bottomHtml}</div><div class="right"><div class="timeline-head"><div>Edad</div><div>Dúo</div><div>Rango</div><div>PJ</div><div>K</div><div>D</div><div>K/D</div></div><div class="timeline">${timelineRows()}</div>${rightPanelFooter()}</div></div></div>`);
+  shell(`<div class="shell screen-transition"><div class="main"><div class="left">${leftHeader()}${bottomHtml}</div><div class="right"><div class="timeline-head"><div>Edad</div><div>Dúo</div><div>OVR</div><div>PJ</div><div>K</div><div>D</div><div>K/D</div></div><div class="timeline">${timelineRows()}</div>${rightPanelFooter()}</div></div></div>`);
 }
 
 function renderEvent(data){
-  const bottom=`<div class="section-title">${esc(data.title)}</div><p class="section-copy">${esc(data.text)}</p><div class="option-grid"><div class="action-card decision-card" role="button" tabindex="0" onclick="selectDecisionCard('a',this)" onkeydown="choiceKey(event,'a',this)"><div class="pick-image"><img src="${data.imgA||data.img||DECISION_IMAGES.coach}"></div><h4>${esc(data.a)}</h4><div class="effect-stack">${(data.aEffects||[]).map(e=>`<span class="effect-pill ${effectClass(e)}">${esc(displayEffectLabel(e))}</span>`).join('')}</div></div><div class="action-card decision-card" role="button" tabindex="0" onclick="selectDecisionCard('b',this)" onkeydown="choiceKey(event,'b',this)"><div class="pick-image"><img src="${data.imgB||data.img||DECISION_IMAGES.coach}"></div><h4>${esc(data.b)}</h4><div class="effect-stack">${(data.bEffects||[]).map(e=>`<span class="effect-pill ${effectClass(e)}">${esc(displayEffectLabel(e))}</span>`).join('')}</div></div></div>`;
-  shell(`<div class="shell screen-transition"><div class="main"><div class="left">${leftHeader()}${bottom}</div><div class="right"><div class="timeline-head"><div>Edad</div><div>Dúo</div><div>Rango</div><div>PJ</div><div>K</div><div>D</div><div>K/D</div></div><div class="timeline">${timelineRows()}</div>${rightPanelFooter()}</div></div></div>`);
+  choiceLocked=false;
+  if(!data){nextStep();return;}
+  const bottom=`<div class="section-title">${esc(data.title)}</div><p class="section-copy">${esc(data.text)}</p><div class="option-grid"><div class="action-card decision-card" role="button" tabindex="0" onclick="selectDecisionCard('a',this)" onkeydown="choiceKey(event,'a',this)"><div class="pick-image"><img src="${data.imgA||data.img||DECISION_IMAGES.coach}"></div><h4>${esc(data.a)}</h4><div class="effect-stack">${(data.aEffects||[]).map(e=>`<span class="effect-pill ${effectClass(e)}">${esc(e)}</span>`).join('')}</div></div><div class="action-card decision-card" role="button" tabindex="0" onclick="selectDecisionCard('b',this)" onkeydown="choiceKey(event,'b',this)"><div class="pick-image"><img src="${data.imgB||data.img||DECISION_IMAGES.coach}"></div><h4>${esc(data.b)}</h4><div class="effect-stack">${(data.bEffects||[]).map(e=>`<span class="effect-pill ${effectClass(e)}">${esc(e)}</span>`).join('')}</div></div></div>`;
+  shell(`<div class="shell decision-screen"><div class="main"><div class="left">${leftHeader()}${bottom}</div><div class="right"><div class="timeline-head"><div>Edad</div><div>Dúo</div><div>OVR</div><div>PJ</div><div>K</div><div>D</div><div>K/D</div></div><div class="timeline">${timelineRows()}</div>${rightPanelFooter()}</div></div></div>`);
+}
+function showTournamentWinMessage(name){
+  const old=document.querySelector('.tournament-win-overlay');if(old)old.remove();
+  const overlay=document.createElement('div');overlay.className='tournament-win-overlay';
+  overlay.innerHTML=`<div class="tournament-win-message"><small>VICTORIA</small><strong>GANASTE</strong><span>${esc(name)}</span></div>`;
+  document.body.appendChild(overlay);
+  setTimeout(()=>overlay.classList.add('show'),20);
+  setTimeout(()=>{overlay.classList.add('leave');setTimeout(()=>overlay.remove(),220);},1050);
 }
 function showFNCSChampionAnimation(){
   const overlay=document.createElement('div'); overlay.className='champion-overlay';
@@ -1704,19 +2244,28 @@ function renderTournamentResult(){
   state.pending={type:'resultProxy'};
   saveGame();
   const bottom=`<div class="section-title">Resultado del torneo</div><p class="section-copy">Quedaste <b>${ordinal(r.place)}</b> en <b>${esc(r.name)}</b>.</p><div class="option-grid single"><div class="action-card result-card" role="button" tabindex="0" onclick="selectResultCard(()=>nextStep(),this)" onkeydown="resultKey(event,()=>nextStep(),this)"><div class="result-summary"><div class="result-stat" style="font-size:66px;line-height:.85">${ordinal(r.place)}</div><div class="tourney-name">${esc(r.name)}</div><div class="effect-stack centered"><span class="effect-pill green">+${r.prGain} PR</span><span class="effect-pill ${r.earnings?'green':'muted'}">${r.earnings?('+'+money(r.earnings)):'Sin earnings'}</span></div><span class="subbtn">CONTINUAR</span></div></div></div>`;
-  shell(`<div class="shell screen-transition"><div class="main"><div class="left">${leftHeader()}${bottom}</div><div class="right"><div class="timeline-head"><div>Edad</div><div>Dúo</div><div>Rango</div><div>PJ</div><div>K</div><div>D</div><div>K/D</div></div><div class="timeline">${timelineRows()}</div>${rightPanelFooter()}</div></div></div>`);
+  shell(`<div class="shell screen-transition"><div class="main"><div class="left">${leftHeader()}${bottom}</div><div class="right"><div class="timeline-head"><div>Edad</div><div>Dúo</div><div>OVR</div><div>PJ</div><div>K</div><div>D</div><div>K/D</div></div><div class="timeline">${timelineRows()}</div>${rightPanelFooter()}</div></div></div>`);
+  if(r.place===1){
+    if(r.tourId==='major')setTimeout(showFNCSChampionAnimation,180);
+    else if(r.tourId==='global')setTimeout(showGlobalChampionAnimation,180);
+    else setTimeout(()=>showTournamentWinMessage(r.name),180);
+  }
 }
 function renderDuoChoice(a,b){
-  const ra=displayRankInfo(teammateStrength(a)), rb=displayRankInfo(teammateStrength(b));
-  const bottom=`<div class="section-title">Oferta de dúo</div><p class="section-copy">Dos jugadores quieren empezar contigo. Tocá la imagen o el nombre para elegir.</p><div class="option-grid"><div class="action-card duo-card" role="button" tabindex="0" onclick="selectTeammate('${a.id}',this)" onkeydown="teammateKey(event,'${a.id}',this)"><div class="pick-image player-skin" style="height:126px"><img src="${a.img}" onerror="this.onerror=null;this.src='https://fortnite-api.com/images/cosmetics/br/CID_397_Athena_Commando_F_TreasureHunterFashion/icon.png'"></div><h4>${esc(a.name)}</h4><div class="duo-card-meta">${rankShieldHtml(ra,'sm')}</div><span class="subbtn">${REGIONS[a.region].name}</span></div><div class="action-card duo-card" role="button" tabindex="0" onclick="selectTeammate('${b.id}',this)" onkeydown="teammateKey(event,'${b.id}',this)"><div class="pick-image player-skin" style="height:126px"><img src="${b.img}" onerror="this.onerror=null;this.src='https://fortnite-api.com/images/cosmetics/br/CID_493_Athena_Commando_F_JurassicArchaeology/icon.png'"></div><h4>${esc(b.name)}</h4><div class="duo-card-meta">${rankShieldHtml(rb,'sm')}</div><span class="subbtn">${REGIONS[b.region].name}</span></div></div>`;
-  shell(`<div class="shell screen-transition"><div class="main"><div class="left">${leftHeader()}${bottom}</div><div class="right"><div class="timeline-head"><div>Edad</div><div>Dúo</div><div>Rango</div><div>PJ</div><div>K</div><div>D</div><div>K/D</div></div><div class="timeline">${timelineRows()}</div>${rightPanelFooter()}</div></div></div>`);
+  teammatePickLocked=false;
+  const ar=displayRankInfo(teammateStrength(a)), br=displayRankInfo(teammateStrength(b));
+  const bottom=`<div class="section-title">Oferta de dúo</div><p class="section-copy">Dos jugadores quieren empezar contigo. Tocá la imagen o el nombre para elegir.</p><div class="option-grid"><div class="action-card duo-card" role="button" tabindex="0" onclick="selectTeammate('${a.id}',this)" onkeydown="teammateKey(event,'${a.id}',this)"><div class="pick-image player-skin" style="height:126px"><img src="${a.img}" onerror="this.onerror=null;this.src='https://fortnite-api.com/images/cosmetics/br/CID_397_Athena_Commando_F_TreasureHunterFashion/icon.png'"></div><h4>${esc(a.name)}</h4><div class="duo-rank">${rankShieldHtml(ar,'sm')}</div><span class="subbtn">${REGIONS[a.region].name}</span></div><div class="action-card duo-card" role="button" tabindex="0" onclick="selectTeammate('${b.id}',this)" onkeydown="teammateKey(event,'${b.id}',this)"><div class="pick-image player-skin" style="height:126px"><img src="${b.img}" onerror="this.onerror=null;this.src='https://fortnite-api.com/images/cosmetics/br/CID_493_Athena_Commando_F_JurassicArchaeology/icon.png'"></div><h4>${esc(b.name)}</h4><div class="duo-rank">${rankShieldHtml(br,'sm')}</div><span class="subbtn">${REGIONS[b.region].name}</span></div></div>`;
+  shell(`<div class="shell screen-transition"><div class="main"><div class="left">${leftHeader()}${bottom}</div><div class="right"><div class="timeline-head"><div>Edad</div><div>Dúo</div><div>OVR</div><div>PJ</div><div>K</div><div>D</div><div>K/D</div></div><div class="timeline">${timelineRows()}</div>${rightPanelFooter()}</div></div></div>`);
 }
-function renderRetirementDecision(){const data=evt('DECISIÓN DE CARRERA',`Tenés ${state.age} años y llevás ${state.age-13} años compitiendo. ¿Querés jugar un año más o retirarte?`,LOGO,'JUGAR UN AÑO MÁS','RETIRARME',['Más carrera','+ Burnout'],['Fin de carrera'],()=>retirementContinue(),()=>{state.pending=null;finishCareer(state.age);return 'interrupt';},DECISION_IMAGES.practice,DECISION_IMAGES.relax); state.pending={type:'event',data}; saveGame(); renderEvent(data);}
-
+function renderRetirementDecision(){
+  choiceLocked=false;
+  const data=evt('DECISIÓN DE CARRERA',`Tenés ${state.age} años y llevás ${state.age-13} años compitiendo. ¿Querés jugar un año más o retirarte?`,LOGO,'JUGAR UN AÑO MÁS','RETIRARME',['Más carrera','+ Burnout'],['Fin de carrera'],()=>retirementContinue(),()=>{state.pending=null;finishCareer(state.age);return 'interrupt';},DECISION_IMAGES.practice,DECISION_IMAGES.relax);
+  state.pending={type:'event',data};saveGame();renderEvent(data);
+}
 function renderCareerRecap(finalMode=false){
   ensurePalmares();
-  const careerRank=careerRankInfo();
-  const playerRank=displayRankInfo(Math.max(state.ovr,...state.history.map(h=>Number(h.ovr)||0)));
+  const careerRank=finalCareerRankInfo();
+  const playerRank=careerRank;
   const duos=Array.isArray(state.duoHistory)?state.duoHistory.slice():[];
   if(currentMate()&&!duos.includes(currentMate().name))duos.push(currentMate().name);
   const years=Math.max(0,(state.retireAge||state.age)-13);
@@ -1735,8 +2284,7 @@ function renderCareerRecap(finalMode=false){
     const kd=d.deaths>0?(d.kills/d.deaths).toFixed(2):Number(d.kills).toFixed(2);
     return `<div class="recap-duo-card"><div class="recap-duo-head"><strong>${esc(d.name)}</strong><span>${d.years} años</span></div><div class="recap-duo-stats"><span>PJ ${d.matches}</span><span>K ${d.kills}</span><span>D ${d.deaths}</span><span>K/D ${kd}</span></div></div>`;
   }).join('') || `<div class="recap-duo-card"><div class="recap-duo-head"><strong>Sin dúos registrados</strong><span>—</span></div><div class="recap-duo-stats"><span>Seguí jugando para sumar historial</span></div></div>`;
-
-  const secretPanel=playerRank.slug==='sweaty' ? `<div class="finish-panel secret-rank-panel"><small>RANGO SECRETO</small><div class="secret-rank-hero"><img src="${SWEATY_BADGE}" alt="Sweaty"><div><strong>SWEATY</strong><span>Tu carrera alcanzó el techo máximo.</span></div></div></div>` : '';
+  const secretPanel='';
 
   shell(`<div class="recap-wrap"><div class="recap-card recap-career screen-transition">
     <div class="finish-hero">
@@ -1759,7 +2307,7 @@ function renderCareerRecap(finalMode=false){
       </div>
       <div class="finish-panel">
         <small>Premios individuales</small>
-        <div class="finish-awards"><span>🏆 FNCS ${state.trophies.fncs}</span><span>🌍 Global ${state.trophies.global}</span><span>💰 Cups ${state.trophies.cups}</span><span>⭐ ${careerRank.name}</span></div>
+        <div class="finish-awards"><span>🏆 FNCS ${state.trophies.fncs}</span><span>🌍 Global ${state.trophies.global}</span><span>💰 Cups ${state.trophies.cups}</span><span>🏅 ${careerRank.name}</span></div>
       </div>
       ${secretPanel}
     </div>
@@ -1790,14 +2338,14 @@ function renderCareerEnd(){renderCareerRecap(true);}
 
 function showMenu(){shell(`<div class="menu-wrap"><div class="menu-card"><div class="menu-main"><img class="logo" src="${LOGO}"><div class="kicker" style="margin-top:10px">FORTNITE CARREER SIM</div><h1>LLAMERO</h1><p class="helper" style="margin:0 auto 18px;max-width:430px">Tu carrera de Fortnite competitivo, desde los 13 hasta el retiro. Elegí región, rol, teammate y viví cada temporada.</p><div class="career-meta"><span>3 decisiones/año</span><span>5 Cash Cups/temp</span><span>FNCS + especiales</span></div><div class="stack"><button class="menu-btn" onclick="newCareerForm()">Crear carrera</button><button class="menu-btn secondary" onclick="continueCareer()" ${hasSave()?'':'disabled'}>Continuar</button><button class="menu-btn secondary" onclick="openHall()">Hall of Fame</button></div></div></div></div>`);}
 function newCareerForm(){shell(`<div class="menu-wrap"><div class="form-card"><div class="kicker">NUEVA CARRERA</div><h1 class="setup-title">Creá tu jugador</h1><p class="setup-sub">La región cambia la dificultad competitiva. Tu rol modifica cómo rendís en cada tipo de torneo.</p><div class="field"><label>Nickname</label><input id="nick" value="PLAYER" maxlength="18"></div><div class="setup-divider"></div><div class="choice-label">Región inicial</div><div class="region-grid">${['SA','NA','EU','OCE','ASIA','ME'].map((k,i)=>`<label><input class="pick-radio" type="radio" name="region" value="${k}" ${i===0?'checked':''}><span class="select-card">${REGIONS[k].short}</span></label>`).join('')}</div><div class="setup-divider"></div><div class="choice-label">Tu rol</div><div class="role-grid"><label><input class="pick-radio" type="radio" name="role" value="IGL"><span class="select-card role-card"><b>IGL</b><span>Mejor en qualifiers, FNCS y endgame. Más difícil destacar en cups de pelea.</span></span></label><label><input class="pick-radio" type="radio" name="role" value="FRAGGER" checked><span class="select-card role-card"><b>FRAGGER</b><span>Mejor en Victory/Cash Cups y peleas. Menos ventaja en torneos largos.</span></span></label></div><div class="setup-divider"></div><div class="stack"><button class="menu-btn" onclick="startCareer()">Empezar carrera</button><button class="menu-btn secondary" onclick="showMenu()">Volver</button></div></div></div>`);}
-function startCareer(){const name=document.getElementById('nick').value.trim()||'PLAYER'; const region=document.querySelector('input[name="region"]:checked')?.value||'SA'; const role=document.querySelector('input[name="role"]:checked')?.value||'FRAGGER'; state=freshState({name,region,role}); localStorage.removeItem('llamero_v36_save'); startSeason(); chooseTeammatesScreen();}
+function startCareer(){const name=document.getElementById('nick').value.trim()||'PLAYER'; const region=document.querySelector('input[name="region"]:checked')?.value||'SA'; const role=document.querySelector('input[name="role"]:checked')?.value||'FRAGGER'; state=freshState({name,region,role}); localStorage.removeItem('llamero_v40_save'); startSeason(); chooseTeammatesScreen();}
 function continueCareer(){if(!loadGame()){showMenu();return;} if(!state.recentDecisionTitles)state.recentDecisionTitles=[]; if(state.retired){renderCareerRecap(true);return;} if(!state.queue)state.queue=[]; if(state.queue.length===0 && !state.pending)startSeason(); if(state.pending&&state.pending.type==='event'){renderEvent(state.pending.data);return;} if(state.pending&&state.pending.type==='duo'){renderDuoChoice(getPlayer(state.pending.a),getPlayer(state.pending.b));return;} renderCareer();}
 function modal(title,inner){const bg=document.createElement('div'); bg.className='modal-bg'; bg.id='modal'; bg.innerHTML=`<div class="modal"><button class="close" onclick="document.getElementById('modal').remove()">✕</button><h2>${esc(title)}</h2>${inner}</div>`; document.body.appendChild(bg);}
-function openCareerHistory(){if(!state)return; const rows=[...state.history].reverse().map(h=>`<tr><td>${h.year}</td><td>${h.age}</td><td>${REGIONS[h.region].short}</td><td>${esc(getPlayer(h.teammate)?.name||'—')}</td><td>${displayRankInfo(h.ovr).name}</td><td>${h.matches??'—'}</td><td>${h.kills??'—'}</td><td>${h.deaths??'—'}</td><td>${h.kd??'—'}</td><td>${h.prGain??h.pr} PR</td><td>${money(h.earnings||0)}</td><td>${esc(h.best)}</td></tr>`).join(''); modal('Carrera',`<table><thead><tr><th>Año</th><th>Edad</th><th>Región</th><th>Dúo</th><th>Rango</th><th>PJ</th><th>K</th><th>D</th><th>K/D</th><th>PR año</th><th>Earnings año</th><th>Mejor resultado</th></tr></thead><tbody>${rows||'<tr><td colspan="12">Todavía no terminó ninguna temporada.</td></tr>'}</tbody></table>`);}
+function openCareerHistory(){if(!state)return; const rows=[...state.history].reverse().map(h=>`<tr><td>${h.year}</td><td>${h.age}</td><td>${REGIONS[h.region].short}</td><td>${esc(getPlayer(h.teammate)?.name||'—')}</td><td>${h.ovr}</td><td>${h.matches??'—'}</td><td>${h.kills??'—'}</td><td>${h.deaths??'—'}</td><td>${h.kd??'—'}</td><td>${h.prGain??h.pr} PR</td><td>${money(h.earnings||0)}</td><td>${esc(h.best)}</td></tr>`).join(''); modal('Carrera',`<table><thead><tr><th>Año</th><th>Edad</th><th>Región</th><th>Dúo</th><th>OVR</th><th>PJ</th><th>K</th><th>D</th><th>K/D</th><th>PR año</th><th>Earnings año</th><th>Mejor resultado</th></tr></thead><tbody>${rows||'<tr><td colspan="12">Todavía no terminó ninguna temporada.</td></tr>'}</tbody></table>`);}
 
 function openPalmares(){if(!state)return;ensurePalmares();const p=state.palmares;const bestFncs=p.bestFNCS?ordinal(p.bestFNCS):'—';const bestGlobal=p.bestGlobal?ordinal(p.bestGlobal):'—';const recent=(p.recent||[]).map(x=>`<div class="honour"><strong>${esc(x.event)} · ${ordinal(x.place)}</strong><span>${x.year} · +${x.prGain||0} PR${x.earnings?' · '+money(x.earnings):''}</span></div>`).join('')||'<div class="honour"><strong>Todavía no hay grandes resultados.</strong><span>Seguí compitiendo</span></div>'; modal('Palmarés',`<div class="palmares-summary"><div class="palmares-stat"><b class="palmares-major">${state.trophies.fncs}</b><small>FNCS ganadas</small></div><div class="palmares-stat"><b>${state.trophies.global}</b><small>Globales</small></div><div class="palmares-stat"><b>${p.totalWins||0}</b><small>Victorias</small></div><div class="palmares-stat"><b>${p.top10s||0}</b><small>Top 10</small></div></div><table><tbody><tr><td>Mejor FNCS</td><td><b>${bestFncs}</b></td></tr><tr><td>Podios FNCS</td><td><b>${p.fncsPodiums||0}</b></td></tr><tr><td>Mejor Global</td><td><b>${bestGlobal}</b></td></tr><tr><td>Podios Global</td><td><b>${p.globalPodiums||0}</b></td></tr><tr><td>Cash/Victory Cups ganadas</td><td><b>${state.trophies.cups}</b></td></tr><tr><td>Eventos jugados</td><td><b>${p.events||0}</b></td></tr><tr><td>Mayor premio</td><td><b>${money(p.biggestPrize||0)}</b></td></tr><tr><td>Power Ranking actual</td><td><b>${state.powerRanking} PR</b></td></tr><tr><td>Earnings de carrera</td><td><b>${shortMoney(state.earnings)}</b></td></tr></tbody></table><div class="section-title" style="margin-top:16px">Resultados destacados</div><div class="honour-list">${recent}</div>`);}
 function openHall(){
-  let hall=[];try{hall=JSON.parse(localStorage.getItem('llamero_v36_hof')||localStorage.getItem('llamero_v35_hof')||localStorage.getItem('llamero_v34_hof')||localStorage.getItem('llamero_v33_hof')||localStorage.getItem('llamero_v32_hof')||localStorage.getItem('llamero_v31_hof')||localStorage.getItem('llamero_v30_hof')||localStorage.getItem('llamero_v29_hof')||localStorage.getItem('llamero_v28_hof')||localStorage.getItem('llamero_v27_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){}
+  let hall=[];try{hall=JSON.parse(localStorage.getItem('llamero_v40_hof')||localStorage.getItem('llamero_v39_hof')||localStorage.getItem('llamero_v38_hof')||localStorage.getItem('llamero_v37_hof')||localStorage.getItem('llamero_v36_hof')||localStorage.getItem('llamero_v35_hof')||localStorage.getItem('llamero_v34_hof')||localStorage.getItem('llamero_v33_hof')||localStorage.getItem('llamero_v32_hof')||localStorage.getItem('llamero_v31_hof')||localStorage.getItem('llamero_v30_hof')||localStorage.getItem('llamero_v29_hof')||localStorage.getItem('llamero_v28_hof')||localStorage.getItem('llamero_v27_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){}
   const rows=hall.map((h,i)=>{const duos=Array.isArray(h.duos)&&h.duos.length?h.duos.join(' · '):'—';return `<tr><td>${i+1}</td><td><b>${esc(h.name)}</b><br><small>${esc(h.careerRank||'—')}</small></td><td><b>${shortMoney(h.earnings||0)}</b></td><td class="hall-duos">${esc(duos)}</td><td>${h.kd||'—'}</td><td>${h.fncs||0}</td><td>${h.global||0}</td><td>${h.cups||0}</td><td>${h.peakPR||0} PR</td></tr>`;}).join('');
   modal('Hall of Fame',`<table><thead><tr><th>#</th><th>Jugador</th><th>Earnings</th><th>Dúos</th><th>K/D</th><th>FNCS</th><th>Global</th><th>Cups</th><th>Peak PR</th></tr></thead><tbody>${rows||'<tr><td colspan="9">Todavía no hay carreras terminadas.</td></tr>'}</tbody></table>`);
 }

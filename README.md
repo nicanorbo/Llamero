@@ -1,16 +1,9 @@
-# LLAMERO - CARREER v36
+# LLAMERO v40
 
-Cambios:
-- favicon agregado
-- título actualizado a **LLAMERO - CARREER**
-- rangos con las versiones adaptadas enviadas
-- fondo topográfico más visible en teléfono
-- easter egg para `lolero123` (`NA` + `FRAGGER`) después del primer año
-
-## Cómo actualizar el juego en GitHub
-1. Descargá y descomprimí `LLAMERO_GITHUB_V36_READY.zip`.
-2. Entrá a tu repositorio de GitHub.
-3. Reemplazá el archivo `index.html` por el nuevo.
-4. Hacé **Commit changes**.
-5. Esperá 1 o 2 minutos.
-6. Abrí tu GitHub Pages y recargá con **Ctrl + F5**.
+Cambio principal:
+- la decisión ya no se mueve al centro de la pantalla;
+- la opción elegida permanece en su lugar;
+- la otra opción se apaga y sale suavemente;
+- aparece un pequeño “motor de carrera” debajo de las decisiones;
+- la línea de carrera de la derecha recibe una animación de simulación;
+- luego avanza el juego sin un corte negro ni un modal central.
