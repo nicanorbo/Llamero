@@ -2,26 +2,40 @@
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>LLAMERO v26</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>LLAMERO v30</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#09090a;--panel:#0e0e10;--panel2:#141416;--line:#262629;--soft:#18181b;--text:#f4f4f5;--muted:#a1a1aa;--muted2:#5d5d66;--green:#23c980;--red:#ef5b70;--shadow:0 14px 40px rgba(0,0,0,.34)}
-*{box-sizing:border-box} html,body{margin:0;min-height:100%;background:#09090a;color:var(--text)} body{font-family:"Inter","Segoe UI Variable","Segoe UI",system-ui,-apple-system,sans-serif;overflow-x:hidden;letter-spacing:.1px} button,input,select{font:inherit} button{cursor:pointer}
+*{box-sizing:border-box} html,body{margin:0;min-height:100%;background:#070708;color:var(--text)}
+body{font-family:"Inter","Segoe UI Variable","Segoe UI",system-ui,-apple-system,sans-serif;overflow-x:hidden;letter-spacing:.1px;position:relative}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.23;
+background:
+radial-gradient(ellipse at 8% 18%,transparent 0 38px,rgba(255,255,255,.055) 39px 40px,transparent 41px 62px,rgba(255,255,255,.038) 63px 64px,transparent 65px 88px,rgba(255,255,255,.028) 89px 90px,transparent 91px),
+radial-gradient(ellipse at 90% 80%,transparent 0 52px,rgba(255,255,255,.05) 53px 54px,transparent 55px 82px,rgba(255,255,255,.035) 83px 84px,transparent 85px 116px,rgba(255,255,255,.025) 117px 118px,transparent 119px),
+radial-gradient(ellipse at 72% 10%,transparent 0 27px,rgba(255,255,255,.04) 28px 29px,transparent 30px 49px,rgba(255,255,255,.03) 50px 51px,transparent 52px),
+linear-gradient(115deg,rgba(255,255,255,.012),transparent 38%,rgba(255,255,255,.01));
+background-size:520px 410px,620px 500px,430px 350px,100% 100%}
+button,input,select{font:inherit} button{cursor:pointer}
+#app{position:relative;z-index:1}
 #app{height:100vh;padding:10px} .shell{max-width:1180px;height:calc(100vh - 20px);margin:0 auto;border:1px solid var(--line);border-radius:14px;background:#0e0e10;box-shadow:var(--shadow);overflow:hidden;animation:fadeShell .22s ease-out}
-.main{display:grid;grid-template-columns:360px 1fr;height:100%} .left{padding:18px 18px 14px;border-right:1px solid var(--line);overflow:hidden} .right{padding:16px 16px 10px;display:flex;flex-direction:column;overflow:hidden}
+.main{display:grid;grid-template-columns:360px 1fr;height:100%} .left{padding:18px 18px 14px;border-right:1px solid var(--line);overflow:hidden;background:#0e0e10}
+.right{padding:16px 16px 10px;display:flex;flex-direction:column;overflow:hidden;position:relative;background:
+radial-gradient(ellipse at 78% 38%,transparent 0 70px,rgba(255,255,255,.018) 71px 72px,transparent 73px 102px,rgba(255,255,255,.014) 103px 104px,transparent 105px),
+radial-gradient(ellipse at 18% 82%,transparent 0 45px,rgba(255,255,255,.014) 46px 47px,transparent 48px 72px,rgba(255,255,255,.012) 73px 74px,transparent 75px),
+#0e0e10}
 .header-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px} .ovr-badge{width:72px;height:76px;border-radius:12px;background:#141416;border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)} .ovr-badge small{font:800 10px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;letter-spacing:1px;text-transform:uppercase;opacity:.8} .ovr-badge b{font-size:24px;line-height:1}
-.id-area{flex:1;min-width:0} .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px} .tag{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:8px;background:var(--soft);border:1px solid var(--line);font:800 11px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;letter-spacing:.5px;text-transform:uppercase} .tag.red{background:#18181b}.tag.green{background:#18181b} .player-name{font-size:42px;line-height:.92;margin:0 0 2px} .subline{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-top:4px} .club-line{font:700 15px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;color:var(--muted)} .meta-box{text-align:right} .meta-box .age{font-size:27px;line-height:.95} .meta-box small{display:block;font:800 10px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;color:var(--muted);text-transform:uppercase;letter-spacing:1px} .value{font-size:16px}
-.stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px 0 12px;border-bottom:1px solid rgba(255,255,255,.05)} .micro{text-align:center} .micro small{display:block;font:800 10px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px} .micro b{font-size:17px;line-height:1}
+.id-area{flex:1;min-width:0} .tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px} .tag{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:8px;background:var(--soft);border:1px solid var(--line);font:800 11px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;letter-spacing:.5px;text-transform:uppercase} .tag.red{background:#18181b}.tag.green{background:#18181b} .player-name{font-size:42px;line-height:.92;margin:0 0 2px} .subline{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-top:4px} .club-line{font:700 15px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;color:var(--muted)} .meta-box{text-align:right} .meta-box .age{font-size:40px;line-height:.88} .meta-box small{display:block;font:800 10px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;color:var(--muted);text-transform:uppercase;letter-spacing:1px} .value{display:none}
+.stat-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.05)} .micro{text-align:center;min-height:48px;padding:7px 5px;border:1px solid #202024;border-radius:9px;background:#101012;display:flex;flex-direction:column;align-items:center;justify-content:center} .micro small{display:block;font:800 10px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px} .micro b{font-size:17px;line-height:1}
 .trophy-box{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.05);text-align:center} .trophy-box .cup{font-size:24px;opacity:.65} .trophy-box .empty{font-size:13px;color:var(--muted2);font-family:"Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;font-weight:700;letter-spacing:1.4px;text-transform:uppercase}
 .section-title{font-size:20px;margin:12px 0 3px} .section-copy{font:700 13px/1.18 "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;color:var(--muted);margin:0 0 7px} .pexels-note{font:700 9px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;letter-spacing:.8px;text-transform:uppercase;color:#5e6577;margin:0 0 8px}
 .option-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px} .option-grid.single{grid-template-columns:1fr} .action-card{background:#121214;border:1px solid var(--line);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:8px;min-height:162px;animation:cardIn .38s cubic-bezier(.18,.85,.2,1) both;transition:transform .2s cubic-bezier(.2,.8,.2,1),border-color .2s ease,box-shadow .2s ease,opacity .2s ease} .action-card.centered{justify-content:center;align-items:center;text-align:center;min-height:138px}.action-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.22);box-shadow:0 14px 34px rgba(0,0,0,.24)} .action-card .pick-image{height:72px;border-radius:12px;overflow:hidden;background:#111622} .action-card .pick-image img{width:100%;height:100%;object-fit:cover;display:block} .action-card .pick-image.player-skin img{object-fit:contain;background:#111} .action-card h4{font-size:18px;margin:0;line-height:.95;text-align:center} .action-card .subbtn{display:block;text-align:center;font:700 12px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;color:var(--muted);margin-top:-6px} .duo-card,.decision-card,.result-card{cursor:pointer;user-select:none;position:relative;overflow:hidden}.duo-card{min-height:198px;justify-content:center}.decision-card{min-height:162px}.result-card{min-height:138px;justify-content:center;align-items:center;text-align:center}.duo-card:after,.decision-card:after,.result-card:after{content:'ELEGIR';position:absolute;right:10px;top:10px;padding:4px 7px;border:1px solid #343438;border-radius:999px;background:#0b0b0d;color:#8c8c92;font:800 8px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;letter-spacing:1px;opacity:0;transform:translateY(-4px);transition:opacity .18s ease,transform .18s ease}.duo-card:hover:after,.duo-card:focus:after,.decision-card:hover:after,.decision-card:focus:after,.result-card:hover:after,.result-card:focus:after{opacity:1;transform:translateY(0)}.duo-card:focus,.decision-card:focus,.result-card:focus{outline:none;border-color:#5c5c64;box-shadow:0 0 0 2px rgba(255,255,255,.06)}.duo-card .pick-image,.decision-card .pick-image{transition:transform .24s cubic-bezier(.2,.8,.2,1),filter .24s ease}.duo-card:hover .pick-image,.decision-card:hover .pick-image{transform:scale(1.035)}.duo-card.duo-picked{animation:duoPick .48s cubic-bezier(.16,.9,.22,1.2) both!important;border-color:#7a7a84;box-shadow:0 0 0 1px #55555e,0 18px 54px rgba(0,0,0,.4)!important}.decision-card.choice-picked,.result-card.choice-picked{animation:duoPick .48s cubic-bezier(.16,.9,.22,1.2) both!important;border-color:#6d6d76!important}.decision-card.choice-faded,.result-card.choice-faded{opacity:.18!important;transform:scale(.96)!important;filter:grayscale(.7)}.duo-card.duo-faded{opacity:.18;transform:scale(.94)!important;filter:grayscale(1) blur(.25px);pointer-events:none}
 .effect-pill{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;font:700 11px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif} .effect-pill.pos{background:rgba(24,206,119,.16);color:#3fe09a} .effect-pill.neg{background:rgba(239,76,109,.16);color:#ff6b88} .effect-stack{display:flex;flex-direction:column;gap:8px;margin-top:auto} .choose-btn{margin-top:auto;border:1px solid #333338;border-radius:10px;padding:12px 14px;background:#202023;color:#fff;font-size:19px;text-transform:uppercase;transition:transform .14s ease,background .14s ease}.choose-btn:hover{background:#2b2b2f;border-color:#44444a}
 
 .palmares-box{margin-top:10px;border:1px solid #242428;border-radius:12px;background:#0d0d0f;padding:10px;cursor:pointer;transition:border-color .18s ease,background .18s ease,transform .18s ease}.palmares-box:hover{border-color:#3b3b40;background:#111113;transform:translateY(-1px)}.palmares-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.palmares-head strong{font:800 11px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;letter-spacing:1.2px;text-transform:uppercase;color:#d7d7dc}.palmares-head span{font:800 9px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;color:#77777f;letter-spacing:1px}.palmares-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.palmares-tile{border:1px solid #202024;border-radius:9px;padding:7px 5px;text-align:center;background:#101012}.palmares-tile b{display:block;font-size:22px;line-height:1;color:#f4f4f6}.palmares-tile small{display:block;margin-top:3px;font:800 8px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;letter-spacing:.8px;text-transform:uppercase;color:#73737a}.palmares-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}.palmares-stat{border:1px solid #27272c;border-radius:12px;background:#111113;padding:12px;text-align:center}.palmares-stat b{display:block;font-size:30px}.palmares-stat small{display:block;font:800 9px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;text-transform:uppercase;letter-spacing:1px;color:#77777f}.honour-list{display:grid;gap:6px;margin-top:12px}.honour{display:flex;justify-content:space-between;gap:12px;border:1px solid #242428;border-radius:10px;background:#0e0e10;padding:9px 10px;font:700 12px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif}.honour strong{color:#f0f0f2}.honour span{color:#8c8c94}.palmares-major{color:#f2d17c!important}
-.timeline-head{display:grid;grid-template-columns:48px 1fr 64px 52px 74px 74px;gap:6px;padding:0 8px 4px;color:var(--muted);font:800 9px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;letter-spacing:1px;text-transform:uppercase} .timeline{flex:1;display:flex;flex-direction:column;gap:2px;overflow:hidden} .row{display:grid;grid-template-columns:48px 1fr 64px 52px 74px 74px;gap:6px;align-items:center;border-radius:10px;padding:2px 8px;color:#bdc3d4} .row .age{font-size:17px;color:#2a2f42} .row .club{font:700 13px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .row .ovr-cell .pill{display:inline-block;min-width:34px;text-align:center;padding:3px 8px;border-radius:999px;background:#2f3446;color:#fff;font:800 11px/1 "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif} .row .cell{font:700 13px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;color:#cfd4e2} .row.active{background:#0f0f11} .row.active .age{color:#fff} .row.current{box-shadow:inset 0 0 0 1px rgba(255,255,255,.10);background:#171719} .row.current .age{color:#fff} .row.current .ovr-cell .pill{background:#242428}
+.timeline-head{display:grid;grid-template-columns:42px minmax(105px,1fr) 54px 48px 48px 50px 62px 66px;gap:5px;padding:0 8px 4px;color:var(--muted);font:800 9px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;letter-spacing:1px;text-transform:uppercase} .timeline{flex:1;display:flex;flex-direction:column;gap:2px;overflow:hidden} .row{display:grid;grid-template-columns:42px minmax(105px,1fr) 54px 48px 48px 50px 62px 66px;gap:5px;align-items:center;border-radius:10px;padding:2px 8px;color:#bdc3d4} .row .age{font-size:17px;color:#2a2f42} .row .club{font:700 13px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .row .ovr-cell .pill{display:inline-block;min-width:34px;text-align:center;padding:3px 8px;border-radius:999px;background:#2f3446;color:#fff;font:800 11px/1 "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif} .row .cell{font:700 11px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;color:#cfd4e2} .row.active{background:#0f0f11} .row.active .age{color:#fff} .row.current{box-shadow:inset 0 0 0 1px rgba(255,255,255,.10);background:#171719} .row.current .age{color:#fff} .row.current .ovr-cell .pill{background:#242428}
 .right-footer{display:flex;justify-content:space-between;align-items:center;padding-top:8px;color:var(--muted);font:700 12px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif} .footer-stats{display:flex;gap:12px;align-items:center}
 .menu-wrap{display:grid;place-items:center;min-height:100vh} .menu-card{width:min(650px,100%);border:1px solid #242428;border-radius:18px;background:#0c0c0e;padding:42px 38px;box-shadow:0 28px 80px rgba(0,0,0,.46);display:block;text-align:center;position:relative;overflow:hidden}.menu-card:before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:#8b8b92}.menu-card:after{content:'CAREER MODE';position:absolute;right:18px;top:16px;font:800 9px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;letter-spacing:2px;color:#55555d} .menu-art{display:none} .menu-art img{display:none} .menu-main img.logo{width:118px;margin-bottom:8px} .menu-main h1{font-size:104px;line-height:.82;margin:10px 0 12px;letter-spacing:-2px} .stack{display:grid;gap:12px} .menu-btn{border:1px solid #333338;border-radius:10px;padding:14px 16px;font-size:23px;text-transform:uppercase;background:#202023;color:#fff;transition:background .14s ease,transform .14s ease}.menu-btn:hover{background:#2b2b2f;border-color:#44444a;transform:translateY(-1px)} .menu-btn.secondary{background:#121214;border:1px solid var(--line)}
 .form-card{width:min(760px,100%);border:1px solid var(--line);border-radius:16px;background:#0e0e10;padding:28px;box-shadow:var(--shadow)} .form-card h1{font-size:66px;line-height:.88;margin:0 0 18px} .field{margin-bottom:12px} .field label{display:block;margin-bottom:6px;font:800 11px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;letter-spacing:1px;text-transform:uppercase;color:var(--muted)} .field input,.field select{width:100%;background:#121214;border:1px solid var(--line);border-radius:10px;color:#fff;padding:14px 16px;font-size:24px;outline:none} .helper{font:700 13px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;color:var(--muted)}
@@ -54,6 +68,41 @@
 .condition-meter.burn i{background:#e25762}
 .condition-note{display:block;margin-top:6px;font:600 9px/1.1 "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;color:#656b76}
 
+
+.career-grade{margin:10px 0 0;border:1px solid #242428;border-radius:12px;background:#0d0d0f;padding:10px}
+.career-grade-head{display:flex;justify-content:space-between;align-items:end;gap:10px;margin-bottom:7px}
+.career-grade-head small{font:800 9px "Inter",system-ui,sans-serif;letter-spacing:1px;text-transform:uppercase;color:#74747d}
+.career-grade-head b{font-size:14px;text-transform:uppercase}
+.career-grade-track{height:7px;border-radius:999px;background:#232328;overflow:hidden}
+.career-grade-track i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#9f6842,#c5c9d1,#d3ab42,#66b8ff,#b06dff,#f0f0f0);transition:width .35s ease}
+.career-grade-foot{display:flex;justify-content:space-between;margin-top:5px;font:700 8px "Inter",system-ui,sans-serif;color:#62626a;text-transform:uppercase;letter-spacing:.7px}
+.recap-link{width:100%;margin-top:7px;padding:8px 10px;border:1px solid #242428;border-radius:9px;background:#101012;color:#a9a9b1;font:800 9px "Inter",system-ui,sans-serif;text-transform:uppercase;letter-spacing:1px}
+.recap-link:hover{background:#151518;color:#fff}
+.recap-wrap{min-height:100vh;display:grid;place-items:center;padding:18px}
+.recap-card{width:min(1040px,100%);border:1px solid #2a2a2f;border-radius:20px;background:rgba(12,12,14,.96);padding:28px;box-shadow:0 30px 100px rgba(0,0,0,.58);position:relative;overflow:hidden}
+.recap-card:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;background:radial-gradient(ellipse at 88% 8%,transparent 0 80px,rgba(255,255,255,.04) 81px 82px,transparent 83px 115px,rgba(255,255,255,.026) 116px 117px,transparent 118px)}
+.recap-top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;position:relative}
+.recap-title small{font:800 10px "Inter",system-ui,sans-serif;letter-spacing:1.8px;color:#777780;text-transform:uppercase}
+.recap-title h1{font-size:58px;line-height:.9;margin:6px 0 4px}
+.recap-rank{font-size:38px;font-weight:900;text-align:right;text-transform:uppercase;line-height:.92}
+.recap-rank small{display:block;font:800 9px "Inter",system-ui,sans-serif;color:#777780;letter-spacing:1px;margin-bottom:5px}
+.recap-meter{margin:18px 0 16px}
+.recap-meter-track{height:10px;border-radius:999px;background:#242429;overflow:hidden}
+.recap-meter-track i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#9f6842 0%,#c4c8d0 20%,#d5aa3c 40%,#7b85a8 58%,#5caef1 72%,#a66df1 87%,#f4f4f5 100%)}
+.recap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;position:relative}
+.recap-stat{border:1px solid #232328;background:#101012;border-radius:12px;padding:12px}
+.recap-stat small{display:block;font:800 8px "Inter",system-ui,sans-serif;letter-spacing:1px;text-transform:uppercase;color:#6f6f78;margin-bottom:4px}
+.recap-stat b{font-size:25px;line-height:1}
+.recap-bottom{display:grid;grid-template-columns:1.2fr .8fr;gap:10px;margin-top:10px;position:relative}
+.recap-panel{border:1px solid #232328;background:#101012;border-radius:12px;padding:14px}
+.recap-panel h3{font-size:17px;margin:0 0 8px}
+.recap-duos{font:700 12px/1.5 "Inter",system-ui,sans-serif;color:#9c9ca5}
+.recap-actions{display:flex;gap:9px;margin-top:14px;position:relative}
+.recap-actions button{flex:1}
+.global-trophy{font-size:112px;line-height:1;filter:drop-shadow(0 18px 30px rgba(130,205,255,.22));animation:trophyBounce 1.05s ease-in-out infinite alternate}
+.global-card{border-color:#345062;box-shadow:0 30px 110px rgba(27,107,158,.22)}
+.global-card h2{color:#b7e7ff}
+
 @keyframes fadeShell{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}@keyframes cardIn{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
 .pick-radio:checked+.select-card{animation:pickPop .28s cubic-bezier(.2,.9,.2,1.2)}
 .select-card{transition:transform .16s ease,background .16s ease,border-color .16s ease,color .16s ease}.select-card:hover{transform:translateY(-2px)}
@@ -61,7 +110,509 @@
 .choice-selected{animation:choicePick .5s cubic-bezier(.16,.9,.2,1.2) both!important;border-color:#8a8a92!important;box-shadow:0 0 0 1px #666,0 18px 46px rgba(0,0,0,.42)!important}.choice-rejected{opacity:.18;transform:scale(.94)!important;filter:grayscale(1) blur(.2px)}
 .ovr-change-overlay{position:fixed;inset:0;z-index:260;display:grid;place-items:center;background:rgba(0,0,0,.46);backdrop-filter:blur(3px);opacity:0;transition:opacity .2s ease;pointer-events:none}.ovr-change-overlay.show{opacity:1}.ovr-change-overlay.leave{opacity:0}.ovr-change-card{min-width:300px;padding:28px 36px;border:1px solid #39393f;border-radius:18px;background:#0b0b0d;text-align:center;box-shadow:0 26px 90px rgba(0,0,0,.62);animation:ovrCard .62s cubic-bezier(.16,.9,.2,1.18)}.ovr-change-card small{font:800 10px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif;letter-spacing:1.8px;color:#777;text-transform:uppercase}.ovr-shift{display:flex;align-items:center;justify-content:center;gap:18px;margin:12px 0 6px}.ovr-shift span{font-size:82px;line-height:.82;font-weight:900;text-shadow:0 0 24px currentColor}.ovr-shift b{font-size:26px;color:#5c5c62}.ovr-delta{font:900 18px "Inter","Segoe UI Variable","Segoe UI",system-ui,sans-serif}.ovr-delta.up{color:#39d98a}.ovr-delta.down{color:#ff5f78}
 @keyframes pickPop{0%{transform:scale(.96)}58%{transform:scale(1.05)}100%{transform:scale(1)}}@keyframes choicePick{0%{transform:scale(1)}35%{transform:scale(1.035)}70%{transform:scale(.995)}100%{transform:scale(1)}}@keyframes duoPick{0%{transform:scale(1)}42%{transform:scale(1.045) translateY(-5px)}72%{transform:scale(.995)}100%{transform:scale(1) translateY(0)}}@keyframes ovrCard{0%{opacity:0;transform:scale(.68) translateY(24px) rotateX(8deg)}52%{opacity:1;transform:scale(1.07) translateY(-3px) rotateX(0)}76%{transform:scale(.985) translateY(0)}100%{transform:scale(1)}}
-@media(max-width:980px){.main{grid-template-columns:1fr} .left{border-right:none;border-bottom:1px solid var(--line)} .timeline-head,.row{grid-template-columns:44px 1fr 60px 48px 64px 64px} .menu-card{grid-template-columns:1fr} .menu-main h1{font-size:86px} .shell{height:auto;min-height:calc(100vh - 20px)}} @media(max-width:640px){#app{padding:8px} .shell{border-radius:16px;height:auto;min-height:calc(100vh - 16px)} .left,.right{padding:12px} .player-name{font-size:36px} .meta-box .age{font-size:26px} .option-grid{grid-template-columns:1fr} .timeline-head{display:none} .row{grid-template-columns:34px 1fr 52px 44px 56px 56px;padding:3px 4px} .row .age{font-size:18px} .row .club,.row .cell{font-size:11px} .row .ovr-cell .pill{font-size:11px;padding:3px 7px}}
+
+/* ===== LLAMERO MOBILE v30 ===== */
+@media(max-width:760px){
+  html{background:#09090a}
+  body{-webkit-text-size-adjust:100%;overscroll-behavior-y:none}
+  #app{
+    height:auto;
+    min-height:100dvh;
+    padding:0;
+    padding-top:env(safe-area-inset-top);
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  .shell{
+    width:100%;
+    max-width:none;
+    min-height:100dvh;
+    height:auto;
+    margin:0;
+    border:0;
+    border-radius:0;
+    box-shadow:none;
+    overflow:visible;
+  }
+  .main{
+    display:flex;
+    flex-direction:column;
+    height:auto;
+    min-height:100dvh;
+  }
+  .left,.right{
+    width:100%;
+    overflow:visible;
+  }
+  .left{
+    padding:13px 12px 10px;
+    border-right:0;
+    border-bottom:1px solid #242429;
+  }
+  .right{
+    padding:12px 10px 18px;
+    min-height:auto;
+  }
+
+  /* Compact player header */
+  .header-top{gap:10px;align-items:flex-start}
+  .ovr-badge{
+    width:60px;
+    height:62px;
+    border-radius:10px;
+    flex:0 0 60px;
+  }
+  .ovr-badge small{font-size:8px}
+  .ovr-badge b{font-size:26px}
+  .tags{gap:5px;margin-bottom:5px}
+  .tag,.season-chip{
+    padding:3px 6px;
+    border-radius:7px;
+    font-size:8px;
+    letter-spacing:.4px;
+  }
+  .player-name{
+    font-size:29px;
+    line-height:.94;
+    margin-bottom:3px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .subline{gap:8px;margin-top:2px;align-items:end}
+  .club-line{
+    font-size:12px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .meta-box small{font-size:7px}
+  .meta-box .age{font-size:31px}
+
+  /* Six compact career totals */
+  .stat-strip{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:5px;
+    padding:9px 0;
+  }
+  .micro{
+    min-height:43px;
+    padding:5px 3px;
+    border-radius:8px;
+  }
+  .micro small{
+    font-size:7px;
+    letter-spacing:.55px;
+    margin-bottom:3px;
+  }
+  .micro b{font-size:15px}
+
+  /* Chemistry / Burnout compact */
+  .condition-grid{
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+    padding:8px 0 9px;
+  }
+  .condition-card{
+    border-radius:9px;
+    padding:7px;
+    min-width:0;
+  }
+  .condition-head{
+    gap:4px;
+    margin-bottom:5px;
+    align-items:center;
+  }
+  .condition-head span{font-size:7px;letter-spacing:.35px}
+  .condition-head b{
+    font-size:10px;
+    white-space:nowrap;
+  }
+  .condition-meter{height:5px}
+  .condition-note{display:none}
+
+  .career-grade{
+    margin-top:7px;
+    padding:7px 8px;
+    border-radius:9px;
+  }
+  .career-grade-head{margin-bottom:5px}
+  .career-grade-head small{font-size:7px}
+  .career-grade-head b{font-size:11px}
+  .career-grade-track{height:5px}
+  .career-grade-foot{font-size:6px;margin-top:4px}
+
+  .palmares-box{
+    margin-top:7px;
+    padding:7px;
+    border-radius:9px;
+  }
+  .palmares-head{margin-bottom:5px}
+  .palmares-head strong{font-size:8px}
+  .palmares-head span{font-size:7px}
+  .palmares-grid{gap:4px}
+  .palmares-tile{padding:5px 3px;border-radius:7px}
+  .palmares-tile b{font-size:17px}
+  .palmares-tile small{font-size:6px}
+  .recap-link{
+    min-height:42px;
+    margin-top:6px;
+    font-size:8px;
+    border-radius:9px;
+  }
+
+  /* Decisions become comfortable touch cards */
+  .section-title{
+    font-size:22px;
+    line-height:1;
+    margin:8px 0 5px;
+  }
+  .section-copy{
+    font-size:12px;
+    line-height:1.35;
+    margin-bottom:8px;
+  }
+  .pexels-note{font-size:7px;margin-bottom:6px}
+  .option-grid{
+    grid-template-columns:1fr;
+    gap:9px;
+  }
+  .action-card,.decision-card,.duo-card,.result-card{
+    min-height:0;
+    padding:9px;
+    border-radius:12px;
+    gap:7px;
+    touch-action:manipulation;
+  }
+  .action-card .pick-image,
+  .decision-card .pick-image,
+  .duo-card .pick-image{
+    height:148px;
+    border-radius:10px;
+  }
+  .duo-card{min-height:0}
+  .action-card h4{
+    font-size:18px;
+    line-height:1.05;
+    padding:2px 2px 0;
+  }
+  .effect-stack{
+    flex-direction:row;
+    flex-wrap:wrap;
+    gap:5px;
+  }
+  .effect-pill{
+    padding:6px 8px;
+    font-size:9px;
+    gap:4px;
+  }
+  .duo-card:after,.decision-card:after,.result-card:after{display:none}
+  .choose-btn,.menu-btn{
+    min-height:48px;
+    padding:12px 14px;
+    font-size:17px;
+    border-radius:11px;
+  }
+
+  /* Year-by-year stats: Copero-like cards rather than tiny desktop columns */
+  .timeline-head{display:none!important}
+  .timeline{
+    flex:none;
+    overflow:visible;
+    gap:6px;
+    margin-top:4px;
+  }
+  .row{
+    display:grid;
+    grid-template-columns:38px minmax(0,1fr) 48px 42px 42px 48px;
+    grid-template-areas:
+      "age club club club ovr ovr"
+      "age kills deaths kd pr earn";
+    gap:5px;
+    min-height:61px;
+    padding:7px 7px;
+    border:1px solid #19191d;
+    border-radius:10px;
+    background:rgba(13,13,15,.72);
+    align-items:center;
+  }
+  .row.active{background:#101012}
+  .row.current{
+    background:#171719;
+    border-color:#35353b;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.035);
+  }
+  .row .age{
+    grid-area:age;
+    align-self:stretch;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:20px;
+    border-right:1px solid #242429;
+    color:#36363d;
+  }
+  .row.active .age,.row.current .age{color:#f4f4f5}
+  .row .club{
+    grid-area:club;
+    font-size:11px;
+    min-width:0;
+    align-self:end;
+  }
+  .row .ovr-cell{
+    grid-area:ovr;
+    text-align:right;
+    align-self:end;
+  }
+  .row .ovr-cell .pill{
+    min-width:34px;
+    padding:4px 7px;
+    font-size:11px;
+  }
+  .row .cell{
+    position:relative;
+    min-height:27px;
+    padding-top:11px;
+    font-size:11px;
+    line-height:1;
+    text-align:center;
+    color:#e3e3e8;
+    border-radius:6px;
+    background:#141417;
+  }
+  .row .cell:before{
+    position:absolute;
+    top:3px;
+    left:0;
+    right:0;
+    font:800 6px "Inter",system-ui,sans-serif;
+    letter-spacing:.65px;
+    color:#686872;
+    text-transform:uppercase;
+  }
+  .row .kills{grid-area:kills}.row .kills:before{content:"K"}
+  .row .deaths{grid-area:deaths}.row .deaths:before{content:"D"}
+  .row .kd{grid-area:kd}.row .kd:before{content:"K/D"}
+  .row .year-pr{grid-area:pr}.row .year-pr:before{content:"PR"}
+  .row .year-earn{grid-area:earn}.row .year-earn:before{content:"$"}
+  .right-footer{
+    padding:10px 2px 2px;
+    font-size:10px;
+    gap:8px;
+  }
+  .footer-stats{gap:7px;flex-wrap:wrap;justify-content:flex-end}
+
+  /* Menu */
+  .menu-wrap{
+    min-height:100dvh;
+    display:flex;
+    align-items:center;
+    padding:14px 12px calc(14px + env(safe-area-inset-bottom));
+  }
+  .menu-card{
+    width:100%;
+    max-width:430px;
+    border-radius:18px;
+    padding:31px 18px 20px;
+  }
+  .menu-card:after{
+    right:12px;
+    top:11px;
+    font-size:7px;
+  }
+  .menu-main img.logo{
+    width:78px;
+    max-height:82px;
+    object-fit:contain;
+    margin-bottom:5px;
+  }
+  .menu-main h1{
+    font-size:59px;
+    line-height:.88;
+    letter-spacing:-2px;
+    margin:8px 0 10px;
+  }
+  .career-meta{
+    gap:5px;
+    margin:10px 0 15px;
+  }
+  .career-meta span{
+    padding:5px 7px;
+    font-size:7px;
+    letter-spacing:.45px;
+  }
+  .stack{gap:8px}
+
+  /* New career form */
+  .form-card{
+    width:100%;
+    border-radius:0;
+    border-left:0;
+    border-right:0;
+    padding:22px 14px calc(22px + env(safe-area-inset-bottom));
+    min-height:100dvh;
+  }
+  .form-card h1,.setup-title{
+    font-size:40px;
+    line-height:.92;
+    margin-bottom:11px;
+  }
+  .setup-sub{font-size:12px;margin-bottom:14px}
+  .field{margin-bottom:10px}
+  .field label,.choice-label{font-size:8px}
+  .field input,.field select{
+    min-height:48px;
+    padding:11px 12px;
+    font-size:17px;
+  }
+  .region-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:6px;
+  }
+  .role-grid{
+    grid-template-columns:1fr;
+    gap:7px;
+  }
+  .select-card{min-height:46px;font-size:10px}
+  .select-card.role-card{min-height:78px}
+  .select-card.role-card b{font-size:21px}
+  .select-card.role-card span{font-size:10px}
+  .setup-divider{margin:13px 0}
+
+  /* Recap screen */
+  .recap-wrap{
+    min-height:100dvh;
+    display:block;
+    padding:0;
+  }
+  .recap-card{
+    width:100%;
+    min-height:100dvh;
+    border:0;
+    border-radius:0;
+    padding:22px 13px calc(22px + env(safe-area-inset-bottom));
+  }
+  .recap-top{
+    gap:10px;
+    align-items:flex-start;
+  }
+  .recap-title h1{
+    font-size:37px;
+    line-height:.92;
+  }
+  .recap-title small{font-size:8px}
+  .recap-rank{
+    max-width:42%;
+    font-size:22px;
+    line-height:.95;
+  }
+  .recap-rank small{font-size:7px}
+  .recap-meter{margin:12px 0}
+  .recap-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:6px;
+  }
+  .recap-stat{
+    min-height:70px;
+    padding:9px;
+  }
+  .recap-stat small{font-size:7px}
+  .recap-stat b{font-size:20px}
+  .recap-bottom{
+    grid-template-columns:1fr;
+    gap:6px;
+    margin-top:6px;
+  }
+  .recap-panel{padding:10px}
+  .recap-panel h3{font-size:14px}
+  .recap-duos{font-size:10px}
+  .recap-actions{
+    flex-direction:column;
+    gap:6px;
+    margin-top:9px;
+  }
+
+  /* Modals become phone bottom sheets */
+  .modal-bg{
+    padding:0;
+    place-items:end center;
+  }
+  .modal{
+    width:100%;
+    max-width:none;
+    max-height:92dvh;
+    border-radius:18px 18px 0 0;
+    border-left:0;
+    border-right:0;
+    border-bottom:0;
+    padding:18px 12px calc(18px + env(safe-area-inset-bottom));
+    overscroll-behavior:contain;
+  }
+  .modal h2{
+    font-size:34px;
+    padding-right:34px;
+  }
+  .close{
+    position:sticky;
+    top:0;
+    z-index:3;
+    font-size:26px;
+  }
+  .modal table{
+    display:block;
+    overflow-x:auto;
+    white-space:nowrap;
+    font-size:11px;
+    -webkit-overflow-scrolling:touch;
+  }
+  .modal th,.modal td{padding:8px 7px}
+
+  /* Champion and OVR animations fit small screens */
+  .champion-card{
+    width:calc(100vw - 24px);
+    padding:24px 16px;
+    border-radius:16px;
+  }
+  .fncs-trophy,.global-trophy{font-size:78px}
+  .champion-card h2{font-size:38px}
+  .champion-card p{font-size:12px;line-height:1.4}
+  .ovr-change-card{
+    min-width:0;
+    width:calc(100vw - 28px);
+    padding:22px 14px;
+  }
+  .ovr-shift{gap:10px}
+  .ovr-shift span{font-size:60px}
+  .ovr-shift b{font-size:20px}
+}
+
+/* Very small phones */
+@media(max-width:380px){
+  .left{padding-left:9px;padding-right:9px}
+  .right{padding-left:8px;padding-right:8px}
+  .player-name{font-size:25px}
+  .ovr-badge{width:55px;flex-basis:55px;height:58px}
+  .meta-box .age{font-size:27px}
+  .micro b{font-size:13px}
+  .condition-head b{font-size:9px}
+  .menu-main h1{font-size:51px}
+  .region-grid{grid-template-columns:1fr 1fr}
+  .row{
+    grid-template-columns:34px minmax(0,1fr) 40px 38px 38px 43px;
+    padding:6px 5px;
+  }
+  .row .cell{font-size:10px}
+  .recap-title h1{font-size:32px}
+  .recap-rank{font-size:18px}
+}
+
+/* Use hover effects only where hover really exists */
+@media(hover:none){
+  .action-card:hover,.duo-card:hover,.decision-card:hover,.menu-btn:hover,.palmares-box:hover,.select-card:hover{
+    transform:none;
+  }
+  .duo-card:hover .pick-image,.decision-card:hover .pick-image{transform:none}
+}
+
 </style>
 </head>
 <body>
@@ -129,7 +680,27 @@ const DECISION_IMAGES={
   travel2:'https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg?auto=compress&cs=tinysrgb&w=900',
   focus:'https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=900',
   videoclip:'https://images.pexels.com/photos/1699161/pexels-photo-1699161.jpeg?auto=compress&cs=tinysrgb&w=900',
-  citynight:'https://images.pexels.com/photos/315191/pexels-photo-315191.jpeg?auto=compress&cs=tinysrgb&w=900'
+  citynight:'https://images.pexels.com/photos/315191/pexels-photo-315191.jpeg?auto=compress&cs=tinysrgb&w=900',
+  cafe:'https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=900',
+  friends:'https://images.pexels.com/photos/1438072/pexels-photo-1438072.jpeg?auto=compress&cs=tinysrgb&w=900',
+  airport:'https://images.pexels.com/photos/2574078/pexels-photo-2574078.jpeg?auto=compress&cs=tinysrgb&w=900',
+  dinner:'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=900',
+  outdoors:'https://images.pexels.com/photos/1687845/pexels-photo-1687845.jpeg?auto=compress&cs=tinysrgb&w=900',
+  cinema:'https://images.pexels.com/photos/7991378/pexels-photo-7991378.jpeg?auto=compress&cs=tinysrgb&w=900',
+  desk:'https://images.pexels.com/photos/4050315/pexels-photo-4050315.jpeg?auto=compress&cs=tinysrgb&w=900',
+  trophy:'https://images.pexels.com/photos/7005503/pexels-photo-7005503.jpeg?auto=compress&cs=tinysrgb&w=900',
+  teamroom:'https://images.pexels.com/photos/3184431/pexels-photo-3184431.jpeg?auto=compress&cs=tinysrgb&w=900',
+  meeting:'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=900',
+  city:'https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=900',
+  home:'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=900',
+  food:'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=900',
+  park:'https://images.pexels.com/photos/1173777/pexels-photo-1173777.jpeg?auto=compress&cs=tinysrgb&w=900',
+  camera:'https://images.pexels.com/photos/51383/photo-camera-subject-photographer-51383.jpeg?auto=compress&cs=tinysrgb&w=900',
+  convention:'https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=900',
+  notebook:'https://images.pexels.com/photos/733857/pexels-photo-733857.jpeg?auto=compress&cs=tinysrgb&w=900',
+  sunrise:'https://images.pexels.com/photos/35537/child-children-girl-happy.jpg?auto=compress&cs=tinysrgb&w=900',
+  football:'https://images.pexels.com/photos/114296/pexels-photo-114296.jpeg?auto=compress&cs=tinysrgb&w=900',
+  train:'https://images.pexels.com/photos/730134/pexels-photo-730134.jpeg?auto=compress&cs=tinysrgb&w=900'
 };
 
 const REGIONS={SA:{name:'SOUTH AMERICA',short:'SA'},NA:{name:'NORTH AMERICA',short:'NA'},EU:{name:'EUROPE',short:'EU'},OCE:{name:'OCEANIA',short:'OCE'},ASIA:{name:'ASIA',short:'ASIA'},ME:{name:'MIDDLE EAST',short:'ME'}};
@@ -207,7 +778,12 @@ function powerPointsFor(id,p){
   const t=TOURS[id]; if(p===1)return t.pr[0]; if(p===2)return t.pr[1]; if(p===3)return t.pr[2]; if(p<=10)return t.pr[3]; if(p<=25)return Math.round(t.pr[3]*.65); if(p<=50)return Math.round(t.pr[3]*.35); return 0;
 }
 let state=null;
-function ensurePalmares(){if(!state)return; if(!state.palmares)state.palmares={events:0,totalWins:0,top10s:0,fncsWins:state.trophies?.fncs||0,fncsPodiums:state.trophies?.fncs||0,globalWins:state.trophies?.global||0,globalPodiums:state.trophies?.global||0,cupWins:state.trophies?.cups||0,biggestPrize:0,bestFNCS:null,bestGlobal:null,recent:[]}; if(!Array.isArray(state.palmares.recent))state.palmares.recent=[];} function saveGame(){if(state){ensurePalmares();localStorage.setItem('llamero_v26_save',JSON.stringify(state));}} function hasSave(){return !!(localStorage.getItem('llamero_v26_save')||localStorage.getItem('llamero_v18_save'));} function loadGame(){try{const raw=localStorage.getItem('llamero_v26_save')||localStorage.getItem('llamero_v18_save');const s=JSON.parse(raw); if(s&&s.profile){state=s;ensurePalmares();saveGame(); return true;}}catch(e){} return false;}
+function ensurePalmares(){if(!state)return;
+  if(!state.combat)state.combat={kills:0,deaths:0,bestEventKills:0};
+  if(!state.cashCups)state.cashCups={played:0,wins:0,earnings:0};
+  if(!state.flags)state.flags={appreciationSeen:false};
+  if(!Array.isArray(state.duoHistory))state.duoHistory=[];
+  if(!state.palmares)state.palmares={events:0,totalWins:0,top10s:0,fncsWins:state.trophies?.fncs||0,fncsPodiums:state.trophies?.fncs||0,globalWins:state.trophies?.global||0,globalPodiums:state.trophies?.global||0,cupWins:state.trophies?.cups||0,biggestPrize:0,bestFNCS:null,bestGlobal:null,recent:[]}; if(!Array.isArray(state.palmares.recent))state.palmares.recent=[];} function saveGame(){if(state){ensurePalmares();localStorage.setItem('llamero_v30_save',JSON.stringify(state));}} function hasSave(){return !!(localStorage.getItem('llamero_v30_save')||localStorage.getItem('llamero_v29_save')||localStorage.getItem('llamero_v28_save')||localStorage.getItem('llamero_v27_save')||localStorage.getItem('llamero_v18_save'));} function loadGame(){try{const raw=localStorage.getItem('llamero_v30_save')||localStorage.getItem('llamero_v29_save')||localStorage.getItem('llamero_v28_save')||localStorage.getItem('llamero_v27_save')||localStorage.getItem('llamero_v18_save');const s=JSON.parse(raw); if(s&&s.profile){state=s;ensurePalmares();saveGame(); return true;}}catch(e){} return false;}
 
 function rollCareerCeiling(){
   const r=Math.random();
@@ -224,18 +800,21 @@ function rollCareerCeiling(){
   return 99;                       // 0.8%
 }
 
-function freshState(profile){return {profile,age:13,year:2026,earnings:0,powerRanking:0,ovr:60,teammate:null,chemistry:rand(20,36),hidden:{potential:rollCareerCeiling(),mental:rand(50,72),prep:0,burnout:0},trophies:{fncs:0,global:0,cups:0},palmares:{events:0,totalWins:0,top10s:0,fncsWins:0,fncsPodiums:0,globalWins:0,globalPodiums:0,cupWins:0,biggestPrize:0,bestFNCS:null,bestGlobal:null,recent:[]},history:[],queue:[],pending:null,lastResult:null,news:['EMPEZASTE TU CARRERA A LOS 13 AÑOS CON 60 OVR.'],seasonFlags:{qualified:false,lastChance:false},retired:false,retireAge:null,bannedSeasons:0,careerPeakAge:rand(17,23),naturalDelta:0,seasonInYear:1,flags:{appreciationSeen:false},recentDecisionTitles:[],duoHistory:[]};}
+function freshState(profile){return {profile,age:13,year:2026,earnings:0,powerRanking:0,ovr:60,teammate:null,chemistry:rand(20,36),hidden:{potential:rollCareerCeiling(),mental:rand(50,72),prep:0,burnout:0},trophies:{fncs:0,global:0,cups:0},combat:{kills:0,deaths:0,bestEventKills:0},cashCups:{played:0,wins:0,earnings:0},palmares:{events:0,totalWins:0,top10s:0,fncsWins:0,fncsPodiums:0,globalWins:0,globalPodiums:0,cupWins:0,biggestPrize:0,bestFNCS:null,bestGlobal:null,recent:[]},history:[],queue:[],pending:null,lastResult:null,news:['EMPEZASTE TU CARRERA A LOS 13 AÑOS CON 60 OVR.'],seasonFlags:{qualified:false,lastChance:false},retired:false,retireAge:null,bannedSeasons:0,careerPeakAge:rand(17,23),naturalDelta:0,seasonInYear:1,flags:{appreciationSeen:false},recentDecisionTitles:[],duoHistory:[]};}
 function getPlayer(id){return PLAYER_LIST.find(p=>p.id===id);} function userStrength(){return clamp(state.ovr+state.hidden.prep*.15-state.hidden.burnout*.22+(state.hidden.mental-60)*.04,40,100);} function teammateStrength(p){if(!p)return 55; const ageBoost=p.age>=18&&p.age<=24?3:p.age<18?-2:p.age>=28?-5:0; return clamp(p.hidden.base+p.form+ageBoost,45,99);} function duoStrength(){const mate=getPlayer(state.teammate); return userStrength()*.56+teammateStrength(mate)*.44+(state.chemistry-50)*.12;} function reputationLevel(){let lvl=0; if(state.powerRanking>=1200)lvl++; if(state.powerRanking>=3500)lvl++; if(state.powerRanking>=8000)lvl++; if(state.powerRanking>=16000)lvl++; if(state.powerRanking>=30000)lvl++; if(state.trophies.fncs>0)lvl+=2; if(state.trophies.global>0)lvl+=2; return lvl;} function candidatePool(region){const rep=reputationLevel(); return PLAYER_LIST.filter(p=>{if(!p.active||p.region!==region||p.id===state.teammate)return false; if(p.tier===1)return true; if(p.tier===2)return rep>=2; if(p.tier===3)return rep>=5; if(p.tier===4)return rep>=7; return false;});}
 function yearDecisionSet(){
-  let pool=['human','ovr','life','team','role','creator','pressure','gear','career','rivalry'];
+  let pool=['human','life','lifeplus','lifeplus','team','role','creator','pressure','gear','career','careerplus','rivalry','social','strategy'];
+  // Las decisiones de mejora directa de OVR aparecen menos: la mayoría afectan
+  // chemistry, burnout, preparación, PR, earnings o tu carrera.
+  if(Math.random()<0.30) pool.push('ovr');
   if(state.profile.region==='SA') pool.push('under');
   if(state.age<=16) pool.push('school','free');
   if(state.age>=18) pool.push('region');
-  pool=[...new Set(pool)].sort(()=>Math.random()-.5);
+  pool=pool.sort(()=>Math.random()-.5);
   const chosen=[];
   if(state.age===15) chosen.push('xvparty');
   if(state.age===18) chosen.push('graduation');
-  if(state.teammate && !state.flags.appreciationSeen && Math.random()<0.055 && chosen.length<3) chosen.push('appreciation');
+  if(state.age>=18 && state.teammate && state.chemistry>=60 && !state.flags.appreciationSeen && Math.random()<0.006 && chosen.length<3) chosen.push('appreciation');
   if((state.powerRanking>=1800 || state.age>=17) && Math.random()<0.10 && chosen.length<3) chosen.push('legendcoach');
   for(const id of pool){if(chosen.length>=3)break; if(!chosen.includes(id))chosen.push(id);}
   while(chosen.length<3) chosen.push(pick(['human','ovr','life','team','creator','pressure','gear','career','rivalry']));
@@ -250,10 +829,10 @@ function startSeason(){
   const q=[];
   const decisions=yearDecisionSet();
   const pool = state.age===13
-    ? ['ranked','victory','reload','solo']
+    ? ['ranked','reload','division']
     : state.age<=16
-      ? ['victory','reload','solo','cash','division']
-      : ['victory','reload','solo','cash','division','elite'];
+      ? ['ranked','reload','division','elite']
+      : ['reload','division','elite'];
   const shuffled=[...pool].sort(()=>Math.random()-.5);
   const seasonTours=[shuffled[0],shuffled[1], 'qual'];
   for(let s=1;s<=3;s++){
@@ -274,7 +853,7 @@ function skipBannedSeason(){
 
 function earlySeasonDevelopment(season){
   // El crecimiento fuerte ocurre al principio de la carrera.
-  // Se ejecuta al comenzar cada temporada y siempre respeta el límite 99.
+  // Se ejecuta al comenzar cada temporada. El potencial oculto solo limita el crecimiento natural.
   if(season===1) return; // la temporada 1 arranca con el OVR actual
 
   let delta=0;
@@ -304,7 +883,7 @@ function earlySeasonDevelopment(season){
 }
 
 function nextStep(){
-  if(state.retired){renderCareerEnd();return;}
+  if(state.retired){renderCareerRecap(true);return;}
   if(!state.queue.length){endSeason();return;}
   const step=state.queue.shift();
   if(step[0]==='season'){
@@ -314,6 +893,7 @@ function nextStep(){
     else{
       if(step[1]>1) state.hidden.burnout=clamp(state.hidden.burnout-1,0,35);
       earlySeasonDevelopment(step[1]);
+      simulateSilentCashCups(5);
     }
     saveGame();
     nextStep();
@@ -382,6 +962,23 @@ function simulatePlacement(t,tid){
     if(Math.random()<winChance) place=1;
     else if(state.ovr>=95 && Math.random()<.38) place=Math.min(place,rand(2,6));
     else if(state.ovr>=88 && Math.random()<.24) place=Math.min(place,rand(2,10));
+  } else if(tid==='global'){
+    if(state.ovr<=84){
+      place=Math.max(2,place);
+    }else{
+      let globalChance=.008;
+      if(state.ovr>=99)globalChance=.34;
+      else if(state.ovr>=97)globalChance=.22;
+      else if(state.ovr>=94)globalChance=.13;
+      else if(state.ovr>=91)globalChance=.075;
+      else if(state.ovr>=88)globalChance=.038;
+      else if(state.ovr>=85)globalChance=.016;
+      globalChance+=((state.chemistry-50)/50)*.055;
+      globalChance+=((10-state.hidden.burnout)/25)*.06;
+      globalChance=clamp(globalChance,.003,.46);
+      if(Math.random()<globalChance)place=1;
+      else if(state.ovr>=94&&Math.random()<.30)place=Math.min(place,rand(2,8));
+    }
   } else if(Math.random()<.025&&strength>diff-3) place=1;
 
   return place;
@@ -394,12 +991,19 @@ function resultKey(e,fn,card){if(e.key==='Enter'||e.key===' '){e.preventDefault(
 function selectResultCard(fn,card){const grid=card.closest('.option-grid');card.classList.add('choice-picked');if(grid)[...grid.querySelectorAll('.result-card')].forEach(c=>{if(c!==card)c.classList.add('choice-faded');});setTimeout(fn,360);}
 function runTournament(tid){const t=TOURS[tid]; let place=simulatePlacement(t,tid); if(tid==='qual' && state.ovr>=80) place=Math.min(place,8); const earnings=prizeFor(tid,place), prGain=powerPointsFor(tid,place); state.earnings+=earnings; state.powerRanking+=prGain; state.lastResult={tourId:tid,name:t.name,place,earnings,prGain};
   updatePalmares(tid,t,place,earnings,prGain);
+  recordCombat(tid,place);
   // Competir genera desgaste, pero de forma gradual.
   let tourBurn=0;
   if(tid==='major'||tid==='global') tourBurn=2;
   else if(tid==='qual'||tid==='last'||tid==='elite') tourBurn=1;
   else if(Math.random()<0.45) tourBurn=1;
-  state.hidden.burnout=clamp(state.hidden.burnout+tourBurn,0,35); if(tid==='qual'){const qualLine=Math.max(9,Math.round(14/({SA:.97,NA:1.03,EU:1.09,OCE:.95,ASIA:.99,ME:1.01}[state.profile.region]))); const qualified=state.ovr>=80 || (state.ovr>=75 && place<=qualLine); state.seasonFlags.qualified=qualified; if(qualified)state.queue.unshift(['tour','major']); else{state.seasonFlags.lastChance=true; if(state.age>=17&&Math.random()<.28)state.queue.unshift(['event','wedding']); else state.queue.unshift(['tour','last']);}} if(tid==='last'){const qualified=state.ovr>=80 || (state.ovr>=75 && place<=8); state.seasonFlags.qualified=qualified; if(qualified)state.queue.unshift(['tour','major']);} if(tid==='major'&&place===1){state.trophies.fncs++; state.chemistry=clamp(state.chemistry+8,0,100);} if(tid==='global'&&place===1)state.trophies.global++; if(['victory','reload','solo','cash','division','elite'].includes(tid)&&place===1)state.trophies.cups++; if(place<=10)state.chemistry=clamp(state.chemistry+rand(1,4),0,100); else if(place>Math.floor(t.field*.6))state.chemistry=clamp(state.chemistry-rand(0,3),0,100); if(place<=5)state.hidden.mental=clamp(state.hidden.mental+1,25,100); if(place>Math.floor(t.field*.75))state.hidden.mental=clamp(state.hidden.mental-1,25,100); if(tid==='major'&&place<=5&&state.powerRanking>=1800&&Math.random()<.55)state.queue.push(['tour','global']); saveGame(); renderTournamentResult();}
+  state.hidden.burnout=clamp(state.hidden.burnout+tourBurn,0,35); if(tid==='qual'){const qualLine=Math.max(9,Math.round(14/({SA:.97,NA:1.03,EU:1.09,OCE:.95,ASIA:.99,ME:1.01}[state.profile.region]))); const qualified=state.ovr>=80 || (state.ovr>=75 && place<=qualLine); state.seasonFlags.qualified=qualified; if(qualified)state.queue.unshift(['tour','major']); else{state.seasonFlags.lastChance=true; if(state.age>=17&&Math.random()<.28)state.queue.unshift(['event','wedding']); else state.queue.unshift(['tour','last']);}} if(tid==='last'){const qualified=state.ovr>=80 || (state.ovr>=75 && place<=8); state.seasonFlags.qualified=qualified; if(qualified)state.queue.unshift(['tour','major']);} if(tid==='major'&&place===1){state.trophies.fncs++; state.chemistry=clamp(state.chemistry+8,0,100);} if(tid==='global'&&place===1)state.trophies.global++; if(['victory','reload','solo','cash','division','elite'].includes(tid)&&place===1)state.trophies.cups++; if(place<=10)state.chemistry=clamp(state.chemistry+rand(1,4),0,100); else if(place>Math.floor(t.field*.6))state.chemistry=clamp(state.chemistry-rand(0,3),0,100); if(place<=5)state.hidden.mental=clamp(state.hidden.mental+1,25,100); if(place>Math.floor(t.field*.75))state.hidden.mental=clamp(state.hidden.mental-1,25,100); if(tid==='major'&&state.powerRanking>=1800){
+    let globalQual=false;
+    if(place<=3)globalQual=true;
+    else if(place<=5&&Math.random()<.85)globalQual=true;
+    else if(place<=10&&state.ovr>=90&&Math.random()<.48)globalQual=true;
+    if(globalQual)state.queue.push(['tour','global']);
+  } saveGame(); renderTournamentResult();}
 function switchTeammate(player){state.teammate=player.id; state.chemistry=rand(28,48); if(!Array.isArray(state.duoHistory))state.duoHistory=[]; if(!state.duoHistory.includes(player.name))state.duoHistory.push(player.name); state.news.unshift('NUEVO DÚO: '+player.name.toUpperCase()+'.');}
 function chooseTeammatesScreen(){let pool=candidatePool(state.profile.region); if(pool.length<2)pool=PLAYER_LIST.filter(p=>p.active&&p.region===state.profile.region); pool=[...pool].sort(()=>Math.random()-.5); const a=pool[0], b=pool.find(x=>x.id!==a.id); state.pending={type:'duo',a:a.id,b:b.id}; saveGame(); renderDuoChoice(a,b);}
 let teammatePickLocked=false;
@@ -502,6 +1106,68 @@ function lifeEvent(){return pick([
  evt('TE PIDEN SER IGL','Tu teammate cree que vos deberías tomar todas las decisiones en partida.',DECISION_IMAGES.coach,'ACEPTAR EL ROL','REPARTIR LAS CALLS',['+2 OVR','+ Presión'],['+ Chemistry'],()=>{state.ovr=clamp(state.ovr+2,45,99);state.hidden.burnout+=2;},()=>{state.chemistry=clamp(state.chemistry+4,0,100);},DECISION_IMAGES.coach,DECISION_IMAGES.bench)
 ]);}
 
+
+function socialEvent(){return pick([
+  evt('WATCH PARTY DE FNCS','Un creador grande organiza una watch party y te invita como jugador invitado. Ganás exposición, pero perdés una noche de scrims.',DECISION_IMAGES.stream,'IR A LA WATCH PARTY','PRIORIZAR SCRIMS',['+180 PR','+ Moral'],['+ Preparación'],()=>{state.powerRanking+=180;state.hidden.mental+=2;state.hidden.prep-=1;},()=>{state.hidden.prep+=3;},DECISION_IMAGES.stream,DECISION_IMAGES.practice),
+  evt('EVENTO CON FANS','Te invitan a un pequeño meet & greet de la comunidad antes de un torneo.',DECISION_IMAGES.stage,'IR AL EVENTO','QUEDARME DESCANSANDO',['+120 PR','+ Moral'],['- Burnout'],()=>{state.powerRanking+=120;state.hidden.mental+=3;},()=>{state.hidden.burnout-=3;},DECISION_IMAGES.stage,DECISION_IMAGES.relax),
+  evt('STREAM BENÉFICO','Un grupo de creadores organiza un stream solidario y te pide participar.',DECISION_IMAGES.creator,'PARTICIPAR','NO PARTICIPAR',['+100 PR','+ Moral'],['+ Preparación'],()=>{state.powerRanking+=100;state.hidden.mental+=3;},()=>{state.hidden.prep+=2;},DECISION_IMAGES.creator,DECISION_IMAGES.practice),
+  evt('CENA CON TU DÚO','Después de semanas tensas, tu compañero propone salir a comer y hablar de la temporada.',DECISION_IMAGES.family,'IR A CENAR','SEGUIR GRINDEANDO',['+ Chemistry','- Burnout'],['+ Preparación','- Chemistry'],()=>{state.chemistry=clamp(state.chemistry+7,0,100);state.hidden.burnout-=2;},()=>{state.hidden.prep+=2;state.chemistry=clamp(state.chemistry-2,0,100);},DECISION_IMAGES.family,DECISION_IMAGES.practice),
+  evt('TE INVITAN A UN PODCAST','Un podcast de esports quiere hablar de tu carrera y de tu región.',DECISION_IMAGES.interview,'IR AL PODCAST','DECIR QUE NO',['+160 PR','+$400'],['+ Preparación'],()=>{state.powerRanking+=160;state.earnings+=400;},()=>{state.hidden.prep+=2;},DECISION_IMAGES.interview,DECISION_IMAGES.practice),
+  evt('VACACIONES FAMILIARES CORTAS','Tu familia propone irse un fin de semana entre torneos.',DECISION_IMAGES.trip,'IR CON ELLOS','QUEDARME EN CASA',['- Burnout','+ Moral'],['+ Preparación'],()=>{state.hidden.burnout-=4;state.hidden.mental+=4;},()=>{state.hidden.prep+=2;},DECISION_IMAGES.trip,DECISION_IMAGES.practice),
+  evt('TU TEAMMATE QUIERE HACER CONTENIDO','Tu compañero cree que hacer un video juntos puede mejorar la química y la imagen del dúo.',DECISION_IMAGES.creator,'GRABAR EL VIDEO','NO HACERLO',['+ Chemistry','+90 PR'],['+ Preparación'],()=>{state.chemistry=clamp(state.chemistry+5,0,100);state.powerRanking+=90;},()=>{state.hidden.prep+=2;},DECISION_IMAGES.creator,DECISION_IMAGES.practice),
+  evt('TE OFRECEN UNA SESIÓN DE FOTOS','Una marca quiere hacerte fotos para una campaña de gaming.',DECISION_IMAGES.interview,'ACEPTAR','$ RECHAZAR'.replace('$ ',''),['+$1200','+80 PR'],['+ Tiempo libre'],()=>{state.earnings+=1200;state.powerRanking+=80;},()=>{state.hidden.burnout-=1;},DECISION_IMAGES.interview,DECISION_IMAGES.relax)
+]);}
+
+function strategyEvent(){return pick([
+  evt('CAMBIAR EL DROP SPOT','Tu dúo encontró un drop menos disputado, pero todavía no lo conocen bien.',DECISION_IMAGES.analyst,'CAMBIAR DE DROP','MANTENER EL ACTUAL',['+ Preparación','Riesgo Chemistry'],['+ Chemistry','+ Estabilidad'],()=>{state.hidden.prep+=3;state.chemistry=clamp(state.chemistry-1,0,100);},()=>{state.chemistry=clamp(state.chemistry+3,0,100);},DECISION_IMAGES.analyst,DECISION_IMAGES.compete),
+  evt('ESTUDIAR A UN RIVAL','Hay un dúo que siempre los elimina en endgame. Pueden dedicar varias horas a revisar sus VODs.',DECISION_IMAGES.analyst,'ESTUDIARLOS','SEGUIR CON NUESTRO PLAN',['+ Preparación'],['+ Chemistry'],()=>{state.hidden.prep+=4;},()=>{state.chemistry=clamp(state.chemistry+2,0,100);},DECISION_IMAGES.analyst,DECISION_IMAGES.bench),
+  evt('SEMANA SIN RANKED','Tu coach propone dejar ranked y jugar solo scrims y VOD review durante una semana.',DECISION_IMAGES.coach,'HACERLO','SEGUIR RANKED',['+ Preparación','- Burnout'],['+ Mental'],()=>{state.hidden.prep+=3;state.hidden.burnout-=2;},()=>{state.hidden.mental+=2;},DECISION_IMAGES.coach,DECISION_IMAGES.compete),
+  evt('DIVIDIR LAS CALLS','Tu dúo quiere repartir las decisiones: uno hace early game y el otro endgame.',DECISION_IMAGES.analyst,'PROBARLO','MANTENER LAS CALLS',['+ Chemistry','+ Preparación'],['+ Estabilidad'],()=>{state.chemistry=clamp(state.chemistry+4,0,100);state.hidden.prep+=2;},()=>{state.hidden.mental+=1;},DECISION_IMAGES.analyst,DECISION_IMAGES.focus),
+  evt('SALTEAR UNA CUP MENOR','Hay una cup pequeña entre dos semanas importantes. Podés jugarla o usar ese día para descansar.',DECISION_IMAGES.compete,'JUGAR LA CUP','DESCANSAR',['+250 PR','+ Burnout'],['- Burnout','+ Mental'],()=>{state.powerRanking+=250;state.hidden.burnout+=2;},()=>{state.hidden.burnout-=4;state.hidden.mental+=2;},DECISION_IMAGES.compete,DECISION_IMAGES.relax),
+  evt('CAMBIAR EL HORARIO DE PRÁCTICA','Tu mejor rendimiento aparece más temprano, pero las scrims fuertes son de noche.',DECISION_IMAGES.practice,'PRIORIZAR MI HORARIO','ADAPTARME A LAS SCRIMS',['- Burnout','+ Mental'],['+ Preparación','+ Burnout'],()=>{state.hidden.burnout-=2;state.hidden.mental+=2;},()=>{state.hidden.prep+=3;state.hidden.burnout+=2;},DECISION_IMAGES.relax,DECISION_IMAGES.practice),
+  evt('TU TEAMMATE ESTÁ JUGANDO MAL','Notás que tu compañero perdió confianza. Podés dedicar tiempo a ayudarlo o concentrarte solo en vos.',DECISION_IMAGES.bench,'AYUDARLO','ENFOCARME EN MÍ',['+ Chemistry','+ Mental dúo'],['+ Preparación','- Chemistry'],()=>{state.chemistry=clamp(state.chemistry+7,0,100);state.hidden.mental+=1;},()=>{state.hidden.prep+=3;state.chemistry=clamp(state.chemistry-3,0,100);},DECISION_IMAGES.bench,DECISION_IMAGES.practice),
+  evt('PLAN DE ENDGAME NUEVO','Un analista propone jugar por posiciones más seguras en vez de buscar eliminaciones.',DECISION_IMAGES.analyst,'JUGAR MÁS SEGURO','MANTENER ESTILO AGRESIVO',['+ Consistencia','+ Preparación'],['+ PR posible','+ Burnout'],()=>{state.hidden.prep+=3;state.hidden.mental+=1;},()=>{state.powerRanking+=rand(0,180);state.hidden.burnout+=1;},DECISION_IMAGES.analyst,DECISION_IMAGES.compete),
+  evt('REVISAR LA COMUNICACIÓN','Escuchan sus propias partidas y notan que se pisan mucho al hablar.',DECISION_IMAGES.coach,'TRABAJAR LAS CALLS','NO DARLE IMPORTANCIA',['+ Chemistry','+ Preparación'],['Sin cambios'],()=>{state.chemistry=clamp(state.chemistry+5,0,100);state.hidden.prep+=2;},()=>{},DECISION_IMAGES.coach,DECISION_IMAGES.relax),
+  evt('DÍA COMPLETO DE DESCANSO','Tu calendario está lleno, pero hay un día libre antes de la próxima cup.',DECISION_IMAGES.relax,'NO TOCAR FORTNITE','HACER UN POCO DE RANKED',['- Burnout','+ Mental'],['+ Preparación'],()=>{state.hidden.burnout-=5;state.hidden.mental+=3;},()=>{state.hidden.prep+=2;},DECISION_IMAGES.relax,DECISION_IMAGES.compete)
+]);}
+
+
+function lifePlusEvent(){return pick([
+  evt('CUMPLEAÑOS DE UN AMIGO','Tus amigos hacen una juntada justo la noche antes de scrims importantes.',DECISION_IMAGES.friends,'IR UN RATO','QUEDARME EN CASA',['+ Mental','- Burnout'],['+ Preparación'],()=>{state.hidden.mental+=3;state.hidden.burnout-=2;},()=>{state.hidden.prep+=2;},DECISION_IMAGES.friends,DECISION_IMAGES.desk),
+  evt('DESAYUNO CON TU FAMILIA','Hace semanas que tus horarios no coinciden. Tenés una mañana libre.',DECISION_IMAGES.food,'DESAYUNAR JUNTOS','DORMIR MÁS',['+ Mental'],['- Burnout'],()=>{state.hidden.mental+=4;},()=>{state.hidden.burnout-=3;},DECISION_IMAGES.food,DECISION_IMAGES.sleep),
+  evt('SALIDA AL CINE','Tus amigos quieren ver una película después de una mala semana competitiva.',DECISION_IMAGES.cinema,'IR AL CINE','REVISAR VODS',['- Burnout','+ Mental'],['+ Preparación'],()=>{state.hidden.burnout-=3;state.hidden.mental+=3;},()=>{state.hidden.prep+=3;},DECISION_IMAGES.cinema,DECISION_IMAGES.analyst),
+  evt('VIAJE DE FIN DE SEMANA','Aparece un fin de semana libre entre torneos.',DECISION_IMAGES.outdoors,'HACER EL VIAJE','QUEDARME GRINDEANDO',['- Burnout','+ Mental'],['+ Preparación'],()=>{state.hidden.burnout-=4;state.hidden.mental+=4;},()=>{state.hidden.prep+=3;},DECISION_IMAGES.outdoors,DECISION_IMAGES.practice),
+  evt('TE CAMBIÁS DE HABITACIÓN','Podés reorganizar tu espacio para separar mejor descanso y juego.',DECISION_IMAGES.home,'REORGANIZAR TODO','DEJARLO COMO ESTÁ',['- Burnout','+ Mental'],['Sin cambios'],()=>{state.hidden.burnout-=2;state.hidden.mental+=2;},()=>{},DECISION_IMAGES.home,DECISION_IMAGES.desk),
+  evt('EXAMEN IMPORTANTE','Tenés un examen cerca de una semana de torneo.',DECISION_IMAGES.notebook,'ESTUDIAR PRIMERO','PRIORIZAR FORTNITE',['+ Mental','- Preparación'],['+ Preparación','+ Burnout'],()=>{state.hidden.mental+=2;state.hidden.prep-=1;},()=>{state.hidden.prep+=3;state.hidden.burnout+=2;},DECISION_IMAGES.notebook,DECISION_IMAGES.practice),
+  evt('ALMUERZO CON EL TEAM','La organización invita a jugadores y staff a comer juntos.',DECISION_IMAGES.dinner,'IR AL ALMUERZO','COMER SOLO Y PRACTICAR',['+ Chemistry','+ Mental'],['+ Preparación'],()=>{state.chemistry=clamp(state.chemistry+5,0,100);state.hidden.mental+=2;},()=>{state.hidden.prep+=2;},DECISION_IMAGES.dinner,DECISION_IMAGES.desk),
+  evt('DÍA DE PARQUE','Tu familia propone pasar la tarde afuera y sin pantallas.',DECISION_IMAGES.park,'IR CON ELLOS','QUEDARME EN CASA',['- Burnout','+ Mental'],['+ Preparación'],()=>{state.hidden.burnout-=4;state.hidden.mental+=3;},()=>{state.hidden.prep+=2;},DECISION_IMAGES.park,DECISION_IMAGES.pc),
+  evt('PERDISTE EL VUELO','Un cambio de puerta te deja sin el vuelo hacia una LAN.',DECISION_IMAGES.airport,'PAGAR OTRO VUELO','ESPERAR AL DÍA SIGUIENTE',['-$650','+ Preparación'],['+ Burnout'],()=>{state.earnings=Math.max(0,state.earnings-650);state.hidden.prep+=2;},()=>{state.hidden.burnout+=3;state.hidden.mental-=2;},DECISION_IMAGES.airport,DECISION_IMAGES.train),
+  evt('TE INVITAN A UNA CONVENCIÓN','Un evento gaming de tu ciudad quiere que vayas como invitado.',DECISION_IMAGES.convention,'IR AL EVENTO','NO IR',['+220 PR','+$500'],['- Burnout'],()=>{state.powerRanking+=220;state.earnings+=500;},()=>{state.hidden.burnout-=2;},DECISION_IMAGES.convention,DECISION_IMAGES.relax),
+  evt('FOTOS PARA TU PERFIL','La org quiere actualizar tus fotos oficiales.',DECISION_IMAGES.camera,'HACER LA SESIÓN','DEJARLO PARA DESPUÉS',['+100 PR','+ Mental'],['+ Tiempo libre'],()=>{state.powerRanking+=100;state.hidden.mental+=1;},()=>{state.hidden.burnout-=1;},DECISION_IMAGES.camera,DECISION_IMAGES.relax),
+  evt('PARTIDO CON AMIGOS','Tus amigos te invitan a jugar un partido casual para despejarte.',DECISION_IMAGES.football,'IR A JUGAR','SEGUIR EN LA PC',['- Burnout','+ Mental'],['+ Preparación'],()=>{state.hidden.burnout-=3;state.hidden.mental+=2;},()=>{state.hidden.prep+=2;},DECISION_IMAGES.football,DECISION_IMAGES.pc),
+  evt('NOCHE SIN INTERNET','Tu conexión se cae y no vuelve hasta la mañana.',DECISION_IMAGES.internet,'APROVECHAR PARA DORMIR','VER VODS EN EL CELULAR',['- Burnout'],['+ Preparación','+ Burnout'],()=>{state.hidden.burnout-=3;},()=>{state.hidden.prep+=2;state.hidden.burnout+=1;},DECISION_IMAGES.sleep,DECISION_IMAGES.phone),
+  evt('CAFÉ CON UN EX TEAMMATE','Un antiguo compañero quiere juntarse y hablar de cómo cambiaron sus carreras.',DECISION_IMAGES.cafe,'IR A CHARLAR','NO TENGO TIEMPO',['+ Mental','+ Chemistry'],['+ Preparación'],()=>{state.hidden.mental+=3;state.chemistry=clamp(state.chemistry+2,0,100);},()=>{state.hidden.prep+=2;},DECISION_IMAGES.cafe,DECISION_IMAGES.practice),
+  evt('TU DÍA LIBRE','No tenés scrims, torneos ni compromisos.',DECISION_IMAGES.sunrise,'DESCANSAR TODO EL DÍA','HACER UNA SESIÓN CORTA',['- Burnout','+ Mental'],['+ Preparación'],()=>{state.hidden.burnout-=5;state.hidden.mental+=3;},()=>{state.hidden.prep+=2;},DECISION_IMAGES.sunrise,DECISION_IMAGES.practice),
+  evt('CAMBIO DE CASA','Tu familia evalúa mudarse a un lugar con más espacio.',DECISION_IMAGES.move,'APOYAR LA MUDANZA','PREFERIR QUEDARME',['+ Mental','Riesgo Internet'],['+ Estabilidad'],()=>{state.hidden.mental+=2;if(Math.random()<.25)state.hidden.prep-=2;},()=>{state.hidden.prep+=1;},DECISION_IMAGES.move,DECISION_IMAGES.home),
+  evt('UNA SEMANA MUY CARGADA','Se juntan escuela, streams, scrims y compromisos.',DECISION_IMAGES.desk,'CANCELAR ALGUNAS COSAS','HACER TODO',['- Burnout'],['+180 PR','+ Burnout'],()=>{state.hidden.burnout-=3;},()=>{state.powerRanking+=180;state.hidden.burnout+=3;},DECISION_IMAGES.relax,DECISION_IMAGES.desk),
+  evt('COMIDA CON OTROS PROS','Varios jugadores de tu región se juntan después de un torneo.',DECISION_IMAGES.dinner,'QUEDARME A COMER','VOLVER AL HOTEL',['+ Chemistry','+150 PR'],['- Burnout'],()=>{state.chemistry=clamp(state.chemistry+3,0,100);state.powerRanking+=150;},()=>{state.hidden.burnout-=2;},DECISION_IMAGES.dinner,DECISION_IMAGES.home)
+]);}
+
+function careerPlusEvent(){return pick([
+  evt('MEDIA DAY DE LA ORG','Tu organización quiere grabar contenido durante toda una tarde.',DECISION_IMAGES.camera,'HACER MEDIA DAY','PEDIR MENOS HORAS',['+$900','+160 PR'],['- Burnout','+ Preparación'],()=>{state.earnings+=900;state.powerRanking+=160;},()=>{state.hidden.burnout-=2;state.hidden.prep+=1;},DECISION_IMAGES.camera,DECISION_IMAGES.practice),
+  evt('BOOTCAMP INTERNACIONAL','Te ofrecen una semana de bootcamp con otros jugadores de alto nivel.',DECISION_IMAGES.teamroom,'IR AL BOOTCAMP','ENTRENAR DESDE CASA',['+ Preparación','+ Chemistry','-$800'],['- Burnout'],()=>{state.hidden.prep+=4;state.chemistry=clamp(state.chemistry+4,0,100);state.earnings=Math.max(0,state.earnings-800);},()=>{state.hidden.burnout-=2;},DECISION_IMAGES.teamroom,DECISION_IMAGES.home),
+  evt('REUNIÓN CON TU MANAGER','Tu manager quiere hablar de objetivos para el próximo año.',DECISION_IMAGES.meeting,'FIJAR METAS ALTAS','PRIORIZAR ESTABILIDAD',['+ Preparación','+ Burnout'],['- Burnout','+ Mental'],()=>{state.hidden.prep+=3;state.hidden.burnout+=1;},()=>{state.hidden.burnout-=2;state.hidden.mental+=2;},DECISION_IMAGES.meeting,DECISION_IMAGES.relax),
+  evt('NUEVA OFERTA DE SPONSOR','Una marca chica te ofrece un acuerdo corto.',DECISION_IMAGES.creator,'FIRMAR','RECHAZAR',['+$2.500','+100 PR'],['+ Libertad'],()=>{state.earnings+=2500;state.powerRanking+=100;},()=>{state.hidden.mental+=1;},DECISION_IMAGES.creator,DECISION_IMAGES.city),
+  evt('SHOWMATCH DE CREADORES','Te invitan a un torneo de exhibición fuera del circuito competitivo.',DECISION_IMAGES.stage,'JUGARLO','DESCANSAR',['+$1.500','+200 PR'],['- Burnout'],()=>{state.earnings+=1500;state.powerRanking+=200;},()=>{state.hidden.burnout-=3;},DECISION_IMAGES.stage,DECISION_IMAGES.relax),
+  evt('TU ORG QUIERE MÁS STREAMS','Te piden sumar horas de contenido cada semana.',DECISION_IMAGES.stream,'ACEPTAR','NEGOCIAR MENOS HORAS',['+$1.200','+ PR','+ Burnout'],['+$500','- Burnout'],()=>{state.earnings+=1200;state.powerRanking+=130;state.hidden.burnout+=2;},()=>{state.earnings+=500;state.hidden.burnout-=1;},DECISION_IMAGES.stream,DECISION_IMAGES.meeting),
+  evt('CAMBIO DE COACH','El equipo te propone trabajar con un coach nuevo.',DECISION_IMAGES.coach,'PROBAR AL NUEVO','SEGUIR CON EL ACTUAL',['+ Preparación','Riesgo Chemistry'],['+ Chemistry'],()=>{state.hidden.prep+=4;state.chemistry=clamp(state.chemistry-1,0,100);},()=>{state.chemistry=clamp(state.chemistry+3,0,100);},DECISION_IMAGES.coach,DECISION_IMAGES.teamroom),
+  evt('OFERTA DE OTRA ORG','Otra organización ofrece más dinero, pero tendrías que cambiar de entorno.',DECISION_IMAGES.city,'ESCUCHAR LA OFERTA','QUEDARME',['+$3.000','- Chemistry'],['+ Chemistry','+ Mental'],()=>{state.earnings+=3000;state.chemistry=clamp(state.chemistry-3,0,100);},()=>{state.chemistry=clamp(state.chemistry+4,0,100);state.hidden.mental+=2;},DECISION_IMAGES.city,DECISION_IMAGES.teamroom),
+  evt('ANALISTA NUEVO','Un analista se ofrece a revisar todos tus endgames de la temporada.',DECISION_IMAGES.analyst,'CONTRATARLO','NO GASTAR',['+ Preparación','-$700'],['Sin cambios'],()=>{state.hidden.prep+=5;state.earnings=Math.max(0,state.earnings-700);},()=>{},DECISION_IMAGES.analyst,DECISION_IMAGES.home),
+  evt('TE INVITAN A UNA ENTREVISTA GRANDE','Un medio competitivo quiere hacerte una nota extensa.',DECISION_IMAGES.interview,'ACEPTAR','NO DAR ENTREVISTAS',['+280 PR','+ Mental'],['+ Preparación'],()=>{state.powerRanking+=280;state.hidden.mental+=2;},()=>{state.hidden.prep+=2;},DECISION_IMAGES.interview,DECISION_IMAGES.practice),
+  evt('CAMBIO DE HORARIO DE SCRIMS','Las mejores scrims pasan a terminar mucho más tarde.',DECISION_IMAGES.citynight,'ADAPTARME','BUSCAR OTRAS SCRIMS',['+ Preparación','+ Burnout'],['- Burnout','Riesgo preparación'],()=>{state.hidden.prep+=3;state.hidden.burnout+=2;},()=>{state.hidden.burnout-=2;state.hidden.prep-=1;},DECISION_IMAGES.citynight,DECISION_IMAGES.sunrise),
+  evt('SESIÓN DE TEAM BUILDING','La org arma una actividad para mejorar la comunicación entre jugadores.',DECISION_IMAGES.teamroom,'PARTICIPAR','SALTARLA',['+ Chemistry','- Burnout'],['+ Preparación'],()=>{state.chemistry=clamp(state.chemistry+6,0,100);state.hidden.burnout-=1;},()=>{state.hidden.prep+=2;},DECISION_IMAGES.teamroom,DECISION_IMAGES.practice)
+]);}
+
 function roleEvent(){
   const role=state.profile.role||'FRAGGER';
   const other=role==='IGL'?'FRAGGER':'IGL';
@@ -521,7 +1187,7 @@ function banLifeEvent(){return evt('TU IMAGEN DURANTE EL BAN','La comunidad sigu
 function eventData(id){
   if(id==='xvparty') return evt('FIESTA DE XV DE UNA AMIGA','Tenés 15 años. Una amiga muy cercana te invita a su fiesta de XV el mismo fin de semana que tu dúo quiere hacer un bootcamp.',DECISION_IMAGES.party,'IR A LA FIESTA','HACER BOOTCAMP',['+ Moral','- Preparación'],['+2 OVR','+ Burnout'],()=>{state.hidden.mental+=5;state.hidden.prep-=2;},()=>{state.ovr=clamp(state.ovr+2,45,99);state.hidden.prep+=3;state.hidden.burnout+=2;},DECISION_IMAGES.party,DECISION_IMAGES.practice);
   if(id==='graduation') return evt('TU GRADUACIÓN','Tenés 18 años y es tu graduación. La ceremonia coincide con un qualifier importante.',DECISION_IMAGES.graduation,'IR A LA GRADUACIÓN','JUGAR EL QUALIFIER',['+ Moral','- Burnout'],['+ Preparación','+ Qualifier'],()=>{state.hidden.mental+=5;state.hidden.burnout-=2;},()=>{state.hidden.prep+=2;state.queue.unshift(['tour','qual']);},DECISION_IMAGES.graduation,DECISION_IMAGES.compete);
-if(id==='school')return evt('COLEGIO Y COMPETITIVO','Tenés 13 años y una semana pesada de clases coincide con tus primeras sesiones serias de práctica.',DECISION_IMAGES.school,'PRIORIZAR EL COLEGIO','ENTRENAR MÁS',['+ Moral','- Burnout'],['+ Preparación','+ Burnout'],()=>{state.hidden.mental+=2;state.hidden.burnout-=1;},()=>{state.hidden.prep+=4;state.hidden.burnout+=2;}); if(id==='free')return evt('SEMANA LIBRE','No hay torneo importante. Tu teammate quiere meter muchas scrims.',DECISION_IMAGES.coach,'DESCANSAR','JUGAR SCRIMS',['+ Moral','- Burnout'],['+ Preparación','+ Chemistry'],()=>{state.hidden.mental+=3;state.hidden.burnout-=4;},()=>{state.hidden.prep+=4;state.chemistry+=2;state.hidden.burnout+=2;}); if(id==='wedding')return evt('TU MEJOR AMIGO SE CASA','El casamiento es el mismo día de la Last Chance de FNCS. Es tu última oportunidad de llegar al Major.',DECISION_IMAGES.wedding,'CASAMIENTO','LAST CHANCE',['+ Moral','Pierdes torneo'],['+ Última chance','+ Burnout'],()=>{state.hidden.mental+=6;state.hidden.burnout-=5;state.news.unshift('TE PERDISTE LA LAST CHANCE POR EL CASAMIENTO.');},()=>{state.hidden.burnout+=2;state.queue.unshift(['tour','last']);}); if(id==='legendcoach'){const coach=regionLegend(); const coachImg=skinFor((state.profile.region+'_'+coach).toLowerCase()); return evt('UN HISTÓRICO DE TU REGIÓN TE QUIERE COACHEAR', `${coach} se ofrece a ser tu coach. Si aceptás, classificás automáticamente a la FNCS y mejorás tu juego.`, coach==='k1ng' ? 'assets_v17/k1ng.png' : coachImg, 'ACEPTAR SU COACHING', 'SEGUIR SOLO', ['Auto qual a FNCS', '+3 OVR'], ['Sin cambios', '+ independencia'], ()=>{state.ovr=clamp(state.ovr+3,45,99); state.hidden.mental+=3; autoQualifyToFNCS(coach);}, ()=>{state.hidden.mental+=1; state.news.unshift('RECHAZASTE LA OFERTA DE COACHING DE '+coach.toUpperCase()+'.');}); } if(id==='appreciation'){const mate=getPlayer(state.teammate); const e=evt('¿APRECIÁS A TU COMPAÑERO?',mate?('Pensás en todo lo que viviste compitiendo con '+mate.name+'.'):'Pensás en todo lo que viviste con tu compañero.',DECISION_IMAGES.bench,'SÍ','NO',[],[],()=>{state.flags.appreciationSeen=true;state.ovr=99;state.earnings+=1000000;},()=>{state.flags.appreciationSeen=true;},DECISION_IMAGES.bench,DECISION_IMAGES.relax,true); e.silent=true; return e;} if(id==='human')return humanEvent(); if(id==='life')return lifeEvent(); if(id==='ovr')return ovrEvent(); if(id==='role')return roleEvent(); if(id==='team')return teamEvent(); if(id==='region')return regionEvent(); if(id==='creator')return creatorEvent(); if(id==='pressure')return pressureEvent(); if(id==='gear')return gearEvent(); if(id==='under')return argUnderEvent(); if(id==='career')return careerEvent(); if(id==='rivalry')return rivalryEvent(); if(id==='legendcoach'){const coach=regionLegend(); const coachImg=coach==='k1ng' ? 'assets_v17/k1ng.png' : skinFor((state.profile.region+'_'+coach).toLowerCase()); return evt('UN HISTÓRICO DE TU REGIÓN TE QUIERE COACHEAR', coach+' se ofrece a ser tu coach. Si aceptás, clasificás automáticamente a la FNCS y mejorás tu juego.', coachImg, 'ACEPTAR SU COACHING', 'SEGUIR SOLO', ['Auto qual a FNCS', '+3 OVR'], ['Sin cambios', '+ independencia'], ()=>{state.ovr=clamp(state.ovr+3,45,99); state.hidden.mental+=3; autoQualifyToFNCS(coach);}, ()=>{state.hidden.mental+=1; state.news.unshift('RECHAZASTE LA OFERTA DE COACHING DE '+coach.toUpperCase()+'.');});} if(id==='banseason')return banEvent(); if(id==='bantraining')return banTrainingEvent(); if(id==='banlife')return banLifeEvent(); return null;}
+if(id==='school')return evt('COLEGIO Y COMPETITIVO','Tenés 13 años y una semana pesada de clases coincide con tus primeras sesiones serias de práctica.',DECISION_IMAGES.school,'PRIORIZAR EL COLEGIO','ENTRENAR MÁS',['+ Moral','- Burnout'],['+ Preparación','+ Burnout'],()=>{state.hidden.mental+=2;state.hidden.burnout-=1;},()=>{state.hidden.prep+=4;state.hidden.burnout+=2;}); if(id==='free')return evt('SEMANA LIBRE','No hay torneo importante. Tu teammate quiere meter muchas scrims.',DECISION_IMAGES.coach,'DESCANSAR','JUGAR SCRIMS',['+ Moral','- Burnout'],['+ Preparación','+ Chemistry'],()=>{state.hidden.mental+=3;state.hidden.burnout-=4;},()=>{state.hidden.prep+=4;state.chemistry+=2;state.hidden.burnout+=2;}); if(id==='wedding')return evt('TU MEJOR AMIGO SE CASA','El casamiento es el mismo día de la Last Chance de FNCS. Es tu última oportunidad de llegar al Major.',DECISION_IMAGES.wedding,'CASAMIENTO','LAST CHANCE',['+ Moral','Pierdes torneo'],['+ Última chance','+ Burnout'],()=>{state.hidden.mental+=6;state.hidden.burnout-=5;state.news.unshift('TE PERDISTE LA LAST CHANCE POR EL CASAMIENTO.');},()=>{state.hidden.burnout+=2;state.queue.unshift(['tour','last']);}); if(id==='legendcoach'){const coach=regionLegend(); const coachImg=skinFor((state.profile.region+'_'+coach).toLowerCase()); return evt('UN HISTÓRICO DE TU REGIÓN TE QUIERE COACHEAR', `${coach} se ofrece a ser tu coach. Si aceptás, classificás automáticamente a la FNCS y mejorás tu juego.`, coach==='k1ng' ? 'assets_v17/k1ng.png' : coachImg, 'ACEPTAR SU COACHING', 'SEGUIR SOLO', ['Auto qual a FNCS', '+3 OVR'], ['Sin cambios', '+ independencia'], ()=>{state.ovr=clamp(state.ovr+3,45,99); state.hidden.mental+=3; autoQualifyToFNCS(coach);}, ()=>{state.hidden.mental+=1; state.news.unshift('RECHAZASTE LA OFERTA DE COACHING DE '+coach.toUpperCase()+'.');}); } if(id==='appreciation'){const mate=getPlayer(state.teammate); const e=evt('¿APRECIÁS A TU COMPAÑERO?',mate?('Pensás en todo lo que viviste compitiendo con '+mate.name+'.'):'Pensás en todo lo que viviste con tu compañero.',DECISION_IMAGES.bench,'SÍ','NO',[],[],()=>{state.flags.appreciationSeen=true;state.ovr=99;state.earnings+=1000000;},()=>{state.flags.appreciationSeen=true;},DECISION_IMAGES.bench,DECISION_IMAGES.relax,true); e.silent=true; return e;} if(id==='human')return humanEvent(); if(id==='life')return lifeEvent(); if(id==='lifeplus')return lifePlusEvent(); if(id==='careerplus')return careerPlusEvent(); if(id==='social')return socialEvent(); if(id==='strategy')return strategyEvent(); if(id==='ovr')return ovrEvent(); if(id==='role')return roleEvent(); if(id==='team')return teamEvent(); if(id==='region')return regionEvent(); if(id==='creator')return creatorEvent(); if(id==='pressure')return pressureEvent(); if(id==='gear')return gearEvent(); if(id==='under')return argUnderEvent(); if(id==='career')return careerEvent(); if(id==='rivalry')return rivalryEvent(); if(id==='legendcoach'){const coach=regionLegend(); const coachImg=coach==='k1ng' ? 'assets_v17/k1ng.png' : skinFor((state.profile.region+'_'+coach).toLowerCase()); return evt('UN HISTÓRICO DE TU REGIÓN TE QUIERE COACHEAR', coach+' se ofrece a ser tu coach. Si aceptás, clasificás automáticamente a la FNCS y mejorás tu juego.', coachImg, 'ACEPTAR SU COACHING', 'SEGUIR SOLO', ['Auto qual a FNCS', '+3 OVR'], ['Sin cambios', '+ independencia'], ()=>{state.ovr=clamp(state.ovr+3,45,99); state.hidden.mental+=3; autoQualifyToFNCS(coach);}, ()=>{state.hidden.mental+=1; state.news.unshift('RECHAZASTE LA OFERTA DE COACHING DE '+coach.toUpperCase()+'.');});} if(id==='banseason')return banEvent(); if(id==='bantraining')return banTrainingEvent(); if(id==='banlife')return banLifeEvent(); return null;}
 function runEvent(id){
   if(!state.recentDecisionTitles) state.recentDecisionTitles=[];
   let data=eventData(id);
@@ -556,11 +1222,6 @@ function applyEvent(choice){
     const increase=state.hidden.burnout-beforeBurnout;
     state.hidden.burnout=beforeBurnout+Math.max(1,Math.ceil(increase*.5));
   }
-  // Casi todas las mejoras respetan el techo natural de esta carrera.
-  // Eventos especiales explícitos pueden marcar allowBeyondPotential=true.
-  if(state.ovr>beforeOvr && !data.allowBeyondPotential){
-    state.ovr=Math.min(state.ovr,state.hidden.potential);
-  }
   state.hidden.mental=clamp(state.hidden.mental,25,100); state.hidden.burnout=clamp(state.hidden.burnout,0,35); state.hidden.prep=clamp(state.hidden.prep,0,25); state.chemistry=clamp(state.chemistry,0,100); state.ovr=clamp(state.ovr,45,99);
   if(state.ovr!==beforeOvr && !data.silent)state.news.unshift('TU OVR CAMBIÓ: '+beforeOvr+' → '+state.ovr+'.');
   saveGame(); choiceLocked=false;
@@ -584,7 +1245,7 @@ function naturalCareerDevelopment(){
     else if(yearsPast<=5) delta=-rand(1,3);
     else delta=-rand(2,4);
   }
-  // Cerca del techo natural, progresar se vuelve cada vez más difícil.
+  // Cerca del techo natural, el crecimiento automático se vuelve cada vez más difícil.
   const gapToCeiling=state.hidden.potential-state.ovr;
   if(delta>0 && gapToCeiling<=0) delta=0;
   else if(delta>0 && gapToCeiling<=2) delta=Math.min(delta,Math.random()<0.30?1:0);
@@ -601,7 +1262,22 @@ function naturalCareerDevelopment(){
 }
 function endSeason(){
   const result=state.lastResult;
-  state.history.push({year:state.year,age:state.age,region:state.profile.region,teammate:state.teammate,ovr:state.ovr,pr:state.powerRanking,earnings:result?result.earnings:0,best:result?`${result.name} ${ordinal(result.place)}`:'—'});
+  const prevYear=state.history.length?state.history[state.history.length-1]:null;
+  const prevKills=prevYear?(prevYear.killsTotal||0):0;
+  const prevDeaths=prevYear?(prevYear.deathsTotal||0):0;
+  const prevEarnTotal=prevYear?(prevYear.earningsTotal||0):0;
+  const prevPrTotal=prevYear?(prevYear.prTotal||0):0;
+  const yearKills=Math.max(0,state.combat.kills-prevKills);
+  const yearDeaths=Math.max(0,state.combat.deaths-prevDeaths);
+  const yearKD=yearDeaths>0?(yearKills/yearDeaths).toFixed(2):yearKills.toFixed(2);
+  const yearEarnings=Math.max(0,state.earnings-prevEarnTotal);
+  const yearPR=Math.max(0,state.powerRanking-prevPrTotal);
+  state.history.push({
+    year:state.year,age:state.age,region:state.profile.region,teammate:state.teammate,ovr:state.ovr,
+    pr:state.powerRanking,prGain:yearPR,earnings:yearEarnings,earningsTotal:state.earnings,
+    kills:yearKills,deaths:yearDeaths,kd:yearKD,killsTotal:state.combat.kills,deathsTotal:state.combat.deaths,prTotal:state.powerRanking,
+    best:result?`${result.name} ${ordinal(result.place)}`:'—'
+  });
   naturalCareerDevelopment();
   state.ovr=clamp(state.ovr,45,99);
   state.hidden.prep=0;
@@ -615,40 +1291,232 @@ function endSeason(){
   if(!state.teammate&&state.bannedSeasons<=0){chooseTeammatesScreen();return;}
   startSeason(); renderCareer(); if(state.naturalDelta!==0)setTimeout(()=>showOvrChange(state.lastNaturalOvrBefore,state.ovr,null,'DESARROLLO NATURAL'),260);
 }
-function legacyScore(){let score=35+state.trophies.fncs*7+state.trophies.global*14+state.trophies.cups*1.5+Math.min(18,Math.log10(state.earnings+10)*2.8)+Math.min(18,state.powerRanking/180); return clamp(Math.round(score),1,100);} function finishCareer(age){state.retired=true;state.retireAge=age;state.pending=null;let hall=[]; try{hall=JSON.parse(localStorage.getItem('llamero_v26_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){} const duos=Array.isArray(state.duoHistory)?state.duoHistory.slice():[]; if(currentMate()&&!duos.includes(currentMate().name))duos.push(currentMate().name); hall.push({name:state.profile.name,legacy:legacyScore(),earnings:state.earnings,age,peakPR:state.powerRanking,fncs:state.trophies.fncs,duos}); hall.sort((a,b)=>b.legacy-a.legacy); hall=hall.slice(0,10); localStorage.setItem('llamero_v26_hof',JSON.stringify(hall)); saveGame(); renderCareerEnd();} function retirementContinue(){state.pending=null;state.hidden.burnout=clamp(state.hidden.burnout+3,0,35);startSeason();saveGame();renderCareer();return 'interrupt';}
+function legacyScore(){let score=35+state.trophies.fncs*7+state.trophies.global*14+state.trophies.cups*1.5+Math.min(18,Math.log10(state.earnings+10)*2.8)+Math.min(18,state.powerRanking/180); return clamp(Math.round(score),1,100);} function finishCareer(age){
+  state.retired=true;state.retireAge=age;state.pending=null;ensurePalmares();
+  let hall=[];try{hall=JSON.parse(localStorage.getItem('llamero_v30_hof')||localStorage.getItem('llamero_v29_hof')||localStorage.getItem('llamero_v28_hof')||localStorage.getItem('llamero_v27_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){}
+  const duos=Array.isArray(state.duoHistory)?state.duoHistory.slice():[];
+  if(currentMate()&&!duos.includes(currentMate().name))duos.push(currentMate().name);
+  const rank=careerRankInfo();
+  hall.push({name:state.profile.name,legacy:legacyScore(),careerRank:rank.name,careerScore:rank.score,earnings:state.earnings,age,peakPR:state.powerRanking,fncs:state.trophies.fncs,global:state.trophies.global,cups:state.trophies.cups,kills:state.combat.kills,deaths:state.combat.deaths,kd:careerKD(),duos});
+  hall.sort((a,b)=>(b.careerScore||b.legacy||0)-(a.careerScore||a.legacy||0));hall=hall.slice(0,10);
+  localStorage.setItem('llamero_v30_hof',JSON.stringify(hall));saveGame();renderCareerRecap(true);
+}
+function retirementContinue(){state.pending=null;state.hidden.burnout=clamp(state.hidden.burnout+3,0,35);startSeason();saveGame();renderCareer();return 'interrupt';}
 function currentMate(){return getPlayer(state.teammate);} function valueText(){const val=Math.max(50000, state.ovr*3500 + state.powerRanking*30 + state.trophies.fncs*50000 + state.trophies.global*90000); if(val>=1000000) return '€'+(val/1000000).toFixed(1).replace(/\.0$/,'')+'M'; return '€'+Math.round(val/1000)+'K';}
 function burnoutPercent(){return clamp(Math.round((state.hidden.burnout/35)*100),0,100);}
 function burnoutLabel(){const v=state.hidden.burnout;return v<=9?'BAJO':v<=19?'CONTROLADO':v<=27?'ALTO':'CRÍTICO';}
 function chemistryLabel(){const v=state.chemistry;return v>=80?'ELITE':v>=60?'ALTA':v>=40?'MEDIA':'BAJA';}
+
+function careerKD(){
+  ensurePalmares();
+  return state.combat.deaths>0 ? (state.combat.kills/state.combat.deaths).toFixed(2) : state.combat.kills.toFixed(2);
+}
+function recordCombat(tid,place,matchesOverride=null){
+  ensurePalmares();
+  const matches=matchesOverride||((tid==='major'||tid==='global')?12:(tid==='qual'||tid==='last'||tid==='elite'?10:6));
+  const roleBonus=state.profile.role==='FRAGGER'?.35:.08;
+  const form=((state.ovr-60)/18)+((state.chemistry-50)/140)-state.hidden.burnout/120+roleBonus;
+  const placementBoost=place<=3?.55:place<=10?.30:place<=25?.12:0;
+  const kills=Math.max(0,Math.round(matches*(.55+form+placementBoost)+(Math.random()-.5)*matches*.85));
+  const deaths=Math.max(1,Math.min(matches,Math.round(matches*(.82+Math.random()*.18))));
+  state.combat.kills+=kills;
+  state.combat.deaths+=deaths;
+  state.combat.bestEventKills=Math.max(state.combat.bestEventKills,kills);
+  return {kills,deaths};
+}
+function careerQualityScore(){
+  ensurePalmares();
+  const years=Math.max(0,state.age-13);
+  const score=
+    state.trophies.global*20+
+    state.trophies.fncs*11+
+    Math.min(18,state.trophies.cups*.7)+
+    Math.min(16,state.powerRanking/6000)+
+    Math.min(12,state.earnings/90000)+
+    Math.min(10,Math.max(0,state.ovr-60)*.32)+
+    Math.min(9,Number(careerKD())*2.3)+
+    Math.min(5,years*.35);
+  return clamp(Math.round(score),0,100);
+}
+function careerRankInfo(){
+  const s=careerQualityScore();
+  const ranks=[
+    [0,'BRONCE I'],[5,'BRONCE II'],[10,'BRONCE III'],
+    [15,'PLATA I'],[20,'PLATA II'],[25,'PLATA III'],
+    [30,'ORO I'],[35,'ORO II'],[40,'ORO III'],
+    [45,'PLATINO I'],[50,'PLATINO II'],[55,'PLATINO III'],
+    [60,'DIAMANTE I'],[66,'DIAMANTE II'],[72,'DIAMANTE III'],
+    [80,'ELITE'],[90,'CHAMPION'],[97,'UNREAL']
+  ];
+  let name='BRONCE I',floor=0,next=5;
+  for(let i=0;i<ranks.length;i++){
+    if(s>=ranks[i][0]){name=ranks[i][1];floor=ranks[i][0];next=i<ranks.length-1?ranks[i+1][0]:100;}
+  }
+  return {score:s,name,floor,next};
+}
+function simulateSilentCashCups(count=5){
+  ensurePalmares();
+  let batchEarnings=0,batchWins=0;
+  for(let i=0;i<count;i++){
+    const place=simulatePlacement(TOURS.cash,'cash');
+    const earn=prizeFor('cash',place);
+    batchEarnings+=earn;state.earnings+=earn;
+    state.cashCups.played++;state.cashCups.earnings+=earn;state.palmares.events++;
+    if(place===1){
+      batchWins++;state.cashCups.wins++;state.trophies.cups++;
+      state.palmares.cupWins++;state.palmares.totalWins++;
+    }
+    if(place<=10)state.palmares.top10s++;
+    state.palmares.biggestPrize=Math.max(state.palmares.biggestPrize,earn);
+    recordCombat('cash',place,6);
+  }
+  if(Math.random()<.55)state.hidden.burnout=clamp(state.hidden.burnout+1,0,35);
+  return {earnings:batchEarnings,wins:batchWins};
+}
+
 function historyStats(){return {played:state.history.length, wins:state.trophies.cups+state.trophies.fncs+state.trophies.global, assists:Math.max(0,Math.floor(state.powerRanking/70))};}
 function shell(inner){document.getElementById('app').innerHTML=inner;}
-function timelineRows(){let out=''; for(let age=13; age<=30; age++){const past=state.history.find(h=>h.age===age); let label=''; let ovr=''; let pj=''; let pr=''; let earn=''; let cls='row'; if(age===state.age){cls+=' current'; label=state.pending&&state.pending.type==='event' ? 'Decisión de carrera...' : (currentMate()?currentMate().name:'Eligiendo dúo...'); ovr=state.ovr; pj=state.history.length; pr=state.powerRanking; earn=shortMoney(state.earnings);} else if(past){cls+=' active'; label=getPlayer(past.teammate)?.name || REGIONS[past.region].short; ovr=past.ovr; pj=past.age-12; pr=past.pr; earn=shortMoney(past.earnings);} else label=''; out+=`<div class="${cls}"><div class="age">${age}</div><div class="club">${esc(label)}</div><div class="ovr-cell">${ovr!==''?`<span class="pill ovr-num ${ovrClass(Number(ovr))}">${ovr}</span>`:''}</div><div class="cell">${pj}</div><div class="cell">${pr}</div><div class="cell">${earn}</div></div>`; } return out;}
-function leftHeader(){const mate=currentMate(); const hs=historyStats(); return `<div class="header-top"><div class="ovr-badge"><small>OVR</small><b class="ovr-num ${ovrClass(state.ovr)}">${state.ovr}</b></div><div class="id-area"><div class="tags"><span class="tag">${state.profile.region}</span><span class="tag">${esc(state.profile.role||'FRAGGER')}</span><span class="season-chip">TEMP ${state.seasonInYear||1}/3</span></div><h1 class="player-name">${esc(state.profile.name)}</h1><div class="subline"><div class="club-line">${mate?esc(mate.name):'Libre'}</div><div class="meta-box"><small>Edad</small><div class="age">${state.age}</div><small>Valor</small><div class="value">${valueText()}</div></div></div></div></div><div class="stat-strip"><div class="micro"><small>Años</small><b>${hs.played}</b></div><div class="micro"><small>PR</small><b>${state.powerRanking}</b></div><div class="micro"><small>Earnings</small><b>${shortMoney(state.earnings)}</b></div></div><div class="condition-grid"><div class="condition-card"><div class="condition-head"><span>Chemistry</span><b>${state.chemistry} · ${chemistryLabel()}</b></div><div class="condition-meter chem"><i style="width:${clamp(state.chemistry,0,100)}%"></i></div><small class="condition-note">Más alta = mejor rendimiento del dúo.</small></div><div class="condition-card"><div class="condition-head"><span>Burnout</span><b>${burnoutPercent()}% · ${burnoutLabel()}</b></div><div class="condition-meter burn"><i style="width:${burnoutPercent()}%"></i></div><small class="condition-note">Sube de forma gradual; descansar y algunas decisiones lo reducen.</small></div></div><div class="palmares-box" role="button" tabindex="0" onclick="openPalmares()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPalmares()}"><div class="palmares-head"><strong>Palmarés</strong><span>VER TODO ›</span></div><div class="palmares-grid"><div class="palmares-tile"><b>${state.trophies.fncs}</b><small>FNCS</small></div><div class="palmares-tile"><b>${state.trophies.global}</b><small>Global</small></div><div class="palmares-tile"><b>${state.trophies.cups}</b><small>Cups</small></div></div></div>`;}
+
+function currentYearStats(){
+  ensurePalmares();
+  const prev=state.history.length?state.history[state.history.length-1]:null;
+  const prevKills=prev?(prev.killsTotal||0):0;
+  const prevDeaths=prev?(prev.deathsTotal||0):0;
+  const prevEarn=prev?(prev.earningsTotal||0):0;
+  const prevPR=prev?(prev.prTotal||0):0;
+  const kills=Math.max(0,state.combat.kills-prevKills);
+  const deaths=Math.max(0,state.combat.deaths-prevDeaths);
+  return {
+    kills,
+    deaths,
+    kd:deaths>0?(kills/deaths).toFixed(2):kills.toFixed(2),
+    earnings:Math.max(0,state.earnings-prevEarn),
+    prGain:Math.max(0,state.powerRanking-prevPR)
+  };
+}
+
+function timelineRows(){
+  let out='';
+  const live=currentYearStats();
+  for(let age=13; age<=30; age++){
+    const past=state.history.find(h=>h.age===age);
+    let label='',ovr='',kills='',deaths='',kd='',pr='',earn='',cls='row';
+    if(age===state.age){
+      cls+=' current';
+      label=state.pending&&state.pending.type==='event' ? 'Decisión de carrera...' : (currentMate()?currentMate().name:'Eligiendo dúo...');
+      ovr=state.ovr;
+      kills=live.kills;
+      deaths=live.deaths;
+      kd=live.kd;
+      pr=live.prGain;
+      earn=shortMoney(live.earnings);
+    }else if(past){
+      cls+=' active';
+      label=getPlayer(past.teammate)?.name || REGIONS[past.region].short;
+      ovr=past.ovr;
+      kills=past.kills??'—';
+      deaths=past.deaths??'—';
+      kd=past.kd??'—';
+      pr=past.prGain??past.pr??'—';
+      earn=shortMoney(past.earnings||0);
+    }
+    out+=`<div class="${cls}">
+      <div class="age">${age}</div>
+      <div class="club">${esc(label)}</div>
+      <div class="ovr-cell">${ovr!==''?`<span class="pill ovr-num ${ovrClass(Number(ovr))}">${ovr}</span>`:''}</div>
+      <div class="cell kills">${kills}</div>
+      <div class="cell deaths">${deaths}</div>
+      <div class="cell kd">${kd}</div>
+      <div class="cell year-pr">${pr!==''?pr:''}</div>
+      <div class="cell year-earn">${earn}</div>
+    </div>`;
+  }
+  return out;
+}
+function leftHeader(){
+  ensurePalmares();
+  const mate=currentMate(),hs=historyStats(),rank=careerRankInfo();
+  return `<div class="header-top"><div class="ovr-badge"><small>OVR</small><b class="ovr-num ${ovrClass(state.ovr)}">${state.ovr}</b></div><div class="id-area"><div class="tags"><span class="tag">${state.profile.region}</span><span class="tag">${esc(state.profile.role||'FRAGGER')}</span><span class="season-chip">TEMP ${state.seasonInYear||1}/3</span></div><h1 class="player-name">${esc(state.profile.name)}</h1><div class="subline"><div class="club-line">${mate?esc(mate.name):'Libre'}</div><div class="meta-box"><small>Edad</small><div class="age">${state.age}</div></div></div></div></div>
+  <div class="stat-strip">
+    <div class="micro"><small>Años</small><b>${hs.played}</b></div>
+    <div class="micro"><small>PR</small><b>${state.powerRanking}</b></div>
+    <div class="micro"><small>Earnings</small><b>${shortMoney(state.earnings)}</b></div>
+    <div class="micro"><small>Kills</small><b>${state.combat.kills}</b></div>
+    <div class="micro"><small>Muertes</small><b>${state.combat.deaths}</b></div>
+    <div class="micro"><small>K/D</small><b>${careerKD()}</b></div>
+  </div>
+  <div class="condition-grid"><div class="condition-card"><div class="condition-head"><span>Chemistry</span><b>${state.chemistry} · ${chemistryLabel()}</b></div><div class="condition-meter chem"><i style="width:${clamp(state.chemistry,0,100)}%"></i></div><small class="condition-note">Más alta = mejor rendimiento del dúo.</small></div><div class="condition-card"><div class="condition-head"><span>Burnout</span><b>${burnoutPercent()}% · ${burnoutLabel()}</b></div><div class="condition-meter burn"><i style="width:${burnoutPercent()}%"></i></div><small class="condition-note">Mantenelo bajo para rendir mejor.</small></div></div>
+  <div class="career-grade"><div class="career-grade-head"><small>Nivel de carrera</small><b>${rank.name}</b></div><div class="career-grade-track"><i style="width:${rank.score}%"></i></div><div class="career-grade-foot"><span>Bronce I</span><span>Unreal</span></div></div>
+  <div class="palmares-box" role="button" tabindex="0" onclick="openPalmares()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPalmares()}"><div class="palmares-head"><strong>Palmarés</strong><span>VER TODO ›</span></div><div class="palmares-grid"><div class="palmares-tile"><b>${state.trophies.fncs}</b><small>FNCS</small></div><div class="palmares-tile"><b>${state.trophies.global}</b><small>Global</small></div><div class="palmares-tile"><b>${state.trophies.cups}</b><small>Cups</small></div></div></div>
+  <button class="recap-link" onclick="renderCareerRecap(false)">Resumen de carrera</button>`;}
+
 function rightPanelFooter(){return `<div class="right-footer"><div>🌎 ${REGIONS[state.profile.region].name}</div><div class="footer-stats"><span>OVR ${state.ovr}</span><span>PR ${state.powerRanking}</span><span>${shortMoney(state.earnings)}</span></div></div>`;}
-function renderCareer(){const mate=currentMate(); const statusTitle = mate ? 'Próximo paso' : 'Oferta de dúo'; const statusCopy = mate ? (state.news[0]||'Seguí construyendo tu carrera.') : 'Elegí con quién empieza tu carrera.'; let bottomHtml=''; if(mate){bottomHtml=`<div class="section-title">${statusTitle}</div><p class="section-copy">${esc(statusCopy)}</p><div class="option-grid single"><div class="action-card result-card" role="button" tabindex="0" onclick="selectResultCard(()=>nextStep(),this)" onkeydown="resultKey(event,()=>nextStep(),this)"><div class="club-line">${state.bannedSeasons>0?'Baneado del competitivo: '+state.bannedSeasons+' temporadas restantes.':'Seguís disponible para competir.'}</div><span class="subbtn">CONTINUAR CARRERA</span></div></div>`;} else {bottomHtml=`<div class="section-title">Oferta de dúo</div><p class="section-copy">No tenés compañero. Elegí con quién querés empezar.</p><div class="option-grid single"><div class="action-card result-card" role="button" tabindex="0" onclick="selectResultCard(()=>chooseTeammatesScreen(),this)" onkeydown="resultKey(event,()=>chooseTeammatesScreen(),this)"><div class="club-line" style="font-size:15px;color:#eee">BUSCAR TEAMMATE</div><span class="subbtn">TOCÁ LA TARJETA</span></div></div>`;} shell(`<div class="shell screen-transition"><div class="main"><div class="left">${leftHeader()}${bottomHtml}</div><div class="right"><div class="timeline-head"><div>Edad</div><div>Teammate</div><div>OVR</div><div>TEMP</div><div>PR</div><div>$</div></div><div class="timeline">${timelineRows()}</div>${rightPanelFooter()}</div></div></div>`);}
-function renderEvent(data){const bottom=`<div class="section-title">${esc(data.title)}</div><p class="section-copy">${esc(data.text)}</p><div class="option-grid"><div class="action-card decision-card" role="button" tabindex="0" onclick="selectDecisionCard('a',this)" onkeydown="choiceKey(event,'a',this)"><div class="pick-image"><img src="${data.imgA||data.img||DECISION_IMAGES.coach}"></div><h4>${esc(data.a)}</h4><div class="effect-stack">${(data.aEffects||[]).map(e=>`<span class="effect-pill ${effectClass(e)}">${esc(e)}</span>`).join('')}</div></div><div class="action-card decision-card" role="button" tabindex="0" onclick="selectDecisionCard('b',this)" onkeydown="choiceKey(event,'b',this)"><div class="pick-image"><img src="${data.imgB||data.img||DECISION_IMAGES.coach}"></div><h4>${esc(data.b)}</h4><div class="effect-stack">${(data.bEffects||[]).map(e=>`<span class="effect-pill ${effectClass(e)}">${esc(e)}</span>`).join('')}</div></div></div>`; shell(`<div class="shell screen-transition"><div class="main"><div class="left">${leftHeader()}${bottom}</div><div class="right"><div class="timeline-head"><div>Edad</div><div>Teammate</div><div>OVR</div><div>TEMP</div><div>PR</div><div>$</div></div><div class="timeline">${timelineRows()}</div>${rightPanelFooter()}</div></div></div>`);}
+function renderCareer(){const mate=currentMate(); const statusTitle = mate ? 'Próximo paso' : 'Oferta de dúo'; const statusCopy = mate ? (state.news[0]||'Seguí construyendo tu carrera.') : 'Elegí con quién empieza tu carrera.'; let bottomHtml=''; if(mate){bottomHtml=`<div class="section-title">${statusTitle}</div><p class="section-copy">${esc(statusCopy)}</p><div class="option-grid single"><div class="action-card result-card" role="button" tabindex="0" onclick="selectResultCard(()=>nextStep(),this)" onkeydown="resultKey(event,()=>nextStep(),this)"><div class="club-line">${state.bannedSeasons>0?'Baneado del competitivo: '+state.bannedSeasons+' temporadas restantes.':'Seguís disponible para competir.'}</div><span class="subbtn">CONTINUAR CARRERA</span></div></div>`;} else {bottomHtml=`<div class="section-title">Oferta de dúo</div><p class="section-copy">No tenés compañero. Elegí con quién querés empezar.</p><div class="option-grid single"><div class="action-card result-card" role="button" tabindex="0" onclick="selectResultCard(()=>chooseTeammatesScreen(),this)" onkeydown="resultKey(event,()=>chooseTeammatesScreen(),this)"><div class="club-line" style="font-size:15px;color:#eee">BUSCAR TEAMMATE</div><span class="subbtn">TOCÁ LA TARJETA</span></div></div>`;} shell(`<div class="shell screen-transition"><div class="main"><div class="left">${leftHeader()}${bottomHtml}</div><div class="right"><div class="timeline-head"><div>Edad</div><div>Teammate</div><div>OVR</div><div>K</div><div>D</div><div>K/D</div><div>PR</div><div>$</div></div><div class="timeline">${timelineRows()}</div>${rightPanelFooter()}</div></div></div>`);}
+function renderEvent(data){const bottom=`<div class="section-title">${esc(data.title)}</div><p class="section-copy">${esc(data.text)}</p><div class="option-grid"><div class="action-card decision-card" role="button" tabindex="0" onclick="selectDecisionCard('a',this)" onkeydown="choiceKey(event,'a',this)"><div class="pick-image"><img src="${data.imgA||data.img||DECISION_IMAGES.coach}"></div><h4>${esc(data.a)}</h4><div class="effect-stack">${(data.aEffects||[]).map(e=>`<span class="effect-pill ${effectClass(e)}">${esc(e)}</span>`).join('')}</div></div><div class="action-card decision-card" role="button" tabindex="0" onclick="selectDecisionCard('b',this)" onkeydown="choiceKey(event,'b',this)"><div class="pick-image"><img src="${data.imgB||data.img||DECISION_IMAGES.coach}"></div><h4>${esc(data.b)}</h4><div class="effect-stack">${(data.bEffects||[]).map(e=>`<span class="effect-pill ${effectClass(e)}">${esc(e)}</span>`).join('')}</div></div></div>`; shell(`<div class="shell screen-transition"><div class="main"><div class="left">${leftHeader()}${bottom}</div><div class="right"><div class="timeline-head"><div>Edad</div><div>Teammate</div><div>OVR</div><div>K</div><div>D</div><div>K/D</div><div>PR</div><div>$</div></div><div class="timeline">${timelineRows()}</div>${rightPanelFooter()}</div></div></div>`);}
 function showFNCSChampionAnimation(){
   const overlay=document.createElement('div'); overlay.className='champion-overlay';
   let conf=''; for(let i=0;i<22;i++){const left=5+Math.random()*90;const delay=Math.random()*.7;conf+=`<i class="confetti" style="left:${left}%;top:-20px;animation-delay:${delay}s"></i>`;}
   overlay.innerHTML=conf+`<div class="champion-card"><div class="fncs-trophy">🏆</div><h2>FNCS CHAMPION</h2><p>Ganaste la FNCS. Tu carrera acaba de cambiar.</p><button class="choose-btn" onclick="this.closest('.champion-overlay').remove()">CONTINUAR</button></div>`;
   document.body.appendChild(overlay);
 }
-function renderTournamentResult(){const r=state.lastResult; const extra = r.name.includes('QUALIFIER') ? (state.seasonFlags.qualified ? 'Clasificaste al Major.' : 'No clasificaste directo.') : 'Tu temporada sigue.'; state.pending={type:'resultProxy'}; saveGame(); const bottom=`<div class="section-title">${esc(r.name)}</div><p class="section-copy">Terminaste <b>${ordinal(r.place)}</b>. Tu total ahora es <b>${state.powerRanking} PR</b> y <b>${shortMoney(state.earnings)}</b> en earnings. Chemistry <b>${state.chemistry}</b> · Burnout <b>${burnoutPercent()}%</b>.</p><div class="option-grid"><div class="action-card result-card" role="button" tabindex="0" onclick="selectResultCard(()=>nextStep(),this)" onkeydown="resultKey(event,()=>nextStep(),this)"><div class="result-stat" style="font-size:66px;line-height:.85">${ordinal(r.place)}</div><div class="club-line">${r.earnings?('+'+money(r.earnings)):'$0'} · +${r.prGain} PR</div><span class="subbtn">CONTINUAR</span></div><div class="action-card result-card" role="button" tabindex="0" onclick="selectResultCard(()=>renderCareer(),this)" onkeydown="resultKey(event,()=>renderCareer(),this)"><div class="club-line" style="font-size:15px;color:#eee">${extra}</div><span class="subbtn">VOLVER A CARRERA</span></div></div>`; shell(`<div class="shell screen-transition"><div class="main"><div class="left">${leftHeader()}${bottom}</div><div class="right"><div class="timeline-head"><div>Edad</div><div>Teammate</div><div>OVR</div><div>TEMP</div><div>PR</div><div>$</div></div><div class="timeline">${timelineRows()}</div>${rightPanelFooter()}</div></div></div>`); if(r.tourId==='major'&&r.place===1)setTimeout(showFNCSChampionAnimation,220);}
+
+function showGlobalChampionAnimation(){
+  const overlay=document.createElement('div'); overlay.className='champion-overlay';
+  let conf=''; for(let i=0;i<30;i++){const left=3+Math.random()*94;const delay=Math.random()*.8;conf+=`<i class="confetti" style="left:${left}%;top:-20px;animation-delay:${delay}s"></i>`;}
+  overlay.innerHTML=conf+`<div class="champion-card global-card"><div class="global-trophy">🏆</div><h2>GLOBAL CHAMPION</h2><p>Ganaste la Global Championship. Llegaste a la cima del competitivo.</p><button class="choose-btn" onclick="this.closest('.champion-overlay').remove()">CONTINUAR</button></div>`;
+  document.body.appendChild(overlay);
+}
+
+function renderTournamentResult(){const r=state.lastResult; const extra = r.name.includes('QUALIFIER') ? (state.seasonFlags.qualified ? 'Clasificaste al Major.' : 'No clasificaste directo.') : 'Tu temporada sigue.'; state.pending={type:'resultProxy'}; saveGame(); const bottom=`<div class="section-title">${esc(r.name)}</div><p class="section-copy">Terminaste <b>${ordinal(r.place)}</b>. Tu total ahora es <b>${state.powerRanking} PR</b> y <b>${shortMoney(state.earnings)}</b> en earnings. Chemistry <b>${state.chemistry}</b> · Burnout <b>${burnoutPercent()}%</b> · K/D <b>${careerKD()}</b>.</p><div class="option-grid"><div class="action-card result-card" role="button" tabindex="0" onclick="selectResultCard(()=>nextStep(),this)" onkeydown="resultKey(event,()=>nextStep(),this)"><div class="result-stat" style="font-size:66px;line-height:.85">${ordinal(r.place)}</div><div class="club-line">${r.earnings?('+'+money(r.earnings)):'$0'} · +${r.prGain} PR</div><span class="subbtn">CONTINUAR</span></div><div class="action-card result-card" role="button" tabindex="0" onclick="selectResultCard(()=>renderCareer(),this)" onkeydown="resultKey(event,()=>renderCareer(),this)"><div class="club-line" style="font-size:15px;color:#eee">${extra}</div><span class="subbtn">VOLVER A CARRERA</span></div></div>`; shell(`<div class="shell screen-transition"><div class="main"><div class="left">${leftHeader()}${bottom}</div><div class="right"><div class="timeline-head"><div>Edad</div><div>Teammate</div><div>OVR</div><div>K</div><div>D</div><div>K/D</div><div>PR</div><div>$</div></div><div class="timeline">${timelineRows()}</div>${rightPanelFooter()}</div></div></div>`); if(r.tourId==='major'&&r.place===1)setTimeout(showFNCSChampionAnimation,220); if(r.tourId==='global'&&r.place===1)setTimeout(showGlobalChampionAnimation,220);}
 function renderDuoChoice(a,b){
   const bottom=`<div class="section-title">Oferta de dúo</div><p class="section-copy">Dos jugadores quieren empezar contigo. Tocá la imagen o el nombre para elegir.</p><div class="option-grid"><div class="action-card duo-card" role="button" tabindex="0" onclick="selectTeammate('${a.id}',this)" onkeydown="teammateKey(event,'${a.id}',this)"><div class="pick-image player-skin" style="height:126px"><img src="${a.img}" onerror="this.onerror=null;this.src='https://fortnite-api.com/images/cosmetics/br/CID_397_Athena_Commando_F_TreasureHunterFashion/icon.png'"></div><h4>${esc(a.name)}</h4><span class="subbtn">${REGIONS[a.region].name}</span></div><div class="action-card duo-card" role="button" tabindex="0" onclick="selectTeammate('${b.id}',this)" onkeydown="teammateKey(event,'${b.id}',this)"><div class="pick-image player-skin" style="height:126px"><img src="${b.img}" onerror="this.onerror=null;this.src='https://fortnite-api.com/images/cosmetics/br/CID_493_Athena_Commando_F_JurassicArchaeology/icon.png'"></div><h4>${esc(b.name)}</h4><span class="subbtn">${REGIONS[b.region].name}</span></div></div>`;
-  shell(`<div class="shell screen-transition"><div class="main"><div class="left">${leftHeader()}${bottom}</div><div class="right"><div class="timeline-head"><div>Edad</div><div>Teammate</div><div>OVR</div><div>TEMP</div><div>PR</div><div>$</div></div><div class="timeline">${timelineRows()}</div>${rightPanelFooter()}</div></div></div>`);
+  shell(`<div class="shell screen-transition"><div class="main"><div class="left">${leftHeader()}${bottom}</div><div class="right"><div class="timeline-head"><div>Edad</div><div>Teammate</div><div>OVR</div><div>K</div><div>D</div><div>K/D</div><div>PR</div><div>$</div></div><div class="timeline">${timelineRows()}</div>${rightPanelFooter()}</div></div></div>`);
 }
 function renderRetirementDecision(){const data=evt('DECISIÓN DE CARRERA',`Tenés ${state.age} años y llevás ${state.age-13} años compitiendo. ¿Querés jugar un año más o retirarte?`,LOGO,'JUGAR UN AÑO MÁS','RETIRARME',['Más carrera','+ Burnout'],['Fin de carrera'],()=>retirementContinue(),()=>{state.pending=null;finishCareer(state.age);return 'interrupt';},DECISION_IMAGES.practice,DECISION_IMAGES.relax); state.pending={type:'event',data}; saveGame(); renderEvent(data);}
-function renderCareerEnd(){shell(`<div class="menu-wrap"><div class="menu-card" style="grid-template-columns:1fr"><div class="menu-main"><img class="logo" src="${LOGO}"><h1>${esc(state.profile.name)}</h1><div class="club-line" style="font-size:22px;margin-bottom:12px">Legacy score</div><div style="font-size:110px;line-height:.85">${legacyScore()}</div><div class="section-copy">Retiro a los ${state.retireAge||state.age} · Peak PR ${state.powerRanking} · Earnings ${shortMoney(state.earnings)}</div><div class="stack"><button class="menu-btn" onclick="newCareerForm()">Nueva carrera</button><button class="menu-btn secondary" onclick="openHall()">Hall of Fame</button></div></div></div></div>`);}
-function showMenu(){shell(`<div class="menu-wrap"><div class="menu-card"><div class="menu-main"><img class="logo" src="${LOGO}"><div class="kicker" style="margin-top:10px">FORTNITE CAREER SIM</div><h1>LLAMERO</h1><p class="helper" style="margin:0 auto 18px;max-width:430px">Tu carrera de Fortnite competitivo, desde los 13 hasta el retiro. Elegí región, rol, teammate y viví cada temporada.</p><div class="career-meta"><span>3 decisiones/año</span><span>3 torneos base/año</span><span>PR estilo Tracker</span></div><div class="stack"><button class="menu-btn" onclick="newCareerForm()">Crear carrera</button><button class="menu-btn secondary" onclick="continueCareer()" ${hasSave()?'':'disabled'}>Continuar</button><button class="menu-btn secondary" onclick="openHall()">Hall of Fame</button></div></div></div></div>`);}
+function renderCareerRecap(finalMode=false){
+  ensurePalmares();
+  const rank=careerRankInfo();
+  const duos=Array.isArray(state.duoHistory)?state.duoHistory.slice():[];
+  if(currentMate()&&!duos.includes(currentMate().name))duos.push(currentMate().name);
+  const years=Math.max(0,(state.retireAge||state.age)-13);
+  const peakOvr=Math.max(state.ovr,...state.history.map(h=>Number(h.ovr)||0));
+  const best=state.palmares.recent&&state.palmares.recent.length?state.palmares.recent[0]:null;
+  shell(`<div class="recap-wrap"><div class="recap-card screen-transition">
+    <div class="recap-top"><div class="recap-title"><small>${finalMode?'CARRERA COMPLETADA':'RESUMEN DE CARRERA'}</small><h1>${esc(state.profile.name)}</h1><div class="club-line">${REGIONS[state.profile.region].name} · ${esc(state.profile.role||'FRAGGER')}</div></div><div class="recap-rank"><small>NIVEL DE CARRERA</small>${rank.name}</div></div>
+    <div class="recap-meter"><div class="recap-meter-track"><i style="width:${rank.score}%"></i></div><div class="career-grade-foot"><span>Bronce I</span><span>${rank.score}/100</span><span>Unreal</span></div></div>
+    <div class="recap-grid">
+      <div class="recap-stat"><small>Años de carrera</small><b>${years}</b></div>
+      <div class="recap-stat"><small>Peak OVR</small><b>${peakOvr}</b></div>
+      <div class="recap-stat"><small>Power Ranking</small><b>${state.powerRanking}</b></div>
+      <div class="recap-stat"><small>Earnings</small><b>${shortMoney(state.earnings)}</b></div>
+      <div class="recap-stat"><small>FNCS</small><b>🏆 ${state.trophies.fncs}</b></div>
+      <div class="recap-stat"><small>Global</small><b>🏆 ${state.trophies.global}</b></div>
+      <div class="recap-stat"><small>Cash Cups ganadas</small><b>${state.trophies.cups}</b></div>
+      <div class="recap-stat"><small>Cash Cups jugadas</small><b>${state.cashCups.played}</b></div>
+      <div class="recap-stat"><small>Kills</small><b>${state.combat.kills}</b></div>
+      <div class="recap-stat"><small>Muertes</small><b>${state.combat.deaths}</b></div>
+      <div class="recap-stat"><small>K/D</small><b>${careerKD()}</b></div>
+      <div class="recap-stat"><small>Mejor evento kills</small><b>${state.combat.bestEventKills}</b></div>
+    </div>
+    <div class="recap-bottom"><div class="recap-panel"><h3>Dúos de la carrera</h3><div class="recap-duos">${duos.length?duos.map(esc).join(' · '):'Todavía no hay dúos registrados.'}</div></div><div class="recap-panel"><h3>Momento destacado</h3><div class="recap-duos">${best?`${esc(best.event)} · ${ordinal(best.place)} · ${shortMoney(best.earnings||0)}`:'La historia todavía se está escribiendo.'}</div></div></div>
+    <div class="recap-actions">${finalMode?`<button class="menu-btn" onclick="newCareerForm()">Nueva carrera</button><button class="menu-btn secondary" onclick="openHall()">Hall of Fame</button>`:`<button class="menu-btn" onclick="renderCareer()">Volver a carrera</button><button class="menu-btn secondary" onclick="openPalmares()">Ver palmarés</button>`}</div>
+  </div></div>`);
+}
+function renderCareerEnd(){renderCareerRecap(true);}
+
+function showMenu(){shell(`<div class="menu-wrap"><div class="menu-card"><div class="menu-main"><img class="logo" src="${LOGO}"><div class="kicker" style="margin-top:10px">FORTNITE CAREER SIM</div><h1>LLAMERO</h1><p class="helper" style="margin:0 auto 18px;max-width:430px">Tu carrera de Fortnite competitivo, desde los 13 hasta el retiro. Elegí región, rol, teammate y viví cada temporada.</p><div class="career-meta"><span>3 decisiones/año</span><span>5 Cash Cups/temp</span><span>FNCS + especiales</span></div><div class="stack"><button class="menu-btn" onclick="newCareerForm()">Crear carrera</button><button class="menu-btn secondary" onclick="continueCareer()" ${hasSave()?'':'disabled'}>Continuar</button><button class="menu-btn secondary" onclick="openHall()">Hall of Fame</button></div></div></div></div>`);}
 function newCareerForm(){shell(`<div class="menu-wrap"><div class="form-card"><div class="kicker">NUEVA CARRERA</div><h1 class="setup-title">Creá tu jugador</h1><p class="setup-sub">La región cambia la dificultad competitiva. Tu rol modifica cómo rendís en cada tipo de torneo.</p><div class="field"><label>Nickname</label><input id="nick" value="PLAYER" maxlength="18"></div><div class="setup-divider"></div><div class="choice-label">Región inicial</div><div class="region-grid">${['SA','NA','EU','OCE','ASIA','ME'].map((k,i)=>`<label><input class="pick-radio" type="radio" name="region" value="${k}" ${i===0?'checked':''}><span class="select-card">${REGIONS[k].short}</span></label>`).join('')}</div><div class="setup-divider"></div><div class="choice-label">Tu rol</div><div class="role-grid"><label><input class="pick-radio" type="radio" name="role" value="IGL"><span class="select-card role-card"><b>IGL</b><span>Mejor en qualifiers, FNCS y endgame. Más difícil destacar en cups de pelea.</span></span></label><label><input class="pick-radio" type="radio" name="role" value="FRAGGER" checked><span class="select-card role-card"><b>FRAGGER</b><span>Mejor en Victory/Cash Cups y peleas. Menos ventaja en torneos largos.</span></span></label></div><div class="setup-divider"></div><div class="stack"><button class="menu-btn" onclick="startCareer()">Empezar carrera</button><button class="menu-btn secondary" onclick="showMenu()">Volver</button></div></div></div>`);}
-function startCareer(){const name=document.getElementById('nick').value.trim()||'PLAYER'; const region=document.querySelector('input[name="region"]:checked')?.value||'SA'; const role=document.querySelector('input[name="role"]:checked')?.value||'FRAGGER'; state=freshState({name,region,role}); localStorage.removeItem('llamero_v26_save'); startSeason(); chooseTeammatesScreen();}
-function continueCareer(){if(!loadGame()){showMenu();return;} if(!state.recentDecisionTitles)state.recentDecisionTitles=[]; if(state.retired){renderCareerEnd();return;} if(!state.queue)state.queue=[]; if(state.queue.length===0 && !state.pending)startSeason(); if(state.pending&&state.pending.type==='event'){renderEvent(state.pending.data);return;} if(state.pending&&state.pending.type==='duo'){renderDuoChoice(getPlayer(state.pending.a),getPlayer(state.pending.b));return;} renderCareer();}
+function startCareer(){const name=document.getElementById('nick').value.trim()||'PLAYER'; const region=document.querySelector('input[name="region"]:checked')?.value||'SA'; const role=document.querySelector('input[name="role"]:checked')?.value||'FRAGGER'; state=freshState({name,region,role}); localStorage.removeItem('llamero_v30_save'); startSeason(); chooseTeammatesScreen();}
+function continueCareer(){if(!loadGame()){showMenu();return;} if(!state.recentDecisionTitles)state.recentDecisionTitles=[]; if(state.retired){renderCareerRecap(true);return;} if(!state.queue)state.queue=[]; if(state.queue.length===0 && !state.pending)startSeason(); if(state.pending&&state.pending.type==='event'){renderEvent(state.pending.data);return;} if(state.pending&&state.pending.type==='duo'){renderDuoChoice(getPlayer(state.pending.a),getPlayer(state.pending.b));return;} renderCareer();}
 function modal(title,inner){const bg=document.createElement('div'); bg.className='modal-bg'; bg.id='modal'; bg.innerHTML=`<div class="modal"><button class="close" onclick="document.getElementById('modal').remove()">✕</button><h2>${esc(title)}</h2>${inner}</div>`; document.body.appendChild(bg);}
-function openCareerHistory(){if(!state)return; const rows=[...state.history].reverse().map(h=>`<tr><td>${h.year}</td><td>${h.age}</td><td>${REGIONS[h.region].short}</td><td>${esc(getPlayer(h.teammate)?.name||'—')}</td><td>${h.ovr}</td><td>${h.pr} PR</td><td>${money(h.earnings)}</td><td>${esc(h.best)}</td></tr>`).join(''); modal('Carrera',`<table><thead><tr><th>Año</th><th>Edad</th><th>Región</th><th>Teammate</th><th>OVR</th><th>PR</th><th>Earnings</th><th>Mejor resultado</th></tr></thead><tbody>${rows||'<tr><td colspan="8">Todavía no terminó ninguna temporada.</td></tr>'}</tbody></table>`);}
+function openCareerHistory(){if(!state)return; const rows=[...state.history].reverse().map(h=>`<tr><td>${h.year}</td><td>${h.age}</td><td>${REGIONS[h.region].short}</td><td>${esc(getPlayer(h.teammate)?.name||'—')}</td><td>${h.ovr}</td><td>${h.kills??'—'}</td><td>${h.deaths??'—'}</td><td>${h.kd??'—'}</td><td>${h.prGain??h.pr} PR</td><td>${money(h.earnings||0)}</td><td>${esc(h.best)}</td></tr>`).join(''); modal('Carrera',`<table><thead><tr><th>Año</th><th>Edad</th><th>Región</th><th>Teammate</th><th>OVR</th><th>K</th><th>D</th><th>K/D</th><th>PR año</th><th>Earnings año</th><th>Mejor resultado</th></tr></thead><tbody>${rows||'<tr><td colspan="11">Todavía no terminó ninguna temporada.</td></tr>'}</tbody></table>`);}
 
 function openPalmares(){if(!state)return;ensurePalmares();const p=state.palmares;const bestFncs=p.bestFNCS?ordinal(p.bestFNCS):'—';const bestGlobal=p.bestGlobal?ordinal(p.bestGlobal):'—';const recent=(p.recent||[]).map(x=>`<div class="honour"><strong>${esc(x.event)} · ${ordinal(x.place)}</strong><span>${x.year} · +${x.prGain||0} PR${x.earnings?' · '+money(x.earnings):''}</span></div>`).join('')||'<div class="honour"><strong>Todavía no hay grandes resultados.</strong><span>Seguí compitiendo</span></div>'; modal('Palmarés',`<div class="palmares-summary"><div class="palmares-stat"><b class="palmares-major">${state.trophies.fncs}</b><small>FNCS ganadas</small></div><div class="palmares-stat"><b>${state.trophies.global}</b><small>Globales</small></div><div class="palmares-stat"><b>${p.totalWins||0}</b><small>Victorias</small></div><div class="palmares-stat"><b>${p.top10s||0}</b><small>Top 10</small></div></div><table><tbody><tr><td>Mejor FNCS</td><td><b>${bestFncs}</b></td></tr><tr><td>Podios FNCS</td><td><b>${p.fncsPodiums||0}</b></td></tr><tr><td>Mejor Global</td><td><b>${bestGlobal}</b></td></tr><tr><td>Podios Global</td><td><b>${p.globalPodiums||0}</b></td></tr><tr><td>Cash/Victory Cups ganadas</td><td><b>${state.trophies.cups}</b></td></tr><tr><td>Eventos jugados</td><td><b>${p.events||0}</b></td></tr><tr><td>Mayor premio</td><td><b>${money(p.biggestPrize||0)}</b></td></tr><tr><td>Power Ranking actual</td><td><b>${state.powerRanking} PR</b></td></tr><tr><td>Earnings de carrera</td><td><b>${shortMoney(state.earnings)}</b></td></tr></tbody></table><div class="section-title" style="margin-top:16px">Resultados destacados</div><div class="honour-list">${recent}</div>`);}
-function openHall(){let hall=[]; try{hall=JSON.parse(localStorage.getItem('llamero_v26_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){} const rows=hall.map((h,i)=>{const duos=Array.isArray(h.duos)&&h.duos.length?h.duos.join(' · '):'—';return `<tr><td>${i+1}</td><td><b>${esc(h.name)}</b></td><td>${h.legacy}</td><td><b>${shortMoney(h.earnings||0)}</b></td><td class="hall-duos">${esc(duos)}</td><td>${h.age}</td><td>${h.peakPR} PR</td><td>${h.fncs}</td></tr>`;}).join(''); modal('Hall of Fame',`<table><thead><tr><th>#</th><th>Jugador</th><th>Legacy</th><th>Earnings carrera</th><th>Dúos de la carrera</th><th>Retiro</th><th>Peak PR</th><th>FNCS</th></tr></thead><tbody>${rows||'<tr><td colspan="8">Todavía no hay carreras terminadas.</td></tr>'}</tbody></table>`);}
+function openHall(){
+  let hall=[];try{hall=JSON.parse(localStorage.getItem('llamero_v30_hof')||localStorage.getItem('llamero_v29_hof')||localStorage.getItem('llamero_v28_hof')||localStorage.getItem('llamero_v27_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){}
+  const rows=hall.map((h,i)=>{const duos=Array.isArray(h.duos)&&h.duos.length?h.duos.join(' · '):'—';return `<tr><td>${i+1}</td><td><b>${esc(h.name)}</b><br><small>${esc(h.careerRank||'—')}</small></td><td><b>${shortMoney(h.earnings||0)}</b></td><td class="hall-duos">${esc(duos)}</td><td>${h.kd||'—'}</td><td>${h.fncs||0}</td><td>${h.global||0}</td><td>${h.cups||0}</td><td>${h.peakPR||0} PR</td></tr>`;}).join('');
+  modal('Hall of Fame',`<table><thead><tr><th>#</th><th>Jugador</th><th>Earnings</th><th>Dúos</th><th>K/D</th><th>FNCS</th><th>Global</th><th>Cups</th><th>Peak PR</th></tr></thead><tbody>${rows||'<tr><td colspan="9">Todavía no hay carreras terminadas.</td></tr>'}</tbody></table>`);
+}
 showMenu();
 </script>
 </body>

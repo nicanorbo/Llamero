@@ -1,9 +1,13 @@
-# LLAMERO v26
+# LLAMERO v30
 
-Cambios de progresión:
-- La mayoría de las carreras tiene un techo natural entre 82 y 90 OVR.
-- 91-96 es poco común.
-- 97-98 es muy raro.
-- Potencial 99 ocurre en menos del 1% de las carreras.
-- Si un jugador llega a 99 OVR y todavía nunca ganó una FNCS, la próxima FNCS Major que juegue será su primera victoria.
-- Después de esa primera FNCS, un jugador de 99 OVR sigue teniendo chances muy altas de volver a ganar.
+Optimización para teléfonos:
+- Interfaz adaptada a 100dvh y safe areas de iPhone/Android.
+- Perfil compacto para no ocupar toda la pantalla.
+- Decisiones en una sola columna con imágenes más grandes y áreas táctiles cómodas.
+- Historial anual rediseñado como tarjetas: Edad, teammate, OVR, K, D, K/D, PR y earnings.
+- Menú y creación de carrera rediseñados para pantallas chicas.
+- Resumen de carrera responsive en dos columnas.
+- Modales convertidos en bottom sheets.
+- Animaciones FNCS/Global/OVR ajustadas a móviles.
+- Mejor soporte para teléfonos muy pequeños.
+- Hover desactivado en pantallas táctiles.
