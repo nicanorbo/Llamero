@@ -1489,6 +1489,146 @@ url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQF
 .topduo-secret-head b{font-size:13px}
 .topduo-secret-head span{font-size:9px;color:#9297a3;letter-spacing:1px}
 
+
+/* ===== v46 — compact new career setup ===== */
+.menu-wrap.setup-wrap{
+  min-height:100dvh;
+  height:100dvh;
+  padding:12px;
+  overflow:hidden;
+}
+.form-card.setup-compact{
+  width:min(760px,100%);
+  max-height:calc(100dvh - 24px);
+  padding:20px 26px;
+  overflow:auto;
+  scrollbar-width:thin;
+}
+.setup-compact .kicker{margin-bottom:3px}
+.setup-compact .setup-title{
+  font-size:54px;
+  margin:0 0 6px;
+}
+.setup-compact .setup-sub{
+  margin:0 0 12px;
+  font-size:13px;
+}
+.setup-compact .field{margin-bottom:8px}
+.setup-compact .field input,
+.setup-compact .field select{
+  padding:11px 14px;
+  font-size:19px;
+  min-height:44px;
+}
+.setup-compact .setup-divider{margin:11px 0}
+.setup-compact .choice-label{margin-bottom:6px}
+
+.region-select-wrap{
+  position:relative;
+}
+.region-select{
+  width:100%;
+  appearance:none;
+  -webkit-appearance:none;
+  cursor:pointer;
+  padding-right:44px!important;
+  font-weight:800;
+}
+.region-select-wrap:after{
+  content:"⌄";
+  position:absolute;
+  right:15px;
+  top:50%;
+  transform:translateY(-57%);
+  pointer-events:none;
+  color:#b9bbc3;
+  font-size:20px;
+}
+
+.setup-compact .role-grid{gap:8px}
+.setup-compact .select-card.role-card{
+  min-height:72px;
+  padding:8px 10px;
+  gap:3px;
+}
+.setup-compact .select-card.role-card b{font-size:21px}
+.setup-compact .select-card.role-card span{
+  font-size:9px;
+  line-height:1.2;
+}
+
+.setup-compact .decision-count-grid{
+  gap:7px;
+}
+.setup-compact .decision-count-card{
+  min-height:42px!important;
+  padding:6px 8px!important;
+  flex-direction:row!important;
+  gap:7px!important;
+}
+.setup-compact .decision-count-card b{
+  font-size:18px;
+  min-width:18px;
+}
+.setup-compact .decision-count-card span{
+  font-size:9px;
+  line-height:1.05;
+}
+.setup-compact .stack.setup-actions{
+  grid-template-columns:1fr 132px;
+  gap:8px;
+}
+.setup-compact .stack.setup-actions .menu-btn{
+  padding:11px 14px;
+  font-size:17px;
+}
+
+@media(max-height:760px) and (min-width:761px){
+  .form-card.setup-compact{padding:15px 22px}
+  .setup-compact .setup-title{font-size:45px}
+  .setup-compact .setup-sub{font-size:11px;margin-bottom:8px}
+  .setup-compact .setup-divider{margin:8px 0}
+  .setup-compact .field input,.setup-compact .field select{
+    min-height:38px;
+    padding:8px 12px;
+    font-size:17px;
+  }
+  .setup-compact .select-card.role-card{min-height:58px}
+  .setup-compact .select-card.role-card b{font-size:19px}
+  .setup-compact .select-card.role-card span{font-size:8px}
+  .setup-compact .decision-count-card{min-height:34px!important;padding:4px 7px!important}
+  .setup-compact .decision-count-card b{font-size:16px}
+  .setup-compact .decision-count-card span{font-size:8px}
+  .setup-compact .stack.setup-actions .menu-btn{padding:9px 12px;font-size:15px}
+}
+@media(max-width:760px){
+  .menu-wrap.setup-wrap{
+    height:auto;
+    min-height:100dvh;
+    overflow:visible;
+    padding:8px;
+  }
+  .form-card.setup-compact{
+    max-height:none;
+    overflow:visible;
+    padding:16px 14px;
+  }
+  .setup-compact .setup-title{font-size:40px}
+  .setup-compact .setup-sub{font-size:11px}
+  .setup-compact .role-grid{grid-template-columns:1fr 1fr}
+  .setup-compact .select-card.role-card{min-height:62px}
+  .setup-compact .decision-count-grid{grid-template-columns:repeat(3,1fr)}
+  .setup-compact .decision-count-card{
+    min-height:40px!important;
+    flex-direction:column!important;
+    gap:2px!important;
+  }
+  .setup-compact .decision-count-card span{font-size:7px}
+  .setup-compact .stack.setup-actions{
+    grid-template-columns:1fr;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1729,7 +1869,7 @@ function ensurePalmares(){if(!state)return;
   if(!state.cashCups)state.cashCups={played:0,wins:0,earnings:0};
   if(!state.flags)state.flags={appreciationSeen:false};
   if(!Array.isArray(state.duoHistory))state.duoHistory=[];
-  if(!state.palmares)state.palmares={events:0,totalWins:0,top10s:0,fncsWins:state.trophies?.fncs||0,fncsPodiums:state.trophies?.fncs||0,globalWins:state.trophies?.global||0,globalPodiums:state.trophies?.global||0,cupWins:state.trophies?.cups||0,biggestPrize:0,bestFNCS:null,bestGlobal:null,recent:[]}; if(!Array.isArray(state.palmares.recent))state.palmares.recent=[];} function saveGame(){if(state){ensurePalmares();localStorage.setItem('llamero_v45_save',JSON.stringify(state));}} function hasSave(){return !!(localStorage.getItem('llamero_v45_save')||localStorage.getItem('llamero_v44_save')||localStorage.getItem('llamero_v43_save')||localStorage.getItem('llamero_v42_save')||localStorage.getItem('llamero_v41_save')||localStorage.getItem('llamero_v40_save')||localStorage.getItem('llamero_v39_save')||localStorage.getItem('llamero_v38_save')||localStorage.getItem('llamero_v37_save')||localStorage.getItem('llamero_v36_save')||localStorage.getItem('llamero_v35_save')||localStorage.getItem('llamero_v34_save')||localStorage.getItem('llamero_v33_save')||localStorage.getItem('llamero_v32_save')||localStorage.getItem('llamero_v31_save')||localStorage.getItem('llamero_v30_save')||localStorage.getItem('llamero_v29_save')||localStorage.getItem('llamero_v28_save')||localStorage.getItem('llamero_v27_save')||localStorage.getItem('llamero_v18_save'));} function loadGame(){try{const raw=localStorage.getItem('llamero_v45_save')||localStorage.getItem('llamero_v44_save')||localStorage.getItem('llamero_v43_save')||localStorage.getItem('llamero_v42_save')||localStorage.getItem('llamero_v41_save')||localStorage.getItem('llamero_v40_save')||localStorage.getItem('llamero_v39_save')||localStorage.getItem('llamero_v38_save')||localStorage.getItem('llamero_v37_save')||localStorage.getItem('llamero_v36_save')||localStorage.getItem('llamero_v35_save')||localStorage.getItem('llamero_v34_save')||localStorage.getItem('llamero_v33_save')||localStorage.getItem('llamero_v32_save')||localStorage.getItem('llamero_v31_save')||localStorage.getItem('llamero_v30_save')||localStorage.getItem('llamero_v29_save')||localStorage.getItem('llamero_v28_save')||localStorage.getItem('llamero_v27_save')||localStorage.getItem('llamero_v18_save');const s=JSON.parse(raw); if(s&&s.profile){state=s;ensurePalmares();saveGame(); return true;}}catch(e){} return false;}
+  if(!state.palmares)state.palmares={events:0,totalWins:0,top10s:0,fncsWins:state.trophies?.fncs||0,fncsPodiums:state.trophies?.fncs||0,globalWins:state.trophies?.global||0,globalPodiums:state.trophies?.global||0,cupWins:state.trophies?.cups||0,biggestPrize:0,bestFNCS:null,bestGlobal:null,recent:[]}; if(!Array.isArray(state.palmares.recent))state.palmares.recent=[];} function saveGame(){if(state){ensurePalmares();localStorage.setItem('llamero_v46_save',JSON.stringify(state));}} function hasSave(){return !!(localStorage.getItem('llamero_v46_save')||localStorage.getItem('llamero_v45_save')||localStorage.getItem('llamero_v44_save')||localStorage.getItem('llamero_v43_save')||localStorage.getItem('llamero_v42_save')||localStorage.getItem('llamero_v41_save')||localStorage.getItem('llamero_v40_save')||localStorage.getItem('llamero_v39_save')||localStorage.getItem('llamero_v38_save')||localStorage.getItem('llamero_v37_save')||localStorage.getItem('llamero_v36_save')||localStorage.getItem('llamero_v35_save')||localStorage.getItem('llamero_v34_save')||localStorage.getItem('llamero_v33_save')||localStorage.getItem('llamero_v32_save')||localStorage.getItem('llamero_v31_save')||localStorage.getItem('llamero_v30_save')||localStorage.getItem('llamero_v29_save')||localStorage.getItem('llamero_v28_save')||localStorage.getItem('llamero_v27_save')||localStorage.getItem('llamero_v18_save'));} function loadGame(){try{const raw=localStorage.getItem('llamero_v46_save')||localStorage.getItem('llamero_v45_save')||localStorage.getItem('llamero_v44_save')||localStorage.getItem('llamero_v43_save')||localStorage.getItem('llamero_v42_save')||localStorage.getItem('llamero_v41_save')||localStorage.getItem('llamero_v40_save')||localStorage.getItem('llamero_v39_save')||localStorage.getItem('llamero_v38_save')||localStorage.getItem('llamero_v37_save')||localStorage.getItem('llamero_v36_save')||localStorage.getItem('llamero_v35_save')||localStorage.getItem('llamero_v34_save')||localStorage.getItem('llamero_v33_save')||localStorage.getItem('llamero_v32_save')||localStorage.getItem('llamero_v31_save')||localStorage.getItem('llamero_v30_save')||localStorage.getItem('llamero_v29_save')||localStorage.getItem('llamero_v28_save')||localStorage.getItem('llamero_v27_save')||localStorage.getItem('llamero_v18_save');const s=JSON.parse(raw); if(s&&s.profile){state=s;ensurePalmares();saveGame(); return true;}}catch(e){} return false;}
 
 function rollCareerCeiling(){
   const r=Math.random();
@@ -2675,13 +2815,13 @@ function endSeason(){
 }
 function legacyScore(){let score=35+state.trophies.fncs*7+state.trophies.global*14+state.trophies.cups*1.5+Math.min(18,Math.log10(state.earnings+10)*2.8)+Math.min(18,state.powerRanking/180); return clamp(Math.round(score),1,100);} function finishCareer(age){
   state.retired=true;state.retireAge=age;state.pending=null;ensurePalmares();
-  let hall=[];try{hall=JSON.parse(localStorage.getItem('llamero_v45_hof')||localStorage.getItem('llamero_v44_hof')||localStorage.getItem('llamero_v43_hof')||localStorage.getItem('llamero_v42_hof')||localStorage.getItem('llamero_v41_hof')||localStorage.getItem('llamero_v40_hof')||localStorage.getItem('llamero_v39_hof')||localStorage.getItem('llamero_v38_hof')||localStorage.getItem('llamero_v37_hof')||localStorage.getItem('llamero_v36_hof')||localStorage.getItem('llamero_v35_hof')||localStorage.getItem('llamero_v34_hof')||localStorage.getItem('llamero_v33_hof')||localStorage.getItem('llamero_v32_hof')||localStorage.getItem('llamero_v31_hof')||localStorage.getItem('llamero_v30_hof')||localStorage.getItem('llamero_v29_hof')||localStorage.getItem('llamero_v28_hof')||localStorage.getItem('llamero_v27_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){}
+  let hall=[];try{hall=JSON.parse(localStorage.getItem('llamero_v46_hof')||localStorage.getItem('llamero_v45_hof')||localStorage.getItem('llamero_v44_hof')||localStorage.getItem('llamero_v43_hof')||localStorage.getItem('llamero_v42_hof')||localStorage.getItem('llamero_v41_hof')||localStorage.getItem('llamero_v40_hof')||localStorage.getItem('llamero_v39_hof')||localStorage.getItem('llamero_v38_hof')||localStorage.getItem('llamero_v37_hof')||localStorage.getItem('llamero_v36_hof')||localStorage.getItem('llamero_v35_hof')||localStorage.getItem('llamero_v34_hof')||localStorage.getItem('llamero_v33_hof')||localStorage.getItem('llamero_v32_hof')||localStorage.getItem('llamero_v31_hof')||localStorage.getItem('llamero_v30_hof')||localStorage.getItem('llamero_v29_hof')||localStorage.getItem('llamero_v28_hof')||localStorage.getItem('llamero_v27_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){}
   const duos=Array.isArray(state.duoHistory)?state.duoHistory.slice():[];
   if(currentMate()&&!duos.includes(currentMate().name))duos.push(currentMate().name);
   const rank=finalCareerRankInfo();
   hall.push({name:state.profile.name,legacy:legacyScore(),careerRank:rank.name,careerScore:rank.score,earnings:state.earnings,age,peakPR:state.powerRanking,fncs:state.trophies.fncs,global:state.trophies.global,cups:state.trophies.cups,kills:state.combat.kills,deaths:state.combat.deaths,kd:careerKD(),duos});
   hall.sort((a,b)=>(b.careerScore||b.legacy||0)-(a.careerScore||a.legacy||0));hall=hall.slice(0,10);
-  localStorage.setItem('llamero_v45_hof',JSON.stringify(hall));saveGame();renderCareerRecap(true);
+  localStorage.setItem('llamero_v46_hof',JSON.stringify(hall));saveGame();renderCareerRecap(true);
 }
 function retirementContinue(){
   state.pending=null;
@@ -2997,45 +3137,47 @@ function renderCareerEnd(){renderCareerRecap(true);}
 
 function showMenu(){shell(`<div class="menu-wrap"><div class="menu-card"><div class="menu-main"><img class="logo" src="${LOGO}"><div class="kicker" style="margin-top:10px">FORTNITE CARREER SIM</div><h1>LLAMERO</h1><p class="helper" style="margin:0 auto 18px;max-width:430px">Tu carrera de Fortnite competitivo, desde los 13 hasta el retiro. Elegí región, rol, teammate y viví cada temporada.</p><div class="career-meta"><span>1–3 decisiones/año</span><span>5 Cash Cups/temp</span><span>FNCS + especiales</span></div><div class="stack"><button class="menu-btn" onclick="newCareerForm()">Crear carrera</button><button class="menu-btn secondary" onclick="continueCareer()" ${hasSave()?'':'disabled'}>Continuar</button><button class="menu-btn secondary" onclick="openHall()">Hall of Fame</button></div></div></div></div>`);}
 function newCareerForm(){
-  shell(`<div class="menu-wrap"><div class="form-card">
+  shell(`<div class="menu-wrap setup-wrap"><div class="form-card setup-compact">
     <div class="kicker">NUEVA CARRERA</div>
     <h1 class="setup-title">Creá tu jugador</h1>
-    <p class="setup-sub">Elegí región, rol y cuánto querés que avance la historia cada año.</p>
+    <p class="setup-sub">Elegí región, rol y ritmo de carrera.</p>
 
     <div class="field"><label>Nickname</label><input id="nick" value="PLAYER" maxlength="18"></div>
 
     <div class="setup-divider"></div>
     <div class="choice-label">Región inicial</div>
-    <div class="region-grid">
-      ${['SA','NA','EU','OCE','ASIA','ME'].map((k,i)=>`<label><input class="pick-radio" type="radio" name="region" value="${k}" ${i===0?'checked':''}><span class="select-card">${REGIONS[k].short}</span></label>`).join('')}
+    <div class="field region-select-wrap">
+      <select id="regionSelect" class="region-select" aria-label="Región inicial">
+        ${['SA','NA','EU','OCE','ASIA','ME'].map(k=>`<option value="${k}">${REGIONS[k].short} — ${REGIONS[k].name}</option>`).join('')}
+      </select>
     </div>
 
     <div class="setup-divider"></div>
     <div class="choice-label">Tu rol</div>
     <div class="role-grid">
-      <label><input class="pick-radio" type="radio" name="role" value="IGL"><span class="select-card role-card"><b>IGL</b><span>Mejor en qualifiers, FNCS y endgame. Más difícil destacar en cups de pelea.</span></span></label>
-      <label><input class="pick-radio" type="radio" name="role" value="FRAGGER" checked><span class="select-card role-card"><b>FRAGGER</b><span>Mejor en Victory/Cash Cups y peleas. Menos ventaja en torneos largos.</span></span></label>
+      <label><input class="pick-radio" type="radio" name="role" value="IGL"><span class="select-card role-card"><b>IGL</b><span>Mejor en qualifiers, FNCS y endgame.</span></span></label>
+      <label><input class="pick-radio" type="radio" name="role" value="FRAGGER" checked><span class="select-card role-card"><b>FRAGGER</b><span>Mejor en Victory/Cash Cups y peleas.</span></span></label>
     </div>
 
     <div class="setup-divider"></div>
-    <div class="choice-label">Ritmo de carrera</div>
+    <div class="choice-label">Duración / ritmo</div>
     <div class="decision-count-grid">
       <label>
         <input class="pick-radio" type="radio" name="decisionsPerYear" value="1">
-        <span class="select-card decision-count-card"><b>1</b><span>decisión por año<br>rápida</span></span>
+        <span class="select-card decision-count-card"><b>1</b><span>decisión/año</span></span>
       </label>
       <label>
         <input class="pick-radio" type="radio" name="decisionsPerYear" value="2">
-        <span class="select-card decision-count-card"><b>2</b><span>decisiones por año<br>media</span></span>
+        <span class="select-card decision-count-card"><b>2</b><span>decisiones/año</span></span>
       </label>
       <label>
         <input class="pick-radio" type="radio" name="decisionsPerYear" value="3" checked>
-        <span class="select-card decision-count-card"><b>3</b><span>decisiones por año<br>completa</span></span>
+        <span class="select-card decision-count-card"><b>3</b><span>decisiones/año</span></span>
       </label>
     </div>
 
     <div class="setup-divider"></div>
-    <div class="stack">
+    <div class="stack setup-actions">
       <button class="menu-btn" onclick="startCareer()">Empezar carrera</button>
       <button class="menu-btn secondary" onclick="showMenu()">Volver</button>
     </div>
@@ -3043,11 +3185,11 @@ function newCareerForm(){
 }
 function startCareer(){
   const name=document.getElementById('nick').value.trim()||'PLAYER';
-  const region=document.querySelector('input[name="region"]:checked')?.value||'SA';
+  const region=document.getElementById('regionSelect')?.value||'SA';
   const role=document.querySelector('input[name="role"]:checked')?.value||'FRAGGER';
   const decisionsPerYear=Number(document.querySelector('input[name="decisionsPerYear"]:checked')?.value||3);
   state=freshState({name,region,role,decisionsPerYear:clamp(decisionsPerYear,1,3)});
-  localStorage.removeItem('llamero_v45_save');
+  localStorage.removeItem('llamero_v46_save');
   if(String(name).toLowerCase()==='topduo21')state.flags.topDuoUnlocked=true;
   startSeason();
   chooseTeammatesScreen();
@@ -3082,7 +3224,7 @@ function openTopDuoRanking(){
 
 function openPalmares(){if(!state)return;ensurePalmares();const p=state.palmares;const bestFncs=p.bestFNCS?ordinal(p.bestFNCS):'—';const bestGlobal=p.bestGlobal?ordinal(p.bestGlobal):'—';const recent=(p.recent||[]).map(x=>`<div class="honour"><strong>${esc(x.event)} · ${ordinal(x.place)}</strong><span>${x.year} · +${formatPR(x.prGain||0)} PR${x.earnings?' · '+money(x.earnings):''}</span></div>`).join('')||'<div class="honour"><strong>Todavía no hay grandes resultados.</strong><span>Seguí compitiendo</span></div>'; modal('Palmarés',`<div class="palmares-summary"><div class="palmares-stat"><b class="palmares-major">${state.trophies.fncs}</b><small>FNCS ganadas</small></div><div class="palmares-stat"><b>${state.trophies.global}</b><small>Globales</small></div><div class="palmares-stat"><b>${p.totalWins||0}</b><small>Victorias</small></div><div class="palmares-stat"><b>${p.top10s||0}</b><small>Top 10</small></div></div><table><tbody><tr><td>Mejor FNCS</td><td><b>${bestFncs}</b></td></tr><tr><td>Podios FNCS</td><td><b>${p.fncsPodiums||0}</b></td></tr><tr><td>Mejor Global</td><td><b>${bestGlobal}</b></td></tr><tr><td>Podios Global</td><td><b>${p.globalPodiums||0}</b></td></tr><tr><td>Cash/Victory Cups ganadas</td><td><b>${state.trophies.cups}</b></td></tr><tr><td>Eventos jugados</td><td><b>${p.events||0}</b></td></tr><tr><td>Mayor premio</td><td><b>${money(p.biggestPrize||0)}</b></td></tr><tr><td>Power Ranking actual</td><td><b>${formatPR(state.powerRanking)} PR</b></td></tr><tr><td>Earnings de carrera</td><td><b>${shortMoney(state.earnings)}</b></td></tr></tbody></table><div class="section-title" style="margin-top:16px">Resultados destacados</div><div class="honour-list">${recent}</div>`);}
 function openHall(){
-  let hall=[];try{hall=JSON.parse(localStorage.getItem('llamero_v45_hof')||localStorage.getItem('llamero_v44_hof')||localStorage.getItem('llamero_v43_hof')||localStorage.getItem('llamero_v42_hof')||localStorage.getItem('llamero_v41_hof')||localStorage.getItem('llamero_v40_hof')||localStorage.getItem('llamero_v39_hof')||localStorage.getItem('llamero_v38_hof')||localStorage.getItem('llamero_v37_hof')||localStorage.getItem('llamero_v36_hof')||localStorage.getItem('llamero_v35_hof')||localStorage.getItem('llamero_v34_hof')||localStorage.getItem('llamero_v33_hof')||localStorage.getItem('llamero_v32_hof')||localStorage.getItem('llamero_v31_hof')||localStorage.getItem('llamero_v30_hof')||localStorage.getItem('llamero_v29_hof')||localStorage.getItem('llamero_v28_hof')||localStorage.getItem('llamero_v27_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){}
+  let hall=[];try{hall=JSON.parse(localStorage.getItem('llamero_v46_hof')||localStorage.getItem('llamero_v45_hof')||localStorage.getItem('llamero_v44_hof')||localStorage.getItem('llamero_v43_hof')||localStorage.getItem('llamero_v42_hof')||localStorage.getItem('llamero_v41_hof')||localStorage.getItem('llamero_v40_hof')||localStorage.getItem('llamero_v39_hof')||localStorage.getItem('llamero_v38_hof')||localStorage.getItem('llamero_v37_hof')||localStorage.getItem('llamero_v36_hof')||localStorage.getItem('llamero_v35_hof')||localStorage.getItem('llamero_v34_hof')||localStorage.getItem('llamero_v33_hof')||localStorage.getItem('llamero_v32_hof')||localStorage.getItem('llamero_v31_hof')||localStorage.getItem('llamero_v30_hof')||localStorage.getItem('llamero_v29_hof')||localStorage.getItem('llamero_v28_hof')||localStorage.getItem('llamero_v27_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){}
   const rows=hall.map((h,i)=>{const duos=Array.isArray(h.duos)&&h.duos.length?h.duos.join(' · '):'—';return `<tr><td>${i+1}</td><td><b>${esc(h.name)}</b><br><small>${esc(h.careerRank||'—')}</small></td><td><b>${shortMoney(h.earnings||0)}</b></td><td class="hall-duos">${esc(duos)}</td><td>${h.kd||'—'}</td><td>${h.fncs||0}</td><td>${h.global||0}</td><td>${h.cups||0}</td><td>${h.peakPR||0} PR</td></tr>`;}).join('');
   modal('Hall of Fame',`<table><thead><tr><th>#</th><th>Jugador</th><th>Earnings</th><th>Dúos</th><th>K/D</th><th>FNCS</th><th>Global</th><th>Cups</th><th>Peak PR</th></tr></thead><tbody>${rows||'<tr><td colspan="9">Todavía no hay carreras terminadas.</td></tr>'}</tbody></table>`);
 }
