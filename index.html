@@ -1752,6 +1752,35 @@ url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQF
   .option-grid.duo-three .duo-card .subbtn{font-size:6px!important}
 }
 
+
+.ai-easter{
+  position:fixed;inset:0;z-index:1200;display:grid;place-items:center;
+  background:rgba(5,5,7,.82);backdrop-filter:blur(10px);
+  opacity:0;transition:opacity .25s ease;
+}
+.ai-easter.show{opacity:1}
+.ai-easter-card{
+  width:min(520px,88vw);padding:30px 24px;text-align:center;
+  border:1px solid #34353c;border-radius:22px;background:#111216;
+  box-shadow:0 28px 100px rgba(0,0,0,.58);
+  transform:scale(.9) translateY(18px);
+  animation:aiEggIn .48s cubic-bezier(.16,.92,.22,1.16) forwards;
+}
+.ai-easter-card small{
+  display:block;color:#8f94a0;font-size:10px;font-weight:900;letter-spacing:2px;
+}
+.ai-easter-card strong{
+  display:block;margin:8px 0 5px;font-size:34px;line-height:.95;
+}
+.ai-easter-card span{
+  color:#c6cad3;font-size:14px;font-weight:800;
+}
+.ai-easter-card button{
+  margin-top:18px;padding:11px 18px;border:0;border-radius:10px;
+  background:#f4f4f5;color:#111216;font-weight:900;cursor:pointer;
+}
+@keyframes aiEggIn{to{transform:none}}
+
 </style>
 </head>
 <body>
@@ -1954,6 +1983,14 @@ function addUniquePlayers(names,region,tier=2){
 addUniquePlayers(['Chap','Flickzy','Th0masHD','Kurama','Cr1nge','Momsy','Twi','SkyJump','MariusCOW','panzer','Kiro','IDrop','Nebs','Cringe','Trooly','Volko','Fastroki','Pixx','Scaryy','Syaaz','P1ng','Kaan','PodaSai','Werex','Ghonzo','Nxthan','Pixovsky','Japko','Vanyak3kk','Juu','Hris','Faded','Nociff','Velo','Seyyto','iFr0zi','F1shyX','Wox','F1n4ik','Zangi','Wheat','dandepuzo','Upl','AzatGo','Rax','TwitterZynoxFNBR','Cheetiin','Deckzee','Izzi','Asa','SereN','Fredoxie','Twek','Ghost','bevvys','Howly','1Lusha','Noahreyli','dinus','S1neD','G13ras','Kombek','FRANEK','Predage','Chuckxz','FiTo','Prism','Huty','NeFrizi','Belusi','Repairs','Firen','Casperinovic','Darkos','Vexi','Minori','frxstyy'],'EU',3);
 addUniquePlayers(['JarKo','Kiire','GordeteAIM7','Polo','Klayzz','Xaizz','95V Scoezz','Dylangodoy9','paceve','Nakoo','morlez','Rabbit','TGA Vegetaa','TGA Pablete','Adrx','LequY','NosoyHello','14zerty'],'EU',2);
 addUniquePlayers(['Mack','THEFELOZ','916Gon','kaykywhale','Nuti','Gabzera','Night','letz','Jxnes','Diguera','KING','edson','Hazzense','nickzrr','Gonzalo','Lucx','Azizis','pardal','White','Xeat','Teuzz','Scarpa','Lorde','EdRoadToGlory','Grx','KBR','Spectral','Paulinyache32','Pingu'],'SA',3);
+/* +360 perfiles nuevos */
+addUniquePlayers(['Reyrotate','Trixbeam','Noxfrag','Zynaim','Frostclutch','Sora7','Vantadrop','Pulse7','Rynqtz','Blitzbot','Hexstorm','Frostfps','Axeligl','Nox9','Rynpro','Ryustorm','Luma9','Makobuild','Neomid','Vexmid','Frosttarp','Vantabox','Riftlow','Fluxclutch','Reyzrr','Blitzbox','Zyndrop','Frostigl','Jettpiece','Razev2','Axelhigh','Frostzone','Frostbox','Echozz','Keen9','Kodaspray','Kodafn','Zynigl','Shadeclutch','Frost9','Jettdrop','Ryupro','Pulseclutch','Kiroclutch','Kodaqtz','Sagepeak','Sagebeam','Mizustorm','Noxbuild','Mizupiece','Ryu9','Noxlol','Trixdrop','Aeroaim','Echospray','Zynedge','Hex7','Ryufps','Razepeak','Keenfrag'],'SA',2);
+addUniquePlayers(['Melodrop','Keenpro','Axelfps','Driftstorm','Noxedit','Shadeaim','Jettbot','Kodazz','Lynxbuild','Voltv2','Novav2','Dunedrop','Frostbeam','Riftdrop','Lumaqtz','Ryuspray','Jettfn','Driftv2','Zynlow','Hexfrag','Ryuedge','Zynv2','Akiv2','Reypeak','Zynzrr','Ryubuild','Novabot','Pulseigl','Hexhigh','Sora9','Lynxx','Mizufrag','Noxzrr','Rynsurge','Trixlow','Tarorotate','Voltdrop','Tarohigh','Echofps','Axel7','Keendrop','Zeromid','Frostzz','Trixzrr','Rynaim','Axellow','Kazefrag','Sorapeak','Kodalow','Kazegod','Razex','Dunepiece','Kirox','Lynxigl','Kodax','Makox','Orbitaim','Noxclutch','Vantaigl','Kirozone'],'NA',3);
+addUniquePlayers(['Trixv2','Voltzrr','Pulsefrag','Melofps','Voltwtf','Jettfps','Sagefps','Lynxpiece','Frostpeak','Zyn9','Aerozrr','Tarobuild','Vexhigh','Razehigh','Axelqt','Shade9','Reywtf','Aki9','Meloqt','Axelpeak','Jettbox','Reyedge','Kirobox','Tarotarp','Zerospray','Driftzz','Trixedge','Akisurge','Pulseedge','Keenigl','Kiroqt','Fluxlow','Aerofrag','Rynbot','Kodaedit','Tarolow','Novamid','Vantax','Frostbot','Voltsurge','Soraedge','Noxaim','Razesurge','Sagetarp','Aerohigh','Axelzrr','Orbitrotate','Akiaim','Novafrag','Shadev2','Neo9','Jettspray','Novagod','Blitzfn','Noxbeam','Sorarotate','Noxdrop','Makogod','Lumazone','Akistorm'],'EU',3);
+addUniquePlayers(['Jettsurge','Vantazrr','Shadedrop','Noxbot','Fluxlol','Driftigl','Neohigh','Aerotarp','Kirofrag','Zynpeak','Akiedge','Mizuzone','Aerozz','Orbitpeak','Tarobot','Taroedit','Taroclutch','Kiroqtz','Noxhigh','Razeclutch','Zerogod','Orbitfrag','Razebot','Keenbeam','Dunemid','Sagehigh','Novax','Sorabeam','Sageqt','Keenfn','Tarosurge','Blitzv2','Blitzsurge','Makorotate','Mizu9','Kazeaim','Razeqtz','Melo9','Frostpro','Vexsurge','Blitzwtf','Dune7','Taroigl','Melofn','Reyzz','Axelfrag','Zynx','Blitzfps','Orbitclutch','Kazespray','Shadezrr','Sorapro','Neospray','Kiroaim','Razepiece','Lumazrr','Blitzx','Fluxedit','Reydrop','Volthigh'],'OCE',2);
+addUniquePlayers(['Novabeam','Sagebox','Jettgod','Zynqt','Zerolol','Meloigl','Voltlol','Keenwtf','Voltfrag','Echox','Aerox','Ryubot','Kazetarp','Makoigl','Shadeigl','Fluxigl','Ryuclutch','Kirolol','Makohigh','Vexpeak','Blitzspray','Duneedge','Orbitspray','Drift7','Mizupro','Jettlow','Trixpiece','Neopiece','Vantalow','Lumaigl','Mizuaim','Mizu7','Vanta7','Pulsebot','Kodabot','Shadehigh','Reyqtz','Aeroclutch','Ryupiece','Dunepeak','Zerofrag','Shadeedge','Vexbox','Lynxmid','Neoqt','Fluxhigh','Frostlol','Zynfn','Riftfps','Kiropiece','Riftbox','Blitzbuild','Melobot','Kodarotate','Makoqtz','Keenlol','Aerodrop','Noxtarp','Fluxtarp','Pulse9'],'ASIA',2);
+addUniquePlayers(['Vantazz','Sorabot','Zynhigh','Axelmid','Melobuild','Frostx','Axelclutch','Zerov2','Rynhigh','Aerobuild','Echostorm','Pulsehigh','Razeqt','Noxmid','Dunezz','Voltgod','Noxzone','Shadegod','Vex7','Mizubox','Orbitedge','Vexlol','Keenqtz','Froststorm','Hexbeam','Taropro','Ryudrop','Axeledge','Aerov2','Ryuqt','Blitztarp','Zeropeak','Akifps','Zeroedge','Echoqt','Reymid','Trixwtf','Jettpeak','Lynxdrop','Reyhigh','Zynqtz','Fluxbuild','Kazedrop','Vexfn','Blitzedit','Rifthigh','Kiropro','Pulsezz','Blitzclutch','Driftbeam','Hexmid','Hexlol','Jetthigh','Aerogod','Kodabox','Akidrop','Vantav2','Razelow','Pulsev2','Pulsefps'],'ME',2);
+
 addUniquePlayers(['Mack','THEFELOZ','916Gon','kaykywhale','Nuti','Gabzera','Night','Diguera','KING','edson'],'SA',4);
 
 function prizeFor(id,p){
@@ -1992,7 +2029,7 @@ function ensurePalmares(){if(!state)return;
   if(!state.cashCups)state.cashCups={played:0,wins:0,earnings:0};
   if(!state.flags)state.flags={appreciationSeen:false};
   if(!Array.isArray(state.duoHistory))state.duoHistory=[];
-  if(!state.palmares)state.palmares={events:0,totalWins:0,top10s:0,fncsWins:state.trophies?.fncs||0,fncsPodiums:state.trophies?.fncs||0,globalWins:state.trophies?.global||0,globalPodiums:state.trophies?.global||0,cupWins:state.trophies?.cups||0,biggestPrize:0,bestFNCS:null,bestGlobal:null,recent:[]}; if(!Array.isArray(state.palmares.recent))state.palmares.recent=[];} function saveGame(){if(state){ensurePalmares();localStorage.setItem('llamero_v47_save',JSON.stringify(state));}} function hasSave(){return !!(localStorage.getItem('llamero_v47_save')||localStorage.getItem('llamero_v46_save')||localStorage.getItem('llamero_v45_save')||localStorage.getItem('llamero_v44_save')||localStorage.getItem('llamero_v43_save')||localStorage.getItem('llamero_v42_save')||localStorage.getItem('llamero_v41_save')||localStorage.getItem('llamero_v40_save')||localStorage.getItem('llamero_v39_save')||localStorage.getItem('llamero_v38_save')||localStorage.getItem('llamero_v37_save')||localStorage.getItem('llamero_v36_save')||localStorage.getItem('llamero_v35_save')||localStorage.getItem('llamero_v34_save')||localStorage.getItem('llamero_v33_save')||localStorage.getItem('llamero_v32_save')||localStorage.getItem('llamero_v31_save')||localStorage.getItem('llamero_v30_save')||localStorage.getItem('llamero_v29_save')||localStorage.getItem('llamero_v28_save')||localStorage.getItem('llamero_v27_save')||localStorage.getItem('llamero_v18_save'));} function loadGame(){try{const raw=localStorage.getItem('llamero_v47_save')||localStorage.getItem('llamero_v46_save')||localStorage.getItem('llamero_v45_save')||localStorage.getItem('llamero_v44_save')||localStorage.getItem('llamero_v43_save')||localStorage.getItem('llamero_v42_save')||localStorage.getItem('llamero_v41_save')||localStorage.getItem('llamero_v40_save')||localStorage.getItem('llamero_v39_save')||localStorage.getItem('llamero_v38_save')||localStorage.getItem('llamero_v37_save')||localStorage.getItem('llamero_v36_save')||localStorage.getItem('llamero_v35_save')||localStorage.getItem('llamero_v34_save')||localStorage.getItem('llamero_v33_save')||localStorage.getItem('llamero_v32_save')||localStorage.getItem('llamero_v31_save')||localStorage.getItem('llamero_v30_save')||localStorage.getItem('llamero_v29_save')||localStorage.getItem('llamero_v28_save')||localStorage.getItem('llamero_v27_save')||localStorage.getItem('llamero_v18_save');const s=JSON.parse(raw); if(s&&s.profile){state=s;ensurePalmares();saveGame(); return true;}}catch(e){} return false;}
+  if(!state.palmares)state.palmares={events:0,totalWins:0,top10s:0,fncsWins:state.trophies?.fncs||0,fncsPodiums:state.trophies?.fncs||0,globalWins:state.trophies?.global||0,globalPodiums:state.trophies?.global||0,cupWins:state.trophies?.cups||0,biggestPrize:0,bestFNCS:null,bestGlobal:null,recent:[]}; if(!Array.isArray(state.palmares.recent))state.palmares.recent=[];} function saveGame(){if(state){ensurePalmares();localStorage.setItem('llamero_v48_save',JSON.stringify(state));}} function hasSave(){return !!(localStorage.getItem('llamero_v48_save')||localStorage.getItem('llamero_v47_save')||localStorage.getItem('llamero_v46_save')||localStorage.getItem('llamero_v45_save')||localStorage.getItem('llamero_v44_save')||localStorage.getItem('llamero_v43_save')||localStorage.getItem('llamero_v42_save')||localStorage.getItem('llamero_v41_save')||localStorage.getItem('llamero_v40_save')||localStorage.getItem('llamero_v39_save')||localStorage.getItem('llamero_v38_save')||localStorage.getItem('llamero_v37_save')||localStorage.getItem('llamero_v36_save')||localStorage.getItem('llamero_v35_save')||localStorage.getItem('llamero_v34_save')||localStorage.getItem('llamero_v33_save')||localStorage.getItem('llamero_v32_save')||localStorage.getItem('llamero_v31_save')||localStorage.getItem('llamero_v30_save')||localStorage.getItem('llamero_v29_save')||localStorage.getItem('llamero_v28_save')||localStorage.getItem('llamero_v27_save')||localStorage.getItem('llamero_v18_save'));} function loadGame(){try{const raw=localStorage.getItem('llamero_v48_save')||localStorage.getItem('llamero_v47_save')||localStorage.getItem('llamero_v46_save')||localStorage.getItem('llamero_v45_save')||localStorage.getItem('llamero_v44_save')||localStorage.getItem('llamero_v43_save')||localStorage.getItem('llamero_v42_save')||localStorage.getItem('llamero_v41_save')||localStorage.getItem('llamero_v40_save')||localStorage.getItem('llamero_v39_save')||localStorage.getItem('llamero_v38_save')||localStorage.getItem('llamero_v37_save')||localStorage.getItem('llamero_v36_save')||localStorage.getItem('llamero_v35_save')||localStorage.getItem('llamero_v34_save')||localStorage.getItem('llamero_v33_save')||localStorage.getItem('llamero_v32_save')||localStorage.getItem('llamero_v31_save')||localStorage.getItem('llamero_v30_save')||localStorage.getItem('llamero_v29_save')||localStorage.getItem('llamero_v28_save')||localStorage.getItem('llamero_v27_save')||localStorage.getItem('llamero_v18_save');const s=JSON.parse(raw); if(s&&s.profile){state=s;ensurePalmares();saveGame(); return true;}}catch(e){} return false;}
 
 function rollCareerCeiling(){
   const r=Math.random();
@@ -2009,7 +2046,7 @@ function rollCareerCeiling(){
   return 99;                       // 0.8%
 }
 
-function freshState(profile){return {profile,age:13,year:2026,earnings:0,powerRanking:0,ovr:60,teammate:null,chemistry:rand(20,36),hidden:{potential:rollCareerCeiling(),mental:rand(50,72),prep:0,burnout:0},trophies:{fncs:0,global:0,cups:0},combat:{kills:0,deaths:0,matches:0,bestEventKills:0},cashCups:{played:0,wins:0,earnings:0},palmares:{events:0,totalWins:0,top10s:0,fncsWins:0,fncsPodiums:0,globalWins:0,globalPodiums:0,cupWins:0,biggestPrize:0,bestFNCS:null,bestGlobal:null,recent:[]},history:[],queue:[],pending:null,lastResult:null,news:['EMPEZASTE TU CARRERA A LOS 13 AÑOS CON RANGO PLATA.'],seasonFlags:{qualified:false,lastChance:false},retired:false,retireAge:null,bannedSeasons:0,careerPeakAge:rand(17,23),naturalDelta:0,seasonInYear:1,flags:{appreciationSeen:false,topDuoUnlocked:false},recentDecisionTitles:[],duoHistory:[]};}
+function freshState(profile){return {profile,age:13,year:2026,earnings:0,powerRanking:0,ovr:60,teammate:null,chemistry:rand(20,36),hidden:{potential:rollCareerCeiling(),mental:rand(50,72),prep:0,burnout:0},trophies:{fncs:0,global:0,cups:0},combat:{kills:0,deaths:0,matches:0,bestEventKills:0},cashCups:{played:0,wins:0,earnings:0},palmares:{events:0,totalWins:0,top10s:0,fncsWins:0,fncsPodiums:0,globalWins:0,globalPodiums:0,cupWins:0,biggestPrize:0,bestFNCS:null,bestGlobal:null,recent:[]},history:[],queue:[],pending:null,lastResult:null,news:['EMPEZASTE TU CARRERA A LOS 13 AÑOS CON RANGO PLATA.'],seasonFlags:{qualified:false,lastChance:false},retired:false,retireAge:null,bannedSeasons:0,careerPeakAge:rand(17,23),naturalDelta:0,seasonInYear:1,flags:{appreciationSeen:false,topDuoUnlocked:false,apreciarEgg:false},recentDecisionTitles:[],duoHistory:[]};}
 function getPlayer(id){return PLAYER_LIST.find(p=>p.id===id);} function userStrength(){return clamp(state.ovr+state.hidden.prep*.15-state.hidden.burnout*.22+(state.hidden.mental-60)*.04,40,100);} function teammateStrength(p){if(!p)return 55; const ageBoost=p.age>=18&&p.age<=24?3:p.age<18?-2:p.age>=28?-5:0; return clamp(p.hidden.base+p.form+ageBoost,45,99);}
 function duoStrength(){
   const mate=getPlayer(state.teammate);
@@ -2046,7 +2083,7 @@ function candidatePool(region){
 }
 function yearDecisionSet(count=3){
   count=clamp(Number(count)||3,1,3);
-  let pool=['human','life','lifeplus','team','role','creator','pressure','gear','career','careerplus','rivalry','social','strategy','fortnite','fortnite','mega','mega','mega','duomega','duomega','duomega','duomega','duomega','duomega'];
+  let pool=['human','life','lifeplus','team','role','creator','pressure','gear','career','careerplus','rivalry','social','strategy','fortnite','fortnite','mega','mega','duomega','duomega','duomega','extra360','extra360','extra360','extra360','extra360','extra360'];
   if(Math.random()<0.30) pool.push('ovr');
   if(state.profile.region==='SA') pool.push('under');
   if(state.age<=16) pool.push('school','free');
@@ -2068,7 +2105,7 @@ function yearDecisionSet(count=3){
   }
 
   while(chosen.length<count){
-    chosen.push(pick(['duomega','mega','fortnite','human','ovr','life','team','creator','pressure','gear','career','rivalry']));
+    chosen.push(pick(['extra360','duomega','mega','fortnite','human','ovr','life','team','creator','pressure','gear','career','rivalry']));
   }
   return chosen.slice(0,count);
 }
@@ -3117,10 +3154,398 @@ function duoMegaEvent(){
   return evt(s.title,s.text.replace('tu compañero',mateName),DECISION_IMAGES.teamroom,s.a,s.b,aEffects,bEffects,fa,fb,DECISION_IMAGES.teamroom,DECISION_IMAGES.practice);
 }
 
+
+const EXTRA360_DECISIONS=[
+{title:'NUEVO DROP DE LOOT · EN CASH CUP',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: en cash cup.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'NUEVO DROP DE LOOT · EN QUALIFIER',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: en qualifier.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'NUEVO DROP DE LOOT · ANTES DE FNCS',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: antes de fncs.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'NUEVO DROP DE LOOT · SEMANA DE SCRIMS',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: semana de scrims.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'NUEVO DROP DE LOOT · EN HIGH ELO',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: en high elo.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'NUEVO DROP DE LOOT · ANTES DEL MAJOR',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: antes del major.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'NUEVO DROP DE LOOT · RUMBO A GLOBAL',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: rumbo a global.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'NUEVO DROP DE LOOT · DÍA DE TORNEO',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: día de torneo.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'NUEVO DROP DE LOOT · SEMANA TRANQUILA',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: semana tranquila.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'NUEVO DROP DE LOOT · DESPUÉS DE UNA WIN',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: después de una win.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'NUEVO DROP DE LOOT · TRAS UN MAL TOP',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: tras un mal top.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'NUEVO DROP DE LOOT · CON NUEVO META',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: con nuevo meta.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'NUEVO DROP DE LOOT · CON MUCHA PRESIÓN',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: con mucha presión.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'NUEVO DROP DE LOOT · EN BOOTCAMP',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: en bootcamp.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'NUEVO DROP DE LOOT · ANTES DE LAN',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: antes de lan.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'NUEVO DROP DE LOOT · EN FIN DE TEMPORADA',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: en fin de temporada.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'NUEVO DROP DE LOOT · EN NUEVA REGIÓN',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: en nueva región.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'NUEVO DROP DE LOOT · TRAS CAMBIO DE DÚO',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: tras cambio de dúo.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'NUEVO DROP DE LOOT · CON BUEN CHEMISTRY',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: con buen chemistry.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'NUEVO DROP DE LOOT · CON BURNOUT ALTO',text:'Tu equipo descubre una ruta con mejor loot pero más riesgo. Contexto: con burnout alto.',a:'PROBARLA',b:'SEGUIR CON LA ACTUAL',kind:'prep'},
+{title:'CAMBIO DE KEYBINDS · EN CASH CUP',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: en cash cup.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'CAMBIO DE KEYBINDS · EN QUALIFIER',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: en qualifier.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'CAMBIO DE KEYBINDS · ANTES DE FNCS',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: antes de fncs.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'CAMBIO DE KEYBINDS · SEMANA DE SCRIMS',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: semana de scrims.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'CAMBIO DE KEYBINDS · EN HIGH ELO',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: en high elo.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'CAMBIO DE KEYBINDS · ANTES DEL MAJOR',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: antes del major.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'CAMBIO DE KEYBINDS · RUMBO A GLOBAL',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: rumbo a global.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'CAMBIO DE KEYBINDS · DÍA DE TORNEO',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: día de torneo.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'CAMBIO DE KEYBINDS · SEMANA TRANQUILA',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: semana tranquila.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'CAMBIO DE KEYBINDS · DESPUÉS DE UNA WIN',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: después de una win.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'CAMBIO DE KEYBINDS · TRAS UN MAL TOP',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: tras un mal top.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'CAMBIO DE KEYBINDS · CON NUEVO META',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: con nuevo meta.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'CAMBIO DE KEYBINDS · CON MUCHA PRESIÓN',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: con mucha presión.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'CAMBIO DE KEYBINDS · EN BOOTCAMP',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: en bootcamp.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'CAMBIO DE KEYBINDS · ANTES DE LAN',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: antes de lan.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'CAMBIO DE KEYBINDS · EN FIN DE TEMPORADA',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: en fin de temporada.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'CAMBIO DE KEYBINDS · EN NUEVA REGIÓN',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: en nueva región.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'CAMBIO DE KEYBINDS · TRAS CAMBIO DE DÚO',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: tras cambio de dúo.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'CAMBIO DE KEYBINDS · CON BUEN CHEMISTRY',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: con buen chemistry.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'CAMBIO DE KEYBINDS · CON BURNOUT ALTO',text:'Pensás que un pequeño ajuste puede mejorar tus edits. Contexto: con burnout alto.',a:'CAMBIAR AHORA',b:'NO TOCAR NADA',kind:'ovr'},
+{title:'SCRIMS PRIVADAS · EN CASH CUP',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: en cash cup.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'SCRIMS PRIVADAS · EN QUALIFIER',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: en qualifier.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'SCRIMS PRIVADAS · ANTES DE FNCS',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: antes de fncs.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'SCRIMS PRIVADAS · SEMANA DE SCRIMS',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: semana de scrims.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'SCRIMS PRIVADAS · EN HIGH ELO',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: en high elo.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'SCRIMS PRIVADAS · ANTES DEL MAJOR',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: antes del major.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'SCRIMS PRIVADAS · RUMBO A GLOBAL',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: rumbo a global.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'SCRIMS PRIVADAS · DÍA DE TORNEO',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: día de torneo.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'SCRIMS PRIVADAS · SEMANA TRANQUILA',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: semana tranquila.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'SCRIMS PRIVADAS · DESPUÉS DE UNA WIN',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: después de una win.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'SCRIMS PRIVADAS · TRAS UN MAL TOP',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: tras un mal top.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'SCRIMS PRIVADAS · CON NUEVO META',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: con nuevo meta.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'SCRIMS PRIVADAS · CON MUCHA PRESIÓN',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: con mucha presión.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'SCRIMS PRIVADAS · EN BOOTCAMP',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: en bootcamp.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'SCRIMS PRIVADAS · ANTES DE LAN',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: antes de lan.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'SCRIMS PRIVADAS · EN FIN DE TEMPORADA',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: en fin de temporada.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'SCRIMS PRIVADAS · EN NUEVA REGIÓN',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: en nueva región.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'SCRIMS PRIVADAS · TRAS CAMBIO DE DÚO',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: tras cambio de dúo.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'SCRIMS PRIVADAS · CON BUEN CHEMISTRY',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: con buen chemistry.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'SCRIMS PRIVADAS · CON BURNOUT ALTO',text:'Te invitan a una lobby cerrada con jugadores fuertes. Contexto: con burnout alto.',a:'ACEPTAR',b:'JUGAR RANKED',kind:'pr'},
+{title:'PRACTICAR SURGE · EN CASH CUP',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: en cash cup.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'PRACTICAR SURGE · EN QUALIFIER',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: en qualifier.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'PRACTICAR SURGE · ANTES DE FNCS',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: antes de fncs.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'PRACTICAR SURGE · SEMANA DE SCRIMS',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: semana de scrims.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'PRACTICAR SURGE · EN HIGH ELO',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: en high elo.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'PRACTICAR SURGE · ANTES DEL MAJOR',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: antes del major.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'PRACTICAR SURGE · RUMBO A GLOBAL',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: rumbo a global.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'PRACTICAR SURGE · DÍA DE TORNEO',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: día de torneo.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'PRACTICAR SURGE · SEMANA TRANQUILA',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: semana tranquila.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'PRACTICAR SURGE · DESPUÉS DE UNA WIN',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: después de una win.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'PRACTICAR SURGE · TRAS UN MAL TOP',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: tras un mal top.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'PRACTICAR SURGE · CON NUEVO META',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: con nuevo meta.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'PRACTICAR SURGE · CON MUCHA PRESIÓN',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: con mucha presión.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'PRACTICAR SURGE · EN BOOTCAMP',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: en bootcamp.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'PRACTICAR SURGE · ANTES DE LAN',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: antes de lan.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'PRACTICAR SURGE · EN FIN DE TEMPORADA',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: en fin de temporada.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'PRACTICAR SURGE · EN NUEVA REGIÓN',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: en nueva región.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'PRACTICAR SURGE · TRAS CAMBIO DE DÚO',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: tras cambio de dúo.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'PRACTICAR SURGE · CON BUEN CHEMISTRY',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: con buen chemistry.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'PRACTICAR SURGE · CON BURNOUT ALTO',text:'Les falta daño temprano para llegar cómodos a midgame. Contexto: con burnout alto.',a:'BUSCAR MÁS TAGS',b:'PRIORIZAR POSICIÓN',kind:'prep'},
+{title:'DÍA DE AIM · EN CASH CUP',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: en cash cup.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'DÍA DE AIM · EN QUALIFIER',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: en qualifier.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'DÍA DE AIM · ANTES DE FNCS',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: antes de fncs.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'DÍA DE AIM · SEMANA DE SCRIMS',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: semana de scrims.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'DÍA DE AIM · EN HIGH ELO',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: en high elo.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'DÍA DE AIM · ANTES DEL MAJOR',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: antes del major.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'DÍA DE AIM · RUMBO A GLOBAL',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: rumbo a global.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'DÍA DE AIM · DÍA DE TORNEO',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: día de torneo.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'DÍA DE AIM · SEMANA TRANQUILA',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: semana tranquila.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'DÍA DE AIM · DESPUÉS DE UNA WIN',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: después de una win.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'DÍA DE AIM · TRAS UN MAL TOP',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: tras un mal top.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'DÍA DE AIM · CON NUEVO META',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: con nuevo meta.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'DÍA DE AIM · CON MUCHA PRESIÓN',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: con mucha presión.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'DÍA DE AIM · EN BOOTCAMP',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: en bootcamp.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'DÍA DE AIM · ANTES DE LAN',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: antes de lan.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'DÍA DE AIM · EN FIN DE TEMPORADA',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: en fin de temporada.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'DÍA DE AIM · EN NUEVA REGIÓN',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: en nueva región.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'DÍA DE AIM · TRAS CAMBIO DE DÚO',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: tras cambio de dúo.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'DÍA DE AIM · CON BUEN CHEMISTRY',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: con buen chemistry.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'DÍA DE AIM · CON BURNOUT ALTO',text:'Tu coach quiere dedicar una sesión completa a aim. Contexto: con burnout alto.',a:'HACERLA',b:'PRACTICAR MACRO',kind:'ovr'},
+{title:'REVIEW DE FNCS · EN CASH CUP',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: en cash cup.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'REVIEW DE FNCS · EN QUALIFIER',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: en qualifier.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'REVIEW DE FNCS · ANTES DE FNCS',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: antes de fncs.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'REVIEW DE FNCS · SEMANA DE SCRIMS',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: semana de scrims.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'REVIEW DE FNCS · EN HIGH ELO',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: en high elo.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'REVIEW DE FNCS · ANTES DEL MAJOR',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: antes del major.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'REVIEW DE FNCS · RUMBO A GLOBAL',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: rumbo a global.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'REVIEW DE FNCS · DÍA DE TORNEO',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: día de torneo.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'REVIEW DE FNCS · SEMANA TRANQUILA',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: semana tranquila.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'REVIEW DE FNCS · DESPUÉS DE UNA WIN',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: después de una win.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'REVIEW DE FNCS · TRAS UN MAL TOP',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: tras un mal top.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'REVIEW DE FNCS · CON NUEVO META',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: con nuevo meta.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'REVIEW DE FNCS · CON MUCHA PRESIÓN',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: con mucha presión.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'REVIEW DE FNCS · EN BOOTCAMP',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: en bootcamp.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'REVIEW DE FNCS · ANTES DE LAN',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: antes de lan.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'REVIEW DE FNCS · EN FIN DE TEMPORADA',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: en fin de temporada.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'REVIEW DE FNCS · EN NUEVA REGIÓN',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: en nueva región.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'REVIEW DE FNCS · TRAS CAMBIO DE DÚO',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: tras cambio de dúo.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'REVIEW DE FNCS · CON BUEN CHEMISTRY',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: con buen chemistry.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'REVIEW DE FNCS · CON BURNOUT ALTO',text:'Revisan una partida donde perdieron una gran oportunidad. Contexto: con burnout alto.',a:'ANALIZARLA',b:'PASAR PÁGINA',kind:'mental'},
+{title:'ZONA MUY LEJANA · EN CASH CUP',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: en cash cup.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'ZONA MUY LEJANA · EN QUALIFIER',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: en qualifier.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'ZONA MUY LEJANA · ANTES DE FNCS',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: antes de fncs.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'ZONA MUY LEJANA · SEMANA DE SCRIMS',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: semana de scrims.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'ZONA MUY LEJANA · EN HIGH ELO',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: en high elo.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'ZONA MUY LEJANA · ANTES DEL MAJOR',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: antes del major.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'ZONA MUY LEJANA · RUMBO A GLOBAL',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: rumbo a global.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'ZONA MUY LEJANA · DÍA DE TORNEO',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: día de torneo.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'ZONA MUY LEJANA · SEMANA TRANQUILA',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: semana tranquila.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'ZONA MUY LEJANA · DESPUÉS DE UNA WIN',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: después de una win.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'ZONA MUY LEJANA · TRAS UN MAL TOP',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: tras un mal top.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'ZONA MUY LEJANA · CON NUEVO META',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: con nuevo meta.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'ZONA MUY LEJANA · CON MUCHA PRESIÓN',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: con mucha presión.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'ZONA MUY LEJANA · EN BOOTCAMP',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: en bootcamp.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'ZONA MUY LEJANA · ANTES DE LAN',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: antes de lan.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'ZONA MUY LEJANA · EN FIN DE TEMPORADA',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: en fin de temporada.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'ZONA MUY LEJANA · EN NUEVA REGIÓN',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: en nueva región.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'ZONA MUY LEJANA · TRAS CAMBIO DE DÚO',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: tras cambio de dúo.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'ZONA MUY LEJANA · CON BUEN CHEMISTRY',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: con buen chemistry.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'ZONA MUY LEJANA · CON BURNOUT ALTO',text:'Las últimas rotaciones salen mal con zonas extremas. Contexto: con burnout alto.',a:'CAMBIAR TIMINGS',b:'SEGUIR EL PLAN',kind:'prep'},
+{title:'NUEVA MOVILIDAD · EN CASH CUP',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: en cash cup.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'NUEVA MOVILIDAD · EN QUALIFIER',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: en qualifier.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'NUEVA MOVILIDAD · ANTES DE FNCS',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: antes de fncs.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'NUEVA MOVILIDAD · SEMANA DE SCRIMS',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: semana de scrims.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'NUEVA MOVILIDAD · EN HIGH ELO',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: en high elo.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'NUEVA MOVILIDAD · ANTES DEL MAJOR',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: antes del major.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'NUEVA MOVILIDAD · RUMBO A GLOBAL',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: rumbo a global.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'NUEVA MOVILIDAD · DÍA DE TORNEO',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: día de torneo.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'NUEVA MOVILIDAD · SEMANA TRANQUILA',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: semana tranquila.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'NUEVA MOVILIDAD · DESPUÉS DE UNA WIN',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: después de una win.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'NUEVA MOVILIDAD · TRAS UN MAL TOP',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: tras un mal top.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'NUEVA MOVILIDAD · CON NUEVO META',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: con nuevo meta.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'NUEVA MOVILIDAD · CON MUCHA PRESIÓN',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: con mucha presión.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'NUEVA MOVILIDAD · EN BOOTCAMP',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: en bootcamp.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'NUEVA MOVILIDAD · ANTES DE LAN',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: antes de lan.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'NUEVA MOVILIDAD · EN FIN DE TEMPORADA',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: en fin de temporada.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'NUEVA MOVILIDAD · EN NUEVA REGIÓN',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: en nueva región.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'NUEVA MOVILIDAD · TRAS CAMBIO DE DÚO',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: tras cambio de dúo.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'NUEVA MOVILIDAD · CON BUEN CHEMISTRY',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: con buen chemistry.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'NUEVA MOVILIDAD · CON BURNOUT ALTO',text:'El meta incorpora una movilidad que cambia las rotaciones. Contexto: con burnout alto.',a:'USARLA',b:'NO DEPENDER DE ELLA',kind:'prep'},
+{title:'PELEA EN MIDGAME · EN CASH CUP',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: en cash cup.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PELEA EN MIDGAME · EN QUALIFIER',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: en qualifier.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PELEA EN MIDGAME · ANTES DE FNCS',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: antes de fncs.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PELEA EN MIDGAME · SEMANA DE SCRIMS',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: semana de scrims.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PELEA EN MIDGAME · EN HIGH ELO',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: en high elo.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PELEA EN MIDGAME · ANTES DEL MAJOR',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: antes del major.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PELEA EN MIDGAME · RUMBO A GLOBAL',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: rumbo a global.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PELEA EN MIDGAME · DÍA DE TORNEO',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: día de torneo.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PELEA EN MIDGAME · SEMANA TRANQUILA',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: semana tranquila.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PELEA EN MIDGAME · DESPUÉS DE UNA WIN',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: después de una win.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PELEA EN MIDGAME · TRAS UN MAL TOP',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: tras un mal top.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PELEA EN MIDGAME · CON NUEVO META',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: con nuevo meta.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PELEA EN MIDGAME · CON MUCHA PRESIÓN',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: con mucha presión.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PELEA EN MIDGAME · EN BOOTCAMP',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: en bootcamp.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PELEA EN MIDGAME · ANTES DE LAN',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: antes de lan.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PELEA EN MIDGAME · EN FIN DE TEMPORADA',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: en fin de temporada.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PELEA EN MIDGAME · EN NUEVA REGIÓN',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: en nueva región.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PELEA EN MIDGAME · TRAS CAMBIO DE DÚO',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: tras cambio de dúo.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PELEA EN MIDGAME · CON BUEN CHEMISTRY',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: con buen chemistry.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PELEA EN MIDGAME · CON BURNOUT ALTO',text:'El dúo duda sobre cuándo tomar fights en midgame. Contexto: con burnout alto.',a:'SER SELECTIVOS',b:'BUSCAR MÁS KILLS',kind:'mental'},
+{title:'PRACTICAR HEIGHT · EN CASH CUP',text:'Tienen una semana para trabajar tomas de altura. Contexto: en cash cup.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'PRACTICAR HEIGHT · EN QUALIFIER',text:'Tienen una semana para trabajar tomas de altura. Contexto: en qualifier.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'PRACTICAR HEIGHT · ANTES DE FNCS',text:'Tienen una semana para trabajar tomas de altura. Contexto: antes de fncs.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'PRACTICAR HEIGHT · SEMANA DE SCRIMS',text:'Tienen una semana para trabajar tomas de altura. Contexto: semana de scrims.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'PRACTICAR HEIGHT · EN HIGH ELO',text:'Tienen una semana para trabajar tomas de altura. Contexto: en high elo.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'PRACTICAR HEIGHT · ANTES DEL MAJOR',text:'Tienen una semana para trabajar tomas de altura. Contexto: antes del major.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'PRACTICAR HEIGHT · RUMBO A GLOBAL',text:'Tienen una semana para trabajar tomas de altura. Contexto: rumbo a global.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'PRACTICAR HEIGHT · DÍA DE TORNEO',text:'Tienen una semana para trabajar tomas de altura. Contexto: día de torneo.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'PRACTICAR HEIGHT · SEMANA TRANQUILA',text:'Tienen una semana para trabajar tomas de altura. Contexto: semana tranquila.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'PRACTICAR HEIGHT · DESPUÉS DE UNA WIN',text:'Tienen una semana para trabajar tomas de altura. Contexto: después de una win.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'PRACTICAR HEIGHT · TRAS UN MAL TOP',text:'Tienen una semana para trabajar tomas de altura. Contexto: tras un mal top.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'PRACTICAR HEIGHT · CON NUEVO META',text:'Tienen una semana para trabajar tomas de altura. Contexto: con nuevo meta.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'PRACTICAR HEIGHT · CON MUCHA PRESIÓN',text:'Tienen una semana para trabajar tomas de altura. Contexto: con mucha presión.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'PRACTICAR HEIGHT · EN BOOTCAMP',text:'Tienen una semana para trabajar tomas de altura. Contexto: en bootcamp.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'PRACTICAR HEIGHT · ANTES DE LAN',text:'Tienen una semana para trabajar tomas de altura. Contexto: antes de lan.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'PRACTICAR HEIGHT · EN FIN DE TEMPORADA',text:'Tienen una semana para trabajar tomas de altura. Contexto: en fin de temporada.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'PRACTICAR HEIGHT · EN NUEVA REGIÓN',text:'Tienen una semana para trabajar tomas de altura. Contexto: en nueva región.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'PRACTICAR HEIGHT · TRAS CAMBIO DE DÚO',text:'Tienen una semana para trabajar tomas de altura. Contexto: tras cambio de dúo.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'PRACTICAR HEIGHT · CON BUEN CHEMISTRY',text:'Tienen una semana para trabajar tomas de altura. Contexto: con buen chemistry.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'PRACTICAR HEIGHT · CON BURNOUT ALTO',text:'Tienen una semana para trabajar tomas de altura. Contexto: con burnout alto.',a:'ENTRENAR HEIGHT',b:'MEJORAR LOWGROUND',kind:'prep'},
+{title:'CUSTOMS DE FINAL · EN CASH CUP',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: en cash cup.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CUSTOMS DE FINAL · EN QUALIFIER',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: en qualifier.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CUSTOMS DE FINAL · ANTES DE FNCS',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: antes de fncs.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CUSTOMS DE FINAL · SEMANA DE SCRIMS',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: semana de scrims.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CUSTOMS DE FINAL · EN HIGH ELO',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: en high elo.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CUSTOMS DE FINAL · ANTES DEL MAJOR',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: antes del major.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CUSTOMS DE FINAL · RUMBO A GLOBAL',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: rumbo a global.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CUSTOMS DE FINAL · DÍA DE TORNEO',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: día de torneo.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CUSTOMS DE FINAL · SEMANA TRANQUILA',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: semana tranquila.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CUSTOMS DE FINAL · DESPUÉS DE UNA WIN',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: después de una win.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CUSTOMS DE FINAL · TRAS UN MAL TOP',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: tras un mal top.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CUSTOMS DE FINAL · CON NUEVO META',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: con nuevo meta.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CUSTOMS DE FINAL · CON MUCHA PRESIÓN',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: con mucha presión.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CUSTOMS DE FINAL · EN BOOTCAMP',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: en bootcamp.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CUSTOMS DE FINAL · ANTES DE LAN',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: antes de lan.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CUSTOMS DE FINAL · EN FIN DE TEMPORADA',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: en fin de temporada.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CUSTOMS DE FINAL · EN NUEVA REGIÓN',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: en nueva región.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CUSTOMS DE FINAL · TRAS CAMBIO DE DÚO',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: tras cambio de dúo.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CUSTOMS DE FINAL · CON BUEN CHEMISTRY',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: con buen chemistry.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'CUSTOMS DE FINAL · CON BURNOUT ALTO',text:'Varias lobbies privadas se enfocan solo en moving zones. Contexto: con burnout alto.',a:'JUGARLAS',b:'DESCANSAR',kind:'burn'},
+{title:'NUEVO MAPA DE BOXFIGHTS · EN CASH CUP',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: en cash cup.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'NUEVO MAPA DE BOXFIGHTS · EN QUALIFIER',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: en qualifier.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'NUEVO MAPA DE BOXFIGHTS · ANTES DE FNCS',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: antes de fncs.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'NUEVO MAPA DE BOXFIGHTS · SEMANA DE SCRIMS',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: semana de scrims.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'NUEVO MAPA DE BOXFIGHTS · EN HIGH ELO',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: en high elo.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'NUEVO MAPA DE BOXFIGHTS · ANTES DEL MAJOR',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: antes del major.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'NUEVO MAPA DE BOXFIGHTS · RUMBO A GLOBAL',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: rumbo a global.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'NUEVO MAPA DE BOXFIGHTS · DÍA DE TORNEO',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: día de torneo.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'NUEVO MAPA DE BOXFIGHTS · SEMANA TRANQUILA',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: semana tranquila.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'NUEVO MAPA DE BOXFIGHTS · DESPUÉS DE UNA WIN',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: después de una win.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'NUEVO MAPA DE BOXFIGHTS · TRAS UN MAL TOP',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: tras un mal top.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'NUEVO MAPA DE BOXFIGHTS · CON NUEVO META',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: con nuevo meta.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'NUEVO MAPA DE BOXFIGHTS · CON MUCHA PRESIÓN',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: con mucha presión.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'NUEVO MAPA DE BOXFIGHTS · EN BOOTCAMP',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: en bootcamp.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'NUEVO MAPA DE BOXFIGHTS · ANTES DE LAN',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: antes de lan.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'NUEVO MAPA DE BOXFIGHTS · EN FIN DE TEMPORADA',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: en fin de temporada.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'NUEVO MAPA DE BOXFIGHTS · EN NUEVA REGIÓN',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: en nueva región.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'NUEVO MAPA DE BOXFIGHTS · TRAS CAMBIO DE DÚO',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: tras cambio de dúo.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'NUEVO MAPA DE BOXFIGHTS · CON BUEN CHEMISTRY',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: con buen chemistry.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'NUEVO MAPA DE BOXFIGHTS · CON BURNOUT ALTO',text:'Un mapa competitivo se vuelve popular entre pros. Contexto: con burnout alto.',a:'PRACTICARLO',b:'SEGUIR CON EL TUYO',kind:'ovr'},
+{title:'STREAMER CUP · EN CASH CUP',text:'Te invitan a un torneo con creadores y pros. Contexto: en cash cup.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'STREAMER CUP · EN QUALIFIER',text:'Te invitan a un torneo con creadores y pros. Contexto: en qualifier.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'STREAMER CUP · ANTES DE FNCS',text:'Te invitan a un torneo con creadores y pros. Contexto: antes de fncs.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'STREAMER CUP · SEMANA DE SCRIMS',text:'Te invitan a un torneo con creadores y pros. Contexto: semana de scrims.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'STREAMER CUP · EN HIGH ELO',text:'Te invitan a un torneo con creadores y pros. Contexto: en high elo.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'STREAMER CUP · ANTES DEL MAJOR',text:'Te invitan a un torneo con creadores y pros. Contexto: antes del major.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'STREAMER CUP · RUMBO A GLOBAL',text:'Te invitan a un torneo con creadores y pros. Contexto: rumbo a global.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'STREAMER CUP · DÍA DE TORNEO',text:'Te invitan a un torneo con creadores y pros. Contexto: día de torneo.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'STREAMER CUP · SEMANA TRANQUILA',text:'Te invitan a un torneo con creadores y pros. Contexto: semana tranquila.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'STREAMER CUP · DESPUÉS DE UNA WIN',text:'Te invitan a un torneo con creadores y pros. Contexto: después de una win.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'STREAMER CUP · TRAS UN MAL TOP',text:'Te invitan a un torneo con creadores y pros. Contexto: tras un mal top.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'STREAMER CUP · CON NUEVO META',text:'Te invitan a un torneo con creadores y pros. Contexto: con nuevo meta.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'STREAMER CUP · CON MUCHA PRESIÓN',text:'Te invitan a un torneo con creadores y pros. Contexto: con mucha presión.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'STREAMER CUP · EN BOOTCAMP',text:'Te invitan a un torneo con creadores y pros. Contexto: en bootcamp.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'STREAMER CUP · ANTES DE LAN',text:'Te invitan a un torneo con creadores y pros. Contexto: antes de lan.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'STREAMER CUP · EN FIN DE TEMPORADA',text:'Te invitan a un torneo con creadores y pros. Contexto: en fin de temporada.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'STREAMER CUP · EN NUEVA REGIÓN',text:'Te invitan a un torneo con creadores y pros. Contexto: en nueva región.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'STREAMER CUP · TRAS CAMBIO DE DÚO',text:'Te invitan a un torneo con creadores y pros. Contexto: tras cambio de dúo.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'STREAMER CUP · CON BUEN CHEMISTRY',text:'Te invitan a un torneo con creadores y pros. Contexto: con buen chemistry.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'STREAMER CUP · CON BURNOUT ALTO',text:'Te invitan a un torneo con creadores y pros. Contexto: con burnout alto.',a:'JUGAR',b:'NO DISTRAERSE',kind:'pr'},
+{title:'COACH DE MACRO · EN CASH CUP',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: en cash cup.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'COACH DE MACRO · EN QUALIFIER',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: en qualifier.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'COACH DE MACRO · ANTES DE FNCS',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: antes de fncs.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'COACH DE MACRO · SEMANA DE SCRIMS',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: semana de scrims.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'COACH DE MACRO · EN HIGH ELO',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: en high elo.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'COACH DE MACRO · ANTES DEL MAJOR',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: antes del major.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'COACH DE MACRO · RUMBO A GLOBAL',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: rumbo a global.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'COACH DE MACRO · DÍA DE TORNEO',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: día de torneo.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'COACH DE MACRO · SEMANA TRANQUILA',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: semana tranquila.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'COACH DE MACRO · DESPUÉS DE UNA WIN',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: después de una win.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'COACH DE MACRO · TRAS UN MAL TOP',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: tras un mal top.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'COACH DE MACRO · CON NUEVO META',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: con nuevo meta.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'COACH DE MACRO · CON MUCHA PRESIÓN',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: con mucha presión.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'COACH DE MACRO · EN BOOTCAMP',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: en bootcamp.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'COACH DE MACRO · ANTES DE LAN',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: antes de lan.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'COACH DE MACRO · EN FIN DE TEMPORADA',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: en fin de temporada.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'COACH DE MACRO · EN NUEVA REGIÓN',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: en nueva región.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'COACH DE MACRO · TRAS CAMBIO DE DÚO',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: tras cambio de dúo.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'COACH DE MACRO · CON BUEN CHEMISTRY',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: con buen chemistry.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'COACH DE MACRO · CON BURNOUT ALTO',text:'Un coach especializado propone mejorar tus rotaciones. Contexto: con burnout alto.',a:'SUMARLO',b:'SEGUIR CON TU STAFF',kind:'prep'},
+{title:'DÍA SIN SCRIMS · EN CASH CUP',text:'Se cancela la sesión de práctica principal. Contexto: en cash cup.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'DÍA SIN SCRIMS · EN QUALIFIER',text:'Se cancela la sesión de práctica principal. Contexto: en qualifier.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'DÍA SIN SCRIMS · ANTES DE FNCS',text:'Se cancela la sesión de práctica principal. Contexto: antes de fncs.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'DÍA SIN SCRIMS · SEMANA DE SCRIMS',text:'Se cancela la sesión de práctica principal. Contexto: semana de scrims.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'DÍA SIN SCRIMS · EN HIGH ELO',text:'Se cancela la sesión de práctica principal. Contexto: en high elo.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'DÍA SIN SCRIMS · ANTES DEL MAJOR',text:'Se cancela la sesión de práctica principal. Contexto: antes del major.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'DÍA SIN SCRIMS · RUMBO A GLOBAL',text:'Se cancela la sesión de práctica principal. Contexto: rumbo a global.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'DÍA SIN SCRIMS · DÍA DE TORNEO',text:'Se cancela la sesión de práctica principal. Contexto: día de torneo.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'DÍA SIN SCRIMS · SEMANA TRANQUILA',text:'Se cancela la sesión de práctica principal. Contexto: semana tranquila.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'DÍA SIN SCRIMS · DESPUÉS DE UNA WIN',text:'Se cancela la sesión de práctica principal. Contexto: después de una win.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'DÍA SIN SCRIMS · TRAS UN MAL TOP',text:'Se cancela la sesión de práctica principal. Contexto: tras un mal top.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'DÍA SIN SCRIMS · CON NUEVO META',text:'Se cancela la sesión de práctica principal. Contexto: con nuevo meta.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'DÍA SIN SCRIMS · CON MUCHA PRESIÓN',text:'Se cancela la sesión de práctica principal. Contexto: con mucha presión.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'DÍA SIN SCRIMS · EN BOOTCAMP',text:'Se cancela la sesión de práctica principal. Contexto: en bootcamp.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'DÍA SIN SCRIMS · ANTES DE LAN',text:'Se cancela la sesión de práctica principal. Contexto: antes de lan.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'DÍA SIN SCRIMS · EN FIN DE TEMPORADA',text:'Se cancela la sesión de práctica principal. Contexto: en fin de temporada.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'DÍA SIN SCRIMS · EN NUEVA REGIÓN',text:'Se cancela la sesión de práctica principal. Contexto: en nueva región.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'DÍA SIN SCRIMS · TRAS CAMBIO DE DÚO',text:'Se cancela la sesión de práctica principal. Contexto: tras cambio de dúo.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'DÍA SIN SCRIMS · CON BUEN CHEMISTRY',text:'Se cancela la sesión de práctica principal. Contexto: con buen chemistry.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'DÍA SIN SCRIMS · CON BURNOUT ALTO',text:'Se cancela la sesión de práctica principal. Contexto: con burnout alto.',a:'JUGAR RANKED',b:'HACER VOD REVIEW',kind:'mental'},
+{title:'MALA CONEXIÓN · EN CASH CUP',text:'La conexión está irregular antes de un cup. Contexto: en cash cup.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'MALA CONEXIÓN · EN QUALIFIER',text:'La conexión está irregular antes de un cup. Contexto: en qualifier.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'MALA CONEXIÓN · ANTES DE FNCS',text:'La conexión está irregular antes de un cup. Contexto: antes de fncs.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'MALA CONEXIÓN · SEMANA DE SCRIMS',text:'La conexión está irregular antes de un cup. Contexto: semana de scrims.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'MALA CONEXIÓN · EN HIGH ELO',text:'La conexión está irregular antes de un cup. Contexto: en high elo.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'MALA CONEXIÓN · ANTES DEL MAJOR',text:'La conexión está irregular antes de un cup. Contexto: antes del major.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'MALA CONEXIÓN · RUMBO A GLOBAL',text:'La conexión está irregular antes de un cup. Contexto: rumbo a global.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'MALA CONEXIÓN · DÍA DE TORNEO',text:'La conexión está irregular antes de un cup. Contexto: día de torneo.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'MALA CONEXIÓN · SEMANA TRANQUILA',text:'La conexión está irregular antes de un cup. Contexto: semana tranquila.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'MALA CONEXIÓN · DESPUÉS DE UNA WIN',text:'La conexión está irregular antes de un cup. Contexto: después de una win.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'MALA CONEXIÓN · TRAS UN MAL TOP',text:'La conexión está irregular antes de un cup. Contexto: tras un mal top.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'MALA CONEXIÓN · CON NUEVO META',text:'La conexión está irregular antes de un cup. Contexto: con nuevo meta.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'MALA CONEXIÓN · CON MUCHA PRESIÓN',text:'La conexión está irregular antes de un cup. Contexto: con mucha presión.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'MALA CONEXIÓN · EN BOOTCAMP',text:'La conexión está irregular antes de un cup. Contexto: en bootcamp.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'MALA CONEXIÓN · ANTES DE LAN',text:'La conexión está irregular antes de un cup. Contexto: antes de lan.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'MALA CONEXIÓN · EN FIN DE TEMPORADA',text:'La conexión está irregular antes de un cup. Contexto: en fin de temporada.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'MALA CONEXIÓN · EN NUEVA REGIÓN',text:'La conexión está irregular antes de un cup. Contexto: en nueva región.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'MALA CONEXIÓN · TRAS CAMBIO DE DÚO',text:'La conexión está irregular antes de un cup. Contexto: tras cambio de dúo.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'MALA CONEXIÓN · CON BUEN CHEMISTRY',text:'La conexión está irregular antes de un cup. Contexto: con buen chemistry.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'MALA CONEXIÓN · CON BURNOUT ALTO',text:'La conexión está irregular antes de un cup. Contexto: con burnout alto.',a:'JUGAR IGUAL',b:'NO ARRIESGAR',kind:'mental'},
+{title:'PARCHE SORPRESA · EN CASH CUP',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: en cash cup.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'PARCHE SORPRESA · EN QUALIFIER',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: en qualifier.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'PARCHE SORPRESA · ANTES DE FNCS',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: antes de fncs.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'PARCHE SORPRESA · SEMANA DE SCRIMS',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: semana de scrims.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'PARCHE SORPRESA · EN HIGH ELO',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: en high elo.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'PARCHE SORPRESA · ANTES DEL MAJOR',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: antes del major.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'PARCHE SORPRESA · RUMBO A GLOBAL',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: rumbo a global.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'PARCHE SORPRESA · DÍA DE TORNEO',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: día de torneo.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'PARCHE SORPRESA · SEMANA TRANQUILA',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: semana tranquila.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'PARCHE SORPRESA · DESPUÉS DE UNA WIN',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: después de una win.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'PARCHE SORPRESA · TRAS UN MAL TOP',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: tras un mal top.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'PARCHE SORPRESA · CON NUEVO META',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: con nuevo meta.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'PARCHE SORPRESA · CON MUCHA PRESIÓN',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: con mucha presión.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'PARCHE SORPRESA · EN BOOTCAMP',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: en bootcamp.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'PARCHE SORPRESA · ANTES DE LAN',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: antes de lan.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'PARCHE SORPRESA · EN FIN DE TEMPORADA',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: en fin de temporada.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'PARCHE SORPRESA · EN NUEVA REGIÓN',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: en nueva región.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'PARCHE SORPRESA · TRAS CAMBIO DE DÚO',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: tras cambio de dúo.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'PARCHE SORPRESA · CON BUEN CHEMISTRY',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: con buen chemistry.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'PARCHE SORPRESA · CON BURNOUT ALTO',text:'Epic cambia varias armas pocas horas antes del torneo. Contexto: con burnout alto.',a:'ADAPTARTE RÁPIDO',b:'USAR LO CONOCIDO',kind:'prep'},
+{title:'NUEVO DUO RIVAL · EN CASH CUP',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: en cash cup.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'},
+{title:'NUEVO DUO RIVAL · EN QUALIFIER',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: en qualifier.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'},
+{title:'NUEVO DUO RIVAL · ANTES DE FNCS',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: antes de fncs.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'},
+{title:'NUEVO DUO RIVAL · SEMANA DE SCRIMS',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: semana de scrims.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'},
+{title:'NUEVO DUO RIVAL · EN HIGH ELO',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: en high elo.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'},
+{title:'NUEVO DUO RIVAL · ANTES DEL MAJOR',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: antes del major.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'},
+{title:'NUEVO DUO RIVAL · RUMBO A GLOBAL',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: rumbo a global.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'},
+{title:'NUEVO DUO RIVAL · DÍA DE TORNEO',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: día de torneo.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'},
+{title:'NUEVO DUO RIVAL · SEMANA TRANQUILA',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: semana tranquila.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'},
+{title:'NUEVO DUO RIVAL · DESPUÉS DE UNA WIN',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: después de una win.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'},
+{title:'NUEVO DUO RIVAL · TRAS UN MAL TOP',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: tras un mal top.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'},
+{title:'NUEVO DUO RIVAL · CON NUEVO META',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: con nuevo meta.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'},
+{title:'NUEVO DUO RIVAL · CON MUCHA PRESIÓN',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: con mucha presión.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'},
+{title:'NUEVO DUO RIVAL · EN BOOTCAMP',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: en bootcamp.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'},
+{title:'NUEVO DUO RIVAL · ANTES DE LAN',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: antes de lan.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'},
+{title:'NUEVO DUO RIVAL · EN FIN DE TEMPORADA',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: en fin de temporada.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'},
+{title:'NUEVO DUO RIVAL · EN NUEVA REGIÓN',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: en nueva región.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'},
+{title:'NUEVO DUO RIVAL · TRAS CAMBIO DE DÚO',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: tras cambio de dúo.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'},
+{title:'NUEVO DUO RIVAL · CON BUEN CHEMISTRY',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: con buen chemistry.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'},
+{title:'NUEVO DUO RIVAL · CON BURNOUT ALTO',text:'Un dúo en ascenso empieza a competir por tus mismos tops. Contexto: con burnout alto.',a:'ESTUDIARLOS',b:'IGNORARLOS',kind:'prep'}
+];
+function extra360DecisionEvent(){
+  const s=pick(EXTRA360_DECISIONS);
+  let ae=['+ Preparación'],be=['+ Estabilidad'];
+  let fa=()=>{state.hidden.prep+=2;};
+  let fb=()=>{state.hidden.mental+=1;};
+  if(s.kind==='ovr'){
+    ae=['+1 OVR','+ Burnout'];be=['+ Mental'];
+    fa=()=>{state.ovr=clamp(state.ovr+1,45,99);state.hidden.burnout+=1;};
+    fb=()=>{state.hidden.mental+=2;};
+  }else if(s.kind==='pr'){
+    ae=['+ PR','+ Experiencia'];be=['- Burnout'];
+    fa=()=>{state.powerRanking+=rand(80,220);state.hidden.prep+=1;};
+    fb=()=>{state.hidden.burnout-=2;};
+  }else if(s.kind==='mental'){
+    ae=['+ Mental','+ Chemistry'];be=['+ Preparación'];
+    fa=()=>{state.hidden.mental+=2;state.chemistry=clamp(state.chemistry+2,0,100);};
+    fb=()=>{state.hidden.prep+=2;};
+  }else if(s.kind==='burn'){
+    ae=['+ Preparación','+ Burnout'];be=['- Burnout'];
+    fa=()=>{state.hidden.prep+=4;state.hidden.burnout+=2;};
+    fb=()=>{state.hidden.burnout-=3;};
+  }
+  return evt(s.title,s.text,DECISION_IMAGES.practice,s.a,s.b,ae,be,fa,fb,DECISION_IMAGES.practice,DECISION_IMAGES.relax);
+}
+
 function eventData(id){
   if(id==='xvparty') return evt('FIESTA DE XV DE UNA AMIGA','Tenés 15 años. Una amiga muy cercana te invita a su fiesta de XV el mismo fin de semana que tu dúo quiere hacer un bootcamp.',DECISION_IMAGES.party,'IR A LA FIESTA','HACER BOOTCAMP',['+ Moral','- Preparación'],['+2 OVR','+ Burnout'],()=>{state.hidden.mental+=5;state.hidden.prep-=2;},()=>{state.ovr=clamp(state.ovr+2,45,99);state.hidden.prep+=3;state.hidden.burnout+=2;},DECISION_IMAGES.party,DECISION_IMAGES.practice);
   if(id==='graduation') return evt('TU GRADUACIÓN','Tenés 18 años y es tu graduación. La ceremonia coincide con un qualifier importante.',DECISION_IMAGES.graduation,'IR A LA GRADUACIÓN','JUGAR EL QUALIFIER',['+ Moral','- Burnout'],['+ Preparación','+ Qualifier'],()=>{state.hidden.mental+=5;state.hidden.burnout-=2;},()=>{state.hidden.prep+=2;state.queue.unshift(['tour','qual']);},DECISION_IMAGES.graduation,DECISION_IMAGES.compete);
-if(id==='school')return evt('COLEGIO Y COMPETITIVO','Tenés 13 años y una semana pesada de clases coincide con tus primeras sesiones serias de práctica.',DECISION_IMAGES.school,'PRIORIZAR EL COLEGIO','ENTRENAR MÁS',['+ Moral','- Burnout'],['+ Preparación','+ Burnout'],()=>{state.hidden.mental+=2;state.hidden.burnout-=1;},()=>{state.hidden.prep+=4;state.hidden.burnout+=2;}); if(id==='free')return evt('SEMANA LIBRE','No hay torneo importante. Tu teammate quiere meter muchas scrims.',DECISION_IMAGES.coach,'DESCANSAR','JUGAR SCRIMS',['+ Moral','- Burnout'],['+ Preparación','+ Chemistry'],()=>{state.hidden.mental+=3;state.hidden.burnout-=4;},()=>{state.hidden.prep+=4;state.chemistry+=2;state.hidden.burnout+=2;}); if(id==='wedding')return evt('TU MEJOR AMIGO SE CASA','El casamiento es el mismo día de la Last Chance de FNCS. Es tu última oportunidad de llegar al Major.',DECISION_IMAGES.wedding,'CASAMIENTO','LAST CHANCE',['+ Moral','Pierdes torneo'],['+ Última chance','+ Burnout'],()=>{state.hidden.mental+=6;state.hidden.burnout-=5;state.news.unshift('TE PERDISTE LA LAST CHANCE POR EL CASAMIENTO.');},()=>{state.hidden.burnout+=2;state.queue.unshift(['tour','last']);}); if(id==='legendcoach'){const coach=regionLegend(); const coachImg=skinFor((state.profile.region+'_'+coach).toLowerCase()); return evt('UN HISTÓRICO DE TU REGIÓN TE QUIERE COACHEAR', `${coach} se ofrece a ser tu coach. Si aceptás, classificás automáticamente a la FNCS y mejorás tu juego.`, coach==='k1ng' ? 'assets_v17/k1ng.png' : coachImg, 'ACEPTAR SU COACHING', 'SEGUIR SOLO', ['Auto qual a FNCS', '+3 OVR'], ['Sin cambios', '+ independencia'], ()=>{state.ovr=clamp(state.ovr+3,45,99); state.hidden.mental+=3; autoQualifyToFNCS(coach);}, ()=>{state.hidden.mental+=1; state.news.unshift('RECHAZASTE LA OFERTA DE COACHING DE '+coach.toUpperCase()+'.');}); } if(id==='appreciation'){const mate=getPlayer(state.teammate); const e=evt('¿APRECIÁS A TU COMPAÑERO?',mate?('Pensás en todo lo que viviste compitiendo con '+mate.name+'.'):'Pensás en todo lo que viviste con tu compañero.',DECISION_IMAGES.bench,'SÍ','NO',[],[],()=>{state.flags.appreciationSeen=true;state.ovr=99;state.earnings+=1000000;},()=>{state.flags.appreciationSeen=true;},DECISION_IMAGES.bench,DECISION_IMAGES.relax,true); e.silent=true; return e;} if(id==='human')return humanEvent(); if(id==='life')return lifeEvent(); if(id==='lifeplus')return lifePlusEvent(); if(id==='careerplus')return careerPlusEvent(); if(id==='social')return socialEvent(); if(id==='strategy')return strategyEvent(); if(id==='fortnite')return fortniteEvent(); if(id==='mega')return megaDecisionEvent(); if(id==='duomega')return duoMegaEvent(); if(id==='ovr')return ovrEvent(); if(id==='role')return roleEvent(); if(id==='team')return teamEvent(); if(id==='region')return regionEvent(); if(id==='creator')return creatorEvent(); if(id==='pressure')return pressureEvent(); if(id==='gear')return gearEvent(); if(id==='under')return argUnderEvent(); if(id==='career')return careerEvent(); if(id==='rivalry')return rivalryEvent(); if(id==='legendcoach'){const coach=regionLegend(); const coachImg=coach==='k1ng' ? 'assets_v17/k1ng.png' : skinFor((state.profile.region+'_'+coach).toLowerCase()); return evt('UN HISTÓRICO DE TU REGIÓN TE QUIERE COACHEAR', coach+' se ofrece a ser tu coach. Si aceptás, clasificás automáticamente a la FNCS y mejorás tu juego.', coachImg, 'ACEPTAR SU COACHING', 'SEGUIR SOLO', ['Auto qual a FNCS', '+3 OVR'], ['Sin cambios', '+ independencia'], ()=>{state.ovr=clamp(state.ovr+3,45,99); state.hidden.mental+=3; autoQualifyToFNCS(coach);}, ()=>{state.hidden.mental+=1; state.news.unshift('RECHAZASTE LA OFERTA DE COACHING DE '+coach.toUpperCase()+'.');});} if(id==='banseason')return banEvent(); if(id==='bantraining')return banTrainingEvent(); if(id==='banlife')return banLifeEvent(); return null;}
+if(id==='school')return evt('COLEGIO Y COMPETITIVO','Tenés 13 años y una semana pesada de clases coincide con tus primeras sesiones serias de práctica.',DECISION_IMAGES.school,'PRIORIZAR EL COLEGIO','ENTRENAR MÁS',['+ Moral','- Burnout'],['+ Preparación','+ Burnout'],()=>{state.hidden.mental+=2;state.hidden.burnout-=1;},()=>{state.hidden.prep+=4;state.hidden.burnout+=2;}); if(id==='free')return evt('SEMANA LIBRE','No hay torneo importante. Tu teammate quiere meter muchas scrims.',DECISION_IMAGES.coach,'DESCANSAR','JUGAR SCRIMS',['+ Moral','- Burnout'],['+ Preparación','+ Chemistry'],()=>{state.hidden.mental+=3;state.hidden.burnout-=4;},()=>{state.hidden.prep+=4;state.chemistry+=2;state.hidden.burnout+=2;}); if(id==='wedding')return evt('TU MEJOR AMIGO SE CASA','El casamiento es el mismo día de la Last Chance de FNCS. Es tu última oportunidad de llegar al Major.',DECISION_IMAGES.wedding,'CASAMIENTO','LAST CHANCE',['+ Moral','Pierdes torneo'],['+ Última chance','+ Burnout'],()=>{state.hidden.mental+=6;state.hidden.burnout-=5;state.news.unshift('TE PERDISTE LA LAST CHANCE POR EL CASAMIENTO.');},()=>{state.hidden.burnout+=2;state.queue.unshift(['tour','last']);}); if(id==='legendcoach'){const coach=regionLegend(); const coachImg=skinFor((state.profile.region+'_'+coach).toLowerCase()); return evt('UN HISTÓRICO DE TU REGIÓN TE QUIERE COACHEAR', `${coach} se ofrece a ser tu coach. Si aceptás, classificás automáticamente a la FNCS y mejorás tu juego.`, coach==='k1ng' ? 'assets_v17/k1ng.png' : coachImg, 'ACEPTAR SU COACHING', 'SEGUIR SOLO', ['Auto qual a FNCS', '+3 OVR'], ['Sin cambios', '+ independencia'], ()=>{state.ovr=clamp(state.ovr+3,45,99); state.hidden.mental+=3; autoQualifyToFNCS(coach);}, ()=>{state.hidden.mental+=1; state.news.unshift('RECHAZASTE LA OFERTA DE COACHING DE '+coach.toUpperCase()+'.');}); } if(id==='appreciation'){const mate=getPlayer(state.teammate); const e=evt('¿APRECIÁS A TU COMPAÑERO?',mate?('Pensás en todo lo que viviste compitiendo con '+mate.name+'.'):'Pensás en todo lo que viviste con tu compañero.',DECISION_IMAGES.bench,'SÍ','NO',[],[],()=>{state.flags.appreciationSeen=true;state.ovr=99;state.earnings+=1000000;},()=>{state.flags.appreciationSeen=true;},DECISION_IMAGES.bench,DECISION_IMAGES.relax,true); e.silent=true; return e;} if(id==='human')return humanEvent(); if(id==='life')return lifeEvent(); if(id==='lifeplus')return lifePlusEvent(); if(id==='careerplus')return careerPlusEvent(); if(id==='social')return socialEvent(); if(id==='strategy')return strategyEvent(); if(id==='fortnite')return fortniteEvent(); if(id==='mega')return megaDecisionEvent(); if(id==='duomega')return duoMegaEvent(); if(id==='extra360')return extra360DecisionEvent(); if(id==='ovr')return ovrEvent(); if(id==='role')return roleEvent(); if(id==='team')return teamEvent(); if(id==='region')return regionEvent(); if(id==='creator')return creatorEvent(); if(id==='pressure')return pressureEvent(); if(id==='gear')return gearEvent(); if(id==='under')return argUnderEvent(); if(id==='career')return careerEvent(); if(id==='rivalry')return rivalryEvent(); if(id==='legendcoach'){const coach=regionLegend(); const coachImg=coach==='k1ng' ? 'assets_v17/k1ng.png' : skinFor((state.profile.region+'_'+coach).toLowerCase()); return evt('UN HISTÓRICO DE TU REGIÓN TE QUIERE COACHEAR', coach+' se ofrece a ser tu coach. Si aceptás, clasificás automáticamente a la FNCS y mejorás tu juego.', coachImg, 'ACEPTAR SU COACHING', 'SEGUIR SOLO', ['Auto qual a FNCS', '+3 OVR'], ['Sin cambios', '+ independencia'], ()=>{state.ovr=clamp(state.ovr+3,45,99); state.hidden.mental+=3; autoQualifyToFNCS(coach);}, ()=>{state.hidden.mental+=1; state.news.unshift('RECHAZASTE LA OFERTA DE COACHING DE '+coach.toUpperCase()+'.');});} if(id==='banseason')return banEvent(); if(id==='bantraining')return banTrainingEvent(); if(id==='banlife')return banLifeEvent(); return null;}
 function runEvent(id){
   if(!state.recentDecisionTitles) state.recentDecisionTitles=[];
   let data=eventData(id);
@@ -3288,13 +3713,13 @@ function endSeason(){
 }
 function legacyScore(){let score=35+state.trophies.fncs*7+state.trophies.global*14+state.trophies.cups*1.5+Math.min(18,Math.log10(state.earnings+10)*2.8)+Math.min(18,state.powerRanking/180); return clamp(Math.round(score),1,100);} function finishCareer(age){
   state.retired=true;state.retireAge=age;state.pending=null;ensurePalmares();
-  let hall=[];try{hall=JSON.parse(localStorage.getItem('llamero_v47_hof')||localStorage.getItem('llamero_v46_hof')||localStorage.getItem('llamero_v45_hof')||localStorage.getItem('llamero_v44_hof')||localStorage.getItem('llamero_v43_hof')||localStorage.getItem('llamero_v42_hof')||localStorage.getItem('llamero_v41_hof')||localStorage.getItem('llamero_v40_hof')||localStorage.getItem('llamero_v39_hof')||localStorage.getItem('llamero_v38_hof')||localStorage.getItem('llamero_v37_hof')||localStorage.getItem('llamero_v36_hof')||localStorage.getItem('llamero_v35_hof')||localStorage.getItem('llamero_v34_hof')||localStorage.getItem('llamero_v33_hof')||localStorage.getItem('llamero_v32_hof')||localStorage.getItem('llamero_v31_hof')||localStorage.getItem('llamero_v30_hof')||localStorage.getItem('llamero_v29_hof')||localStorage.getItem('llamero_v28_hof')||localStorage.getItem('llamero_v27_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){}
+  let hall=[];try{hall=JSON.parse(localStorage.getItem('llamero_v48_hof')||localStorage.getItem('llamero_v47_hof')||localStorage.getItem('llamero_v46_hof')||localStorage.getItem('llamero_v45_hof')||localStorage.getItem('llamero_v44_hof')||localStorage.getItem('llamero_v43_hof')||localStorage.getItem('llamero_v42_hof')||localStorage.getItem('llamero_v41_hof')||localStorage.getItem('llamero_v40_hof')||localStorage.getItem('llamero_v39_hof')||localStorage.getItem('llamero_v38_hof')||localStorage.getItem('llamero_v37_hof')||localStorage.getItem('llamero_v36_hof')||localStorage.getItem('llamero_v35_hof')||localStorage.getItem('llamero_v34_hof')||localStorage.getItem('llamero_v33_hof')||localStorage.getItem('llamero_v32_hof')||localStorage.getItem('llamero_v31_hof')||localStorage.getItem('llamero_v30_hof')||localStorage.getItem('llamero_v29_hof')||localStorage.getItem('llamero_v28_hof')||localStorage.getItem('llamero_v27_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){}
   const duos=Array.isArray(state.duoHistory)?state.duoHistory.slice():[];
   if(currentMate()&&!duos.includes(currentMate().name))duos.push(currentMate().name);
   const rank=finalCareerRankInfo();
   hall.push({name:state.profile.name,legacy:legacyScore(),careerRank:rank.name,careerScore:rank.score,earnings:state.earnings,age,peakPR:state.powerRanking,fncs:state.trophies.fncs,global:state.trophies.global,cups:state.trophies.cups,kills:state.combat.kills,deaths:state.combat.deaths,kd:careerKD(),duos});
   hall.sort((a,b)=>(b.careerScore||b.legacy||0)-(a.careerScore||a.legacy||0));hall=hall.slice(0,10);
-  localStorage.setItem('llamero_v47_hof',JSON.stringify(hall));saveGame();renderCareerRecap(true);
+  localStorage.setItem('llamero_v48_hof',JSON.stringify(hall));saveGame();renderCareerRecap(true);
 }
 function retirementContinue(){
   state.pending=null;
@@ -3504,7 +3929,7 @@ function leftHeader(){
     <div class="id-area">
       <div class="tags"><span class="tag">${state.profile.region}</span><span class="tag">${esc(state.profile.role||'FRAGGER')}</span><span class="season-chip">TEMP ${state.seasonInYear||1}/3</span><span class="season-chip">${state.profile.decisionsPerYear||3} DEC/AÑO</span></div>
       <h1 class="player-name">${esc(state.profile.name)}</h1>
-      <div class="subline"><div><div class="club-line">${mate?esc(mate.name):'Libre'}</div>${mate?`<button class="duo-action" onclick="abandonDuo()">ABANDONAR DÚO</button>`:''}${state.flags?.topDuoUnlocked?`<button class="duo-action topduo-btn" onclick="openTopDuoRanking()">TOP DÚOS</button>`:''}</div><div class="meta-box"><small>Edad</small><div class="age">${state.age}</div></div></div>
+      <div class="subline"><div><div class="club-line">${mate?esc(mate.name):'Libre'}</div>${mate?`<button class="duo-action" onclick="abandonDuo()">ABANDONAR DÚO</button>`:''}${state.flags?.topDuoUnlocked?`<button class="duo-action topduo-btn" onclick="openTopDuoRanking()">TOP JUGADORES</button>`:''}</div><div class="meta-box"><small>Edad</small><div class="age">${state.age}</div></div></div>
     </div>
   </div>
   <div class="stat-strip compact-core">
@@ -3720,19 +4145,31 @@ function newCareerForm(){
     </div>
   </div></div>`);
 }
+
+function showApreciarEasterEgg(){
+  const old=document.querySelector('.ai-easter'); if(old)old.remove();
+  const el=document.createElement('div');
+  el.className='ai-easter';
+  el.innerHTML=`<div class="ai-easter-card"><small>LLAMERO SECRET</small><strong>BUILT WITH AI</strong><span>prompteado por nicanorbo</span><button onclick="this.closest('.ai-easter').remove()">CONTINUAR</button></div>`;
+  document.body.appendChild(el);
+  requestAnimationFrame(()=>el.classList.add('show'));
+}
+
 function startCareer(){
   const name=document.getElementById('nick').value.trim()||'PLAYER';
   const region=document.getElementById('regionSelect')?.value||'SA';
   const role=document.querySelector('input[name="role"]:checked')?.value||'FRAGGER';
   const decisionsPerYear=Number(document.querySelector('input[name="decisionsPerYear"]:checked')?.value||3);
   state=freshState({name,region,role,decisionsPerYear:clamp(decisionsPerYear,1,3)});
-  localStorage.removeItem('llamero_v47_save');
+  localStorage.removeItem('llamero_v48_save');
   if(String(name).toLowerCase()==='topduo21')state.flags.topDuoUnlocked=true;
+  if(String(name).toLowerCase()==='apreciar')state.flags.apreciarEgg=true;
   startSeason();
   chooseTeammatesScreen();
   if(state.flags.topDuoUnlocked)setTimeout(openTopDuoRanking,280);
+  if(state.flags.apreciarEgg)setTimeout(showApreciarEasterEgg,320);
 }
-function continueCareer(){if(!loadGame()){showMenu();return;} if(!state.recentDecisionTitles)state.recentDecisionTitles=[]; if(!state.profile.decisionsPerYear)state.profile.decisionsPerYear=3; if(!state.flags)state.flags={appreciationSeen:false,topDuoUnlocked:false}; if(state.flags.topDuoUnlocked===undefined)state.flags.topDuoUnlocked=false; if(state.retired){renderCareerRecap(true);return;} if(!state.queue)state.queue=[]; if(state.queue.length===0 && !state.pending)startSeason(); if(state.pending&&state.pending.type==='event'){renderEvent(state.pending.data);return;} if(state.pending&&state.pending.type==='duo'){const ids=state.pending.options||[state.pending.a,state.pending.b,state.pending.c].filter(Boolean);renderDuoChoice(...ids.map(getPlayer));return;} renderCareer();}
+function continueCareer(){if(!loadGame()){showMenu();return;} if(!state.recentDecisionTitles)state.recentDecisionTitles=[]; if(!state.profile.decisionsPerYear)state.profile.decisionsPerYear=3; if(!state.flags)state.flags={appreciationSeen:false,topDuoUnlocked:false}; if(state.flags.topDuoUnlocked===undefined)state.flags.topDuoUnlocked=false; if(state.flags.apreciarEgg===undefined)state.flags.apreciarEgg=false; if(state.retired){renderCareerRecap(true);return;} if(!state.queue)state.queue=[]; if(state.queue.length===0 && !state.pending)startSeason(); if(state.pending&&state.pending.type==='event'){renderEvent(state.pending.data);return;} if(state.pending&&state.pending.type==='duo'){const ids=state.pending.options||[state.pending.a,state.pending.b,state.pending.c].filter(Boolean);renderDuoChoice(...ids.map(getPlayer));return;} renderCareer();}
 function modal(title,inner){const bg=document.createElement('div'); bg.className='modal-bg'; bg.id='modal'; bg.innerHTML=`<div class="modal"><button class="close" onclick="document.getElementById('modal').remove()">✕</button><h2>${esc(title)}</h2>${inner}</div>`; document.body.appendChild(bg);}
 function openCareerHistory(){if(!state)return; const rows=[...state.history].reverse().map(h=>`<tr><td>${h.year}</td><td>${h.age}</td><td>${REGIONS[h.region].short}</td><td>${esc(getPlayer(h.teammate)?.name||'—')}</td><td>${h.ovr}</td><td>${h.matches??'—'}</td><td>${h.kills??'—'}</td><td>${h.deaths??'—'}</td><td>${h.kd??'—'}</td><td>${h.prGain??h.pr} PR</td><td>${money(h.earnings||0)}</td><td>${esc(h.best)}</td></tr>`).join(''); modal('Carrera',`<table><thead><tr><th>Año</th><th>Edad</th><th>Región</th><th>Dúo</th><th>OVR</th><th>PJ</th><th>K</th><th>D</th><th>K/D</th><th>PR año</th><th>Earnings año</th><th>Mejor resultado</th></tr></thead><tbody>${rows||'<tr><td colspan="12">Todavía no terminó ninguna temporada.</td></tr>'}</tbody></table>`);}
 
@@ -3768,21 +4205,25 @@ function tournamentRivalDuo(){
   return pick(near);
 }
 
-function buildTopDuoRanking(){
-  return buildDuoNetwork(null,360).slice(0,60);
+function buildTopPlayerRanking(){
+  return PLAYER_LIST
+    .filter(p=>p.active)
+    .map(p=>({player:p,score:teammateStrength(p)}))
+    .sort((a,b)=>b.score-a.score)
+    .slice(0,100);
 }
+function buildTopDuoRanking(){return buildTopPlayerRanking();}
 function openTopDuoRanking(){
   if(!state||!state.flags?.topDuoUnlocked)return;
-  const rows=buildTopDuoRanking().map((d,i)=>{
+  const rows=buildTopPlayerRanking().map((d,i)=>{
     const r=displayRankInfo(d.score);
-    return `<tr><td><b>${i+1}</b></td><td><b>${esc(d.a.name)}</b> + <b>${esc(d.b.name)}</b><br><small>${REGIONS[d.region].name}</small></td><td>${rankShieldHtml(r,'xs')}</td></tr>`;
+    return `<tr><td><b>${i+1}</b></td><td><b>${esc(d.player.name)}</b><br><small>${REGIONS[d.player.region].name}</small></td><td>${rankShieldHtml(r,'xs')}</td></tr>`;
   }).join('');
-  modal('TOP DÚOS',`<div class="topduo-secret"><div class="topduo-secret-head"><b>RANKING GLOBAL DE DÚOS</b><span>SECRETO DESBLOQUEADO</span></div><table><thead><tr><th>#</th><th>Dúo</th><th>Rango</th></tr></thead><tbody>${rows}</tbody></table></div>`);
+  modal('TOP JUGADORES',`<div class="topduo-secret"><div class="topduo-secret-head"><b>RANKING GLOBAL DE JUGADORES</b><span>SECRETO DESBLOQUEADO</span></div><table><thead><tr><th>#</th><th>Jugador</th><th>Rango</th></tr></thead><tbody>${rows}</tbody></table></div>`);
 }
-
 function openPalmares(){if(!state)return;ensurePalmares();const p=state.palmares;const bestFncs=p.bestFNCS?ordinal(p.bestFNCS):'—';const bestGlobal=p.bestGlobal?ordinal(p.bestGlobal):'—';const recent=(p.recent||[]).map(x=>`<div class="honour"><strong>${esc(x.event)} · ${ordinal(x.place)}</strong><span>${x.year} · +${formatPR(x.prGain||0)} PR${x.earnings?' · '+money(x.earnings):''}</span></div>`).join('')||'<div class="honour"><strong>Todavía no hay grandes resultados.</strong><span>Seguí compitiendo</span></div>'; modal('Palmarés',`<div class="palmares-summary"><div class="palmares-stat"><b class="palmares-major">${state.trophies.fncs}</b><small>FNCS ganadas</small></div><div class="palmares-stat"><b>${state.trophies.global}</b><small>Globales</small></div><div class="palmares-stat"><b>${p.totalWins||0}</b><small>Victorias</small></div><div class="palmares-stat"><b>${p.top10s||0}</b><small>Top 10</small></div></div><table><tbody><tr><td>Mejor FNCS</td><td><b>${bestFncs}</b></td></tr><tr><td>Podios FNCS</td><td><b>${p.fncsPodiums||0}</b></td></tr><tr><td>Mejor Global</td><td><b>${bestGlobal}</b></td></tr><tr><td>Podios Global</td><td><b>${p.globalPodiums||0}</b></td></tr><tr><td>Cash/Victory Cups ganadas</td><td><b>${state.trophies.cups}</b></td></tr><tr><td>Eventos jugados</td><td><b>${p.events||0}</b></td></tr><tr><td>Mayor premio</td><td><b>${money(p.biggestPrize||0)}</b></td></tr><tr><td>Power Ranking actual</td><td><b>${formatPR(state.powerRanking)} PR</b></td></tr><tr><td>Earnings de carrera</td><td><b>${shortMoney(state.earnings)}</b></td></tr></tbody></table><div class="section-title" style="margin-top:16px">Resultados destacados</div><div class="honour-list">${recent}</div>`);}
 function openHall(){
-  let hall=[];try{hall=JSON.parse(localStorage.getItem('llamero_v47_hof')||localStorage.getItem('llamero_v46_hof')||localStorage.getItem('llamero_v45_hof')||localStorage.getItem('llamero_v44_hof')||localStorage.getItem('llamero_v43_hof')||localStorage.getItem('llamero_v42_hof')||localStorage.getItem('llamero_v41_hof')||localStorage.getItem('llamero_v40_hof')||localStorage.getItem('llamero_v39_hof')||localStorage.getItem('llamero_v38_hof')||localStorage.getItem('llamero_v37_hof')||localStorage.getItem('llamero_v36_hof')||localStorage.getItem('llamero_v35_hof')||localStorage.getItem('llamero_v34_hof')||localStorage.getItem('llamero_v33_hof')||localStorage.getItem('llamero_v32_hof')||localStorage.getItem('llamero_v31_hof')||localStorage.getItem('llamero_v30_hof')||localStorage.getItem('llamero_v29_hof')||localStorage.getItem('llamero_v28_hof')||localStorage.getItem('llamero_v27_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){}
+  let hall=[];try{hall=JSON.parse(localStorage.getItem('llamero_v48_hof')||localStorage.getItem('llamero_v47_hof')||localStorage.getItem('llamero_v46_hof')||localStorage.getItem('llamero_v45_hof')||localStorage.getItem('llamero_v44_hof')||localStorage.getItem('llamero_v43_hof')||localStorage.getItem('llamero_v42_hof')||localStorage.getItem('llamero_v41_hof')||localStorage.getItem('llamero_v40_hof')||localStorage.getItem('llamero_v39_hof')||localStorage.getItem('llamero_v38_hof')||localStorage.getItem('llamero_v37_hof')||localStorage.getItem('llamero_v36_hof')||localStorage.getItem('llamero_v35_hof')||localStorage.getItem('llamero_v34_hof')||localStorage.getItem('llamero_v33_hof')||localStorage.getItem('llamero_v32_hof')||localStorage.getItem('llamero_v31_hof')||localStorage.getItem('llamero_v30_hof')||localStorage.getItem('llamero_v29_hof')||localStorage.getItem('llamero_v28_hof')||localStorage.getItem('llamero_v27_hof')||localStorage.getItem('llamero_v21_hof')||'[]');}catch(e){}
   const rows=hall.map((h,i)=>{const duos=Array.isArray(h.duos)&&h.duos.length?h.duos.join(' · '):'—';return `<tr><td>${i+1}</td><td><b>${esc(h.name)}</b><br><small>${esc(h.careerRank||'—')}</small></td><td><b>${shortMoney(h.earnings||0)}</b></td><td class="hall-duos">${esc(duos)}</td><td>${h.kd||'—'}</td><td>${h.fncs||0}</td><td>${h.global||0}</td><td>${h.cups||0}</td><td>${h.peakPR||0} PR</td></tr>`;}).join('');
   modal('Hall of Fame',`<table><thead><tr><th>#</th><th>Jugador</th><th>Earnings</th><th>Dúos</th><th>K/D</th><th>FNCS</th><th>Global</th><th>Cups</th><th>Peak PR</th></tr></thead><tbody>${rows||'<tr><td colspan="9">Todavía no hay carreras terminadas.</td></tr>'}</tbody></table>`);
 }
