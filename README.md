@@ -1,13 +1,7 @@
-# LLAMERO v30
+# LLAMERO v33
 
-Optimización para teléfonos:
-- Interfaz adaptada a 100dvh y safe areas de iPhone/Android.
-- Perfil compacto para no ocupar toda la pantalla.
-- Decisiones en una sola columna con imágenes más grandes y áreas táctiles cómodas.
-- Historial anual rediseñado como tarjetas: Edad, teammate, OVR, K, D, K/D, PR y earnings.
-- Menú y creación de carrera rediseñados para pantallas chicas.
-- Resumen de carrera responsive en dos columnas.
-- Modales convertidos en bottom sheets.
-- Animaciones FNCS/Global/OVR ajustadas a móviles.
-- Mejor soporte para teléfonos muy pequeños.
-- Hover desactivado en pantallas táctiles.
+Cambio principal:
+- Esta versión usa una imagen de referencia real para el fondo black topo.
+- Se dejó gris/sobrio, no blanco puro.
+- El fondo está en: assets_v17/topo_reference_gray.png
+- Para cambiarlo, reemplazá esa imagen por otra con el mismo nombre.
