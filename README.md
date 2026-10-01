@@ -1,10 +1,8 @@
-# LLAMERO v48
+# LLAMERO v62 — Google Search Console
 
-Cambios:
-- el secreto `topduo21` ahora abre un TOP DE JUGADORES, no de dúos;
-- ranking global de 100 jugadores con región y rango;
-- +360 perfiles de jugadores nuevos;
-- +360 decisiones nuevas;
-- easter egg con nickname `apreciar`:
-  `BUILT WITH AI`
-  `prompteado por nicanorbo`
+Subí a la raíz del repositorio:
+- index.html
+- robots.txt
+- sitemap.xml
+
+La etiqueta de verificación de Google ya está dentro de index.html.

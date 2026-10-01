@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nicanorbo.github.io/Llamero/sitemap.xml
