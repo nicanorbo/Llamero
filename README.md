@@ -1,8 +1,11 @@
-# LLAMERO v62 — Google Search Console
+# LLAMERO v64 — Real Players 2026
 
-Subí a la raíz del repositorio:
-- index.html
-- robots.txt
-- sitemap.xml
+Incluye todo lo de v63 (PWA, SEO, teléfono) más:
+- base curada de jugadores reales de Fortnite competitivo 2026;
+- regiones SA, NA, EU, OCE, ASIA y ME;
+- botón "Jugadores reales" en el menú;
+- navegador por región;
+- jugadores reales marcados con badge REAL cuando aparecen como opción de dúo;
+- no se importan fotos de terceros: se mantienen skins/avatares para evitar problemas de licencias.
 
-La etiqueta de verificación de Google ya está dentro de index.html.
+Fuentes de nombres/regiones: páginas públicas de Liquipedia sobre FNCS 2026, Global Championship y finales regionales.
